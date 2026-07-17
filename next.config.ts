@@ -1,7 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactCompiler: true,
+  devIndicators: false, 
+  experimental: {
+    appNavFailHandling:false,
+    turbopackFileSystemCacheForDev: true,
+    turbopackClientSideNestedAsyncChunking: true
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
