@@ -176,8 +176,6 @@ export default function AgriculturePage() {
           </p>
         </div>
       </section>
-
-      {/* ── STATS ── */}
       <section style={{ background: '#03080f' }}>
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10 px-5 sm:px-8 lg:px-10">
           {STATS.map(({ value, label }) => (
