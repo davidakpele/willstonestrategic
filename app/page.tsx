@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import './willstone.css'
+import SiteHeader from '@/components/SiteHeader'
+import SiteFooter from '@/components/SiteFooter'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -16,28 +18,6 @@ const inter = Inter({
   weight: ['400', '500', '600', '700'],
   variable: '--font-body',
 })
-
-const NAV_LINKS = [
-  { href: '#home', label: 'HOME' },
-  { href: '#about', label: 'ABOUT US' },
-  { href: '#services', label: 'OUR SERVICES', hasDropdown: true },
-  { href: '#sustainability', label: 'SUSTAINABILITY' },
-  { href: '#contact', label: 'CONTACT' },
-]
-
-const SERVICES_DROPDOWN = [
-  'Agriculture & Agribusiness',
-  'Information Technology & Software Development',
-  'Electrical & Electronic Solutions',
-  'Engineering & Technical Services',
-  'Industrial Equipment & Machinery',
-  'Defence, Security & Protective Solutions',
-  'General Trading & Procurement',
-  'Logistics & Supply Chain Management',
-  'Import & Export Services',
-  'Infrastructure & Facility Support',
-  'General Contracting & Supply',
-]
 
 const INDUSTRIES = [
   {
@@ -179,186 +159,10 @@ function BackToTop() {
 }
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
-
-  const toggleMenu = () => setIsMenuOpen((open) => !open)
-  const closeMenu = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false) }
-
-  useEffect(() => {
-    const handleResize = () => { if (window.innerWidth >= 1024) closeMenu() }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
   return (
     <div className={`${spaceGrotesk.variable} ${inter.variable} bg-white`}>
-      {/* NAVBAR */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          background: 'linear-gradient(180deg, rgb(11 27 51 / 32%), rgb(11 27 51 / 72%))',
-          backdropFilter: 'blur(6px)',
-        }}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-4">
-          <a href="#home" className="site-logo cursor-pointer" aria-label="Willstone Strategic Industries Limited" />
+      <SiteHeader />
 
-          <nav className="hidden lg:flex items-center gap-6 text-[13px] text-white/85 font-medium">
-            {NAV_LINKS.map((link, i) =>
-              link.hasDropdown ? (
-                <div
-                  key={link.href}
-                  className="relative"
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setIsServicesOpen(false)}
-                >
-                  <a
-                    href={link.href}
-                    className={`navlink flex items-center gap-1${i === 0 ? ' active' : ''}`}
-                  >
-                    {link.label}
-                    <svg
-                      width="12" height="12" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" strokeWidth="2.5"
-                      className="nav-chevron"
-                      style={{ transform: isServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }}
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </a>
-                  {/* Dropdown panel */}
-                  <div className={`nav-dropdown${isServicesOpen ? ' open' : ''}`}>
-                    <div className="py-2">
-                      {SERVICES_DROPDOWN.map((item) => (
-                        <a
-                          key={item}
-                          href="#services"
-                          className="nav-dropdown-item"
-                          onClick={() => setIsServicesOpen(false)}
-                        >
-                          {item}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <a key={link.href} className={`navlink${i === 0 ? ' active' : ''}`} href={link.href}>
-                  {link.label}
-                </a>
-              )
-            )}
-          </nav>
-
-          <a href="#contact" className="hidden lg:inline-flex items-center gap-2 btn-gold text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide">
-            PARTNER WITH US
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
-
-          <button
-            id="menu-btn"
-            className={`lg:hidden text-white relative w-8 h-8 flex flex-col items-center justify-center gap-[5px] cursor-pointer hamburger${isMenuOpen ? ' is-open' : ''}`}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            onClick={toggleMenu}
-          >
-            <span className="ham-line" />
-            <span className="ham-line" />
-            <span className="ham-line" />
-          </button>
-        </div>
-      </header>
-
-      {/* MOBILE DRAWER — rendered outside header so it overlays full screen */}
-      {/* Backdrop */}
-      <div
-        className={`drawer-backdrop lg:hidden${isMenuOpen ? ' open' : ''}`}
-        onClick={closeMenu}
-        aria-hidden="true"
-      />
-      {/* Drawer panel */}
-      <div
-        id="mobile-menu"
-        className={`drawer lg:hidden${isMenuOpen ? ' open' : ''}`}
-        aria-label="Mobile navigation"
-      >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-          <a href="#home" className="site-logo-sm cursor-pointer" aria-label="Willstone" onClick={closeMenu} />
-          <button
-            onClick={closeMenu}
-            className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white cursor-pointer"
-            aria-label="Close menu"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Drawer nav */}
-        <nav className="flex flex-col px-6 py-4 gap-1 text-[14px] text-white/85 font-medium overflow-y-auto flex-1">
-          {NAV_LINKS.map((link) =>
-            link.hasDropdown ? (
-              <div key={link.href} className="border-b border-white/8">
-                <button
-                  className="w-full flex items-center justify-between py-3.5 cursor-pointer"
-                  onClick={() => setIsMobileServicesOpen((o) => !o)}
-                >
-                  <span>{link.label}</span>
-                  <svg
-                    width="14" height="14" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" strokeWidth="2.5"
-                    style={{ transform: isMobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </button>
-                <div className={`mobile-submenu${isMobileServicesOpen ? ' open' : ''}`}>
-                  {SERVICES_DROPDOWN.map((item) => (
-                    <a
-                      key={item}
-                      href="#services"
-                      className="block py-2.5 pl-4 text-[13px] text-white/55 hover:text-[#C9A24B] border-l-2 border-white/10 hover:border-[#C9A24B] mb-1 cursor-pointer transition-colors"
-                      onClick={closeMenu}
-                    >
-                      {item}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <a
-                key={link.href}
-                className="py-3.5 border-b border-white/8 hover:text-[#C9A24B] transition-colors cursor-pointer"
-                href={link.href}
-                onClick={closeMenu}
-              >
-                {link.label}
-              </a>
-            )
-          )}
-        </nav>
-
-        {/* Drawer footer CTA */}
-        <div className="px-6 py-5 border-t border-white/10">
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="flex items-center justify-center gap-2 btn-gold text-[13px] font-semibold px-5 py-3 rounded-full cursor-pointer w-full"
-          >
-            PARTNER WITH US
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
-        </div>
-      </div>
 
       {/* HERO */}
       <section id="home" className="relative flex flex-col overflow-hidden" style={{ background: '#0B1B33', minHeight: '100svh' }}>
@@ -601,90 +405,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer id="contact" className="pb-8 px-6 lg:px-10" style={{ background: '#03080f' }}>
-        {/* Gold accent band */}
-        <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
-        <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-14">
-          {/* Brand */}
-          <div>
-            <div className="site-logo-footer mb-5" role="img" aria-label="Willstone Strategic Industries Limited" />
-            <p className="text-white/50 text-[13px] leading-relaxed max-w-xs">
-              Your strategic partner for today&apos;s challenges and tomorrow&apos;s opportunities.
-            </p>
-            <div className="flex gap-3 mt-5">
-              {[
-                { label: 'LinkedIn', d: 'M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9z' },
-                { label: 'Twitter', d: 'M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 00-7 3.7A11.6 11.6 0 013 4.9a4 4 0 001.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 01-1.9.1 4.1 4.1 0 003.8 2.8A8.3 8.3 0 012 18.6a11.6 11.6 0 006.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z' },
-                { label: 'Facebook', d: 'M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04v2.36H8v3.1h2.7v8z' },
-                { label: 'YouTube', d: 'M22 12s0-3.2-.4-4.7a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 002-2C22 15.2 22 12 22 12zM10 15.3V8.7l6 3.3z' },
-              ].map(({ label, d }) => (
-                <a key={label} href="#" aria-label={label} className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C9A24B] hover:border-[#C9A24B] transition-colors cursor-pointer">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d={d} /></svg>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <p className="text-white font-semibold text-[13px] tracking-wide mb-4">QUICK LINKS</p>
-            <ul className="space-y-2.5 text-[13px] text-white/50">
-              {QUICK_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="hover:text-[#C9A24B] transition-colors cursor-pointer">{link.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <p className="text-white font-semibold text-[13px] tracking-wide mb-4">SERVICES</p>
-            <ul className="space-y-2.5 text-[13px] text-white/50">
-              {FOOTER_SERVICES.map((label) => (
-                <li key={label}>
-                  <a href="#services" className="hover:text-[#C9A24B] transition-colors cursor-pointer">{label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="text-white font-semibold text-[13px] tracking-wide mb-4">CONTACT</p>
-            <ul className="space-y-3 text-[13px] text-white/50">
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M4 4h16v16H4zM4 4l8 8 8-8" />
-                </svg>
-                info@willstone.com.ng
-              </li>
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
-                </svg>
-                +234 805 123 4567
-              </li>
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                Plot 10, Industrial Avenue, Lagos, Nigeria
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/40">
-          <p>&copy; 2026 Willstone Strategic Industries Limited. All rights reserved.</p>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-[#C9A24B] transition-colors cursor-pointer">Privacy Policy</a>
-            <a href="#" className="hover:text-[#C9A24B] transition-colors cursor-pointer">Terms of Use</a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       {/* BACK TO TOP */}
       <BackToTop />

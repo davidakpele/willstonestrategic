@@ -410,3 +410,106 @@ html {
   * { transition: none !important; animation: none !important; }
   .fade-up { opacity: 1; transform: none; }
 }
+
+/* ==============================
+   CONTACT PAGE
+   ============================== */
+
+/* Info cards */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  border-radius: 14px;
+  border: 1px solid #e8eaf0;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+.contact-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 32px -8px rgba(201, 162, 75, 0.2);
+  transform: translateY(-3px);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 162, 75, 0.1);
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Form fields */
+.contact-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.contact-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e2e6ee;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+.contact-input::placeholder {
+  color: #b0b8c9;
+}
+.contact-input:focus {
+  border-color: var(--gold);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.12);
+}
+.contact-input.error {
+  border-color: #e53e3e;
+  background: #fff8f8;
+}
+
+.contact-error {
+  font-size: 11.5px;
+  color: #e53e3e;
+  margin-top: 4px;
+}
+
+/* Checkbox */
+.contact-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Quick contact chips under map */
+.quick-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid #e2e6ee;
+  font-size: 13px;
+  color: var(--slate);
+  background: #fff;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.quick-chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 162, 75, 0.06);
+}
