@@ -331,7 +331,8 @@ html {
   border-radius: 4px;
   cursor: pointer;
 }
-.nav-dropdown-item:hover {
+.nav-dropdown-item:hover,
+.nav-dropdown-item.active {
   color: var(--gold-light);
   background: rgba(201, 162, 75, 0.08);
 }

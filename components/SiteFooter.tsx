@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const QUICK_LINKS = [
-  { href: '/#about',          label: 'About Us' },
+  { href: '/about',          label: 'About Us' },
   { href: '/#services',       label: 'Our Services' },
   { href: '/#industries',     label: 'Industries' },
   { href: '/#sustainability', label: 'Sustainability' },

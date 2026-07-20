@@ -2,42 +2,49 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const NAV_LINKS = [
-  { href: '/',              label: 'HOME' },
-  { href: '/#about',        label: 'ABOUT US' },
-  { href: '/#services',     label: 'OUR SERVICES', hasDropdown: true },
+  { href: '/',                label: 'HOME' },
+  { href: '/about',           label: 'ABOUT US' },
+  { href: '/services',        label: 'OUR SERVICES', hasDropdown: true },
   { href: '/#sustainability', label: 'SUSTAINABILITY' },
-  { href: '/contact',       label: 'CONTACT' },
+  { href: '/contact',         label: 'CONTACT' },
 ]
 
 const SERVICES_DROPDOWN = [
-  'Agriculture & Agribusiness',
-  'Information Technology & Software Development',
-  'Electrical & Electronic Solutions',
-  'Engineering & Technical Services',
-  'Industrial Equipment & Machinery',
-  'Defence, Security & Protective Solutions',
-  'General Trading & Procurement',
-  'Logistics & Supply Chain Management',
-  'Import & Export Services',
-  'Infrastructure & Facility Support',
-  'General Contracting & Supply',
+  { label: 'Agriculture & Agribusiness',                    href: '/services/agriculture-agribusiness' },
+  { label: 'Information Technology & Software Development', href: '/services/information-technology' },
+  { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
+  { label: 'Engineering & Technical Services',              href: '/services/engineering-technical' },
+  { label: 'Industrial Equipment & Machinery',              href: '/services/industrial-equipment' },
+  { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
+  { label: 'General Trading & Procurement',                 href: '/services/trading-procurement' },
+  { label: 'Logistics & Supply Chain Management',           href: '/services/logistics-supply-chain' },
+  { label: 'Import & Export Services',                      href: '/services/import-export' },
+  { label: 'Infrastructure & Facility Support',             href: '/services/infrastructure-facility' },
+  { label: 'General Contracting & Supply',                  href: '/services/general-contracting' },
 ]
 
 interface SiteHeaderProps {
-  /** 'transparent' (default) — blurred gradient for hero pages
-   *  'solid'       — opaque navy for inner pages with no hero */
   variant?: 'transparent' | 'solid'
 }
 
 export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps) {
-  const [isMenuOpen, setIsMenuOpen]                 = useState(false)
-  const [isServicesOpen, setIsServicesOpen]         = useState(false)
+  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen]                     = useState(false)
+  const [isServicesOpen, setIsServicesOpen]             = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
 
   const toggleMenu = () => setIsMenuOpen((open) => !open)
   const closeMenu  = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false) }
+
+  // Returns true when this nav link should be underlined as active
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/'
+    if (href.startsWith('/#')) return pathname === '/'
+    return pathname === href || pathname.startsWith(href + '/')
+  }
 
   useEffect(() => {
     const handleResize = () => { if (window.innerWidth >= 1024) closeMenu() }
@@ -64,7 +71,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6 text-[13px] text-white/85 font-medium">
-            {NAV_LINKS.map((link, i) =>
+            {NAV_LINKS.map((link) =>
               link.hasDropdown ? (
                 <div
                   key={link.href}
@@ -74,32 +81,27 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                 >
                   <Link
                     href={link.href}
-                    className={`navlink flex items-center gap-1${i === 0 ? ' active' : ''}`}
+                    className={`navlink flex items-center gap-1${isActive(link.href) ? ' active' : ''}`}
                   >
                     {link.label}
                     <svg
                       width="12" height="12" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" strokeWidth="2.5"
-                      style={{
-                        transform: isServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.2s ease',
-                      }}
+                      style={{ transform: isServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }}
                     >
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </Link>
-
-                  {/* Dropdown */}
                   <div className={`nav-dropdown${isServicesOpen ? ' open' : ''}`}>
                     <div className="py-2">
                       {SERVICES_DROPDOWN.map((item) => (
                         <Link
-                          key={item}
-                          href="/#services"
-                          className="nav-dropdown-item"
+                          key={item.href}
+                          href={item.href}
+                          className={`nav-dropdown-item${pathname === item.href ? ' active' : ''}`}
                           onClick={() => setIsServicesOpen(false)}
                         >
-                          {item}
+                          {item.label}
                         </Link>
                       ))}
                     </div>
@@ -109,7 +111,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`navlink${i === 0 ? ' active' : ''}`}
+                  className={`navlink${isActive(link.href) ? ' active' : ''}`}
                 >
                   {link.label}
                 </Link>
@@ -180,14 +182,11 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                   className="w-full flex items-center justify-between py-3.5 cursor-pointer"
                   onClick={() => setIsMobileServicesOpen((o) => !o)}
                 >
-                  <span>{link.label}</span>
+                  <span style={{ color: isActive(link.href) ? 'var(--gold-light)' : undefined }}>{link.label}</span>
                   <svg
                     width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2.5"
-                    style={{
-                      transform: isMobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 0.25s ease',
-                    }}
+                    style={{ transform: isMobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}
                   >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
@@ -195,12 +194,16 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                 <div className={`mobile-submenu${isMobileServicesOpen ? ' open' : ''}`}>
                   {SERVICES_DROPDOWN.map((item) => (
                     <Link
-                      key={item}
-                      href="/#services"
-                      className="block py-2.5 pl-4 text-[13px] text-white/55 hover:text-[#C9A24B] border-l-2 border-white/10 hover:border-[#C9A24B] mb-1 cursor-pointer transition-colors"
+                      key={item.href}
+                      href={item.href}
+                      className={`block py-2.5 pl-4 text-[13px] border-l-2 mb-1 cursor-pointer transition-colors ${
+                        pathname === item.href
+                          ? 'text-[#C9A24B] border-[#C9A24B]'
+                          : 'text-white/55 hover:text-[#C9A24B] border-white/10 hover:border-[#C9A24B]'
+                      }`}
                       onClick={closeMenu}
                     >
-                      {item}
+                      {item.label}
                     </Link>
                   ))}
                 </div>
@@ -209,7 +212,9 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
               <Link
                 key={link.href}
                 href={link.href}
-                className="py-3.5 border-b border-white/8 hover:text-[#C9A24B] transition-colors cursor-pointer"
+                className={`py-3.5 border-b border-white/8 transition-colors cursor-pointer ${
+                  isActive(link.href) ? 'text-[#C9A24B]' : 'hover:text-[#C9A24B]'
+                }`}
                 onClick={closeMenu}
               >
                 {link.label}
