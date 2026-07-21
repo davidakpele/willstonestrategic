@@ -148,9 +148,6 @@ export default function AboutPage() {
                 Partner With Us
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </Link>
-              <Link href="/#services" className="btn-outline-gold inline-flex items-center gap-2 px-6 py-3 rounded-md text-[13px] font-semibold">
-                Our Services
-              </Link>
             </div>
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-2xl">
@@ -165,19 +162,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ── STATS BAR ── */}
-      <section style={{ background: '#03080f' }}>
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10 px-5 sm:px-8 lg:px-10">
-          {STATS.map(({ value, label }) => (
-            <div key={label} className="py-8 text-center px-2">
-              <p className="display font-semibold text-2xl sm:text-3xl" style={{ color: '#E4CD8C' }}>{value}</p>
-              <p className="text-[11px] tracking-widest text-white/55 mt-1 uppercase">{label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── MISSION & VISION ── */}
       <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
         <div className="max-w-7xl mx-auto grid sm:grid-cols-2 gap-8">

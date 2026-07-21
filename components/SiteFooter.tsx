@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const QUICK_LINKS = [
@@ -24,8 +27,31 @@ const SOCIAL = [
   { label: 'YouTube',  href: 'https://youtube.com',   d: 'M22 12s0-3.2-.4-4.7a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 002-2C22 15.2 22 12 22 12zM10 15.3V8.7l6 3.3z' },
 ]
 
+function BackToTop() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className={`back-to-top${visible ? ' visible' : ''}`}
+      aria-label="Back to top"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+  )
+}
+
 export default function SiteFooter() {
   return (
+    <>
     <footer id="contact" className="pb-8 px-6 lg:px-10" style={{ background: '#03080f' }}>
       {/* Gold accent band */}
       <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
@@ -114,5 +140,9 @@ export default function SiteFooter() {
         </div>
       </div>
     </footer>
+
+    {/* Back to top — rendered outside footer so it sits above everything */}
+    <BackToTop />
+    </>
   )
 }

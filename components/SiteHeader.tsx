@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -35,9 +35,18 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
   const [isMenuOpen, setIsMenuOpen]                     = useState(false)
   const [isServicesOpen, setIsServicesOpen]             = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const toggleMenu = () => setIsMenuOpen((open) => !open)
   const closeMenu  = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false) }
+
+  const openDropdown  = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setIsServicesOpen(true)
+  }
+  const closeDropdown = () => {
+    closeTimer.current = setTimeout(() => setIsServicesOpen(false), 180)
+  }
 
   // Returns true when this nav link should be underlined as active
   const isActive = (href: string) => {
@@ -76,8 +85,8 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                 <div
                   key={link.href}
                   className="relative"
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setIsServicesOpen(false)}
+                  onMouseEnter={openDropdown}
+                  onMouseLeave={closeDropdown}
                 >
                   <Link
                     href={link.href}
@@ -92,7 +101,11 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </Link>
-                  <div className={`nav-dropdown${isServicesOpen ? ' open' : ''}`}>
+                  <div
+                    className={`nav-dropdown${isServicesOpen ? ' open' : ''}`}
+                    onMouseEnter={openDropdown}
+                    onMouseLeave={closeDropdown}
+                  >
                     <div className="py-2">
                       {SERVICES_DROPDOWN.map((item) => (
                         <Link

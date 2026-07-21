@@ -54,13 +54,6 @@ const OFFERINGS = [
   },
 ]
 
-const STATS = [
-  { value: '8+',    label: 'Crop Varieties Handled' },
-  { value: '5,000+', label: 'Tonnes Processed Annually' },
-  { value: '12+',   label: 'Partner Farms' },
-  { value: '6+',    label: 'Export Markets' },
-]
-
 const OTHER_SERVICES = [
   { label: 'Information Technology & Software Development', href: '/services/information-technology' },
   { label: 'Engineering & Technical Services',              href: '/services/engineering-technical' },
@@ -154,36 +147,18 @@ export default function AgriculturePage() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24 sm:py-32">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-[12px] text-white/50 mb-6" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-[#C9A24B] transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/services" className="hover:text-[#C9A24B] transition-colors">Services</Link>
-            <span>/</span>
-            <span className="text-white/80">Agriculture & Agribusiness</span>
-          </nav>
-          <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24 sm:py-32 text-center sm:text-left">
+          <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> OUR SERVICES
           </p>
-          <h1 className="display text-white font-semibold leading-tight max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
+          <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
             Agriculture &<br />
             <span style={{ color: 'var(--gold-light)' }}>Agribusiness</span>
           </h1>
-          <p className="text-white/65 mt-5 max-w-xl text-[15px] leading-relaxed">
+          <p className="text-white/65 mt-5 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
             From field to market — we deliver comprehensive agricultural solutions that increase
             productivity, reduce waste, and connect Nigerian produce to global opportunities.
           </p>
-        </div>
-      </section>
-      <section style={{ background: '#03080f' }}>
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10 px-5 sm:px-8 lg:px-10">
-          {STATS.map(({ value, label }) => (
-            <div key={label} className="py-8 text-center px-2">
-              <p className="display font-semibold text-2xl sm:text-3xl" style={{ color: '#E4CD8C' }}>{value}</p>
-              <p className="text-[11px] tracking-widest text-white/55 mt-1 uppercase">{label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -230,16 +205,16 @@ export default function AgriculturePage() {
       </section>
 
       {/* ── TABS + CAROUSEL ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
+      <section className="py-16 sm:py-20 px-5 sm:px-8 lg:px-10 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
 
           {/* Split layout */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
 
             {/* Left — static headline + CTA */}
             <div className="lg:sticky lg:top-28">
               <p className="text-slate-400 text-[12px] font-medium mb-3 tracking-wide uppercase">Welcome to Willstone Agri</p>
-              <h2 className="display font-semibold leading-tight mb-6" style={{ color: 'var(--ink)', fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)' }}>
+              <h2 className="display font-semibold leading-tight mb-6" style={{ color: 'var(--ink)', fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)' }}>
                 {tab.heading}
               </h2>
               <Link href="/contact" className="btn-gold inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold">
@@ -249,14 +224,14 @@ export default function AgriculturePage() {
             </div>
 
             {/* Right — tabs + content */}
-            <div>
-              {/* Tab bar */}
-              <div className="flex border-b border-gray-200 mb-7">
+            <div className="min-w-0">
+              {/* Tab bar — scrollable on mobile so tabs never overflow */}
+              <div className="flex overflow-x-auto border-b border-gray-200 mb-7 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
                 {TABS.map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setActiveTab(t.id)}
-                    className={`relative px-5 py-3 text-[13px] font-semibold transition-colors cursor-pointer whitespace-nowrap ${
+                    className={`relative shrink-0 px-4 sm:px-5 py-3 text-[13px] font-semibold transition-colors cursor-pointer whitespace-nowrap ${
                       activeTab === t.id ? 'text-[var(--ink)]' : 'text-slate-400 hover:text-slate-600'
                     }`}
                   >
@@ -270,10 +245,10 @@ export default function AgriculturePage() {
 
               {/* Tab content */}
               <div key={activeTab}>
-                <p className="text-slate-500 text-[14.5px] leading-relaxed mb-5">{tab.intro}</p>
+                <p className="text-slate-500 text-[14px] sm:text-[14.5px] leading-relaxed mb-5">{tab.intro}</p>
                 <ul className="space-y-3">
                   {tab.points.map((p) => (
-                    <li key={p.bold} className="flex items-start gap-2.5 text-[13.5px] text-slate-600 leading-snug">
+                    <li key={p.bold} className="flex items-start gap-2.5 text-[13px] sm:text-[13.5px] text-slate-600 leading-snug">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: 'var(--gold)' }} />
                       <span><strong className="text-[var(--ink)] font-semibold">{p.bold}</strong> {p.text}</span>
                     </li>
@@ -283,53 +258,50 @@ export default function AgriculturePage() {
             </div>
           </div>
 
-          {/* Carousel */}
+          {/* Carousel — responsive height */}
           <div
-            className="relative mt-14 rounded-2xl overflow-hidden"
-            style={{ height: '420px' }}
+            className="relative mt-12 rounded-2xl overflow-hidden w-full"
+            style={{ height: 'clamp(220px, 45vw, 420px)' }}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            {/* Slides */}
             {CAROUSEL_IMAGES.map((img, i) => (
               <div
                 key={img.src}
                 className="absolute inset-0 transition-opacity duration-700"
                 style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
               >
-                <Image src={img.src} alt={img.alt} fill sizes="100vw" className="object-cover" />
+                <Image src={img.src} alt={img.alt} fill sizes="(max-width: 640px) 100vw, 90vw" className="object-cover" />
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.45) 0%, transparent 50%)' }} />
               </div>
             ))}
 
-            {/* Prev / Next */}
             <button
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer"
               style={{ background: 'rgba(0,0,0,.45)', color: '#fff' }}
               aria-label="Previous image"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
             </button>
             <button
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full flex items-center justify-center cursor-pointer"
               style={{ background: 'rgba(0,0,0,.45)', color: '#fff' }}
               aria-label="Next image"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
             </button>
 
-            {/* Dot indicators */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
               {CAROUSEL_IMAGES.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
                   className="rounded-full transition-all cursor-pointer"
                   style={{
-                    width: i === current ? '24px' : '8px',
-                    height: '8px',
+                    width: i === current ? '20px' : '7px',
+                    height: '7px',
                     background: i === current ? 'var(--gold)' : 'rgba(255,255,255,.5)',
                   }}
                   aria-label={`Go to slide ${i + 1}`}
@@ -337,9 +309,8 @@ export default function AgriculturePage() {
               ))}
             </div>
 
-            {/* Caption */}
-            <div className="absolute bottom-12 left-5 z-10">
-              <p className="text-white/70 text-[12px]">{CAROUSEL_IMAGES[current].alt}</p>
+            <div className="absolute bottom-10 left-4 z-10">
+              <p className="text-white/70 text-[11px]">{CAROUSEL_IMAGES[current].alt}</p>
             </div>
           </div>
         </div>
@@ -409,11 +380,11 @@ export default function AgriculturePage() {
           <div className="flex flex-wrap gap-3">
             {OTHER_SERVICES.map((s) => (
               <Link key={s.href} href={s.href}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border text-[13px] font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border text-[12.5px] font-medium transition-colors hover:border-[var(--gold)] hover:text-[var(--gold)]"
                 style={{ borderColor: '#e2e6ee', color: 'var(--slate)' }}
               >
-                {s.label}
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                <span>{s.label}</span>
+                <svg className="shrink-0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </Link>
             ))}
           </div>
