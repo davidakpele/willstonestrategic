@@ -16,14 +16,7 @@ const SERVICES_DROPDOWN = [
   { label: 'Agriculture & Agribusiness',                    href: '/services/agriculture-agribusiness' },
   { label: 'Information Technology & Software Development', href: '/services/information-technology' },
   { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
-  { label: 'Engineering & Technical Services',              href: '/services/engineering-technical' },
-  { label: 'Industrial Equipment & Machinery',              href: '/services/industrial-equipment' },
   { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
-  { label: 'General Trading & Procurement',                 href: '/services/trading-procurement' },
-  { label: 'Logistics & Supply Chain Management',           href: '/services/logistics-supply-chain' },
-  { label: 'Import & Export Services',                      href: '/services/import-export' },
-  { label: 'Infrastructure & Facility Support',             href: '/services/infrastructure-facility' },
-  { label: 'General Contracting & Supply',                  href: '/services/general-contracting' },
 ]
 
 interface SiteHeaderProps {
