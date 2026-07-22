@@ -78,8 +78,8 @@ const VALUES = [
 
 const LEADERSHIP = [
   {
-    name: 'Adebayo Willstone',
-    title: 'Founder & Chief Executive Officer',
+    name: 'David Akpele',
+    title: 'Founder & CEO/MD',
     bio: 'A seasoned entrepreneur with over 15 years of experience spanning technology, trade, and infrastructure across West Africa.',
     img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
   },
@@ -152,7 +152,7 @@ export default function AboutPage() {
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-2xl">
             <Image
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1000&q=80"
+              src="/assets/images/about.png"
               alt="Willstone team members on an industrial site"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -189,45 +189,6 @@ export default function AboutPage() {
               To become Africa&apos;s most trusted multi-sector strategic industries group — recognised for
               excellence, integrity, and the transformative impact of our work across every industry we operate in.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── OUR STORY ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--navy)' }}>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
-          <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
-            <Image
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80"
-              alt="Modern Willstone office building"
-              fill sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(11,27,51,0) 50%, rgba(11,27,51,.6) 100%)' }} />
-          </div>
-          <div>
-            <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
-              <span className="gold-rule" /> OUR STORY
-            </p>
-            <h2 className="display text-white font-semibold leading-tight mb-5" style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)' }}>
-              Built on purpose.<br />Driven by impact.
-            </h2>
-            <div className="space-y-4 text-white/65 text-[15px] leading-relaxed">
-              <p>
-                Founded in 2010 in Ibadan, Oyo State, Willstone began as a general trading and procurement company
-                with a simple conviction: that Nigerian businesses deserved a reliable, capable strategic partner
-                who could navigate complexity and deliver results.
-              </p>
-              <p>
-                Over the years, that conviction grew into a multi-sector enterprise spanning engineering,
-                logistics, technology, agriculture, real estate, energy, defence, and international trade.
-                Each new division was a direct response to the needs we saw in the market.
-              </p>
-              <p>
-                Today, Willstone operates across 15+ countries with 100+ partners worldwide, and we&apos;re
-                just getting started. Our growth is proof that when purpose meets execution, impact follows.
-              </p>
-            </div>
           </div>
         </div>
       </section>
