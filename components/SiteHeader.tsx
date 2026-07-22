@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { href: '/',                label: 'HOME' },
   { href: '/about',           label: 'ABOUT US' },
   { href: '/services',        label: 'OUR SERVICES', hasDropdown: true },
-  { href: '/#sustainability', label: 'SUSTAINABILITY' },
   { href: '/contact',         label: 'CONTACT' },
 ]
 

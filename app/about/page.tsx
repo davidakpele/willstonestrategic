@@ -103,16 +103,16 @@ const LEADERSHIP = [
   },
 ]
 
-const MILESTONES = [
-  { year: '2010', event: 'Willstone founded in Ibadan, Oyo State, with a focus on general trading and procurement.' },
-  { year: '2013', event: 'Expanded into logistics and supply chain management, serving clients across Nigeria.' },
-  { year: '2016', event: 'Launched the Engineering & Infrastructure division, completing 10+ projects in the first year.' },
-  { year: '2018', event: 'Established international trade partnerships across West Africa, Europe, and Asia.' },
-  { year: '2020', event: 'Launched Information Technology & Software Development services to support digital transformation.' },
-  { year: '2022', event: 'Surpassed 100 active partners worldwide and expanded operations to 15 countries.' },
-  { year: '2024', event: 'Incorporated Defence, Security & Protective Solutions and Agriculture & Agribusiness divisions.' },
-  { year: '2026', event: 'Celebrating 16 years of impact — building stronger industries and a more connected world.' },
-]
+// const MILESTONES = [
+//   { year: '2010', event: 'Willstone founded in Ibadan, Oyo State, with a focus on general trading and procurement.' },
+//   { year: '2013', event: 'Expanded into logistics and supply chain management, serving clients across Nigeria.' },
+//   { year: '2016', event: 'Launched the Engineering & Infrastructure division, completing 10+ projects in the first year.' },
+//   { year: '2018', event: 'Established international trade partnerships across West Africa, Europe, and Asia.' },
+//   { year: '2020', event: 'Launched Information Technology & Software Development services to support digital transformation.' },
+//   { year: '2022', event: 'Surpassed 100 active partners worldwide and expanded operations to 15 countries.' },
+//   { year: '2024', event: 'Incorporated Defence, Security & Protective Solutions and Agriculture & Agribusiness divisions.' },
+//   { year: '2026', event: 'Celebrating 16 years of impact — building stronger industries and a more connected world.' },
+// ]
 
 export default function AboutPage() {
   return (
@@ -255,47 +255,47 @@ export default function AboutPage() {
       </section>
 
       {/* ── TIMELINE ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--navy)' }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-14">
+      {/* <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--navy)' }}>
+        <div className="max-w-4xl mx-auto"> */}
+          {/* <div className="text-center mb-14">
             <p className="eyebrow text-[12px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> OUR JOURNEY <span className="gold-rule" />
             </p>
             <h2 className="display text-white font-semibold text-[26px] sm:text-[32px]">
               16 years of building
             </h2>
-          </div>
-          <div className="relative">
+          </div> */}
+          {/* <div className="relative"> */}
             {/* vertical line */}
-            <div className="absolute left-[72px] sm:left-1/2 top-0 bottom-0 w-px" style={{ background: 'rgba(201,162,75,.25)' }} />
+            {/* <div className="absolute left-[72px] sm:left-1/2 top-0 bottom-0 w-px" style={{ background: 'rgba(201,162,75,.25)' }} />
             <div className="space-y-10">
               {MILESTONES.map((m, i) => (
                 <div key={m.year} className={`relative flex gap-6 sm:gap-0 ${i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}>
                   {/* text side */}
-                  <div className={`sm:w-[calc(50%-28px)] ${i % 2 === 0 ? 'sm:text-right sm:pr-8' : 'sm:pl-8'} pl-[96px] sm:pl-0`}>
+                  {/* <div className={`sm:w-[calc(50%-28px)] ${i % 2 === 0 ? 'sm:text-right sm:pr-8' : 'sm:pl-8'} pl-[96px] sm:pl-0`}>
                     <p className="font-semibold text-[13.5px] leading-snug text-white/80">{m.event}</p>
-                  </div>
+                  </div> */}
                   {/* dot */}
-                  <div className="absolute left-[60px] sm:left-1/2 sm:-translate-x-1/2 top-1 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center"
+                  {/* <div className="absolute left-[60px] sm:left-1/2 sm:-translate-x-1/2 top-1 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center"
                     style={{ background: 'var(--navy)', borderColor: 'var(--gold)' }}>
                     <div className="w-2 h-2 rounded-full" style={{ background: 'var(--gold)' }} />
-                  </div>
+                  </div> */}
                   {/* year badge */}
-                  <div className={`hidden sm:block sm:w-[calc(50%-28px)] ${i % 2 === 0 ? 'sm:pl-8' : 'sm:text-right sm:pr-8'}`}>
+                  {/* <div className={`hidden sm:block sm:w-[calc(50%-28px)] ${i % 2 === 0 ? 'sm:pl-8' : 'sm:text-right sm:pr-8'}`}>
                     <span className="display font-bold text-[13px] px-3 py-1 rounded-full" style={{ background: 'rgba(201,162,75,.15)', color: 'var(--gold-light)' }}>
                       {m.year}
                     </span>
-                  </div>
+                  </div> */}
                   {/* mobile year */}
-                  <div className="sm:hidden absolute left-0 top-0 w-[56px] text-center">
+                  {/* <div className="sm:hidden absolute left-0 top-0 w-[56px] text-center">
                     <span className="display font-bold text-[12px]" style={{ color: 'var(--gold)' }}>{m.year}</span>
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
+            </div> */}
+          {/* </div>  */}
+        {/* </div> */}
+      {/* </section> */}
 
       {/* ── CTA BANNER ── */}
       <section className="py-16 px-5 sm:px-8 lg:px-10 bg-white">

@@ -108,13 +108,12 @@ const TABS = [
 ]
 
 const CAROUSEL_IMAGES = [
-  { src: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80', alt: 'Cassava roots harvested and ready for export' },
-  { src: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=900&q=80', alt: 'Maize cobs dried for processing' },
-  { src: 'https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=900&q=80', alt: 'Sesame seeds in burlap sacks' },
-  { src: 'https://images.unsplash.com/photo-1606914707381-5b0e2a831e37?auto=format&fit=crop&w=900&q=80', alt: 'Cocoa pods on the tree' },
-  { src: 'https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=900&q=80', alt: 'Soybean harvest in the field' },
-  { src: 'https://images.unsplash.com/photo-1504627298434-2119d98a31f1?auto=format&fit=crop&w=900&q=80', alt: 'Palm oil fruit bunches' },
-  { src: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?auto=format&fit=crop&w=900&q=80', alt: 'Fresh rice grains in a bowl' },
+  { src: '/assets/images/sesame.webp', alt: 'Sesame seeds' },
+  { src: '/assets/images/Maize.jpg', alt: 'Maize cobs waiting for harvest & processing' },
+  { src: '/assets/images/cassava.jpg', alt: 'Cassava roots harvested and ready for export' },
+  { src: '/assets/images/cocoawebp.webp', alt: 'Cocoa pods on the tree' },
+  { src: '/assets/images/soybeans.jpg', alt: 'Soybean harvest in the field' },
+  { src: '/assets/images/palm-oil-main.png', alt: 'Palm oil fruit bunches' },
 ]
 
 export default function AgriculturePage() {
@@ -139,26 +138,29 @@ export default function AgriculturePage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-[65px]" style={{ background: 'var(--navy)', minHeight: '420px' }}>
+      {/* ── HERO ── */}
+      <section className="relative overflow-hidden" style={{ background: 'var(--navy)', height: '480px' }}>
         <Image
-          src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80"
+          src="/assets/images/agric-banner.avif"
           alt="Vast green farmland representing agriculture"
           fill priority sizes="100vw"
           className="object-cover object-center"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24 sm:py-32 text-center sm:text-left">
-          <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
-            <span className="gold-rule" /> OUR SERVICES
-          </p>
-          <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
-            Agriculture &<br />
-            <span style={{ color: 'var(--gold-light)' }}>Agribusiness</span>
-          </h1>
-          <p className="text-white/65 mt-5 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
-            From field to market — we deliver comprehensive agricultural solutions that increase
-            productivity, reduce waste, and connect Nigerian produce to global opportunities.
-          </p>
+        <div className="absolute inset-0 z-10 flex items-end">
+          <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 pb-12 pt-24 text-center sm:text-left">
+            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> OUR SERVICES
+            </p>
+            <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
+              Agriculture &<br />
+              <span style={{ color: 'var(--gold-light)' }}>Agribusiness</span>
+            </h1>
+            <p className="text-white/65 mt-4 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
+              From field to market — we deliver comprehensive agricultural solutions that increase
+              productivity, reduce waste, and connect Nigerian produce to global opportunities.
+            </p>
+          </div>
         </div>
       </section>
 

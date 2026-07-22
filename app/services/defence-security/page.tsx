@@ -278,14 +278,14 @@ export default function DefenceSecurityPage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-[65px]" style={{ background: 'var(--navy)', minHeight: '420px' }}>
+      <section className="relative overflow-hidden pt-[65px]" style={{ background: 'var(--navy)', minHeight: '500px' }}>
         <Image
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1800&q=80"
+          src="/assets/images/drone.jpg"
           alt="Security officer monitoring surveillance screens"
-          fill loading="eager" sizes="100vw"
-          className="object-cover object-center opacity-30"
+          fill priority sizes="100vw"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.97) 0%, rgba(6,15,31,.75) 50%, rgba(6,15,31,.45) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24 sm:py-32 text-center sm:text-left">
           <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> OUR SERVICES

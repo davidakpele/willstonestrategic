@@ -119,7 +119,7 @@ const PROJECTS = [
       'Automated export documentation and phytosanitary compliance',
       'Multi-farm, multi-commodity management from a single interface',
     ],
-    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/software.jpg',
     bg: '#eef6ff',
   },
   {
@@ -294,31 +294,33 @@ export default function InformationTechnologyPage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-[65px]" style={{ background: 'var(--navy)', minHeight: '420px' }}>
+      <section className="relative overflow-hidden" style={{ background: 'var(--navy)', height: '480px' }}>
         <Image
           src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80"
           alt="Circuit board representing technology and software development"
           fill priority sizes="100vw"
-          className="object-cover object-center opacity-40"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.97) 0%, rgba(6,15,31,.80) 50%, rgba(6,15,31,.50) 100%)' }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24 sm:py-32 text-center sm:text-left">
-          <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
-            <span className="gold-rule" /> OUR SERVICES
-          </p>
-          <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
-            Information Technology &<br />
-            <span style={{ color: 'var(--gold-light)' }}>Software Development</span>
-          </h1>
-          <p className="text-white/65 mt-5 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
-            We design, build, and maintain software systems and IT infrastructure that help businesses
-            work smarter, scale faster, and compete in a digital world.
-          </p>
-          <div className="flex flex-wrap gap-4 mt-8 justify-center sm:justify-start">
-            <Link href="/contact" className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-md text-[13px] font-semibold">
-              Start a Project
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </Link>
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
+        <div className="absolute inset-0 z-10 flex items-end">
+          <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 pb-12 pt-24 text-center sm:text-left">
+            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> OUR SERVICES
+            </p>
+            <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
+              Information Technology &<br />
+              <span style={{ color: 'var(--gold-light)' }}>Software Development</span>
+            </h1>
+            <p className="text-white/65 mt-4 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
+              We design, build, and maintain software systems and IT infrastructure that help businesses
+              work smarter, scale faster, and compete in a digital world.
+            </p>
+            <div className="flex flex-wrap gap-4 mt-6 justify-center sm:justify-start">
+              <Link href="/contact" className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-md text-[13px] font-semibold">
+                Start a Project
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -335,13 +337,13 @@ export default function InformationTechnologyPage() {
             </h2>
             <div className="space-y-4 text-slate-500 text-[15px] leading-relaxed">
               <p>
-                Nigerian businesses are rapidly adopting digital tools — and Willstone is here to make
+                Nigerian businesses are rapidly adopting digital tools and Willstone is here to make
                 that transition seamless, affordable, and effective. Whether you&apos;re digitising manual
                 processes, launching a customer-facing product, or modernising legacy infrastructure, we
                 have the expertise to deliver.
               </p>
               <p>
-                Our engineers, designers, and consultants work as an extension of your team — embedded
+                Our engineers, designers, and consultants work as an extension of your team embedded
                 in your goals, communicating clearly, and delivering software that actually gets used.
               </p>
             </div>
@@ -356,7 +358,7 @@ export default function InformationTechnologyPage() {
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-lg">
             <Image
-              src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1000&q=80"
+              src="/assets/images/software-engineers.jpg"
               alt="Developer writing code on a monitor"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

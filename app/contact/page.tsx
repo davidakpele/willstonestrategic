@@ -26,7 +26,7 @@ const CONTACT_INFO = [
     label: 'Phone',
     value: '+234 901 938 4496',
     sub1: 'Customer support',
-    sub2: 'Mon–Sat: 8:00 – 18:00',
+    sub2: 'Mon–Fri: 8:00AM – 05:00PM, Sat: 9:00AM - 3:00PM',
     href: 'tel:+2349019384496',
   },
   {
