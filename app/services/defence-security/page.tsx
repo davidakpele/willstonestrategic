@@ -278,7 +278,7 @@ export default function DefenceSecurityPage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-[65px]" style={{ background: 'var(--navy)', minHeight: '500px' }}>
+      <section className="relative overflow-hidden" style={{ background: 'var(--navy)', height: 'clamp(380px, 55vw, 520px)' }}>
         <Image
           src="/assets/images/drone.jpg"
           alt="Security officer monitoring surveillance screens"
@@ -286,23 +286,25 @@ export default function DefenceSecurityPage() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-24 sm:py-32 text-center sm:text-left">
-          <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
-            <span className="gold-rule" /> OUR SERVICES
-          </p>
-          <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
-            Defence, Security &<br />
-            <span style={{ color: 'var(--gold-light)' }}>Protective Solutions</span>
-          </h1>
-          <p className="text-white/65 mt-5 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
-            Professional security services and technology-led protection for businesses, facilities, and individuals
-            — from physical guarding and surveillance to cybersecurity and executive protection.
-          </p>
-          <div className="flex flex-wrap gap-4 mt-8 justify-center sm:justify-start">
-            <Link href="/contact" className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-md text-[13px] font-semibold">
-              Request a Consultation
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </Link>
+        <div className="absolute inset-0 z-10 flex items-center" style={{ paddingTop: '65px' }}>
+          <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 py-8 text-center sm:text-left">
+            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-3" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> OUR SERVICES
+            </p>
+            <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.2rem)' }}>
+              Defence, Security &<br />
+              <span style={{ color: 'var(--gold-light)' }}>Protective Solutions</span>
+            </h1>
+            <p className="text-white/65 mt-3 mx-auto sm:mx-0 max-w-xl text-[14px] sm:text-[15px] leading-relaxed">
+              Professional security services and technology-led protection for businesses, facilities, and individuals
+              — from physical guarding and surveillance to cybersecurity and executive protection.
+            </p>
+            <div className="flex flex-wrap gap-3 mt-5 justify-center sm:justify-start">
+              <Link href="/contact" className="btn-gold inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-[13px] font-semibold">
+                Request a Consultation
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

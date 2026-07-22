@@ -138,8 +138,7 @@ export default function AgriculturePage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden" style={{ background: 'var(--navy)', height: '480px' }}>
+      <section className="relative overflow-hidden" style={{ background: 'var(--navy)', height: 'clamp(380px, 55vw, 520px)' }}>
         <Image
           src="/assets/images/agric-banner.avif"
           alt="Vast green farmland representing agriculture"
@@ -147,16 +146,16 @@ export default function AgriculturePage() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
-        <div className="absolute inset-0 z-10 flex items-end">
-          <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 pb-12 pt-24 text-center sm:text-left">
-            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+        <div className="absolute inset-0 z-10 flex items-center" style={{ paddingTop: '65px' }}>
+          <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 py-8 text-center sm:text-left">
+            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> OUR SERVICES
             </p>
-            <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)' }}>
+            <h1 className="display text-white font-semibold leading-tight mx-auto sm:mx-0 max-w-2xl" style={{ fontSize: 'clamp(1.8rem, 5vw, 3.2rem)' }}>
               Agriculture &<br />
               <span style={{ color: 'var(--gold-light)' }}>Agribusiness</span>
             </h1>
-            <p className="text-white/65 mt-4 mx-auto sm:mx-0 max-w-xl text-[15px] leading-relaxed">
+            <p className="text-white/65 mt-3 mx-auto sm:mx-0 max-w-xl text-[14px] sm:text-[15px] leading-relaxed">
               From field to market — we deliver comprehensive agricultural solutions that increase
               productivity, reduce waste, and connect Nigerian produce to global opportunities.
             </p>

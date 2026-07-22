@@ -6,6 +6,7 @@ import { Space_Grotesk, Inter } from 'next/font/google'
 import './willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import Link from 'next/link'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -360,16 +361,16 @@ export default function Home() {
             <p className="text-white/65 max-w-md text-[15px] leading-relaxed mb-8">
               Willstone Strategic Industries Limited is a multi-sector company delivering integrated solutions across technology, agriculture, logistics, infrastructure, real estate, energy, and more.
             </p>
-            <a href="#" className="inline-flex items-center gap-2 btn-gold px-6 py-3 rounded-md text-[13px] cursor-pointer">
+            <Link href={"/about"} className="inline-flex items-center gap-2 btn-gold px-6 py-3 rounded-md text-[13px] cursor-pointer">
               MORE ABOUT US
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </a>
+            </Link>
           </div>
           <div className="rounded-xl overflow-hidden aspect-[4/3] relative">
             <Image
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1000&q=80"
+              src="/assets/images/about.png"
               alt="Two engineers in safety vests and hard hats reviewing an industrial site"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
