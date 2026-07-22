@@ -5,19 +5,14 @@ import Link from 'next/link'
 
 const QUICK_LINKS = [
   { href: '/about',          label: 'About Us' },
-  { href: '/#services',       label: 'Our Services' },
-  { href: '/#industries',     label: 'Industries' },
-  { href: '/#sustainability', label: 'Sustainability' },
   { href: '/contact',         label: 'Contact' },
 ]
 
 const FOOTER_SERVICES = [
-  { label: 'Software & IT',                   href: '/#services' },
-  { label: 'Logistics & Supply Chain',        href: '/#services' },
-  { label: 'Import & Export',                 href: '/#services' },
-  { label: 'Agriculture & Agro-Logistics',    href: '/#services' },
-  { label: 'Engineering & Infrastructure',    href: '/#services' },
-  { label: 'More Services',                   href: '/#services' },
+  { label: 'Agriculture & Agribusiness',                    href: '/services/agriculture-agribusiness' },
+  { label: 'Information Technology & Software Development', href: '/services/information-technology' },
+  { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
+  { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
 ]
 
 const SOCIAL = [
@@ -106,7 +101,7 @@ export default function SiteFooter() {
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
                 <path d="M4 4h16v16H4zM4 4l8 8 8-8" />
               </svg>
-              <a href="mailto:info@willstone.com.ng" className="hover:text-[#C9A24B] transition-colors">
+              <a href="mailto:willstonestrategic@gmail.com" className="hover:text-[#C9A24B] transition-colors">
                 info@willstone.com.ng
               </a>
             </li>
@@ -115,7 +110,7 @@ export default function SiteFooter() {
                 <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
               </svg>
               <a href="tel:+2348051234567" className="hover:text-[#C9A24B] transition-colors">
-                +234 805 123 4567
+                +234 901 938 4496
               </a>
             </li>
             <li className="flex items-start gap-2">
@@ -124,7 +119,7 @@ export default function SiteFooter() {
                 <circle cx="12" cy="10" r="3" />
               </svg>
               <a href="https://maps.google.com/?q=Lagos,Nigeria" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A24B] transition-colors">
-                Plot 10, Industrial Avenue, Lagos, Nigeria
+                20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
               </a>
             </li>
           </ul>
