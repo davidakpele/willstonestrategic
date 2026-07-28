@@ -19,7 +19,7 @@ const OFFERINGS = [
   },
   {
     title: 'Agro-Processing & Value Addition',
-    desc: 'We transform raw agricultural outputs into processed, market-ready products — increasing shelf life, reducing waste, and boosting value.',
+    desc: 'We transform raw agricultural outputs into processed, market-ready products increasing shelf life, reducing waste, and boosting value.',
     icon: <><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M12 12v5M9 12h6"/></>,
   },
   {
@@ -49,7 +49,7 @@ const OFFERINGS = [
   },
   {
     title: 'Food Safety & Quality Assurance',
-    desc: 'Compliance support for NAFDAC, SON, and international food standards — ensuring your products meet every market requirement.',
+    desc: 'Compliance support for NAFDAC, SON, and international food standards ensuring your products meet every market requirement.',
     icon: <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />,
   },
 ]
@@ -67,7 +67,7 @@ const TABS = [
     id: 'why',
     label: 'Why choose us',
     heading: 'Connecting Africa\'s Harvest to Global Markets.',
-    intro: 'At Willstone we go beyond supplying agricultural products — we deliver reliability, consistency, and trust across every shipment.',
+    intro: 'At Willstone we go beyond supplying agricultural products we deliver reliability, consistency, and trust across every shipment.',
     points: [
       { bold: 'International Export Standards:', text: 'All our products meet strict global quality and export compliance requirements.' },
       { bold: 'Consistent Quality Assurance:', text: 'We maintain uniform product specifications to ensure reliability across every order.' },
@@ -95,7 +95,7 @@ const TABS = [
     id: 'achievements',
     label: 'Achievements',
     heading: 'Milestones that define our journey.',
-    intro: 'Over the years Willstone Agri has built a track record of delivering results at scale — across farms, borders, and markets.',
+    intro: 'Over the years Willstone Agri has built a track record of delivering results at scale across farms, borders, and markets.',
     points: [
       { bold: '5,000+ Tonnes Exported Annually:', text: 'Consistent delivery of certified commodities to buyers across Europe, Asia, and the Middle East.' },
       { bold: '12+ Partner Farms:', text: 'A network of vetted farms spanning over 10,000 hectares of productive agricultural land.' },
@@ -156,7 +156,7 @@ export default function AgriculturePage() {
               <span style={{ color: 'var(--gold-light)' }}>Agribusiness</span>
             </h1>
             <p className="text-white/65 mt-3 mx-auto sm:mx-0 max-w-xl text-[14px] sm:text-[15px] leading-relaxed">
-              From field to market — we deliver comprehensive agricultural solutions that increase
+              From field to market we deliver comprehensive agricultural solutions that increase
               productivity, reduce waste, and connect Nigerian produce to global opportunities.
             </p>
           </div>
@@ -175,18 +175,18 @@ export default function AgriculturePage() {
             </h2>
             <div className="space-y-4 text-slate-500 text-[15px] leading-relaxed">
               <p>
-                Nigeria&apos;s agricultural sector holds enormous potential — and Willstone is positioned to
+                Nigeria&apos;s agricultural sector holds enormous potential and Willstone is positioned to
                 unlock it. With deep roots in West African agribusiness and a network spanning farms,
                 processors, logistics providers, and export channels, we offer a truly integrated service.
               </p>
               <p>
                 We work with smallholder farmers, large-scale estates, food manufacturers, and commodity
-                traders to optimise every link in the agricultural value chain — from soil preparation
+                traders to optimise every link in the agricultural value chain from soil preparation
                 through to final export documentation.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              {['Cassava','Maize','Rice','Soybeans','Cocoa','Palm Oil','Sesame'].map((crop) => (
+              {['Charcoal', 'Cassava','Maize','Rice','Soybeans','Cocoa','Palm Oil','Sesame'].map((crop) => (
                 <span key={crop} className="px-3 py-1.5 rounded-full text-[12.5px] font-medium border"
                   style={{ background: 'rgba(201,162,75,.08)', borderColor: 'rgba(201,162,75,.3)', color: 'var(--gold)' }}>
                   {crop}
@@ -399,7 +399,7 @@ export default function AgriculturePage() {
             Ready to grow with Willstone?
           </h2>
           <p className="text-slate-500 text-[15px] leading-relaxed mb-8 max-w-xl mx-auto">
-            Whether you need farm management, agro-processing, or export logistics — our team is ready
+            Whether you need farm management, agro-processing, or export logistics our team is ready
             to design the right solution for you.
           </p>
           <Link href="/contact" className="btn-gold inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-[13px] font-semibold">
