@@ -48,12 +48,9 @@ export default function SiteFooter() {
   return (
     <>
     <footer id="contact" className="pb-8 px-6 lg:px-10" style={{ background: '#03080f' }}>
-      {/* Gold accent band */}
       <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
 
       <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-14">
-
-        {/* Brand */}
         <div>
           <Link href="/" className="site-logo-footer mb-5 block" aria-label="Willstone Strategic Industries Limited" />
           <p className="text-white/50 text-[13px] leading-relaxed max-w-xs">
