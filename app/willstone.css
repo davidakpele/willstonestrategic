@@ -121,11 +121,12 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* ---- Hero motion ---- */
 @keyframes kenburns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.09); }
+  0%   { transform: scale(1)     translate(0, 0); }
+  100% { transform: scale(1.07)  translate(-1%, 1%); }
 }
 .hero-img {
-  animation: kenburns 18s ease-in-out infinite alternate;
+  animation: kenburns 20s ease-in-out infinite alternate;
+  transform-origin: 60% center;
 }
 
 @keyframes fadeUp {

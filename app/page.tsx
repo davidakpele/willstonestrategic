@@ -168,15 +168,20 @@ export default function Home() {
       {/* HERO */}
       <section id="home" className="relative flex flex-col overflow-hidden" style={{ background: '#0B1B33', minHeight: '100svh' }}>
         <Image
-          src="/assets/images/banner.png"
+          src="/assets/images/home-banner.png"
           alt="Container ship docked at a city port at dusk"
-          fill priority sizes="100vw"
-          className="hero-img object-cover object-center"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-img object-cover object-[60%_center] sm:object-[55%_center] lg:object-center"
         />
-        {/* Overlay — left-heavy so text is legible but image stays bright on the right */}
+        {/* Overlay — full dark on mobile, left-heavy on desktop */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(90deg, rgba(6,15,31,.92) 0%, rgba(6,15,31,.65) 45%, rgba(6,15,31,.15) 100%)',
+          background: 'linear-gradient(135deg, rgba(6,15,31,.95) 0%, rgba(6,15,31,.80) 40%, rgba(6,15,31,.40) 70%, rgba(6,15,31,.20) 100%)',
         }} />
+        {/* Extra bottom fade so stats bar sits cleanly */}
+        <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
+          style={{ background: 'linear-gradient(0deg, rgba(6,15,31,.6) 0%, transparent 100%)' }} />
 
         {/* Content — grows to fill space, pushes stats bar to bottom */}
         <div className="relative z-10 flex-1 flex items-center w-full">

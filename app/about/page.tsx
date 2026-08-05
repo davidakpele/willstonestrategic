@@ -34,44 +34,32 @@ const VALUES = [
   {
     title: 'Excellence',
     desc: 'We hold ourselves to the highest standards in every project, partnership, and solution we deliver.',
-    icon: <path d="M12 2l2.4 5 5.6.6-4 3.9 1 5.5L12 14l-5 3 1-5.5-4-3.9 5.6-.6z" />,
+    icon: '/assets/images/icons/phase-1.png',
   },
   {
     title: 'Integrity',
     desc: 'We build every relationship on a foundation of honesty, transparency, and accountability — no exceptions.',
-    icon: <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />,
+    icon: '/assets/images/icons/phase-2.png',
   },
   {
     title: 'Innovation',
     desc: 'We challenge conventional thinking and embrace new ideas to craft smarter, more sustainable solutions.',
-    icon: <path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0012 3z" />,
+    icon: '/assets/images/icons/phase-3.png',
   },
   {
     title: 'Impact',
     desc: 'Our success is measured by the real difference we make in the lives of communities, clients, and countries.',
-    icon: (
-      <>
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="5" cy="6" r="2" /><circle cx="19" cy="6" r="2" />
-        <circle cx="5" cy="18" r="2" /><circle cx="19" cy="18" r="2" />
-        <path d="M9.5 10.5L6.5 7.5M14.5 10.5l3-3M9.5 13.5l-3 3M14.5 13.5l3 3" />
-      </>
-    ),
+    icon: '/assets/images/icons/phase-4.png',
   },
   {
     title: 'Partnership',
     desc: 'We treat every client as a long-term partner, investing in mutual growth and shared success.',
-    icon: <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 7a4 4 0 110 8 4 4 0 010-8z" />,
+    icon: '/assets/images/icons/phase-5.png',
   },
   {
     title: 'Sustainability',
     desc: 'We operate with a long-term mindset, ensuring our projects create value today without compromising tomorrow.',
-    icon: (
-      <>
-        <path d="M2 12a10 10 0 1020 0 10 10 0 00-20 0z" />
-        <path d="M12 8v4l3 3" />
-      </>
-    ),
+    icon: '/assets/images/icons/phase-6.png',
   },
 ]
 
@@ -145,7 +133,7 @@ export default function AboutPage() {
               style={{ fontSize: 'clamp(13px, 2.5vw, 15px)' }}
             >
               Willstone Strategic Industries Limited is a diversified Nigerian enterprise delivering
-              integrated solutions across technology, agriculture, logistics, infrastructure, real
+              integrated solutions across technology solutions, agriculture, logistics, infrastructure, real
               estate, energy, trade, and defence. We operate with a global mindset and deep local roots.
             </p>
             <Link
@@ -259,16 +247,20 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-12">
             {VALUES.map((v) => (
-              <div key={v.title} className="about-value-card">
-                <span className="about-value-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" strokeWidth="2">
-                    {v.icon}
-                  </svg>
-                </span>
-                <h3 className="font-semibold text-[15px] mb-1.5" style={{ color: 'var(--ink)' }}>{v.title}</h3>
-                <p className="text-slate-500 text-[13px] leading-relaxed">{v.desc}</p>
+              <div key={v.title} className="flex flex-col items-center text-center">
+                <div className="mb-5">
+                  <Image
+                    src={v.icon}
+                    alt={v.title}
+                    width={72}
+                    height={72}
+                    className="object-contain"
+                  />
+                </div>
+                <h3 className="font-semibold text-[15px] mb-2" style={{ color: 'var(--ink)' }}>{v.title}</h3>
+                <p className="text-slate-500 text-[13px] leading-relaxed max-w-[220px]">{v.desc}</p>
               </div>
             ))}
           </div>
