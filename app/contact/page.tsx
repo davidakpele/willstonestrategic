@@ -78,7 +78,7 @@ export default function ContactPage() {
       >
         {/* background image — always covers the full section, anchored to show the person */}
         <img
-          src="/assets/images/contact-us.png"
+          src="/assets/images/contact-us-image.png"
           alt=""
           aria-hidden="true"
           style={{
