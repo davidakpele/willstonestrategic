@@ -215,11 +215,18 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Industry pills — hidden on mobile */}
-            <div className="fade-up fade-up-4 hidden sm:flex flex-wrap gap-2 mt-6 sm:mt-8">
-              {['Technology','Logistics','Energy','Real Estate','Agriculture','Procurement','Import / Export'].map((tag) => (
-                <span key={tag} className="hero-pill">{tag}</span>
-              ))}
+            {/* Industry pills — infinite scroll ticker, desktop only */}
+            <div className="fade-up fade-up-4 hidden sm:block mt-6 sm:mt-8 pill-ticker-wrap">
+              <div className="pill-ticker-track">
+                {/* Render twice so the loop is seamless */}
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="pill-ticker-set" aria-hidden={copy === 1}>
+                    {['Technology','Logistics','Energy','Real Estate','Agriculture','Procurement','Import / Export'].map((tag) => (
+                      <span key={tag} className="hero-pill">{tag}</span>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

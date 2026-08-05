@@ -288,7 +288,7 @@ html {
   animation-play-state: paused;
 }
 
-/* ---- Nav dropdown ---- */
+/* ---- Nav dropdown (legacy small — kept for fallback) ---- */
 .nav-dropdown {
   position: absolute;
   top: calc(100% + 12px);
@@ -547,4 +547,175 @@ html {
   .project-cta {
     transition: none;
   }
+}
+
+/* ==============================
+   MEGA DROPDOWN  (desktop only)
+   ============================== */
+
+/* Anchor point — the dropdown stretches relative to the fixed header bar,
+   positioned so it appears just below the pill navbar.              */
+.mega-dropdown {
+  position: fixed;
+  /* sits just below the pill bar: pt-5 (20px) + pill py-3 top (12px) + pill height (~54px) + 8px gap */
+  top: 102px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: min(880px, calc(100vw - 48px));
+  display: grid;
+  grid-template-columns: 220px 1fr 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 200;
+}
+.mega-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Left panel ── */
+.mega-left {
+  background: var(--navy);
+  padding: 28px 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ── Middle panel ── */
+.mega-cards {
+  background: #0d1f3b;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Individual service card */
+.mega-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.mega-card:hover {
+  background: rgba(201, 162, 75, 0.09);
+  border-color: rgba(201, 162, 75, 0.25);
+}
+.mega-card.active {
+  background: rgba(201, 162, 75, 0.12);
+  border-color: rgba(201, 162, 75, 0.35);
+}
+.mega-card.active p:first-child {
+  color: var(--gold-light) !important;
+}
+
+.mega-card-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(201, 162, 75, 0.12);
+  border: 1px solid rgba(201, 162, 75, 0.2);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* ── Right panel ── */
+.mega-right {
+  background: #ffffff;
+  padding: 28px 22px 28px 20px;
+}
+
+.mega-quick-link {
+  display: block;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #334155;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+}
+.mega-quick-link:hover {
+  background: rgba(11, 27, 51, 0.06);
+  color: var(--navy);
+  font-weight: 500;
+}
+
+/* Hide mega-dropdown on small screens — mobile uses the drawer instead */
+@media (max-width: 1023px) {
+  .mega-dropdown {
+    display: none !important;
+  }
+}
+
+/* ==============================
+   HERO PILL TICKER  (desktop)
+   ============================== */
+
+@keyframes pillScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Outer wrapper — clips overflow and adds the fade masks on both edges */
+.pill-ticker-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  min-width: 320px;
+  /* fade left and right edges to transparent */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+/* The moving strip — contains two identical sets of pills side-by-side */
+.pill-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: pillScroll 22s linear infinite;
+}
+
+/* Pause on hover */
+.pill-ticker-wrap:hover .pill-ticker-track {
+  animation-play-state: paused;
+}
+
+/* Each copy of the pill list */
+.pill-ticker-set {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 10px; /* matches gap so the two copies stitch seamlessly */
+  white-space: nowrap;
 }

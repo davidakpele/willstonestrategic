@@ -81,7 +81,7 @@ export default function ContactPage() {
       <SiteHeader variant="solid" />
 
       {/* push content below fixed header */}
-      <div className="pt-[65px]">
+      <div className="pt-[88px]">
 
       {/* ── HERO STRIP ── */}
       <section className="relative overflow-hidden py-16 sm:py-20" style={{ background: 'var(--navy)' }}>

@@ -286,7 +286,7 @@ export default function DefenceSecurityPage() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
-        <div className="absolute inset-0 z-10 flex items-center" style={{ paddingTop: '65px' }}>
+        <div className="absolute inset-0 z-10 flex items-center" style={{ paddingTop: '88px' }}>
           <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 py-8 text-center sm:text-left">
             <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> OUR SERVICES

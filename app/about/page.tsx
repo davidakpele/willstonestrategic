@@ -120,7 +120,7 @@ export default function AboutPage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-[65px]" style={{ background: 'var(--navy)' }}>
+      <section className="relative overflow-hidden pt-[88px]" style={{ background: 'var(--navy)' }}>
         <div className="absolute inset-0 opacity-[0.07]" aria-hidden="true">
           <svg width="100%" height="100%">
             <pattern id="about-grid" width="40" height="40" patternUnits="userSpaceOnUse">

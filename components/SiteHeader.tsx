@@ -11,11 +11,66 @@ const NAV_LINKS = [
   { href: '/contact',         label: 'CONTACT' },
 ]
 
+// Used in mobile drawer only
 const SERVICES_DROPDOWN = [
   { label: 'Agriculture & Agribusiness',                    href: '/services/agriculture-agribusiness' },
   { label: 'Information Technology & Software Development', href: '/services/information-technology' },
   { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
   { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
+]
+
+// ── Desktop mega-menu data ───────────────────────────────────────────────────
+const MEGA_SERVICES = [
+  {
+    label: 'Agriculture & Agribusiness',
+    href: '/services/agriculture-agribusiness',
+    desc: 'End-to-end supply chain, commodity trading, and agri-processing solutions across West Africa.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Information Technology & Software Development',
+    href: '/services/information-technology',
+    desc: 'Custom software, enterprise platforms, and digital transformation for modern businesses.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Electrical & Electronic Solutions',
+    href: '/services/electrical-electronic',
+    desc: 'Industrial electrical systems, automation engineering, and power infrastructure.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Defence, Security & Protective Solutions',
+    href: '/services/defence-security',
+    desc: 'Integrated security systems, surveillance, and protective equipment for critical assets.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
+]
+
+const MEGA_QUICK_LINKS = [
+  { label: 'About Willstone',    href: '/about' },
+  { label: 'Partner With Us',    href: '/contact' },
+  { label: 'Our Track Record',   href: '/about#track-record' },
+  { label: 'Industries We Serve',href: '/#industries' },
+  { label: 'Request a Proposal', href: '/contact' },
 ]
 
 interface SiteHeaderProps {
@@ -55,17 +110,19 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
 
   return (
     <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          background: variant === 'solid'
-            ? '#0b1b33'
-            : 'linear-gradient(180deg, rgba(11,27,51,.95), rgba(11,27,51,.80))',
-          backdropFilter: variant === 'transparent' ? 'blur(6px)' : undefined,
-          borderBottom: variant === 'solid' ? '1px solid rgba(255,255,255,.08)' : undefined,
-        }}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:px-8 lg:pt-5">
+        <div
+          className="mx-auto flex items-center justify-between px-5 lg:px-8 py-3"
+          style={{
+            maxWidth: '56rem',
+            background: 'rgba(11,27,51,0.92)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            borderRadius: '20px',
+            border: '1px solid rgba(255,255,255,0.08)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
+          }}
+        >
 
           {/* Logo → home */}
           <Link href="/" className="site-logo cursor-pointer" aria-label="Willstone Strategic Industries Limited" />
@@ -94,21 +151,67 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                     </svg>
                   </Link>
                   <div
-                    className={`nav-dropdown${isServicesOpen ? ' open' : ''}`}
+                    className={`mega-dropdown${isServicesOpen ? ' open' : ''}`}
                     onMouseEnter={openDropdown}
                     onMouseLeave={closeDropdown}
                   >
-                    <div className="py-2">
-                      {SERVICES_DROPDOWN.map((item) => (
+                    {/* ── Left panel ── */}
+                    <div className="mega-left">
+                      <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>
+                        Our Services
+                      </p>
+                      <p className="text-[12.5px] text-white/60 leading-relaxed mb-6">
+                        Willstone drives growth across industries from farm to digital infrastructure and beyond.
+                      </p>
+                      <Link
+                        href="/contact"
+                        onClick={() => setIsServicesOpen(false)}
+                        className="mt-auto inline-flex items-center gap-2 text-[12px] font-semibold rounded-full px-4 py-2 cursor-pointer"
+                        style={{ background: 'var(--gold)', color: '#1a1408' }}
+                      >
+                        Get in touch
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                      </Link>
+                    </div>
+
+                    {/* ── Middle panel: service cards ── */}
+                    <div className="mega-cards">
+                      {MEGA_SERVICES.map((svc) => (
                         <Link
-                          key={item.href}
-                          href={item.href}
-                          className={`nav-dropdown-item${pathname === item.href ? ' active' : ''}`}
+                          key={svc.href}
+                          href={svc.href}
                           onClick={() => setIsServicesOpen(false)}
+                          className={`mega-card${pathname === svc.href || pathname.startsWith(svc.href + '/') ? ' active' : ''}`}
                         >
-                          {item.label}
+                          <span className="mega-card-icon">{svc.icon}</span>
+                          <div>
+                            <p className="text-[13px] font-semibold text-white mb-0.5 leading-tight">{svc.label}</p>
+                            <p className="text-[11.5px] text-white/55 leading-relaxed">{svc.desc}</p>
+                          </div>
                         </Link>
                       ))}
+                    </div>
+
+                    {/* ── Right panel: quick links ── */}
+                    <div className="mega-right">
+                      <p className="text-[11px] font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--gold)' }}>
+                        Quick Links
+                      </p>
+                      <ul className="flex flex-col gap-0.5">
+                        {MEGA_QUICK_LINKS.map((link) => (
+                          <li key={link.label + link.href}>
+                            <Link
+                              href={link.href}
+                              onClick={() => setIsServicesOpen(false)}
+                              className="mega-quick-link"
+                            >
+                              {link.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -129,7 +232,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
             href="/contact"
             className="hidden lg:inline-flex items-center gap-2 btn-gold text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide"
           >
-            PARTNER WITH US
+            Contact Us
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
