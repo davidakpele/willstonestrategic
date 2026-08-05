@@ -43,13 +43,13 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .btn-gold {
-  background: var(--gold);
-  color: #1a1408;
+  background: var(--navy-2);
+  color: #fff;
   font-weight: 600;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .btn-gold:hover {
-  background: var(--gold-light);
+  background: var(--navy-2);
   transform: translateY(-1px);
 }
 
@@ -478,26 +478,25 @@ html::-webkit-scrollbar-thumb:hover {
 .contact-input {
   width: 100%;
   padding: 10px 14px;
-  border: 1.5px solid #e2e6ee;
+  border: none;
   border-radius: 8px;
   font-size: 14px;
   color: var(--ink);
-  background: #fafafa;
+  background: #f1f3f7;
   outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
   font-family: inherit;
 }
 .contact-input::placeholder {
   color: #b0b8c9;
 }
 .contact-input:focus {
-  border-color: var(--gold);
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.12);
+  background: #eaecf2;
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.15);
 }
 .contact-input.error {
-  border-color: #e53e3e;
-  background: #fff8f8;
+  background: #fff0f0;
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.25);
 }
 
 .contact-error {
@@ -855,4 +854,78 @@ html::-webkit-scrollbar-thumb:hover {
   display: flex;
   flex-direction: column;
   cursor: default;
+}
+
+/* ==============================
+   CONTACT PAGE  (redesign)
+   ============================== */
+
+/* Contact info rows */
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #eaecf2;
+  background: #fff;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-info-row:hover {
+  border-color: rgba(201, 162, 75, 0.4);
+  box-shadow: 0 4px 16px -4px rgba(201, 162, 75, 0.15);
+}
+
+.contact-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(201, 162, 75, 0.1);
+  border: 1px solid rgba(201, 162, 75, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* FAQ accordion */
+.faq-item {
+  background: #fff;
+  border: 1px solid #eaecf2;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+.faq-item:has(.faq-body.open) {
+  border-color: rgba(201, 162, 75, 0.35);
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  transition: color 0.15s ease;
+}
+.faq-trigger:hover {
+  color: var(--gold);
+}
+
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-body.open {
+  max-height: 300px;
 }

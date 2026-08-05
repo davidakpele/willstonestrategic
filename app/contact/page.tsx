@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
@@ -18,52 +19,41 @@ const inter = Inter({
   variable: '--font-body',
 })
 
-const CONTACT_INFO = [
+const FAQS = [
   {
-    icon: (
-      <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
-    ),
-    label: 'Phone',
-    value: '+234 901 938 4496',
-    sub1: 'Customer support',
-    sub2: 'Mon–Fri: 8:00AM – 05:00PM, Sat: 9:00AM - 3:00PM',
-    href: 'tel:+2349019384496',
+    q: 'Do you provide support and maintenance after project delivery?',
+    a: 'Yes. We offer ongoing support and maintenance packages tailored to every project, ensuring your solution stays up to date and fully operational.',
   },
   {
-    icon: <path d="M4 4h16v16H4zM4 4l8 8 8-8" />,
-    label: 'Email',
-    value: 'info@willstone.com.ng',
-    sub1: '24/7 customer support',
-    sub2: 'General questions',
-    href: 'mailto:willstonestrategic@gmail.com',
+    q: 'What industries do you work with?',
+    a: 'We operate across technology, agriculture, logistics, infrastructure, real estate, energy, trade, procurement, defence, and security sectors.',
   },
   {
-    icon: (
-      <>
-        <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" />
-        <circle cx="12" cy="10" r="3" />
-      </>
-    ),
-    label: 'Address',
-    value: '20 Cambridge House, Onireke Jericho - Joop Berkhout Crescent, Ibadan, Oyo State, Nigeria',
-    sub1: 'Main office location',
-    sub2: '',
-    href: 'https://maps.app.goo.gl/ZjZ5eCgY7MjJnvvj6',
+    q: 'Do you offer customised solutions?',
+    a: 'Absolutely. Every engagement is scoped to your specific needs — we do not sell off-the-shelf packages. Our team works with you from discovery to delivery.',
+  },
+  {
+    q: 'How long does a typical project take?',
+    a: 'Timelines vary by scope and complexity. Small projects can be completed in weeks; large infrastructure or technology engagements typically run 3–12 months.',
+  },
+  {
+    q: 'Can we partner with Willstone as a vendor or supplier?',
+    a: 'Yes. We are always open to strategic partnerships. Please use the contact form above or email us directly with your company profile.',
   },
 ]
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '', consent: false })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const validate = () => {
     const e: Record<string, string> = {}
-    if (!form.name.trim()) e.name = 'Name is required'
-    if (!form.email.trim()) e.email = 'Email is required'
+    if (!form.name.trim())    e.name    = 'Name is required'
+    if (!form.email.trim())   e.email   = 'Email is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
     if (!form.message.trim()) e.message = 'Message is required'
-    if (!form.consent) e.consent = 'You must agree to proceed'
     return e
   }
 
@@ -76,194 +66,270 @@ export default function ContactPage() {
   }
 
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
-
+    <div
+      className={`${spaceGrotesk.variable} ${inter.variable}`}
+      style={{ fontFamily: 'var(--font-body, sans-serif)' }}
+    >
       <SiteHeader variant="solid" />
 
-      {/* push content below fixed header */}
-      <div className="pt-[88px]">
+      {/* ── HERO + FORM ── */}
+      <section
+        className="relative overflow-hidden flex items-center"
+        style={{ paddingTop: '88px', minHeight: 'clamp(560px, 80vh, 760px)' }}
+      >
+        {/* full-bleed background image */}
+        <Image
+          src="/assets/images/contact-us.png"
+          alt="Willstone team ready to help"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* subtle dark overlay so image doesn't overpower */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.72) 0%, rgba(6,15,31,.35) 55%, rgba(6,15,31,.08) 100%)' }}
+        />
 
-      {/* ── HERO STRIP ── */}
-      <section className="relative overflow-hidden py-16 sm:py-20" style={{ background: 'var(--navy)' }}>
-        <div className="absolute inset-0 opacity-10" aria-hidden="true">
-          <svg width="100%" height="100%"><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#C9A24B" strokeWidth="0.5"/></pattern><rect width="100%" height="100%" fill="url(#grid)"/></svg>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
-          <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
-            <span className="gold-rule" /> GET IN TOUCH
-          </p>
-          <h1 className="display text-white font-semibold leading-tight" style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>
-            Let&apos;s Build Something<br />
-            <span style={{ color: 'var(--gold-light)' }}>Together.</span>
-          </h1>
-          <p className="text-white/60 mt-4 max-w-xl text-[15px] leading-relaxed">
-            Reach out to us for partnerships, enquiries, or any questions. Our team is ready to help you take the next step.
-          </p>
-        </div>
-      </section>
-
-      {/* ── CONTACT INFO CARDS ── */}
-      <section className="py-14 px-5 sm:px-8 lg:px-10 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto grid sm:grid-cols-3 gap-6">
-          {CONTACT_INFO.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              target={item.label === 'Address' ? '_blank' : undefined}
-              rel={item.label === 'Address' ? 'noopener noreferrer' : undefined}
-              className="contact-card group"
-            >
-              <span className="contact-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  {item.icon}
-                </svg>
-              </span>
-              <div className="mt-4">
-                <p className="font-semibold text-[16px] mt-1 group-hover:text-[var(--gold)] transition-colors" style={{ color: 'var(--ink)' }}>
-                  {item.value}
-                </p>
-                <p className="text-[13px] text-slate-500 mt-1">{item.sub1}</p>
-                {item.sub2 && <p className="text-[13px] text-slate-400">{item.sub2}</p>}
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ── FORM + MAP ── */}
-      <section className="py-16 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-
-          {/* FORM */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 sm:p-10">
-            <h2 className="display font-semibold text-[22px] mb-1" style={{ color: 'var(--ink)' }}>
-              Ask us. We are here to help!
-            </h2>
-            <p className="text-slate-500 text-[13px] mb-8">Fill in the form and we&apos;ll get back to you within 24 hours.</p>
-
+        {/* Form card — floated left on top of image */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 py-12 sm:py-16 flex items-center">
+          <div
+            className="w-full max-w-sm sm:max-w-md"
+            style={{
+              background: 'rgba(11,27,51,0.92)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              borderRadius: '18px',
+              padding: '36px 32px',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0 24px 60px rgba(0,0,0,0.4)',
+            }}
+          >
             {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ background: 'rgba(201,162,75,.12)' }}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
+              <div className="flex flex-col items-center text-center py-10">
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
+                  style={{ background: 'rgba(201,162,75,.15)' }}
+                >
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-[18px] mb-2" style={{ color: 'var(--ink)' }}>Message sent!</h3>
-                <p className="text-slate-500 text-[14px] max-w-xs">Thank you for reaching out. A member of our team will be in touch shortly.</p>
-                <button onClick={() => { setSubmitted(false); setForm({ name:'', email:'', phone:'', subject:'', message:'', consent:false }) }}
-                  className="btn-gold mt-6 px-6 py-2.5 rounded-full text-[13px] font-semibold cursor-pointer">
-                  Send another message
+                <h3 className="font-bold text-[18px] text-white mb-2">Message sent!</h3>
+                <p className="text-white/60 text-[13px] leading-relaxed mb-6">
+                  Thank you for reaching out. We&apos;ll be in touch within 24 hours.
+                </p>
+                <button
+                  onClick={() => { setSubmitted(false); setForm({ name:'', email:'', phone:'', message:'' }) }}
+                  className="btn-gold px-6 py-2.5 rounded-full text-[13px] font-semibold cursor-pointer"
+                >
+                  Send another
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
+              <>
+                {/* heading */}
+                <h2 className="font-bold text-[22px] text-white mb-1">
+                  Let&apos;s Work{' '}
+                  <span style={{ color: 'var(--gold)' }}>Together</span>
+                </h2>
+                {/* gold rule */}
+                <div className="w-8 h-[2px] mb-4" style={{ background: 'var(--gold)' }} />
+                <p className="text-white/60 text-[13px] leading-relaxed mb-6">
+                  We&apos;re here to answer your questions and explore new possibilities.
+                </p>
+
+                <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   <div>
-                    <label className="contact-label">Name <span className="text-red-500">*</span></label>
+                    <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Name</label>
                     <input
-                      type="text" value={form.name} placeholder="Your full name"
+                      type="text"
+                      value={form.name}
+                      placeholder="Enter your name"
                       onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      className={`contact-input${errors.name ? ' error' : ''}`}
+                      className={`contact-input contact-input-dark${errors.name ? ' error' : ''}`}
                     />
                     {errors.name && <p className="contact-error">{errors.name}</p>}
                   </div>
+
                   <div>
-                    <label className="contact-label">Email <span className="text-red-500">*</span></label>
+                    <label className="block text-white/80 text-[13px] font-semibold mb-1.5">E-mail address</label>
                     <input
-                      type="email" value={form.email} placeholder="your@email.com"
+                      type="email"
+                      value={form.email}
+                      placeholder="Enter your e-mail address"
                       onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                      className={`contact-input${errors.email ? ' error' : ''}`}
+                      className={`contact-input contact-input-dark${errors.email ? ' error' : ''}`}
                     />
                     {errors.email && <p className="contact-error">{errors.email}</p>}
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="contact-label">Phone</label>
-                    <input
-                      type="tel" value={form.phone} placeholder="+234 000 000 0000"
-                      onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                      className="contact-input"
-                    />
-                  </div>
-                  <div>
-                    <label className="contact-label">Subject</label>
-                    <input
-                      type="text" value={form.subject} placeholder="How can we help?"
-                      onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-                      className="contact-input"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="contact-label">Message <span className="text-red-500">*</span></label>
-                  <textarea
-                    rows={5} value={form.message} placeholder="Tell us more about your enquiry…"
-                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                    className={`contact-input resize-none${errors.message ? ' error' : ''}`}
-                  />
-                  {errors.message && <p className="contact-error">{errors.message}</p>}
-                </div>
-                <div>
-                  <label className="flex items-start gap-3 cursor-pointer select-none">
-                    <input
-                      type="checkbox" checked={form.consent}
-                      onChange={e => setForm(f => ({ ...f, consent: e.target.checked }))}
-                      className="contact-checkbox mt-0.5"
-                    />
-                    <span className="text-[13px] text-slate-500 leading-snug">
-                      I allow Willstone Strategic Industries Limited to process my personal data for the purpose of responding to my enquiry.
-                    </span>
-                  </label>
-                  {errors.consent && <p className="contact-error mt-1">{errors.consent}</p>}
-                </div>
-                <button type="submit" className="btn-gold w-full sm:w-auto px-8 py-3 rounded-full text-[13px] font-semibold cursor-pointer inline-flex items-center justify-center gap-2">
-                  Send Message
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </button>
-              </form>
-            )}
-          </div>
 
-          {/* MAP */}
-          <div className="flex flex-col gap-6">
-            <div>
-              <h2 className="display font-semibold text-[22px] mb-1" style={{ color: 'var(--ink)' }}>How to find us</h2>
-              <p className="text-slate-500 text-[13px]">Plot 10, Industrial Avenue, Lagos, Nigeria</p>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm" style={{ height: '420px' }}>
-              <iframe
-                title="Willstone Strategic Industries Limited location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.45317912035!2d3.1438710500000003!3d6.548055399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000"
-                width="100%" height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-            {/* Quick contact chips */}
-            <div className="flex flex-wrap gap-3">
-              <a href="tel:+2348051234567" className="quick-chip">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
-                </svg>
-                +234 805 123 4567
-              </a>
-              <a href="mailto:info@willstone.com.ng" className="quick-chip">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16v16H4zM4 4l8 8 8-8" />
-                </svg>
-                info@willstone.com.ng
-              </a>
-            </div>
+                  <div>
+                    <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Message</label>
+                    <textarea
+                      rows={3}
+                      value={form.message}
+                      placeholder="Let us know what you are interested in"
+                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                      className={`contact-input contact-input-dark resize-none${errors.message ? ' error' : ''}`}
+                    />
+                    {errors.message && <p className="contact-error">{errors.message}</p>}
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2"
+                  >
+                    Send a message
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </section>
 
-      </div>{/* end pt-[65px] wrapper */}
+      {/* ── WE'RE ALWAYS HERE ── */}
+      <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+
+          {/* left: info */}
+          <div>
+            <h2 className="display font-semibold mb-3" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', color: 'var(--ink)' }}>
+              We&apos;re always here to help.
+            </h2>
+            <p className="text-slate-500 text-[14px] leading-relaxed mb-8 max-w-md">
+              Our team is committed to providing fast, reliable assistance. Reach out through any channel
+              that&apos;s convenient — we typically respond within one business day.
+            </p>
+
+            {/* contact rows */}
+            <div className="space-y-5">
+              {/* Email */}
+              <a
+                href="mailto:willstonestrategic@gmail.com"
+                className="contact-info-row group"
+              >
+                <span className="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="M2 7l10 7 10-7"/>
+                  </svg>
+                </span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-0.5">Email us</p>
+                  <p className="text-[14px] font-medium truncate" style={{ color: 'var(--ink)' }}>
+                    willstonestrategic@gmail.com
+                  </p>
+                </div>
+                <svg className="text-slate-300 group-hover:text-[var(--gold)] transition-colors shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+
+              {/* Phone */}
+              <a
+                href="tel:+2349019384496"
+                className="contact-info-row group"
+              >
+                <span className="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
+                    <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z"/>
+                  </svg>
+                </span>
+                <div className="flex-1">
+                  <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-0.5">Call us</p>
+                  <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496 &nbsp;/&nbsp; +234 802 345 6789</p>
+                </div>
+                <svg className="text-slate-300 group-hover:text-[var(--gold)] transition-colors shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+
+              {/* Address */}
+              <a
+                href="https://maps.app.goo.gl/ZjZ5eCgY7MjJnvvj6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-info-row group"
+              >
+                <span className="contact-info-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
+                    <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </span>
+                <div className="flex-1">
+                  <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-0.5">Visit us</p>
+                  <p className="text-[14px] font-medium leading-snug" style={{ color: 'var(--ink)' }}>
+                    20 Cambridge House, Onireke Jericho,<br />Ibadan, Oyo State, Nigeria
+                  </p>
+                </div>
+                <svg className="text-slate-300 group-hover:text-[var(--gold)] transition-colors shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* right: map */}
+          <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: '420px' }}>
+            <iframe
+              title="Willstone Strategic Industries Limited location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.0!2d3.9!3d7.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1039ed2f0000001%3A0x1!2sIbadan%2C+Oyo+State%2C+Nigeria!5e0!3m2!1sen!2sng!4v1700000000000"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> FAQ <span className="gold-rule" />
+            </p>
+            <h2 className="display font-semibold text-[24px] sm:text-[28px]" style={{ color: 'var(--ink)' }}>
+              Frequently asked questions
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {FAQS.map((faq, i) => (
+              <div key={i} className="faq-item">
+                <button
+                  className="faq-trigger"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                >
+                  <span className="text-left">{faq.q}</span>
+                  <svg
+                    width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" strokeWidth="2.2"
+                    style={{ transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', flexShrink: 0 }}
+                  >
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </button>
+                <div className={`faq-body${openFaq === i ? ' open' : ''}`}>
+                  <p className="text-slate-500 text-[14px] leading-relaxed pb-5 px-5">{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <SiteFooter />
     </div>
