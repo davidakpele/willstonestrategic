@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
@@ -74,36 +73,44 @@ export default function ContactPage() {
 
       {/* ── HERO + FORM ── */}
       <section
-        className="relative overflow-hidden flex items-center"
-        style={{ paddingTop: '88px', minHeight: 'clamp(560px, 80vh, 760px)' }}
+        className="relative overflow-hidden flex items-stretch"
+        style={{ paddingTop: '88px', minHeight: '100svh' }}
       >
-        {/* full-bleed background image */}
-        <Image
+        {/* background image — always covers the full section, anchored to show the person */}
+        <img
           src="/assets/images/contact-us.png"
-          alt="Willstone team ready to help"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+            display: 'block',
+          }}
         />
-        {/* subtle dark overlay so image doesn't overpower */}
+        {/* overlay — heavier on left so form is legible, image shows on right */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.72) 0%, rgba(6,15,31,.35) 55%, rgba(6,15,31,.08) 100%)' }}
+          style={{
+            background: 'linear-gradient(100deg, rgba(6,15,31,.94) 0%, rgba(6,15,31,.78) 38%, rgba(6,15,31,.35) 65%, rgba(6,15,31,.05) 100%)',
+          }}
         />
 
-        {/* Form card — floated left on top of image */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 py-12 sm:py-16 flex items-center">
+        {/* Form card */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 py-14 sm:py-20 flex items-center">
           <div
-            className="w-full max-w-sm sm:max-w-md"
+            className="w-full max-w-[400px]"
             style={{
-              background: 'rgba(11,27,51,0.92)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
+              background: 'rgba(11,27,51,0.90)',
+              backdropFilter: 'blur(14px)',
+              WebkitBackdropFilter: 'blur(14px)',
               borderRadius: '18px',
-              padding: '36px 32px',
+              padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
               border: '1px solid rgba(255,255,255,0.08)',
-              boxShadow: '0 24px 60px rgba(0,0,0,0.4)',
+              boxShadow: '0 24px 60px rgba(0,0,0,0.45)',
             }}
           >
             {submitted ? (
