@@ -292,6 +292,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STICKY STACKING CARDS */}
+      <section className="py-20 px-6 lg:px-10 bg-white">
+        <div className="max-w-6xl mx-auto">
+
+          {/* header — visible on mobile above the cards */}
+          <div className="lg:hidden text-center mb-12">
+            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> HOW WE WORK <span className="gold-rule" />
+            </p>
+            <h2 className="display text-2xl sm:text-3xl font-semibold" style={{ color: 'var(--ink)' }}>
+              Our approach,<br />step by step.
+            </h2>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+
+            {/* ── LEFT — sticky panel ── */}
+            <div className="hidden lg:flex flex-col justify-start w-[340px] shrink-0 sticky top-28">
+              <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+                <span className="gold-rule" /> HOW WE WORK
+              </p>
+              <h2 className="display font-semibold leading-tight mb-5" style={{ fontSize: 'clamp(1.6rem,3vw,2.2rem)', color: 'var(--ink)' }}>
+                Our approach,<br />
+                <span style={{ color: 'var(--gold)' }}>step by step.</span>
+              </h2>
+              <p className="text-slate-500 text-[14px] leading-relaxed mb-8">
+                From the first conversation to long-term partnership, we follow a proven process that puts your goals at the centre of everything we do.
+              </p>
+              <a
+                href="/contact"
+                className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold w-fit"
+              >
+                Partner With Us
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+
+            {/* ── RIGHT — stacking cards ── */}
+            <div className="flex-1 flex flex-col gap-4">
+              {[
+                {
+                  num: '01',
+                  title: 'Understand Your Needs',
+                  desc: 'We begin every engagement by listening. Our team takes time to deeply understand your business, sector, challenges, and goals before proposing any solution.',
+                  link: '/about',
+                  linkLabel: 'About our process',
+                  dark: false,
+                },
+                {
+                  num: '02',
+                  title: 'Design the Right Solution',
+                  desc: 'We craft tailored strategies — not off-the-shelf packages. From engineering and technology to trade and logistics, every solution is purpose-built for your context.',
+                  link: '/services',
+                  linkLabel: 'Explore our services',
+                  dark: false,
+                },
+                {
+                  num: '03',
+                  title: 'Execute with Precision',
+                  desc: 'Our cross-sector teams execute with rigour and accountability. We manage timelines, quality, and stakeholders so you can focus on growth.',
+                  link: '/services',
+                  linkLabel: 'See how we deliver',
+                  dark: false,
+                },
+                {
+                  num: '04',
+                  title: 'Build a Lasting Partnership',
+                  desc: 'We do not disappear after delivery. Willstone stays engaged — monitoring outcomes, providing support, and growing with you as your needs evolve.',
+                  link: '/contact',
+                  linkLabel: 'Partner with us',
+                  dark: true,
+                },
+              ].map((card, i) => (
+                <div
+                  key={card.num}
+                  className={`stack-card${card.dark ? ' stack-card-dark' : ''}`}
+                  style={{ top: `calc(96px + ${i * 16}px)` }}
+                >
+                  <div className={`stack-card-num${card.dark ? ' dark' : ''}`}>
+                    {card.num}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3
+                      className="font-bold text-[19px] sm:text-[21px] mb-3"
+                      style={{ color: card.dark ? '#fff' : 'var(--ink)' }}
+                    >
+                      {card.title}
+                    </h3>
+                    <p className={`text-[14px] leading-relaxed mb-6 ${card.dark ? 'text-white/70' : 'text-slate-500'}`}>
+                      {card.desc}
+                    </p>
+                    <a
+                      href={card.link}
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold transition-colors ${
+                        card.dark
+                          ? 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
+                          : 'bg-[var(--paper)] text-[var(--ink)] hover:bg-gray-200 border border-gray-200'
+                      }`}
+                    >
+                      {card.linkLabel}
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* GLOBAL REACH */}
       <section className="relative py-20 px-6 lg:px-10 overflow-hidden" style={{ background: 'var(--navy)' }}>
         <svg className="absolute right-0 top-0 h-full opacity-20" width="620" viewBox="0 0 620 400" fill="none" aria-hidden="true">
