@@ -10,6 +10,25 @@
 
 html {
   scroll-behavior: smooth;
+
+  /* ── Custom scrollbar (Webkit / Blink) ── */
+  scrollbar-width: thin;                        /* Firefox */
+  scrollbar-color: var(--gold) rgba(11,27,51,.12); /* Firefox: thumb track */
+}
+
+/* Chrome / Edge / Safari */
+html::-webkit-scrollbar {
+  width: 6px;
+}
+html::-webkit-scrollbar-track {
+  background: rgba(11, 27, 51, 0.06);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 9999px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
 }
 
 .eyebrow {
@@ -583,11 +602,45 @@ html {
 
 /* ── Left panel ── */
 .mega-left {
-  background: var(--navy);
-  padding: 28px 24px 28px 28px;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+}
+
+/* background photo */
+.mega-left-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* navy colour + blur overlay on top of the image */
+.mega-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(11, 27, 51, 0.88) 0%,
+    rgba(11, 27, 51, 0.78) 60%,
+    rgba(11, 27, 51, 0.92) 100%
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* text content floats above the overlay */
+.mega-left-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 28px 24px 28px 28px;
 }
 
 /* ── Middle panel ── */
@@ -718,4 +771,87 @@ html {
   gap: 10px;
   padding-right: 10px; /* matches gap so the two copies stitch seamlessly */
   white-space: nowrap;
+}
+
+/* ==============================
+   ABOUT PAGE
+   ============================== */
+
+/* Mission / Vision cards */
+.about-mv-card {
+  padding: 36px 32px;
+  border-radius: 18px;
+  border: 1px solid #eaecf2;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.about-mv-card:hover {
+  border-color: rgba(201, 162, 75, 0.35);
+  box-shadow: 0 10px 36px -10px rgba(201, 162, 75, 0.15);
+}
+
+.about-mv-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(201, 162, 75, 0.1);
+  border: 1px solid rgba(201, 162, 75, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+/* Culture card — image with text overlay */
+.about-culture-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+  box-shadow: 0 20px 48px -12px rgba(11, 27, 51, 0.3);
+}
+
+/* On mobile the culture card stacks naturally at full width */
+@media (max-width: 1023px) {
+  .about-culture-card {
+    min-height: 360px;
+  }
+}
+
+/* Values cards */
+.about-value-card {
+  background: #fff;
+  border: 1px solid #eaecf2;
+  border-radius: 16px;
+  padding: 28px 26px;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+.about-value-card:hover {
+  border-color: rgba(201, 162, 75, 0.3);
+  box-shadow: 0 12px 32px -8px rgba(11, 27, 51, 0.1);
+  transform: translateY(-3px);
+}
+
+.about-value-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(11, 27, 51, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Leadership cards */
+.about-leader-card {
+  display: flex;
+  flex-direction: column;
+  cursor: default;
 }

@@ -135,8 +135,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                   key={link.href}
                   className="relative"
                   onMouseEnter={openDropdown}
-                  onMouseLeave={closeDropdown}
-                >
+                  onMouseLeave={closeDropdown}>
                   <Link
                     href={link.href}
                     className={`navlink flex items-center gap-1${isActive(link.href) ? ' active' : ''}`}
@@ -157,23 +156,39 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                   >
                     {/* ── Left panel ── */}
                     <div className="mega-left">
-                      <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>
-                        Our Services
-                      </p>
-                      <p className="text-[12.5px] text-white/60 leading-relaxed mb-6">
-                        Willstone drives growth across industries from farm to digital infrastructure and beyond.
-                      </p>
-                      <Link
-                        href="/contact"
-                        onClick={() => setIsServicesOpen(false)}
-                        className="mt-auto inline-flex items-center gap-2 text-[12px] font-semibold rounded-full px-4 py-2 cursor-pointer"
-                        style={{ background: 'var(--gold)', color: '#1a1408' }}
-                      >
-                        Get in touch
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M5 12h14M13 6l6 6-6 6"/>
-                        </svg>
-                      </Link>
+                      {/* background image */}
+                      <img
+                        src="/assets/images/NavItem.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="mega-left-bg"
+                      />
+                      {/* navy + blur colour overlay */}
+                      <div className="mega-left-overlay" />
+
+                      {/* content sits above image */}
+                      <div className="mega-left-content">
+                        <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>
+                          Our Services
+                        </p>
+                        <h3 className="text-[18px] font-bold text-white leading-snug mb-3">
+                          What We<br />Deliver
+                        </h3>
+                        <p className="text-[12.5px] text-white/65 leading-relaxed mb-6">
+                          Willstone drives growth across industries from farm to digital infrastructure and beyond.
+                        </p>
+                        <Link
+                          href="/contact"
+                          onClick={() => setIsServicesOpen(false)}
+                          className="mt-auto inline-flex items-center gap-2 text-[12px] font-semibold rounded-full px-4 py-2 cursor-pointer"
+                          style={{ background: 'var(--gold)', color: '#1a1408' }}
+                        >
+                          Get in touch
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <path d="M5 12h14M13 6l6 6-6 6"/>
+                          </svg>
+                        </Link>
+                      </div>
                     </div>
 
                     {/* ── Middle panel: service cards ── */}
