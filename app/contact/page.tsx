@@ -43,26 +43,43 @@ const FAQS = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+const [submitted, setSubmitted] = useState(false)
+const [errors, setErrors] = useState<Record<string, string>>({})
+const [openFaq, setOpenFaq] = useState<number | null>(null)
+const [sending, setSending] = useState(false)
+const [sendError, setSendError] = useState('')
 
-  const validate = () => {
-    const e: Record<string, string> = {}
-    if (!form.name.trim())    e.name    = 'Name is required'
-    if (!form.email.trim())   e.email   = 'Email is required'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
-    if (!form.message.trim()) e.message = 'Message is required'
-    return e
-  }
+const validate = () => {
+  const e: Record<string, string> = {}
+  if (!form.name.trim())    e.name    = 'Name is required'
+  if (!form.email.trim())   e.email   = 'Email is required'
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
+  if (!form.message.trim()) e.message = 'Message is required'
+  return e
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const errs = validate()
-    if (Object.keys(errs).length) { setErrors(errs); return }
-    setErrors({})
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  const errs = validate()
+  if (Object.keys(errs).length) { setErrors(errs); return }
+  setErrors({})
+  setSendError('')
+  setSending(true)
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+    if (!res.ok) throw new Error('Send failed')
     setSubmitted(true)
+  } catch {
+    setSendError('Something went wrong. Please try again or email us directly.')
+  } finally {
+    setSending(false)
   }
+}
 
   return (
     <div
@@ -185,14 +202,16 @@ export default function ContactPage() {
                   </div>
 
                   <button
-                    type="submit"
-                    className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2"
-                  >
-                    Send a message
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                  </button>
+  type="submit"
+  disabled={sending}
+  className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-60"
+>
+  {sending ? 'Sending…' : 'Send a message'}
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+</button>
+{sendError && <p className="contact-error mt-2">{sendError}</p>}
                 </form>
               </>
             )}
