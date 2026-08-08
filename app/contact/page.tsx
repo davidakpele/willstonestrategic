@@ -66,13 +66,19 @@ export default function ContactPage() {
     setSendError('')
     setSending(true)
 
-    try {
-      setSubmitted(true)
-    } catch {
-      setSendError('Something went wrong. Please try again or email us directly.')
-    } finally {
-      setSending(false)
-    }
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+    if (!res.ok) throw new Error('Send failed')
+    setSubmitted(true)
+  } catch {
+    setSendError('Something went wrong. Please try again or email us directly.')
+  } finally {
+    setSending(false)
+  }
   }
 
   return (
