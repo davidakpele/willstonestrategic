@@ -1,7 +1,13 @@
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 import { NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USERNAME,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+})
 
 export async function POST(req: Request) {
   try {
@@ -11,20 +17,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    const { error } = await resend.emails.send({
-      from: 'Willstone Website <onboarding@resend.dev>',
+    await transporter.sendMail({
+      from: `"Willstone Website" <${process.env.GMAIL_USERNAME}>`,
       to: 'willstonestrategic@gmail.com',
       replyTo: email,
       subject: `New contact form message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\nMessage:\n${message}`,
     })
 
-    if (error) {
-      return NextResponse.json({ error: 'Failed to send' }, { status: 500 })
-    }
-
     return NextResponse.json({ success: true })
-  } catch {
-    return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
+  } catch (err) {
+    console.error('Email send error:', err)
+    return NextResponse.json({ error: 'Failed to send' }, { status: 500 })
   }
 }
