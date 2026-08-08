@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
@@ -58,7 +58,7 @@ export default function ContactPage() {
     return e
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
@@ -349,4 +349,4 @@ export default function ContactPage() {
       <SiteFooter />
     </div>
   )
-      }
+  }
