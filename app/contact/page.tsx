@@ -67,7 +67,6 @@ export default function ContactPage() {
     setSending(true)
 
     try {
-    
       setSubmitted(true)
     } catch {
       setSendError('Something went wrong. Please try again or email us directly.')
