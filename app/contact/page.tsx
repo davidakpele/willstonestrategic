@@ -43,43 +43,43 @@ const FAQS = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
-const [submitted, setSubmitted] = useState(false)
-const [errors, setErrors] = useState<Record<string, string>>({})
-const [openFaq, setOpenFaq] = useState<number | null>(null)
-const [sending, setSending] = useState(false)
-const [sendError, setSendError] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
 
-const validate = () => {
-  const e: Record<string, string> = {}
-  if (!form.name.trim())    e.name    = 'Name is required'
-  if (!form.email.trim())   e.email   = 'Email is required'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
-  if (!form.message.trim()) e.message = 'Message is required'
-  return e
-}
-
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-  const errs = validate()
-  if (Object.keys(errs).length) { setErrors(errs); return }
-  setErrors({})
-  setSendError('')
-  setSending(true)
-
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    if (!res.ok) throw new Error('Send failed')
-    setSubmitted(true)
-  } catch {
-    setSendError('Something went wrong. Please try again or email us directly.')
-  } finally {
-    setSending(false)
+  const validate = () => {
+    const e: Record<string, string> = {}
+    if (!form.name.trim())    e.name    = 'Name is required'
+    if (!form.email.trim())   e.email   = 'Email is required'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
+    if (!form.message.trim()) e.message = 'Message is required'
+    return e
   }
-}
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setErrors({})
+    setSendError('')
+    setSending(true)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Send failed')
+      setSubmitted(true)
+    } catch {
+      setSendError('Something went wrong. Please try again or email us directly.')
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <div
@@ -93,7 +93,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         className="relative overflow-hidden flex items-stretch"
         style={{ paddingTop: '88px', minHeight: '100svh' }}
       >
-        {/* background image — always covers the full section, anchored to show the person */}
         <img
           src="/assets/images/contact-us-image.png"
           alt=""
@@ -108,7 +107,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             display: 'block',
           }}
         />
-        {/* overlay — heavier on left so form is legible, image shows on right */}
         <div
           className="absolute inset-0"
           style={{
@@ -116,7 +114,6 @@ const handleSubmit = async (e: React.FormEvent) => {
           }}
         />
 
-        {/* Form card */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 py-14 sm:py-20 flex items-center">
           <div
             className="w-full max-w-[400px]"
@@ -153,12 +150,10 @@ const handleSubmit = async (e: React.FormEvent) => {
               </div>
             ) : (
               <>
-                {/* heading */}
                 <h2 className="font-bold text-[22px] text-white mb-1">
                   Let&apos;s Work{' '}
                   <span style={{ color: 'var(--gold)' }}>Together</span>
                 </h2>
-                {/* gold rule */}
                 <div className="w-8 h-[2px] mb-4" style={{ background: 'var(--gold)' }} />
                 <p className="text-white/60 text-[13px] leading-relaxed mb-6">
                   We&apos;re here to answer your questions and explore new possibilities.
@@ -202,16 +197,16 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
 
                   <button
-  type="submit"
-  disabled={sending}
-  className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-60"
->
-  {sending ? 'Sending…' : 'Send a message'}
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-</button>
-{sendError && <p className="contact-error mt-2">{sendError}</p>}
+                    type="submit"
+                    disabled={sending}
+                    className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-60"
+                  >
+                    {sending ? 'Sending…' : 'Send a message'}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </button>
+                  {sendError && <p className="contact-error mt-2">{sendError}</p>}
                 </form>
               </>
             )}
@@ -223,7 +218,6 @@ const handleSubmit = async (e: React.FormEvent) => {
       <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
 
-          {/* left: info */}
           <div>
             <h2 className="display font-semibold mb-3" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', color: 'var(--ink)' }}>
               We&apos;re always here to help.
@@ -233,10 +227,8 @@ const handleSubmit = async (e: React.FormEvent) => {
               that&apos;s convenient — we typically respond within one business day.
             </p>
 
-            {/* contact rows */}
             <div className="space-y-5">
-              {/* Email */}
-              <a
+              
                 href="mailto:willstonestrategic@gmail.com"
                 className="contact-info-row group"
               >
@@ -257,8 +249,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </svg>
               </a>
 
-              {/* Phone */}
-              <a
+              
                 href="tel:+2349019384496"
                 className="contact-info-row group"
               >
@@ -269,15 +260,14 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </span>
                 <div className="flex-1">
                   <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-0.5">Call us</p>
-                  <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496 &nbsp;/&nbsp; +234 706 1964 340</p>
+                  <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496 &nbsp;/&nbsp; +234 802 345 6789</p>
                 </div>
                 <svg className="text-slate-300 group-hover:text-[var(--gold)] transition-colors shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M13 6l6 6-6 6"/>
                 </svg>
               </a>
 
-              {/* Address */}
-              <a
+              
                 href="https://maps.app.goo.gl/ZjZ5eCgY7MjJnvvj6"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -302,7 +292,6 @@ const handleSubmit = async (e: React.FormEvent) => {
             </div>
           </div>
 
-          {/* right: map */}
           <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: '420px' }}>
             <iframe
               title="Willstone Strategic Industries Limited location"
@@ -360,4 +349,4 @@ const handleSubmit = async (e: React.FormEvent) => {
       <SiteFooter />
     </div>
   )
-}
+      }
