@@ -222,7 +222,7 @@ export default function ContactPage() {
             </p>
 
             <div className="space-y-5">
-              
+              <a
                 href="mailto:willstonestrategic@gmail.com"
                 className="contact-info-row group"
               >
@@ -243,7 +243,7 @@ export default function ContactPage() {
                 </svg>
               </a>
 
-              
+              <a
                 href="tel:+2349019384496"
                 className="contact-info-row group"
               >
@@ -261,7 +261,7 @@ export default function ContactPage() {
                 </svg>
               </a>
 
-              
+              <a
                 href="https://maps.app.goo.gl/ZjZ5eCgY7MjJnvvj6"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -343,4 +343,4 @@ export default function ContactPage() {
       <SiteFooter />
     </div>
   )
-  }
+                                                                 }
