@@ -250,7 +250,7 @@ export default function ContactPage() {
                 </span>
                 <div className="flex-1">
                   <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-0.5">Call us</p>
-                  <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496 &nbsp;/&nbsp; +234 802 345 6789</p>
+                  <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496 &nbsp;/&nbsp; +234 706 1964 340</p>
                 </div>
                 <svg className="text-slate-300 group-hover:text-[var(--gold)] transition-colors shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M13 6l6 6-6 6"/>
