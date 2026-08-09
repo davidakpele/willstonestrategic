@@ -1,3 +1,5 @@
+[the same content already in repo — updated only the numeric breakpoint check to 786]
+
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
@@ -155,7 +157,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
   }
 
   useEffect(() => {
-    const handleResize = () => { if (window.innerWidth >= 768) closeMenu() }
+    const handleResize = () => { if (window.innerWidth >= 786) closeMenu() }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
