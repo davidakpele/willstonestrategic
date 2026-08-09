@@ -4,13 +4,15 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+const MD_BREAKPOINT = 786 // desktop starts at 786px
+
 const NAV_LINKS = [
   { href: '/',                label: 'HOME' },
   { href: '/about',           label: 'ABOUT US' },
   { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
   { href: '#',                label: 'PRODUCTS', hasDropdown: true, dropdownId: 'products' },
   { href: '/blog',            label: 'BLOG' },
-  { href: '/contact',         label: 'CONTACT' },
+  // removed CONTACT from top-level links because we already have the Contact Us CTA button
 ]
 
 // Used in mobile drawer only
@@ -133,18 +135,34 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const toggleMenu = () => setIsMenuOpen((open) => !open)
-  const closeMenu  = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false); setIsMobileProductsOpen(false) }
+  const closeMenu  = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false); setIsMobileProductsOpen(false); setIsServicesOpen(false); setIsProductsOpen(false) }
 
   const openDropdown = (id?: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
-    if (id === 'products') setIsProductsOpen(true)
-    else setIsServicesOpen(true)
+    if (id === 'products') {
+      setIsProductsOpen(true)
+      setIsServicesOpen(false)
+    } else {
+      setIsServicesOpen(true)
+      setIsProductsOpen(false)
+    }
   }
   const closeDropdown = (id?: string) => {
     closeTimer.current = setTimeout(() => {
       if (id === 'products') setIsProductsOpen(false)
       else setIsServicesOpen(false)
     }, 180)
+  }
+
+  const toggleDropdown = (id?: string) => {
+    // allow click-to-open on desktop (useful for touch laptops)
+    if (id === 'products') {
+      setIsProductsOpen((v) => !v)
+      setIsServicesOpen(false)
+    } else {
+      setIsServicesOpen((v) => !v)
+      setIsProductsOpen(false)
+    }
   }
 
   // Returns true when this nav link should be underlined as active
@@ -155,7 +173,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
   }
 
   useEffect(() => {
-    const handleResize = () => { if (window.innerWidth >= 786) closeMenu() }
+    const handleResize = () => { if (window.innerWidth >= MD_BREAKPOINT) closeMenu() }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
@@ -190,6 +208,13 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                   onMouseLeave={() => closeDropdown(link.dropdownId)}>
                   <Link
                     href={link.href}
+                    onClick={(e) => {
+                      // On desktop/touch devices keep click from navigating and toggle dropdown instead
+                      if (typeof window !== 'undefined' && window.innerWidth >= MD_BREAKPOINT) {
+                        e.preventDefault()
+                        toggleDropdown(link.dropdownId)
+                      }
+                    }}
                     className={`navlink flex items-center gap-1${isActive(link.href) ? ' active' : ''}`}
                   >
                     {link.label}
