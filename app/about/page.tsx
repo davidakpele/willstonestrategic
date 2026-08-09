@@ -63,33 +63,6 @@ const VALUES = [
   },
 ]
 
-const LEADERSHIP = [
-  {
-    name: 'David Akpele',
-    title: 'Founder & CEO/MD',
-    bio: 'A seasoned entrepreneur with over 15 years of experience spanning technology, trade, and infrastructure across West Africa.',
-    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Chidinma Okafor',
-    title: 'Chief Operating Officer',
-    bio: 'Operations expert with a track record of scaling multi-sector businesses in demanding emerging-market environments.',
-    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Emeka Nwosu',
-    title: 'Director, Engineering & Infrastructure',
-    bio: 'Chartered engineer with deep expertise in large-scale infrastructure delivery, energy systems, and facility management.',
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Fatima Al-Hassan',
-    title: 'Director, Trade & Logistics',
-    bio: 'International trade specialist with a decade of experience managing complex import/export operations across three continents.',
-    img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
-  },
-]
-
 export default function AboutPage() {
   return (
     <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
@@ -261,45 +234,6 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-semibold text-[15px] mb-2" style={{ color: 'var(--ink)' }}>{v.title}</h3>
                 <p className="text-slate-500 text-[13px] leading-relaxed max-w-[220px]">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── LEADERSHIP ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
-        <div className="max-w-6xl mx-auto">
-
-          <div className="text-center max-w-lg mx-auto mb-14">
-            <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
-              <span className="gold-rule" /> LEADERSHIP <span className="gold-rule" />
-            </p>
-            <h2 className="display font-semibold text-[26px] sm:text-[30px]" style={{ color: 'var(--ink)' }}>
-              The people behind Willstone
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LEADERSHIP.map((person) => (
-              <div key={person.name} className="about-leader-card group">
-                <div className="relative aspect-[3/3.2] overflow-hidden rounded-xl mb-4">
-                  <Image
-                    src={person.img}
-                    alt={person.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* bottom gradient */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: 'linear-gradient(180deg, transparent 55%, rgba(11,27,51,.65) 100%)' }}
-                  />
-                </div>
-                <p className="font-semibold text-[15px]" style={{ color: 'var(--ink)' }}>{person.name}</p>
-                <p className="text-[12px] font-medium mt-0.5 mb-2" style={{ color: 'var(--gold)' }}>{person.title}</p>
-                <p className="text-slate-500 text-[12.5px] leading-relaxed">{person.bio}</p>
               </div>
             ))}
           </div>
