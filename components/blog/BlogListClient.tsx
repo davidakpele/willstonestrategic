@@ -32,8 +32,8 @@ export default function BlogListClient({ posts }: { posts: Post[] }) {
   const popular = posts.slice(0, 3)
 
   return (
-    <div className="grid lg:grid-cols-3 gap-8">
-      <div className="lg:col-span-2">
+    <div className="grid md:grid-cols-3 gap-8">
+      <div className="md:col-span-2">
         <div className="flex items-center justify-between mb-6">
           <h2 className="font-semibold text-[18px]">Latest Articles</h2>
           <div>

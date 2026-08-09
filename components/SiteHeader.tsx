@@ -155,16 +155,16 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
   }
 
   useEffect(() => {
-    const handleResize = () => { if (window.innerWidth >= 1024) closeMenu() }
+    const handleResize = () => { if (window.innerWidth >= 768) closeMenu() }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 lg:px-8 lg:pt-5">
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:px-8 md:pt-5">
         <div
-          className="mx-auto flex items-center justify-between px-5 lg:px-8 py-3"
+          className="mx-auto flex items-center justify-between px-5 md:px-8 py-3"
           style={{
             maxWidth: '56rem',
             background: 'rgba(11,27,51,0.92)',
@@ -180,7 +180,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
           <Link href="/" className="site-logo cursor-pointer" aria-label="Willstone Strategic Industries Limited" />
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6 text-[13px] text-white/85 font-medium">
+          <nav className="hidden md:flex items-center gap-6 text-[13px] text-white/85 font-medium">
             {NAV_LINKS.map((link) =>
               link.hasDropdown ? (
                 <div
@@ -301,7 +301,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
           {/* CTA button → contact page */}
           <Link
             href="/contact"
-            className="hidden lg:inline-flex items-center gap-2 btn-gold text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide"
+            className="hidden md:inline-flex items-center gap-2 btn-gold text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide"
           >
             Contact Us
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -312,7 +312,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
           {/* Hamburger */}
           <button
             id="menu-btn"
-            className={`lg:hidden text-white relative w-8 h-8 flex flex-col items-center justify-center gap-[5px] cursor-pointer hamburger${isMenuOpen ? ' is-open' : ''}`}
+            className={`md:hidden text-white relative w-8 h-8 flex flex-col items-center justify-center gap-[5px] cursor-pointer hamburger${isMenuOpen ? ' is-open' : ''}`}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -327,7 +327,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
 
       {/* Backdrop */}
       <div
-        className={`drawer-backdrop lg:hidden${isMenuOpen ? ' open' : ''}`}
+        className={`drawer-backdrop md:hidden${isMenuOpen ? ' open' : ''}`}
         onClick={closeMenu}
         aria-hidden="true"
       />
@@ -335,7 +335,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
       {/* Drawer */}
       <div
         id="mobile-menu"
-        className={`drawer lg:hidden${isMenuOpen ? ' open' : ''}`}
+        className={`drawer md:hidden${isMenuOpen ? ' open' : ''}`}
         aria-label="Mobile navigation"
       >
         {/* Drawer header */}
