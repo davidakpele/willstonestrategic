@@ -1,5 +1,3 @@
-[the same content already in repo — updated only the numeric breakpoint check to 786]
-
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
