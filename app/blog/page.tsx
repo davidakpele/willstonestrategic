@@ -1,44 +1,92 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Space_Grotesk, Inter } from 'next/font/google'
-import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-
-export const metadata: Metadata = {
-  title: 'Blog | Willstone Strategic Industries Limited',
-  description: 'Insights, updates and articles from Willstone Strategic Industries.',
-}
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
-const inter = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
+import BlogHero from '@/components/blog/BlogHero'
+import NewsletterCTA from '@/components/blog/NewsletterCTA'
+import BlogListClient from '@/components/blog/BlogListClient'
+import '../willstone.css'
 
 const POSTS = [
-  { title: 'Introducing Willstone: Building Solutions, Delivering Impact', href: '/blog/first-post', excerpt: 'A quick overview of our mission and the industries we serve.' },
+  {
+    id: 'global-connections',
+    title: 'Global Connections, Local Impact',
+    category: 'Industry Insights',
+    date: 'May 20, 2024',
+    readTime: '5 min read',
+    excerpt: 'How strategic partnerships and global networks drive sustainable growth and long-term value.',
+    image: '/assets/images/about-banner.png',
+    href: '/blog/global-connections-local-impact',
+  },
+  {
+    id: 'building-supply-chains',
+    title: 'Building Resilient Supply Chains',
+    category: 'Logistics & Supply Chain',
+    date: 'May 15, 2024',
+    readTime: '6 min read',
+    excerpt: 'Best practices for creating agile and resilient supply chains in a dynamic global market.',
+    image: '/assets/images/contact-us-image.png',
+    href: '/blog/building-resilient-supply-chains',
+  },
+  {
+    id: 'partnerships-drive-progress',
+    title: 'Partnerships That Drive Progress',
+    category: 'Business Strategy',
+    date: 'May 10, 2024',
+    readTime: '4 min read',
+    excerpt: 'Why collaboration and trust are at the heart of every successful business.',
+    image: '/assets/images/NavItem.png',
+    href: '/blog/partnerships-that-drive-progress',
+  },
+  {
+    id: 'sustainable-solutions',
+    title: 'Sustainable Solutions for a Better Tomorrow',
+    category: 'Sustainability',
+    date: 'May 5, 2024',
+    readTime: '5 min read',
+    excerpt: "Our commitment to responsible practices and a sustainable future for communities.",
+    image: '/assets/images/about.png',
+    href: '/blog/sustainable-solutions-better-tomorrow',
+  },
+  {
+    id: 'innovation-core',
+    title: 'Innovation at the Core of What We Do',
+    category: 'Innovation',
+    date: 'Apr 28, 2024',
+    readTime: '4 min read',
+    excerpt: 'Leveraging innovation and technology to deliver smarter solutions for our clients.',
+    image: '/assets/images/about-banner.png',
+    href: '/blog/innovation-at-core',
+  },
+  {
+    id: 'willstone-business-update',
+    title: 'Willstone Business Update - Q2 2024',
+    category: 'Company News',
+    date: 'Apr 20, 2024',
+    readTime: '3 min read',
+    excerpt: 'A look at our recent milestones, expansions, and the road ahead.',
+    image: '/assets/images/contact-us-image.png',
+    href: '/blog/willstone-business-update-q2-2024',
+  },
 ]
+
+export const metadata = {
+  title: 'Blog | Willstone Strategic Industries Limited',
+  description: 'Insights, ideas, and impact from Willstone — industry updates, thought leadership, and company news.',
+}
 
 export default function BlogPage() {
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+    <div>
       <SiteHeader variant="solid" />
 
-      <main style={{ paddingTop: 96 }} className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 py-16">
-        <header className="text-center mb-10">
-          <p className="eyebrow text-[11px] font-semibold mb-3" style={{ color: 'var(--gold)' }}>BLOG</p>
-          <h1 className="display font-semibold text-[28px]" style={{ color: 'var(--ink)' }}>Insights & Updates</h1>
-          <p className="text-slate-500 mt-3 max-w-2xl mx-auto">Thought leadership, company news and insights from across our sectors.</p>
-        </header>
+      <BlogHero />
 
-        <div className="space-y-6">
-          {POSTS.map((p) => (
-            <article key={p.href} className="contact-card">
-              <h3 className="font-semibold text-[18px] mb-1"><Link href={p.href}>{p.title}</Link></h3>
-              <p className="text-slate-500 mb-3">{p.excerpt}</p>
-              <Link href={p.href} className="text-[13px] font-semibold" style={{ color: 'var(--gold)' }}>Read article →</Link>
-            </article>
-          ))}
-        </div>
+      <main className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-12">
+        {/* Blog list + sidebar client-side */}
+        <BlogListClient posts={POSTS} />
       </main>
+
+      <NewsletterCTA />
 
       <SiteFooter />
     </div>
