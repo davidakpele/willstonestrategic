@@ -7,7 +7,9 @@ import { usePathname } from 'next/navigation'
 const NAV_LINKS = [
   { href: '/',                label: 'HOME' },
   { href: '/about',           label: 'ABOUT US' },
-  { href: '#',        label: 'OUR SERVICES', hasDropdown: true },
+  { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
+  { href: '#',                label: 'PRODUCTS', hasDropdown: true, dropdownId: 'products' },
+  { href: '/blog',            label: 'BLOG' },
   { href: '/contact',         label: 'CONTACT' },
 ]
 
@@ -17,6 +19,12 @@ const SERVICES_DROPDOWN = [
   { label: 'Information Technology & Software Development', href: '/services/information-technology' },
   { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
   { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
+]
+
+const PRODUCTS_DROPDOWN = [
+  { label: 'Agri Inputs',        href: '/products/agri-inputs' },
+  { label: 'Power Systems',      href: '/products/power-systems' },
+  { label: 'Logistics Platform', href: '/products/logistics-platform' },
 ]
 
 // ── Desktop mega-menu data ───────────────────────────────────────────────────
@@ -65,12 +73,50 @@ const MEGA_SERVICES = [
   },
 ]
 
+const MEGA_PRODUCTS = [
+  {
+    label: 'Agri Inputs',
+    href: '/products/agri-inputs',
+    desc: 'Seeds, fertilizers and farm inputs sourced and distributed across Nigeria.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M12 2l4 4-4 4-4-4 4-4z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Power & Energy',
+    href: '/products/power-systems',
+    desc: 'Modular power solutions, generators and solar systems for commercial and industrial use.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Logistics Platform',
+    href: '/products/logistics-platform',
+    desc: 'Digital and physical logistics services to connect suppliers and markets efficiently.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M3 7h18M3 12h12M3 17h6"/>
+      </svg>
+    ),
+  },
+]
+
 const MEGA_QUICK_LINKS = [
   { label: 'About Willstone',    href: '/about' },
   { label: 'Partner With Us',    href: '/contact' },
   { label: 'Our Track Record',   href: '/about#track-record' },
   { label: 'Industries We Serve',href: '/#industries' },
   { label: 'Request a Proposal', href: '/contact' },
+]
+
+const MEGA_PRODUCT_QUICK_LINKS = [
+  { label: 'Products Overview', href: '/products' },
+  { label: 'Contact Sales',     href: '/contact' },
 ]
 
 interface SiteHeaderProps {
@@ -81,18 +127,24 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen]                     = useState(false)
   const [isServicesOpen, setIsServicesOpen]             = useState(false)
+  const [isProductsOpen, setIsProductsOpen]             = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const toggleMenu = () => setIsMenuOpen((open) => !open)
-  const closeMenu  = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false) }
+  const closeMenu  = () => { setIsMenuOpen(false); setIsMobileServicesOpen(false); setIsMobileProductsOpen(false) }
 
-  const openDropdown  = () => {
+  const openDropdown = (id?: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
-    setIsServicesOpen(true)
+    if (id === 'products') setIsProductsOpen(true)
+    else setIsServicesOpen(true)
   }
-  const closeDropdown = () => {
-    closeTimer.current = setTimeout(() => setIsServicesOpen(false), 180)
+  const closeDropdown = (id?: string) => {
+    closeTimer.current = setTimeout(() => {
+      if (id === 'products') setIsProductsOpen(false)
+      else setIsServicesOpen(false)
+    }, 180)
   }
 
   // Returns true when this nav link should be underlined as active
@@ -132,10 +184,10 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
             {NAV_LINKS.map((link) =>
               link.hasDropdown ? (
                 <div
-                  key={link.href}
+                  key={link.href + link.label}
                   className="relative"
-                  onMouseEnter={openDropdown}
-                  onMouseLeave={closeDropdown}>
+                  onMouseEnter={() => openDropdown(link.dropdownId)}
+                  onMouseLeave={() => closeDropdown(link.dropdownId)}>
                   <Link
                     href={link.href}
                     className={`navlink flex items-center gap-1${isActive(link.href) ? ' active' : ''}`}
@@ -144,15 +196,17 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                     <svg
                       width="12" height="12" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" strokeWidth="2.5"
-                      style={{ transform: isServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }}
+                      style={{ transform: (link.dropdownId === 'products' ? isProductsOpen : isServicesOpen) ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }}
                     >
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </Link>
+
+                  {/* dropdown panels */}
                   <div
-                    className={`mega-dropdown${isServicesOpen ? ' open' : ''}`}
-                    onMouseEnter={openDropdown}
-                    onMouseLeave={closeDropdown}
+                    className={`mega-dropdown${(link.dropdownId === 'products' ? isProductsOpen : isServicesOpen) ? ' open' : ''}`}
+                    onMouseEnter={() => openDropdown(link.dropdownId)}
+                    onMouseLeave={() => closeDropdown(link.dropdownId)}
                   >
                     {/* ── Left panel ── */}
                     <div className="mega-left">
@@ -169,17 +223,19 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                       {/* content sits above image */}
                       <div className="mega-left-content">
                         <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>
-                          Our Services
+                          {link.dropdownId === 'products' ? 'Our Products' : 'Our Services'}
                         </p>
                         <h3 className="text-[18px] font-bold text-white leading-snug mb-3">
-                          What We<br />Deliver
+                          {link.dropdownId === 'products' ? 'Products & Solutions' : 'What We\nDeliver'}
                         </h3>
                         <p className="text-[12.5px] text-white/65 leading-relaxed mb-6">
-                          Willstone drives growth across industries from farm to digital infrastructure and beyond.
+                          {link.dropdownId === 'products'
+                            ? 'Products that complement our services and deliver practical value to clients.'
+                            : 'Willstone drives growth across industries from farm to digital infrastructure and beyond.'}
                         </p>
                         <Link
                           href="/contact"
-                          onClick={() => setIsServicesOpen(false)}
+                          onClick={() => { if (link.dropdownId === 'products') setIsProductsOpen(false); else setIsServicesOpen(false) }}
                           className="mt-auto inline-flex items-center gap-2 text-[12px] font-semibold rounded-full px-4 py-2 cursor-pointer"
                           style={{ background: 'var(--gold)', color: '#1a1408' }}
                         >
@@ -191,13 +247,13 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                       </div>
                     </div>
 
-                    {/* ── Middle panel: service cards ── */}
+                    {/* ── Middle panel: cards ── */}
                     <div className="mega-cards">
-                      {MEGA_SERVICES.map((svc) => (
+                      {(link.dropdownId === 'products' ? MEGA_PRODUCTS : MEGA_SERVICES).map((svc) => (
                         <Link
                           key={svc.href}
                           href={svc.href}
-                          onClick={() => setIsServicesOpen(false)}
+                          onClick={() => { if (link.dropdownId === 'products') setIsProductsOpen(false); else setIsServicesOpen(false) }}
                           className={`mega-card${pathname === svc.href || pathname.startsWith(svc.href + '/') ? ' active' : ''}`}
                         >
                           <span className="mega-card-icon">{svc.icon}</span>
@@ -215,14 +271,14 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                         Quick Links
                       </p>
                       <ul className="flex flex-col gap-0.5">
-                        {MEGA_QUICK_LINKS.map((link) => (
-                          <li key={link.label + link.href}>
+                        {(link.dropdownId === 'products' ? MEGA_PRODUCT_QUICK_LINKS : MEGA_QUICK_LINKS).map((l) => (
+                          <li key={l.label + l.href}>
                             <Link
-                              href={link.href}
-                              onClick={() => setIsServicesOpen(false)}
+                              href={l.href}
+                              onClick={() => { if (link.dropdownId === 'products') setIsProductsOpen(false); else setIsServicesOpen(false) }}
                               className="mega-quick-link"
                             >
-                              {link.label}
+                              {l.label}
                             </Link>
                           </li>
                         ))}
@@ -300,22 +356,25 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
         <nav className="flex flex-col px-6 py-4 gap-1 text-[14px] text-white/85 font-medium overflow-y-auto flex-1">
           {NAV_LINKS.map((link) =>
             link.hasDropdown ? (
-              <div key={link.href} className="border-b border-white/8">
+              <div key={link.href + link.label} className="border-b border-white/8">
                 <button
                   className="w-full flex items-center justify-between py-3.5 cursor-pointer"
-                  onClick={() => setIsMobileServicesOpen((o) => !o)}
+                  onClick={() => {
+                    if (link.dropdownId === 'products') setIsMobileProductsOpen((o) => !o)
+                    else setIsMobileServicesOpen((o) => !o)
+                  }}
                 >
                   <span style={{ color: isActive(link.href) ? 'var(--gold-light)' : undefined }}>{link.label}</span>
                   <svg
                     width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2.5"
-                    style={{ transform: isMobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}
+                    style={{ transform: (link.dropdownId === 'products' ? isMobileProductsOpen : isMobileServicesOpen) ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}
                   >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
-                <div className={`mobile-submenu${isMobileServicesOpen ? ' open' : ''}`}>
-                  {SERVICES_DROPDOWN.map((item) => (
+                <div className={`mobile-submenu${link.dropdownId === 'products' ? (isMobileProductsOpen ? ' open' : '') : (isMobileServicesOpen ? ' open' : '')}`}>
+                  {(link.dropdownId === 'products' ? PRODUCTS_DROPDOWN : SERVICES_DROPDOWN).map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
