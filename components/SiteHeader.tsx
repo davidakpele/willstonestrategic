@@ -437,7 +437,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
             onClick={closeMenu}
             className="flex items-center justify-center gap-2 btn-gold text-[13px] font-semibold px-5 py-3 rounded-full cursor-pointer w-full"
           >
-            PARTNER WITH US
+            CONTACT US
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
