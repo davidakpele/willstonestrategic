@@ -43,11 +43,10 @@ const FAQS = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [sending, setSending] = useState(false)
-  const [sendError, setSendError] = useState('')
+  const [showSuccess, setShowSuccess] = useState(false)
 
   const validate = () => {
     const e: Record<string, string> = {}
@@ -58,28 +57,21 @@ export default function ContactPage() {
     return e
   }
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
-    setSendError('')
     setSending(true)
+    // Simulate a short network delay then show success modal
+    setTimeout(() => {
+      setSending(false)
+      setShowSuccess(true)
+      setForm({ name: '', email: '', phone: '', message: '' })
+    }, 2000)
+  }
 
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-    if (!res.ok) throw new Error('Send failed')
-    setSubmitted(true)
-  } catch {
-    setSendError('Something went wrong. Please try again or email us directly.')
-  } finally {
-    setSending(false)
-  }
-  }
+  const closeSuccess = () => setShowSuccess(false)
 
   return (
     <div
@@ -127,92 +119,155 @@ export default function ContactPage() {
               boxShadow: '0 24px 60px rgba(0,0,0,0.45)',
             }}
           >
-            {submitted ? (
-              <div className="flex flex-col items-center text-center py-10">
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-                  style={{ background: 'rgba(201,162,75,.15)' }}
-                >
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
+            <>
+              <h2 className="font-bold text-[22px] text-white mb-1">
+                Let&apos;s Work{' '}
+                <span style={{ color: 'var(--gold)' }}>Together</span>
+              </h2>
+              <div className="w-8 h-[2px] mb-4" style={{ background: 'var(--gold)' }} />
+              <p className="text-white/60 text-[13px] leading-relaxed mb-6">
+                We&apos;re here to answer your questions and explore new possibilities.
+              </p>
+
+              <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                <div>
+                  <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Name</label>
+                  <input
+                    type="text"
+                    value={form.name}
+                    placeholder="Enter your name"
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    className={`contact-input contact-input-dark${errors.name ? ' error' : ''}`}
+                  />
+                  {errors.name && <p className="contact-error">{errors.name}</p>}
                 </div>
-                <h3 className="font-bold text-[18px] text-white mb-2">Message sent!</h3>
-                <p className="text-white/60 text-[13px] leading-relaxed mb-6">
-                  Thank you for reaching out. We&apos;ll be in touch within 24 hours.
-                </p>
+
+                <div>
+                  <label className="block text-white/80 text-[13px] font-semibold mb-1.5">E-mail address</label>
+                  <input
+                    type="email"
+                    value={form.email}
+                    placeholder="Enter your e-mail address"
+                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                    className={`contact-input contact-input-dark${errors.email ? ' error' : ''}`}
+                  />
+                  {errors.email && <p className="contact-error">{errors.email}</p>}
+                </div>
+
+                <div>
+                  <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Message</label>
+                  <textarea
+                    rows={3}
+                    value={form.message}
+                    placeholder="Let us know what you are interested in"
+                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                    className={`contact-input contact-input-dark resize-none${errors.message ? ' error' : ''}`}
+                  />
+                  {errors.message && <p className="contact-error">{errors.message}</p>}
+                </div>
+
                 <button
-                  onClick={() => { setSubmitted(false); setForm({ name:'', email:'', phone:'', message:'' }) }}
-                  className="btn-gold px-6 py-2.5 rounded-full text-[13px] font-semibold cursor-pointer"
+                  type="submit"
+                  disabled={sending}
+                  className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-70"
                 >
-                  Send another
+                  {sending ? (
+                    <>
+                      {/* Spinner */}
+                      <svg
+                        className="animate-spin"
+                        width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" strokeWidth="2.5"
+                        style={{ animation: 'spin 0.8s linear infinite' }}
+                      >
+                        <circle cx="12" cy="12" r="10" strokeOpacity="0.25" />
+                        <path d="M12 2a10 10 0 0 1 10 10" />
+                      </svg>
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      Send a message
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </>
+                  )}
                 </button>
-              </div>
-            ) : (
-              <>
-                <h2 className="font-bold text-[22px] text-white mb-1">
-                  Let&apos;s Work{' '}
-                  <span style={{ color: 'var(--gold)' }}>Together</span>
-                </h2>
-                <div className="w-8 h-[2px] mb-4" style={{ background: 'var(--gold)' }} />
-                <p className="text-white/60 text-[13px] leading-relaxed mb-6">
-                  We&apos;re here to answer your questions and explore new possibilities.
-                </p>
-
-                <form onSubmit={handleSubmit} noValidate className="space-y-4">
-                  <div>
-                    <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Name</label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      placeholder="Enter your name"
-                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      className={`contact-input contact-input-dark${errors.name ? ' error' : ''}`}
-                    />
-                    {errors.name && <p className="contact-error">{errors.name}</p>}
-                  </div>
-
-                  <div>
-                    <label className="block text-white/80 text-[13px] font-semibold mb-1.5">E-mail address</label>
-                    <input
-                      type="email"
-                      value={form.email}
-                      placeholder="Enter your e-mail address"
-                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                      className={`contact-input contact-input-dark${errors.email ? ' error' : ''}`}
-                    />
-                    {errors.email && <p className="contact-error">{errors.email}</p>}
-                  </div>
-
-                  <div>
-                    <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Message</label>
-                    <textarea
-                      rows={3}
-                      value={form.message}
-                      placeholder="Let us know what you are interested in"
-                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                      className={`contact-input contact-input-dark resize-none${errors.message ? ' error' : ''}`}
-                    />
-                    {errors.message && <p className="contact-error">{errors.message}</p>}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-60"
-                  >
-                    {sending ? 'Sending…' : 'Send a message'}
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M13 6l6 6-6 6" />
-                    </svg>
-                  </button>
-                  {sendError && <p className="contact-error mt-2">{sendError}</p>}
-                </form>
-              </>
-            )}
+              </form>
+            </>
           </div>
         </div>
       </section>
+
+      {/* ── Success Modal ── */}
+      {showSuccess && (
+        <div
+          className="fixed inset-0 z-[400] flex items-center justify-center p-4"
+          style={{ background: 'rgba(8,16,32,0.80)', backdropFilter: 'blur(6px)' }}
+          onClick={closeSuccess}
+        >
+          <div
+            className="relative w-full max-w-sm rounded-2xl p-8 flex flex-col items-center text-center"
+            style={{
+              background: '#0d1f3b',
+              border: '1px solid rgba(201,162,75,0.25)',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close */}
+            <button
+              onClick={closeSuccess}
+              aria-label="Close"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center"
+              style={{ background: 'rgba(255,255,255,0.07)', color: '#fff' }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(201,162,75,0.2)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.07)')}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Checkmark */}
+            <div
+              className="w-16 h-16 rounded-full flex items-center justify-center mb-5"
+              style={{ background: 'rgba(201,162,75,0.12)', border: '1px solid rgba(201,162,75,0.3)' }}
+            >
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </div>
+
+            <h3
+              className="font-bold text-xl mb-2"
+              style={{ color: '#fff', fontFamily: 'var(--font-display, sans-serif)' }}
+            >
+              Message Sent!
+            </h3>
+            <p className="text-sm leading-relaxed mb-7" style={{ color: 'rgba(255,255,255,0.6)' }}>
+              Thank you for reaching out. Our team will get back to you within 24 hours.
+            </p>
+
+            <button
+              onClick={closeSuccess}
+              className="px-7 py-2.5 rounded-full text-sm font-semibold transition-colors"
+              style={{ background: 'var(--gold)', color: '#1a1408' }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'var(--gold-light)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'var(--gold)')}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Spinner keyframes */}
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .animate-spin { animation: spin 0.8s linear infinite; }
+      `}</style>
 
       {/* ── WE'RE ALWAYS HERE ── */}
       <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">

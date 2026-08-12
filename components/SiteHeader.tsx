@@ -26,7 +26,6 @@ const SERVICES_DROPDOWN = [
 const PRODUCTS_DROPDOWN = [
   { label: 'Agri Inputs',        href: '/products/agri-inputs' },
   { label: 'Power Systems',      href: '/products/power-systems' },
-  { label: 'Logistics Platform', href: '/products/logistics-platform' },
 ]
 
 // ── Desktop mega-menu data ───────────────────────────────────────────────────
@@ -35,10 +34,14 @@ const MEGA_SERVICES = [
     label: 'Agriculture & Agribusiness',
     href: '/services/agriculture-agribusiness',
     desc: 'End-to-end supply chain, commodity trading, and agri-processing solutions across West Africa.',
+    iconBg: '#dcfce7',
+    iconColor: '#16a34a',
+    cardBg: '#f0fdf4',
+    cardBorder: '#bbf7d0',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-        <path d="M12 6v6l4 2"/>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 2C6 2 3 8 3 12c0 2.5 1.5 5 3 6.5L12 22l6-3.5C19.5 17 21 14.5 21 12c0-4-3-10-9-10z"/>
+        <path d="M12 8v8M8 12h8"/>
       </svg>
     ),
   },
@@ -46,8 +49,12 @@ const MEGA_SERVICES = [
     label: 'Information Technology & Software Development',
     href: '/services/information-technology',
     desc: 'Custom software, enterprise platforms, and digital transformation for modern businesses.',
+    iconBg: '#dbeafe',
+    iconColor: '#2563eb',
+    cardBg: '#eff6ff',
+    cardBorder: '#bfdbfe',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="2" y="3" width="20" height="14" rx="2"/>
         <path d="M8 21h8M12 17v4"/>
       </svg>
@@ -57,8 +64,12 @@ const MEGA_SERVICES = [
     label: 'Electrical & Electronic Solutions',
     href: '/services/electrical-electronic',
     desc: 'Industrial electrical systems, automation engineering, and power infrastructure.',
+    iconBg: '#fef9c3',
+    iconColor: '#ca8a04',
+    cardBg: '#fefce8',
+    cardBorder: '#fde68a',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
       </svg>
     ),
@@ -67,8 +78,12 @@ const MEGA_SERVICES = [
     label: 'Defence, Security & Protective Solutions',
     href: '/services/defence-security',
     desc: 'Integrated security systems, surveillance, and protective equipment for critical assets.',
+    iconBg: '#fee2e2',
+    iconColor: '#dc2626',
+    cardBg: '#fff1f2',
+    cardBorder: '#fecdd3',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
@@ -77,43 +92,42 @@ const MEGA_SERVICES = [
 
 const MEGA_PRODUCTS = [
   {
-    label: 'Agri Inputs',
+    label: 'Agri Inputs & Commodities',
     href: '/products/agri-inputs',
-    desc: 'Seeds, fertilizers and farm inputs sourced and distributed across Nigeria.',
+    desc: 'Premium agricultural commodities sourced, graded and supplied across Nigeria and international markets.',
+    iconBg: '#dcfce7',
+    iconColor: '#16a34a',
+    cardBg: '#f0fdf4',
+    cardBorder: '#bbf7d0',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2l4 4-4 4-4-4 4-4z" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 2C6 2 3 8 3 12c0 2.5 1.5 5 3 6.5L12 22l6-3.5C19.5 17 21 14.5 21 12c0-4-3-10-9-10z"/>
+        <path d="M12 8v8M8 12h8"/>
       </svg>
     ),
   },
   {
-    label: 'Power & Energy',
+    label: 'Power & Energy Solutions',
     href: '/products/power-systems',
-    desc: 'Modular power solutions, generators and solar systems for commercial and industrial use.',
+    desc: 'Solar panels, batteries, and energy-saving appliances for homes, businesses and off-grid communities.',
+    iconBg: '#fef9c3',
+    iconColor: '#ca8a04',
+    cardBg: '#fefce8',
+    cardBorder: '#fde68a',
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-      </svg>
-    ),
-  },
-  {
-    label: 'Logistics Platform',
-    href: '/products/logistics-platform',
-    desc: 'Digital and physical logistics services to connect suppliers and markets efficiently.',
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M3 7h18M3 12h12M3 17h6"/>
       </svg>
     ),
   },
 ]
 
 const MEGA_QUICK_LINKS = [
-  { label: 'About Willstone',    href: '/about' },
-  { label: 'Partner With Us',    href: '/contact' },
-  { label: 'Our Track Record',   href: '/about#track-record' },
-  { label: 'Industries We Serve',href: '/#industries' },
-  { label: 'Request a Proposal', href: '/contact' },
+  { label: 'About Willstone',     href: '/about' },
+  { label: 'Partner With Us',     href: '/contact' },
+  { label: 'Our Track Record',    href: '/about#track-record' },
+  { label: 'Industries We Serve', href: '/#industries' },
+  { label: 'Request a Proposal',  href: '/contact' },
 ]
 
 const MEGA_PRODUCT_QUICK_LINKS = [
@@ -235,23 +249,14 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                   >
                     {/* ── Left panel ── */}
                     <div className="mega-left">
-                      {/* background image */}
-                      <img
-                        src="/assets/images/NavItem.png"
-                        alt=""
-                        aria-hidden="true"
-                        className="mega-left-bg"
-                      />
-                      {/* navy + blur colour overlay */}
+                      <img src="/assets/images/NavItem.png" alt="" aria-hidden="true" className="mega-left-bg" />
                       <div className="mega-left-overlay" />
-
-                      {/* content sits above image */}
                       <div className="mega-left-content">
                         <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>
                           {link.dropdownId === 'products' ? 'Our Products' : 'Our Services'}
                         </p>
                         <h3 className="text-[18px] font-bold text-white leading-snug mb-3">
-                          {link.dropdownId === 'products' ? 'Products & Solutions' : 'What We\nDeliver'}
+                          {link.dropdownId === 'products' ? 'Products & Solutions' : 'What We Deliver'}
                         </h3>
                         <p className="text-[12.5px] text-white/65 leading-relaxed mb-6">
                           {link.dropdownId === 'products'
@@ -272,36 +277,95 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                       </div>
                     </div>
 
-                    {/* ── Middle panel: cards ── */}
-                    <div className="mega-cards">
-                      {(link.dropdownId === 'products' ? MEGA_PRODUCTS : MEGA_SERVICES).map((svc) => (
-                        <Link
-                          key={svc.href}
-                          href={svc.href}
-                          onClick={() => { if (link.dropdownId === 'products') setIsProductsOpen(false); else setIsServicesOpen(false) }}
-                          className={`mega-card${pathname === svc.href || pathname.startsWith(svc.href + '/') ? ' active' : ''}`}
-                        >
-                          <span className="mega-card-icon">{svc.icon}</span>
-                          <div>
-                            <p className="text-[13px] font-semibold text-white mb-0.5 leading-tight">{svc.label}</p>
-                            <p className="text-[11.5px] text-white/55 leading-relaxed">{svc.desc}</p>
-                          </div>
-                        </Link>
-                      ))}
+                    {/* ── Middle panel: white bg, colored card backgrounds ── */}
+                    <div style={{ background: '#ffffff', padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      {(link.dropdownId === 'products' ? MEGA_PRODUCTS : MEGA_SERVICES).map((svc) => {
+                        const isCurrentPage = pathname === svc.href || pathname.startsWith(svc.href + '/')
+                        return (
+                          <Link
+                            key={svc.href}
+                            href={svc.href}
+                            onClick={() => { if (link.dropdownId === 'products') setIsProductsOpen(false); else setIsServicesOpen(false) }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              gap: '12px',
+                              padding: '11px 13px',
+                              borderRadius: '10px',
+                              textDecoration: 'none',
+                              background: svc.cardBg,
+                              border: `1px solid ${isCurrentPage ? svc.iconColor + '55' : svc.cardBorder}`,
+                              opacity: isCurrentPage ? 1 : 0.92,
+                              transition: 'opacity 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease',
+                              boxShadow: isCurrentPage ? `0 0 0 2px ${svc.iconColor}33` : 'none',
+                            }}
+                            onMouseEnter={e => {
+                              const el = e.currentTarget as HTMLElement
+                              el.style.opacity = '1'
+                              el.style.borderColor = svc.iconColor + '88'
+                              el.style.boxShadow = `0 2px 12px ${svc.iconColor}22`
+                            }}
+                            onMouseLeave={e => {
+                              const el = e.currentTarget as HTMLElement
+                              el.style.opacity = isCurrentPage ? '1' : '0.92'
+                              el.style.borderColor = isCurrentPage ? svc.iconColor + '55' : svc.cardBorder
+                              el.style.boxShadow = isCurrentPage ? `0 0 0 2px ${svc.iconColor}33` : 'none'
+                            }}
+                          >
+                            {/* Colored icon chip */}
+                            <span
+                              style={{
+                                flexShrink: 0,
+                                width: 34,
+                                height: 34,
+                                borderRadius: 8,
+                                background: svc.iconBg,
+                                color: svc.iconColor,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginTop: 1,
+                              }}
+                            >
+                              {svc.icon}
+                            </span>
+                            <div>
+                              <p style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 2, lineHeight: 1.3 }}>{svc.label}</p>
+                              <p style={{ fontSize: 11.5, color: '#64748b', lineHeight: 1.5 }}>{svc.desc}</p>
+                            </div>
+                          </Link>
+                        )
+                      })}
                     </div>
 
                     {/* ── Right panel: quick links ── */}
-                    <div className="mega-right">
-                      <p className="text-[11px] font-semibold tracking-widest uppercase mb-4" style={{ color: 'var(--gold)' }}>
+                    <div style={{ background: '#ffffff', padding: '28px 22px 28px 20px', borderLeft: '1px solid #f1f5f9' }}>
+                      <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 16 }}>
                         Quick Links
                       </p>
-                      <ul className="flex flex-col gap-0.5">
+                      <ul style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                         {(link.dropdownId === 'products' ? MEGA_PRODUCT_QUICK_LINKS : MEGA_QUICK_LINKS).map((l) => (
                           <li key={l.label + l.href}>
                             <Link
                               href={l.href}
                               onClick={() => { if (link.dropdownId === 'products') setIsProductsOpen(false); else setIsServicesOpen(false) }}
-                              className="mega-quick-link"
+                              style={{
+                                display: 'block',
+                                padding: '7px 10px',
+                                fontSize: 13,
+                                color: '#334155',
+                                borderRadius: 6,
+                                textDecoration: 'none',
+                                transition: 'background 0.15s ease, color 0.15s ease',
+                              }}
+                              onMouseEnter={e => {
+                                (e.currentTarget as HTMLElement).style.background = '#f1f5f9'
+                                ;(e.currentTarget as HTMLElement).style.color = '#0f172a'
+                              }}
+                              onMouseLeave={e => {
+                                (e.currentTarget as HTMLElement).style.background = 'transparent'
+                                ;(e.currentTarget as HTMLElement).style.color = '#334155'
+                              }}
                             >
                               {l.label}
                             </Link>
@@ -326,7 +390,10 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
           {/* CTA button → contact page */}
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center gap-2 btn-gold text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide"
+            className="hidden md:inline-flex items-center gap-2 text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide transition-colors"
+            style={{ background: '#ffffff', color: 'var(--navy)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#f0f0f0' }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#ffffff' }}
           >
             Contact Us
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -645,7 +645,7 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* ── Middle panel ── */
 .mega-cards {
-  background: #0d1f3b;
+  background: #ffffff;
   padding: 20px 18px;
   display: flex;
   flex-direction: column;
@@ -659,22 +659,22 @@ html::-webkit-scrollbar-thumb:hover {
   gap: 12px;
   padding: 12px 14px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
+  background: transparent;
   border: 1px solid transparent;
   text-decoration: none;
   cursor: pointer;
   transition: background 0.18s ease, border-color 0.18s ease;
 }
 .mega-card:hover {
-  background: rgba(201, 162, 75, 0.09);
-  border-color: rgba(201, 162, 75, 0.25);
+  background: #f8f9fb;
+  border-color: #e2e8f0;
 }
 .mega-card.active {
-  background: rgba(201, 162, 75, 0.12);
-  border-color: rgba(201, 162, 75, 0.35);
+  background: #f0f4ff;
+  border-color: #c7d4ff;
 }
 .mega-card.active p:first-child {
-  color: var(--gold-light) !important;
+  color: #1e40af !important;
 }
 
 .mega-card-icon {
@@ -682,9 +682,6 @@ html::-webkit-scrollbar-thumb:hover {
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: rgba(201, 162, 75, 0.12);
-  border: 1px solid rgba(201, 162, 75, 0.2);
-  color: var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -695,11 +692,12 @@ html::-webkit-scrollbar-thumb:hover {
 .mega-right {
   background: #ffffff;
   padding: 28px 22px 28px 20px;
+  border-left: 1px solid #f1f5f9;
 }
 
 .mega-quick-link {
   display: block;
-  padding: 8px 10px;
+  padding: 7px 10px;
   font-size: 13px;
   color: #334155;
   border-radius: 6px;
@@ -708,8 +706,8 @@ html::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
 }
 .mega-quick-link:hover {
-  background: rgba(11, 27, 51, 0.06);
-  color: var(--navy);
+  background: #f1f5f9;
+  color: #0f172a;
   font-weight: 500;
 }
 
