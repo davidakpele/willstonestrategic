@@ -264,10 +264,7 @@ export default function ContactPage() {
       )}
 
       {/* Spinner keyframes */}
-      <style>{`
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .animate-spin { animation: spin 0.8s linear infinite; }
-      `}</style>
+      <style>{`\n        @keyframes spin { to { transform: rotate(360deg); } }\n        .animate-spin { animation: spin 0.8s linear infinite; }\n      `}</style>
 
       {/* ── WE'RE ALWAYS HERE ── */}
       <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
@@ -338,7 +335,7 @@ export default function ContactPage() {
           <div className="mt-10 rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: '420px' }}>
             <iframe
               title="Willstone Strategic Industries Limited location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.0!2d3.9!3d7.37!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1039ed2f0000001%3A0x1!2sIbadan%2C+Oyo+State%2C+Nig"
+              src="https://www.google.com/maps?q=20%20Cambridge%20House%2C%20Onireke%20Jericho%2C%20Ibadan%2C%20Oyo%20State%2C%20Nigeria&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
