@@ -30,39 +30,6 @@ const STATS = [
   { value: '85+',  label: 'Projects, Products & Services' },
 ]
 
-const VALUES = [
-  {
-    title: 'Excellence',
-    desc: 'We hold ourselves to the highest standards in every project, partnership, and solution we deliver.',
-    icon: '/assets/images/icons/phase-1.png',
-  },
-  {
-    title: 'Integrity',
-    desc: 'We build every relationship on a foundation of honesty, transparency, and accountability — no exceptions.',
-    icon: '/assets/images/icons/phase-2.png',
-  },
-  {
-    title: 'Innovation',
-    desc: 'We challenge conventional thinking and embrace new ideas to craft smarter, more sustainable solutions.',
-    icon: '/assets/images/icons/phase-3.png',
-  },
-  {
-    title: 'Impact',
-    desc: 'Our success is measured by the real difference we make in the lives of communities, clients, and countries.',
-    icon: '/assets/images/icons/phase-4.png',
-  },
-  {
-    title: 'Partnership',
-    desc: 'We treat every client as a long-term partner, investing in mutual growth and shared success.',
-    icon: '/assets/images/icons/phase-5.png',
-  },
-  {
-    title: 'Sustainability',
-    desc: 'We operate with a long-term mindset, ensuring our projects create value today without compromising tomorrow.',
-    icon: '/assets/images/icons/phase-6.png',
-  },
-]
-
 export default function AboutPage() {
   return (
     <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
@@ -203,40 +170,6 @@ export default function AboutPage() {
             </p>
           </div>
 
-        </div>
-      </section>
-
-      {/* ── VALUES ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-6xl mx-auto">
-
-          {/* section header */}
-          <div className="text-center max-w-lg mx-auto mb-14">
-            <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
-              <span className="gold-rule" /> OUR VALUES <span className="gold-rule" />
-            </p>
-            <h2 className="display font-semibold text-[26px] sm:text-[30px]" style={{ color: 'var(--ink)' }}>
-              What we stand for
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-12">
-            {VALUES.map((v) => (
-              <div key={v.title} className="flex flex-col items-center text-center">
-                <div className="mb-5">
-                  <Image
-                    src={v.icon}
-                    alt={v.title}
-                    width={72}
-                    height={72}
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="font-semibold text-[15px] mb-2" style={{ color: 'var(--ink)' }}>{v.title}</h3>
-                <p className="text-slate-500 text-[13px] leading-relaxed max-w-[220px]">{v.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
