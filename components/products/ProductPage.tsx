@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Space_Grotesk, Inter } from 'next/font/google'
-import '../app/willstone.css'
-import SiteHeader from './SiteHeader'
-import SiteFooter from './SiteFooter'
+import '../../app/willstone.css'
+import SiteHeader from '../SiteHeader'
+import SiteFooter from '../SiteFooter'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
 const inter = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
