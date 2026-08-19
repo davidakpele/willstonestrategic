@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const QUICK_LINKS = [
-  { href: '/about',          label: 'About Us' },
-  { href: '/contact',         label: 'Contact' },
+  { href: '/about',    label: 'About Us' },
+  { href: '/products', label: 'Products' },
+  { href: '/contact',  label: 'Contact' },
 ]
 
 const FOOTER_SERVICES = [
@@ -13,6 +14,18 @@ const FOOTER_SERVICES = [
   { label: 'Information Technology & Software Development', href: '/services/information-technology' },
   { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
   { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
+]
+
+const FOOTER_PRODUCTS = [
+  { label: 'Sesame Seeds',  href: '/products/sesame-seeds' },
+  { label: 'Palm Oil',      href: '/products/palm-oil' },
+  { label: 'Cocoa',         href: '/products/cocoa' },
+  { label: 'Soybeans',      href: '/products/soybeans' },
+  { label: 'Maize',         href: '/products/maize' },
+  { label: 'Cassava',       href: '/products/cassava' },
+  { label: 'Charcoal',      href: '/products/charcoal' },
+  { label: 'Ginger',        href: '/products/ginger' },
+  { label: 'View all →',    href: '/products' },
 ]
 
 const SOCIAL = [
@@ -50,7 +63,7 @@ export default function SiteFooter() {
     <footer id="contact" className="pb-8 px-6 lg:px-10" style={{ background: '#03080f' }}>
       <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
 
-      <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-14">
+      <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pt-14">
         <div>
           <Link href="/" className="site-logo-footer mb-5 block" aria-label="Willstone Strategic Industries Limited" />
           <p className="text-white/50 text-[13px] leading-relaxed max-w-xs">
@@ -83,6 +96,18 @@ export default function SiteFooter() {
           <p className="text-white font-semibold text-[13px] tracking-wide mb-4">SERVICES</p>
           <ul className="space-y-2.5 text-[13px] text-white/50">
             {FOOTER_SERVICES.map((item) => (
+              <li key={item.label}>
+                <Link href={item.href} className="hover:text-[#C9A24B] transition-colors">{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Products */}
+        <div>
+          <p className="text-white font-semibold text-[13px] tracking-wide mb-4">PRODUCTS</p>
+          <ul className="space-y-2.5 text-[13px] text-white/50">
+            {FOOTER_PRODUCTS.map((item) => (
               <li key={item.label}>
                 <Link href={item.href} className="hover:text-[#C9A24B] transition-colors">{item.label}</Link>
               </li>

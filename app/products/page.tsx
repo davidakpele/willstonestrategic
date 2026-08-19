@@ -8,9 +8,24 @@ import SiteFooter from '@/components/SiteFooter'
 import ProductsCatalogue from '@/components/products/ProductsCatalogue'
 
 export const metadata: Metadata = {
-  title: 'Products | Willstone Strategic Industries Limited',
-  description:
-    'Browse all Willstone products — agricultural commodities, solar panels, batteries, energy-saving appliances and more. Filter by category and enquire directly.',
+  title: 'Products | Agricultural Commodities, Energy & Industrial Supplies — Willstone',
+  description: 'Browse Willstone Strategic Industries Limited\'s full product catalogue — bulk agricultural commodities including sesame seeds, palm oil, cocoa, cassava, maize, soybeans, ginger, turmeric, charcoal, and rice, plus solar panels, batteries, and energy-saving appliances. Request a quotation today.',
+  alternates: { canonical: 'https://willstonestrategic.com/products' },
+  openGraph: {
+    title: 'Products | Willstone Strategic Industries Limited',
+    description: 'Bulk agricultural commodities, energy products, and industrial supplies. Sesame seeds, palm oil, cocoa, cassava, maize, soybeans, charcoal, and more.',
+    url: 'https://willstonestrategic.com/products',
+    siteName: 'Willstone Strategic Industries Limited',
+    images: [{ url: 'https://willstonestrategic.com/assets/images/banner.png', width: 1200, height: 630, alt: 'Willstone Products Catalogue' }],
+    locale: 'en_NG',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Products | Willstone Strategic Industries Limited',
+    description: 'Bulk agricultural commodities, energy products, and industrial supplies from Nigeria.',
+    images: ['https://willstonestrategic.com/assets/images/banner.png'],
+  },
 }
 
 const spaceGrotesk = Space_Grotesk({

@@ -6,6 +6,7 @@ import { Space_Grotesk, Inter } from 'next/font/google'
 import './willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import ScrollAccordion from '@/components/ScrollAccordion'
 import Link from 'next/link'
 
 const spaceGrotesk = Space_Grotesk({
@@ -167,17 +168,27 @@ export default function Home() {
 
       {/* HERO */}
       <section id="home" className="relative flex flex-col overflow-hidden" style={{ background: '#0B1B33', minHeight: '100svh' }}>
-        <Image
-          src="/assets/images/home-banner.png"
-          alt="Container ship docked at a city port at dusk"
-          fill
-          priority
-          sizes="100vw"
-          className="hero-img object-cover object-[60%_center] sm:object-[55%_center] lg:object-center"
-        />
-        {/* Overlay — full dark on mobile, left-heavy on desktop */}
+        {/* Orbital hero loop — full-bleed iframe */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
+          <iframe
+            src="/earth-hero-loop.html"
+            title=""
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: 'max(100%, 186.182vh)',
+              height: 'max(100%, 53.7109vw)',
+              transform: 'translate(-50%, -50%)',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+          />
+        </div>
+        {/* Overlay — left-heavy dark so text is readable, thins out on the right to show the animation */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(135deg, rgba(6,15,31,.95) 0%, rgba(6,15,31,.80) 40%, rgba(6,15,31,.40) 70%, rgba(6,15,31,.20) 100%)',
+          background: 'linear-gradient(135deg, rgba(6,15,31,.92) 0%, rgba(6,15,31,.65) 35%, rgba(6,15,31,.25) 65%, rgba(6,15,31,.08) 100%)',
         }} />
         {/* Extra bottom fade so stats bar sits cleanly */}
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
@@ -185,20 +196,20 @@ export default function Home() {
 
         {/* Content — grows to fill space, pushes stats bar to bottom */}
         <div className="relative z-10 flex-1 flex items-center w-full">
-          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 pt-28 sm:pt-32 lg:pt-40 pb-10 lg:pb-16">
+          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 pt-28 sm:pt-32 lg:pt-40 pb-10 lg:pb-16 flex flex-col items-center sm:items-start">
 
-            <p className="fade-up fade-up-1 eyebrow text-[11px] sm:text-[12px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+            <p className="fade-up fade-up-1 eyebrow text-[11px] sm:text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> WELCOME TO WILLSTONE
             </p>
 
-            <h1 className="fade-up fade-up-2 display text-white font-semibold leading-[1.06] max-w-2xl"
+            <h1 className="fade-up fade-up-2 display text-white font-semibold leading-[1.06] max-w-2xl text-center sm:text-left"
               style={{ fontSize: 'clamp(2rem, 7vw, 3.4rem)' }}>
               Building Solutions.<br />
               Delivering Impact.<br />
               Creating Tomorrow.
             </h1>
 
-            <p className="fade-up fade-up-3 text-white/75 mt-5 max-w-lg leading-relaxed"
+            <p className="fade-up fade-up-3 text-white/75 mt-5 max-w-lg leading-relaxed text-center sm:text-left mx-auto sm:mx-0"
               style={{ fontSize: 'clamp(13px, 2.5vw, 15px)' }}>
               Willstone Strategic Industries Limited delivers innovative solutions and
               trusted services across industries, driving growth, enabling progress, and
@@ -206,7 +217,7 @@ export default function Home() {
             </p>
 
             {/* CTA buttons */}
-            <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-3 mt-7 sm:mt-8 w-full sm:w-auto">
+            <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-3 mt-7 sm:mt-8 w-full sm:w-auto items-center sm:items-start">
               <a href="#about"
                 className="inline-flex items-center justify-center gap-2 btn-gold px-6 py-3 rounded-md text-[13px] font-semibold cursor-pointer w-full sm:w-auto">
                 DISCOVER MORE
@@ -292,120 +303,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STICKY STACKING CARDS */}
-      <section className="py-20 px-6 lg:px-10 bg-white">
-        <div className="max-w-6xl mx-auto">
-
-          {/* header — visible on mobile above the cards */}
-          <div className="lg:hidden text-center mb-12">
-            <p className="eyebrow text-[12px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
-              <span className="gold-rule" /> HOW WE WORK <span className="gold-rule" />
-            </p>
-            <h2 className="display text-2xl sm:text-3xl font-semibold" style={{ color: 'var(--ink)' }}>
-              Our approach,<br />step by step.
-            </h2>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-
-            {/* ── LEFT — sticky panel ── */}
-            <div className="hidden lg:flex flex-col justify-start w-[340px] shrink-0 sticky top-28">
-              <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
-                <span className="gold-rule" /> HOW WE WORK
-              </p>
-              <h2 className="display font-semibold leading-tight mb-5" style={{ fontSize: 'clamp(1.6rem,3vw,2.2rem)', color: 'var(--ink)' }}>
-                Our approach,<br />
-                <span style={{ color: 'var(--gold)' }}>step by step.</span>
-              </h2>
-              <p className="text-slate-500 text-[14px] leading-relaxed mb-8">
-                From the first conversation to long-term partnership, we follow a proven process that puts your goals at the centre of everything we do.
-              </p>
-              <a
-                href="/contact"
-                className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold w-fit"
-              >
-                Partner With Us
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
-            </div>
-
-            {/* ── RIGHT — stacking cards ── */}
-            <div className="flex-1 flex flex-col gap-4">
-              {[
-                {
-                  num: '01',
-                  title: 'Understand Your Needs',
-                  desc: 'We begin every engagement by listening. Our team takes time to deeply understand your business, sector, challenges, and goals before proposing any solution.',
-                  link: '/about',
-                  linkLabel: 'About our process',
-                  dark: false,
-                },
-                {
-                  num: '02',
-                  title: 'Design the Right Solution',
-                  desc: 'We craft tailored strategies — not off-the-shelf packages. From engineering and technology to trade and logistics, every solution is purpose-built for your context.',
-                  link: '/services',
-                  linkLabel: 'Explore our services',
-                  dark: false,
-                },
-                {
-                  num: '03',
-                  title: 'Execute with Precision',
-                  desc: 'Our cross-sector teams execute with rigour and accountability. We manage timelines, quality, and stakeholders so you can focus on growth.',
-                  link: '/services',
-                  linkLabel: 'See how we deliver',
-                  dark: false,
-                },
-                {
-                  num: '04',
-                  title: 'Build a Lasting Partnership',
-                  desc: 'We do not disappear after delivery. Willstone stays engaged — monitoring outcomes, providing support, and growing with you as your needs evolve.',
-                  link: '/contact',
-                  linkLabel: 'Partner with us',
-                  dark: true,
-                },
-              ].map((card, i) => (
-                <div
-                  key={card.num}
-                  className={`stack-card${card.dark ? ' stack-card-dark' : ''}`}
-                  style={{ top: `calc(96px + ${i * 16}px)` }}
-                >
-                  <div className={`stack-card-num${card.dark ? ' dark' : ''}`}>
-                    {card.num}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3
-                      className="font-bold text-[19px] sm:text-[21px] mb-3"
-                      style={{ color: card.dark ? '#fff' : 'var(--ink)' }}
-                    >
-                      {card.title}
-                    </h3>
-                    <p className={`text-[14px] leading-relaxed mb-6 ${card.dark ? 'text-white/70' : 'text-slate-500'}`}>
-                      {card.desc}
-                    </p>
-                    <a
-                      href={card.link}
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold transition-colors ${
-                        card.dark
-                          ? 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
-                          : 'bg-[var(--paper)] text-[var(--ink)] hover:bg-gray-200 border border-gray-200'
-                      }`}
-                    >
-                      {card.linkLabel}
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M5 12h14M13 6l6 6-6 6" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* SCROLL ACCORDION */}
+      <ScrollAccordion />
 
       {/* GLOBAL REACH */}
       <section className="relative py-20 px-6 lg:px-10 overflow-hidden" style={{ background: 'var(--navy)' }}>

@@ -14,8 +14,8 @@ export default function BlogHero() {
         </div>
 
         <div className="hidden md:block">
-          <div className="rounded-lg overflow-hidden shadow-lg" style={{ height: 200 }}>
-            <Image src="/assets/images/logo/PNG/Willstone-Logo-FullColor.png" alt="Willstone" width={420} height={200} className="object-cover" />
+          <div className="rounded-lg overflow-hidden" style={{ height: 200 }}>
+            <Image src="/assets/images/logo/PNG/Willstone-Logo-White.png" alt="Willstone" width={420} height={200} className="object-cover" />
           </div>
         </div>
       </div>

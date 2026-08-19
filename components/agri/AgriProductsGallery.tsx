@@ -105,6 +105,20 @@ const PRODUCTS: AgriProduct[] = [
     src: '/assets/images/sweet-potato-2.jpg',
     tags: ['Fresh Produce', 'Domestic', 'Tuber'],
   },
+  {
+    id: 15,
+    name: 'Edible Oil',
+    description: 'High-quality refined edible oil available for domestic food service, retail packaging, and bulk industrial supply. Sourced and processed to meet food safety and quality standards.',
+    src: '/assets/images/edible-oil.webp',
+    tags: ['Oil', 'Food Grade', 'Retail'],
+  },
+  {
+    id: 16,
+    name: 'Soybean Oil',
+    description: 'Pure refined soybean oil extracted from premium-grade soybeans. Suitable for cooking, food manufacturing, and industrial applications. Available in bulk and packaged formats.',
+    src: '/assets/images/soyoil.jpg',
+    tags: ['Oil', 'Export', 'Food Grade'],
+  },
 ]
 
 // Span pattern: tall anchors every 4 items (index 0, 4, 8, 12) to keep the masonry rhythm
@@ -124,6 +138,8 @@ const SPAN_CLASSES: string[] = [
   '',           // 11
   'row-span-2', // 12 haricot beans   — tall anchor row-group 4
   '',           // 13
+  '',           // 14 edible oil
+  '',           // 15 soybean oil
 ]
 
 interface ModalProps {
