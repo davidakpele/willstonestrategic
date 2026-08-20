@@ -7,7 +7,7 @@ const ITEMS = [
   {
     num: '01',
     title: 'Agriculture & Agribusiness',
-    desc: 'We deliver end-to-end agribusiness solutions — from crop production and processing to bulk commodity trading and export. Our agro-logistics network connects farmers to markets across Nigeria and West Africa.',
+    desc: 'We deliver end-to-end agribusiness solutions — from crop production and processing to bulk commodity trading and export. Our agro-logistics network connects farmers to markets across Nigeria, West Africa, Europe and Asia.',
     keywords: 'Agro-business · Crop Processing · Commodity Trading · Farm Inputs',
     link: '/services/agriculture-agribusiness',
     linkLabel: 'Agribusiness services',
@@ -16,8 +16,8 @@ const ITEMS = [
   {
     num: '02',
     title: 'Information Technology & Software',
-    desc: 'Custom software, enterprise platforms, and digital transformation services tailored to your business. We build scalable web applications, ERP systems, and IT infrastructure for organisations of every size.',
-    keywords: 'Software Development · IT Consultancy · Digital Transformation · ERP',
+    desc: 'Custom software, enterprise platforms, and digital transformation services tailored to your business. We build scalable web applications, mobile applications, ERP systems, Geospatial Systems and IT infrastructure for organisations of every size.',
+    keywords: 'Software Development · IT Consultancy · Digital Transformation · ERP · Geospatial',
     link: '/services/information-technology',
     linkLabel: 'Technology services',
     dark: false,
@@ -26,7 +26,7 @@ const ITEMS = [
     num: '03',
     title: 'Electrical & Electronic Solutions',
     desc: 'Industrial electrical installations, power systems, automation engineering, and electronic solutions for commercial and industrial facilities. We handle design, supply, and full installation.',
-    keywords: 'Electrical Engineering · Power Systems · Automation · Installation',
+    keywords: 'Electrical Engineering · Power Systems · Solar · Automation · Installation',
     link: '/services/electrical-electronic',
     linkLabel: 'Engineering services',
     dark: false,
@@ -35,7 +35,7 @@ const ITEMS = [
     num: '04',
     title: 'Defence, Security & Protective Solutions',
     desc: 'Integrated surveillance systems, threat assessment, access control, and protective equipment for critical infrastructure, organisations, and high-value assets across Nigeria.',
-    keywords: 'Security Systems · Surveillance · Asset Protection · Defence',
+    keywords: 'Security Systems · Surveillance · Asset Protection · Defence · Drones',
     link: '/contact',
     linkLabel: 'Partner with us',
     dark: true,
@@ -47,11 +47,7 @@ export default function ScrollAccordion() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    // Each sticky card's top offset matches what CSS gives it: 96 + i*16 px
-    // When a card is "stuck", its getBoundingClientRect().top equals that offset.
-    // We watch the scroll position relative to each card's natural document position
-    // to figure out which one is currently stuck at the front.
-    const handleScroll = () => {
+     const handleScroll = () => {
       // Walk cards from last to first — the highest index whose top edge has
       // scrolled past (or reached) its sticky threshold is the active one.
       for (let i = cardRefs.current.length - 1; i >= 0; i--) {
