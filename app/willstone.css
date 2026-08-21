@@ -58,8 +58,8 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* Frosted slate button — like Polaris' "Schedule a meeting" pill */
 .btn-slate {
-  background: #ffffff; 
-  color: var(--navy);
+  background: linear-gradient(180deg, rgba(226, 232, 240, 0.9) 0%, rgba(203, 213, 225, 0.8) 100%);
+  color: #1e2a3b;
   font-weight: 700;
   border: none;
   backdrop-filter: blur(8px);
