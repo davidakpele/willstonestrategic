@@ -313,8 +313,8 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Contact cards grid (3 columns centered) */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
+          {/* Contact cards grid (now 4 columns for 4 options, responsive to 2) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
 
             <a
               href="mailto:willstonestrategic@gmail.com"
@@ -327,7 +327,21 @@ export default function ContactPage() {
                 </svg>
               </span>
               <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Email</p>
-              <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>willstonestrategic@gmail.com</p>
+              <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>willstonestrategic@gmail.com</p>
+            </a>
+
+            <a
+              href="mailto:willstonestrategic@aol.com"
+              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-all hover:border-[var(--gold)]/30 flex flex-col items-center text-center"
+            >
+              <span className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-full" style={{ background: 'rgba(201,162,75,0.08)', border: '1px solid rgba(201,162,75,0.12)' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="M2 7l10 7 10-7"/>
+                </svg>
+              </span>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Email</p>
+              <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>willstonestrategic@aol.com</p>
             </a>
 
             <a
