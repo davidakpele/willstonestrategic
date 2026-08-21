@@ -313,8 +313,8 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {/* Contact cards grid (now 4 columns for 4 options, responsive to 2) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {/* Contact cards grid (3 columns) */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch">
 
             <a
               href="mailto:willstonestrategic@gmail.com"
@@ -326,21 +326,8 @@ export default function ContactPage() {
                   <path d="M2 7l10 7 10-7"/>
                 </svg>
               </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Email</p>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-2">Email</p>
               <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>willstonestrategic@gmail.com</p>
-            </a>
-
-            <a
-              href="mailto:willstonestrategic@aol.com"
-              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-all hover:border-[var(--gold)]/30 flex flex-col items-center text-center"
-            >
-              <span className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-full" style={{ background: 'rgba(201,162,75,0.08)', border: '1px solid rgba(201,162,75,0.12)' }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <path d="M2 7l10 7 10-7"/>
-                </svg>
-              </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Email</p>
               <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>willstonestrategic@aol.com</p>
             </a>
 
@@ -353,7 +340,7 @@ export default function ContactPage() {
                   <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.5a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/>
                 </svg>
               </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Call</p>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-2">Call</p>
               <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496</p>
               <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>+234 706 1964 340</p>
             </a>
@@ -370,7 +357,7 @@ export default function ContactPage() {
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Visit</p>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-2">Visit</p>
               <p className="text-[13px] font-medium leading-snug" style={{ color: 'var(--ink)' }}>
                 20 Cambridge House,<br />Onireke Jericho, Ibadan<br />Oyo State, Nigeria
               </p>
