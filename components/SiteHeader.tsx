@@ -502,7 +502,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
           <Link
             href="/contact"
             onClick={closeMenu}
-            className="flex items-center justify-center gap-2 btn-slate text-[14px] font-semibold px-5 py-4 rounded-full cursor-pointer w-full"
+            className="flex items-center justify-center gap-2 btn-slate text-[14px] font-semibold px-5 py-3 rounded-full cursor-pointer w-full"
           >
             CONTACT US
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -513,4 +513,4 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
       </div>
     </>
   )
-}
+   }
