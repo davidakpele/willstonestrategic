@@ -188,7 +188,7 @@ export default function Home() {
         </div>
         {/* Overlay — left-heavy dark so text is readable, thins out on the right to show the animation */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(135deg, rgba(6,15,31,.92) 0%, rgba(6,15,31,.65) 35%, rgba(6,15,31,.25) 65%, rgba(6,15,31,.08) 100%)',
+          background: 'linear-gradient(135deg, rgba(6,15,31,.94) 0%, rgba(6,15,31,.78) 30%, rgba(6,15,31,.45) 60%, rgba(6,15,31,.15) 100%)',
         }} />
         {/* Extra bottom fade so stats bar sits cleanly */}
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
@@ -196,37 +196,37 @@ export default function Home() {
 
         {/* Content — grows to fill space, pushes stats bar to bottom */}
         <div className="relative z-10 flex-1 flex items-center w-full">
-          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 pt-28 sm:pt-32 lg:pt-40 pb-10 lg:pb-16 flex flex-col items-center sm:items-start">
+          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-14 lg:pb-20 flex flex-col items-center sm:items-start">
 
             <p className="fade-up fade-up-1 eyebrow text-[11px] sm:text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> WELCOME TO WILLSTONE
             </p>
 
-            <h1 className="fade-up fade-up-2 display text-white font-semibold leading-[1.06] max-w-2xl text-center sm:text-left"
-              style={{ fontSize: 'clamp(2rem, 7vw, 3.4rem)' }}>
+            <h1 className="hero-heading fade-up fade-up-2 display text-white font-semibold leading-[1.12] max-w-2xl text-center sm:text-left"
+              style={{ fontSize: 'clamp(2.1rem, 7vw, 3.4rem)' }}>
               Building Solutions.<br />
               Delivering Impact.<br />
               Creating Tomorrow.
             </h1>
 
-            <p className="fade-up fade-up-3 text-white/75 mt-5 max-w-lg leading-relaxed text-center sm:text-left mx-auto sm:mx-0"
-              style={{ fontSize: 'clamp(13px, 2.5vw, 15px)' }}>
+            <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 max-w-lg leading-relaxed text-center sm:text-left mx-auto sm:mx-0"
+              style={{ fontSize: 'clamp(14px, 2.5vw, 16px)' }}>
               Willstone Strategic Industries Limited delivers innovative solutions and
               trusted services across industries, driving growth, enabling progress, and
               building a stronger tomorrow.
             </p>
 
             {/* CTA buttons */}
-            <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-3 mt-7 sm:mt-8 w-full sm:w-auto items-center sm:items-start">
+            <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4 mt-9 sm:mt-10 mb-2 w-full sm:w-auto items-center sm:items-start">
               <a href="#about"
-                className="inline-flex items-center justify-center gap-2 btn-gold px-6 py-3 rounded-md text-[13px] font-semibold cursor-pointer w-full sm:w-auto">
+                className="inline-flex items-center justify-center gap-2 btn-gold px-7 py-3.5 rounded-lg text-[13px] font-semibold tracking-wide cursor-pointer w-full sm:w-auto">
                 DISCOVER MORE
                 <svg className="float-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </a>
               <a href="#contact"
-                className="inline-flex items-center justify-center gap-2 btn-outline-gold px-6 py-3 rounded-md text-[13px] font-semibold cursor-pointer w-full sm:w-auto">
+                className="inline-flex items-center justify-center gap-2 btn-outline-gold px-7 py-3.5 rounded-lg text-[13px] font-semibold tracking-wide cursor-pointer w-full sm:w-auto">
                 PARTNER WITH US
               </a>
             </div>
@@ -438,4 +438,4 @@ export default function Home() {
       <BackToTop />
     </div>
   )
-}
+  }
