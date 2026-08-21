@@ -247,7 +247,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats bar — always at the bottom */}
+        {/* Stats bar — always at the bottom 
         <div className="relative z-10 w-full border-t border-white/10 shrink-0"
           style={{ background: 'rgba(6,14,29,.88)', backdropFilter: 'blur(4px)' }}>
           <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/10 px-5 sm:px-8 lg:px-10">
@@ -263,7 +263,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
+        </div>*/}
       </section>
 
       {/* TICKER STRIP */}
