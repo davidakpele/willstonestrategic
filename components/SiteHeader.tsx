@@ -431,26 +431,26 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
         aria-label="Mobile navigation"
       >
         {/* Drawer header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div className="flex items-center justify-between px-6 py-6 border-b border-white/10">
           <Link href="/" className="site-logo-sm cursor-pointer" aria-label="Willstone" onClick={closeMenu} />
           <button
             onClick={closeMenu}
-            className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white cursor-pointer"
+            className="w-9 h-9 flex items-center justify-center text-white/70 hover:text-white cursor-pointer"
             aria-label="Close menu"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
         </div>
 
         {/* Drawer nav */}
-        <nav className="flex flex-col px-6 py-4 gap-1 text-[14px] text-white/85 font-medium overflow-y-auto flex-1">
+        <nav className="flex flex-col px-6 py-5 gap-0 text-[19px] text-white/90 font-semibold tracking-wide overflow-y-auto flex-1">
           {NAV_LINKS.map((link) =>
             link.hasDropdown ? (
-              <div key={link.href + link.label} className="border-b border-white/8">
+              <div key={link.href + link.label} className="border-b border-white/10">
                 <button
-                  className="w-full flex items-center justify-between py-3.5 cursor-pointer"
+                  className="w-full flex items-center justify-between py-5 cursor-pointer"
                   onClick={() => {
                     if (link.dropdownId === 'products') setIsMobileProductsOpen((o) => !o)
                     else setIsMobileServicesOpen((o) => !o)
@@ -458,7 +458,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                 >
                   <span style={{ color: isActive(link.href) ? 'var(--gold-light)' : undefined }}>{link.label}</span>
                   <svg
-                    width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2.5"
                     style={{ transform: (link.dropdownId === 'products' ? isMobileProductsOpen : isMobileServicesOpen) ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}
                   >
@@ -470,7 +470,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`block py-2.5 pl-4 text-[13px] border-l-2 mb-1 cursor-pointer transition-colors ${
+                      className={`block py-3 pl-4 text-[14px] font-medium border-l-2 mb-2 cursor-pointer transition-colors ${
                         pathname === item.href
                           ? 'text-[#C9A24B] border-[#C9A24B]'
                           : 'text-white/55 hover:text-[#C9A24B] border-white/10 hover:border-[#C9A24B]'
@@ -486,7 +486,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
               <Link
                 key={link.href}
                 href={link.href}
-                className={`py-3.5 border-b border-white/8 transition-colors cursor-pointer ${
+                className={`py-5 border-b border-white/10 transition-colors cursor-pointer ${
                   isActive(link.href) ? 'text-[#C9A24B]' : 'hover:text-[#C9A24B]'
                 }`}
                 onClick={closeMenu}
@@ -498,11 +498,11 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
         </nav>
 
         {/* Drawer CTA */}
-        <div className="px-6 py-5 border-t border-white/10">
+        <div className="px-6 py-6 border-t border-white/10">
           <Link
             href="/contact"
             onClick={closeMenu}
-            className="flex items-center justify-center gap-2 btn-gold text-[13px] font-semibold px-5 py-3 rounded-full cursor-pointer w-full"
+            className="flex items-center justify-center gap-2 btn-slate text-[14px] font-semibold px-5 py-4 rounded-full cursor-pointer w-full"
           >
             CONTACT US
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
