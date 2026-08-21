@@ -18,6 +18,14 @@ const inter = Inter({
   variable: '--font-body',
 })
 
+const INQUIRY_TYPES = [
+  { value: 'inquiry', label: 'Inquiries' },
+  { value: 'complaint', label: 'Complaint' },
+  { value: 'partnership', label: 'Partnership' },
+  { value: 'support', label: 'Technical Support' },
+  { value: 'other', label: 'Other' },
+]
+
 const FAQS = [
   {
     q: 'Do you provide support and maintenance after project delivery?',
@@ -42,7 +50,7 @@ const FAQS = [
 ]
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', inquiryType: 'inquiry', message: '' })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [sending, setSending] = useState(false)
@@ -53,6 +61,7 @@ export default function ContactPage() {
     if (!form.name.trim())    e.name    = 'Name is required'
     if (!form.email.trim())   e.email   = 'Email is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
+    if (!form.inquiryType)    e.inquiryType = 'Please select an inquiry type'
     if (!form.message.trim()) e.message = 'Message is required'
     return e
   }
@@ -67,7 +76,7 @@ export default function ContactPage() {
     setTimeout(() => {
       setSending(false)
       setShowSuccess(true)
-      setForm({ name: '', email: '', phone: '', message: '' })
+      setForm({ name: '', email: '', phone: '', inquiryType: 'inquiry', message: '' })
     }, 2000)
   }
 
@@ -108,30 +117,29 @@ export default function ContactPage() {
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 py-14 sm:py-20 flex items-center">
           <div
-            className="w-full max-w-[400px]"
+            className="w-full max-w-[450px]"
             style={{
-              background: 'rgba(11,27,51,0.90)',
+              background: 'rgba(11,27,51,0.92)',
               backdropFilter: 'blur(14px)',
               WebkitBackdropFilter: 'blur(14px)',
-              borderRadius: '18px',
-              padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px',
+              padding: 'clamp(28px, 4vw, 40px)',
+              border: '1px solid rgba(201,162,75,0.15)',
               boxShadow: '0 24px 60px rgba(0,0,0,0.45)',
             }}
           >
             <>
-              <h2 className="font-bold text-[22px] text-white mb-1">
-                Let&apos;s Work{' '}
-                <span style={{ color: 'var(--gold)' }}>Together</span>
+              <h2 className="font-bold text-[24px] text-white mb-1">
+                Let&apos;s Connect
               </h2>
-              <div className="w-8 h-[2px] mb-4" style={{ background: 'var(--gold)' }} />
-              <p className="text-white/60 text-[13px] leading-relaxed mb-6">
-                We&apos;re here to answer your questions and explore new possibilities.
+              <div className="w-10 h-[2px] mb-5" style={{ background: 'var(--gold)' }} />
+              <p className="text-white/60 text-[13px] leading-relaxed mb-7">
+                Tell us how we can help. We respond within one business day.
               </p>
 
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 <div>
-                  <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Name</label>
+                  <label className="contact-label">Full Name</label>
                   <input
                     type="text"
                     value={form.name}
@@ -143,11 +151,11 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-white/80 text-[13px] font-semibold mb-1.5">E-mail address</label>
+                  <label className="contact-label">Email Address</label>
                   <input
                     type="email"
                     value={form.email}
-                    placeholder="Enter your e-mail address"
+                    placeholder="your@email.com"
                     onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                     className={`contact-input contact-input-dark${errors.email ? ' error' : ''}`}
                   />
@@ -155,11 +163,37 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-white/80 text-[13px] font-semibold mb-1.5">Message</label>
+                  <label className="contact-label">Phone (Optional)</label>
+                  <input
+                    type="tel"
+                    value={form.phone}
+                    placeholder="+234 ..."
+                    onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+                    className="contact-input contact-input-dark"
+                  />
+                </div>
+
+                <div>
+                  <label className="contact-label">Inquiry Type</label>
+                  <select
+                    value={form.inquiryType}
+                    onChange={e => setForm(f => ({ ...f, inquiryType: e.target.value }))}
+                    className={`contact-input contact-input-dark${errors.inquiryType ? ' error' : ''}`}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {INQUIRY_TYPES.map(type => (
+                      <option key={type.value} value={type.value}>{type.label}</option>
+                    ))}
+                  </select>
+                  {errors.inquiryType && <p className="contact-error">{errors.inquiryType}</p>}
+                </div>
+
+                <div>
+                  <label className="contact-label">Message</label>
                   <textarea
-                    rows={3}
+                    rows={4}
                     value={form.message}
-                    placeholder="Let us know what you are interested in"
+                    placeholder="Tell us more about your inquiry..."
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     className={`contact-input contact-input-dark resize-none${errors.message ? ' error' : ''}`}
                   />
@@ -169,11 +203,10 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-70"
+                  className="btn-gold w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 mt-6 disabled:opacity-70 transition-all"
                 >
                   {sending ? (
                     <>
-                      {/* Spinner */}
                       <svg
                         className="animate-spin"
                         width="15" height="15" viewBox="0 0 24 24" fill="none"
@@ -187,7 +220,7 @@ export default function ContactPage() {
                     </>
                   ) : (
                     <>
-                      Send a message
+                      Send Message
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
@@ -271,13 +304,12 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto">
 
           {/* Centered heading */}
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-14">
             <h2 className="display font-semibold mb-3" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', color: 'var(--ink)' }}>
               We&apos;re always here to help.
             </h2>
             <p className="text-slate-500 text-[14px] leading-relaxed">
-              Our team is committed to providing fast, reliable assistance. Reach out through any channel
-              that&apos;s convenient — we typically respond within one business day.
+              Reach out through any channel that works best for you. Our team is ready to discuss your needs and find the right solution.
             </p>
           </div>
 
@@ -286,7 +318,7 @@ export default function ContactPage() {
 
             <a
               href="mailto:willstonestrategic@gmail.com"
-              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-colors flex flex-col items-center text-center"
+              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-all hover:border-[var(--gold)]/30 flex flex-col items-center text-center"
             >
               <span className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-full" style={{ background: 'rgba(201,162,75,0.08)', border: '1px solid rgba(201,162,75,0.12)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
@@ -294,28 +326,29 @@ export default function ContactPage() {
                   <path d="M2 7l10 7 10-7"/>
                 </svg>
               </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Email us</p>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Email</p>
               <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>willstonestrategic@gmail.com</p>
             </a>
 
             <a
               href="tel:+2349019384496"
-              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-colors flex flex-col items-center text-center"
+              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-all hover:border-[var(--gold)]/30 flex flex-col items-center text-center"
             >
               <span className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-full" style={{ background: 'rgba(201,162,75,0.08)', border: '1px solid rgba(201,162,75,0.12)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
-                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012 .6c.9.3 1.8.5 2.7.6A2 2 0 0122 16.9z"/>
+                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.5a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/>
                 </svg>
               </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Call us</p>
-              <p className="text-[14px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496 &nbsp;/&nbsp; +234 706 1964 340</p>
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Call</p>
+              <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496</p>
+              <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>+234 706 1964 340</p>
             </a>
 
             <a
               href="https://maps.app.goo.gl/ZjZ5eCgY7MjJnvvj6"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-colors flex flex-col items-center text-center"
+              className="p-6 rounded-2xl border border-white/10 shadow-sm bg-white/60 hover:shadow-md transition-all hover:border-[var(--gold)]/30 flex flex-col items-center text-center"
             >
               <span className="mb-3 inline-flex items-center justify-center w-12 h-12 rounded-full" style={{ background: 'rgba(201,162,75,0.08)', border: '1px solid rgba(201,162,75,0.12)' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
@@ -323,16 +356,16 @@ export default function ContactPage() {
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </span>
-              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Visit us</p>
-              <p className="text-[14px] font-medium leading-snug" style={{ color: 'var(--ink)' }}>
-                20 Cambridge House, Onireke Jericho,<br />Ibadan, Oyo State, Nigeria
+              <p className="text-[11px] font-semibold tracking-widest uppercase text-slate-400 mb-1">Visit</p>
+              <p className="text-[13px] font-medium leading-snug" style={{ color: 'var(--ink)' }}>
+                20 Cambridge House,<br />Onireke Jericho, Ibadan<br />Oyo State, Nigeria
               </p>
             </a>
 
           </div>
 
           {/* Full-width map below */}
-          <div className="mt-10 rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: '420px' }}>
+          <div className="mt-12 rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: '420px' }}>
             <iframe
               title="Willstone Strategic Industries Limited location"
               src="https://www.google.com/maps?q=20%20Cambridge%20House%2C%20Onireke%20Jericho%2C%20Ibadan%2C%20Oyo%20State%2C%20Nigeria&output=embed"
