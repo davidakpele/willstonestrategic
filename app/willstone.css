@@ -217,8 +217,8 @@ html::-webkit-scrollbar-thumb:hover {
 /* Small logo for drawer header */
 .site-logo-sm {
   display: block;
-  width: 120px;
-  height: 36px;
+  width: 140px;
+  height: 40px;
   background: url('/assets/images/logo/PNG/Willstone-Logo-Reversed.png') no-repeat left center;
   background-size: contain;
 }
