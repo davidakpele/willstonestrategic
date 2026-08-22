@@ -500,8 +500,8 @@ html::-webkit-scrollbar-thumb:hover {
   display: block;
   font-size: 12.5px;
   font-weight: 600;
-  color:#fff;
-  font-family: 'Montserrat', sans-serif;
+  color:#fff !important;
+  font-family: 'Montserrat', sans-serif !important;
   margin-bottom: 6px;
   letter-spacing: 0.02em;
 }
