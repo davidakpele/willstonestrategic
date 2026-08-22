@@ -26,6 +26,14 @@ const INQUIRY_TYPES = [
   { value: 'other', label: 'Other' },
 ]
 
+const MESSAGE_PLACEHOLDERS: Record<string, string> = {
+  inquiry: 'Tell us what you would like to know and we\u2019ll point you in the right direction...',
+  complaint: 'Please describe the issue you experienced so we can look into it and resolve it quickly...',
+  partnership: 'Tell us about your organisation and the kind of partnership you have in mind...',
+  support: 'Describe the technical issue you\u2019re facing, including any error messages or steps to reproduce...',
+  other: 'Tell us more about your inquiry...',
+}
+
 const FAQS = [
   {
     q: 'Do you provide support and maintenance after project delivery?',
@@ -50,34 +58,55 @@ const FAQS = [
 ]
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', inquiryType: 'inquiry', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', whatsapp: '', inquiryType: 'inquiry', message: '' })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [sending, setSending] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+
+  const PHONE_RE = /^[+\d][\d\s-]{6,}$/
 
   const validate = () => {
     const e: Record<string, string> = {}
     if (!form.name.trim())    e.name    = 'Name is required'
     if (!form.email.trim())   e.email   = 'Email is required'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
+    if (form.phone.trim() && !PHONE_RE.test(form.phone.trim())) e.phone = 'Enter a valid phone number'
+    if (form.whatsapp.trim() && !PHONE_RE.test(form.whatsapp.trim())) e.whatsapp = 'Enter a valid WhatsApp number'
     if (!form.inquiryType)    e.inquiryType = 'Please select an inquiry type'
     if (!form.message.trim()) e.message = 'Message is required'
+    else if (form.message.trim().length < 10) e.message = 'Please provide a little more detail (min. 10 characters)'
     return e
   }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
+    setSubmitError('')
     setSending(true)
-    // Simulate a short network delay then show success modal
-    setTimeout(() => {
-      setSending(false)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send')
+      }
+
       setShowSuccess(true)
-      setForm({ name: '', email: '', phone: '', inquiryType: 'inquiry', message: '' })
-    }, 2000)
+      setForm({ name: '', email: '', phone: '', whatsapp: '', inquiryType: 'inquiry', message: '' })
+    } catch (err) {
+      setSubmitError('Something went wrong sending your message. Please try again, or email us directly at willstonestrategic@gmail.com.')
+    } finally {
+      setSending(false)
+    }
   }
 
   const closeSuccess = () => setShowSuccess(false)
@@ -169,22 +198,43 @@ export default function ContactPage() {
                     value={form.phone}
                     placeholder="+234 ..."
                     onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                    className="contact-input contact-input-dark"
+                    className={`contact-input contact-input-dark${errors.phone ? ' error' : ''}`}
                   />
+                  {errors.phone && <p className="contact-error">{errors.phone}</p>}
+                </div>
+
+                <div>
+                  <label className="contact-label">WhatsApp Number (Optional)</label>
+                  <input
+                    type="tel"
+                    value={form.whatsapp}
+                    placeholder="+234 ... (if different from phone)"
+                    onChange={e => setForm(f => ({ ...f, whatsapp: e.target.value }))}
+                    className={`contact-input contact-input-dark${errors.whatsapp ? ' error' : ''}`}
+                  />
+                  {errors.whatsapp && <p className="contact-error">{errors.whatsapp}</p>}
                 </div>
 
                 <div>
                   <label className="contact-label">Inquiry Type</label>
-                  <select
-                    value={form.inquiryType}
-                    onChange={e => setForm(f => ({ ...f, inquiryType: e.target.value }))}
-                    className={`contact-input contact-input-dark${errors.inquiryType ? ' error' : ''}`}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {INQUIRY_TYPES.map(type => (
-                      <option key={type.value} value={type.value}>{type.label}</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={form.inquiryType}
+                      onChange={e => setForm(f => ({ ...f, inquiryType: e.target.value }))}
+                      className={`contact-input contact-input-dark contact-select${errors.inquiryType ? ' error' : ''}`}
+                    >
+                      {INQUIRY_TYPES.map(type => (
+                        <option key={type.value} value={type.value}>{type.label}</option>
+                      ))}
+                    </select>
+                    <svg
+                      className="contact-select-chevron"
+                      width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" strokeWidth="2.5"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </div>
                   {errors.inquiryType && <p className="contact-error">{errors.inquiryType}</p>}
                 </div>
 
@@ -193,12 +243,16 @@ export default function ContactPage() {
                   <textarea
                     rows={4}
                     value={form.message}
-                    placeholder="Tell us more about your inquiry..."
+                    placeholder={MESSAGE_PLACEHOLDERS[form.inquiryType] || 'Tell us more about your inquiry...'}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     className={`contact-input contact-input-dark resize-none${errors.message ? ' error' : ''}`}
                   />
                   {errors.message && <p className="contact-error">{errors.message}</p>}
                 </div>
+
+                {submitError && (
+                  <p className="contact-error" style={{ fontSize: '12.5px' }}>{submitError}</p>
+                )}
 
                 <button
                   type="submit"
@@ -423,4 +477,4 @@ export default function ContactPage() {
       <SiteFooter />
     </div>
   )
-}
+        }
