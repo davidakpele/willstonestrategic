@@ -208,7 +208,7 @@ export default function ContactPage() {
                   <input
                     type="tel"
                     value={form.whatsapp}
-                    placeholder="+234 ... (if different from phone)"
+                    placeholder="+234 "
                     onChange={e => setForm(f => ({ ...f, whatsapp: e.target.value }))}
                     className={`contact-input contact-input-dark${errors.whatsapp ? ' error' : ''}`}
                   />
