@@ -27,7 +27,7 @@ const INQUIRY_TYPES = [
 ]
 
 const MESSAGE_PLACEHOLDERS: Record<string, string> = {
-  inquiry: 'Tell us what you would like to know and we\u2019ll point you in the right direction...',
+  inquiry: 'Tell us what you would like to know..',
   complaint: 'Please describe the issue you experienced so we can look into it and resolve it quickly...',
   partnership: 'Tell us about your organisation and the kind of partnership you have in mind...',
   support: 'Describe the technical issue you\u2019re facing, including any error messages or steps to reproduce...',
