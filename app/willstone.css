@@ -535,6 +535,26 @@ html::-webkit-scrollbar-thumb:hover {
   margin-top: 4px;
 }
 
+/* Custom select — hides native arrow, adds our own chevron, keeps it responsive */
+.contact-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding-right: 38px;
+}
+.contact-select-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--gold);
+}
+.contact-select:focus + .contact-select-chevron {
+  color: var(--gold-light);
+}
+
 /* Checkbox */
 .contact-checkbox {
   width: 16px;
