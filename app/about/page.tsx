@@ -124,30 +124,30 @@ export default function AboutPage() {
       {/* ── OUR STORY ── */}
       <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
         <div className="max-w-6xl mx-auto">
-
-          {/* Heading */}
-          <div className="text-center mb-14">
-            <h2 className="display font-semibold text-2xl sm:text-3xl inline-block" style={{ color: 'var(--ink)' }}>
-              Our Story
-            </h2>
-            <div className="mx-auto mt-2 rounded-full" style={{ height: '3px', width: '48px', background: 'var(--gold)' }} />
-          </div>
-
-          {/* Two-column: quote + CTA  |  stacked photos */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* LEFT — story text */}
             <div>
-              {/* Opening line — larger, styled as a pull quote */}
-              <p
-                className="font-semibold leading-snug mb-6"
-                style={{ fontSize: 'clamp(16px, 2.2vw, 20px)', color: 'var(--ink)', borderLeft: '3px solid var(--gold)', paddingLeft: '16px' }}
-              >
-                Willstone Strategic Industries Limited was founded with a clear purpose: to connect
-                opportunities, resources, and capabilities to create practical solutions and lasting value.
+              {/* Eyebrow */}
+              <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-5" style={{ color: 'var(--gold)' }}>
+                OUR STORY
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </p>
 
+              {/* Heading */}
+              <h2 className="display font-bold leading-[1.08] mb-6" style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', color: 'var(--ink)' }}>
+                Building Solutions.<br />
+                <span style={{ color: 'var(--gold)' }}>Creating Impact.</span>
+              </h2>
+
+              {/* Divider */}
+              <div className="mb-6 rounded-full" style={{ height: '3px', width: '48px', background: 'var(--gold)' }} />
+
               <div className="flex flex-col gap-4 mb-8 text-slate-500 leading-relaxed" style={{ fontSize: '14.5px' }}>
+                <p>
+                  Willstone Strategic Industries Limited was founded with a clear purpose: to connect
+                  opportunities, resources, and capabilities to create practical solutions and lasting value.
+                </p>
                 <p>
                   We operate across diverse industries, providing strategic solutions in global trade,
                   procurement, logistics and supply chain, agriculture and agro products, infrastructure,
@@ -177,38 +177,58 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            {/* RIGHT — three portrait cards, middle one taller and raised */}
-            <div className="hidden lg:flex items-end justify-center gap-3" style={{ height: '400px' }}>
+            {/* RIGHT — 3 vertical portrait cards, middle tallest, aligned to bottom */}
+            <div className="hidden lg:flex items-end justify-center gap-3" style={{ height: '460px' }}>
+
               {/* Card 1 — left, shorter */}
-              <div className="relative rounded-2xl overflow-hidden shrink-0" style={{ width: '30%', height: '75%', boxShadow: '0 12px 40px -8px rgba(11,27,51,.20)' }}>
+              <div className="relative rounded-2xl overflow-hidden flex-1" style={{ height: '75%', boxShadow: '0 12px 40px -8px rgba(11,27,51,.20)' }}>
                 <Image
-                  src="/assets/images/about.png"
-                  alt="Willstone team at work"
+                  src="/assets/images/software-about-1.png"
+                  alt="Information technology solutions"
                   fill
                   sizes="15vw"
                   className="object-cover"
                 />
               </div>
-              {/* Card 2 — middle, tallest, raised up */}
-              <div className="relative rounded-2xl overflow-hidden shrink-0" style={{ width: '30%', height: '100%', marginBottom: '0', boxShadow: '0 16px 48px -10px rgba(11,27,51,.26)' }}>
+
+              {/* Card 2 — middle, tallest, with Willstone brand overlay */}
+              <div className="relative rounded-2xl overflow-hidden flex-1" style={{ height: '100%', boxShadow: '0 16px 48px -10px rgba(11,27,51,.32)' }}>
                 <Image
-                  src="/assets/images/about-banner.png"
-                  alt="Willstone operations in the field"
+                  src="/assets/images/Security-Defense-about.png"
+                  alt="Agriculture and agribusiness"
                   fill
                   sizes="15vw"
-                  className="object-cover object-top"
+                  className="object-cover"
                 />
+                {/* Dark gradient + brand badge at bottom */}
+                <div
+                  className="absolute inset-x-0 bottom-0 px-5 py-6 flex flex-col gap-2"
+                  style={{ background: 'linear-gradient(to top, rgba(11,27,51,.92) 0%, rgba(11,27,51,.5) 60%, transparent 100%)' }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style={{ background: 'var(--navy)', border: '1.5px solid var(--gold)' }}>
+                      <span className="text-[11px] font-bold" style={{ color: 'var(--gold)' }}>W</span>
+                    </div>
+                    <div>
+                      <p className="text-white text-[11px] font-bold tracking-widest uppercase leading-none">WILLSTONE</p>
+                      <p className="text-white/50 text-[9px] tracking-wider uppercase leading-none mt-0.5">Strategic Industries</p>
+                    </div>
+                  </div>
+                  <div className="h-[2px] w-10 rounded-full" style={{ background: 'var(--gold)' }} />
+                </div>
               </div>
+
               {/* Card 3 — right, shorter */}
-              <div className="relative rounded-2xl overflow-hidden shrink-0" style={{ width: '30%', height: '75%', boxShadow: '0 12px 40px -8px rgba(11,27,51,.20)' }}>
+              <div className="relative rounded-2xl overflow-hidden flex-1" style={{ height: '75%', boxShadow: '0 12px 40px -8px rgba(11,27,51,.20)' }}>
                 <Image
-                  src="/assets/images/software-engineers.jpg"
-                  alt="Willstone engineers"
+                  src="/assets/images/Electrical-Energy-about-3.png"
+                  alt="Electrical and energy solutions"
                   fill
                   sizes="15vw"
                   className="object-cover"
                 />
               </div>
+
             </div>
 
           </div>

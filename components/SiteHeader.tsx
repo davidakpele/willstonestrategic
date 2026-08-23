@@ -12,10 +12,8 @@ const NAV_LINKS = [
   { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
   { href: '#',                label: 'PRODUCTS', hasDropdown: true, dropdownId: 'products' },
   { href: '/blog',            label: 'BLOG' },
-  // removed CONTACT from top-level links because we already have the Contact Us CTA button
 ]
 
-// Used in mobile drawer only
 const SERVICES_DROPDOWN = [
   { label: 'Agriculture & Agribusiness',                    href: '/services/agriculture-agribusiness' },
   { label: 'Information Technology & Software Development', href: '/services/information-technology' },
@@ -445,7 +443,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
         </div>
 
         {/* Drawer nav */}
-        <nav className="flex flex-col px-6 py-5 gap-0 text-[19px] text-white/90 font-semibold tracking-wide overflow-y-auto flex-1">
+        <nav className="flex flex-col px-6 py-5 gap-0 text-[17px] text-white/90 font-semibold tracking-wide overflow-y-auto flex-1">
           {NAV_LINKS.map((link) =>
             link.hasDropdown ? (
               <div key={link.href + link.label} className="border-b border-white/10">

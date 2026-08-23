@@ -421,9 +421,10 @@ export default function ContactPage() {
 
           {/* Full-width map below */}
           <div className="mt-12 rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ height: '420px' }}>
+           
             <iframe
               title="Willstone Strategic Industries Limited location"
-              src="https://www.google.com/maps?q=20%20Cambridge%20House%2C%20Onireke%20Jericho%2C%20Ibadan%2C%20Oyo%20State%2C%20Nigeria&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.589121213974!2d3.8767668999999993!3d7.399849499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d17c93da759%3A0x9673f63345eff0d7!2sJoop%20Berkhout%20Cres%2C%20Ibadan%20200284%2C%20Oyo!5e0!3m2!1sen!2sng!4v1787437492114!5m2!1sen!2sng" 
               width="100%"
               height="100%"
               style={{ border: 0 }}
