@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {},
     screens: {
-      sm: '640px',
-      md: '786px', // adjusted to make desktop layout active at >=786px
-      lg: '1024px',
+      sm: '1000px',
+      md: '1000px',
+      lg: '1000px',
       xl: '1280px',
       '2xl': '1536px',
     },

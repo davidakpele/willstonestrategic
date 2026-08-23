@@ -194,41 +194,68 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
           style={{ background: 'linear-gradient(0deg, rgba(6,15,31,.6) 0%, transparent 100%)' }} />
 
-        {/* Content — grows to fill space, pushes stats bar to bottom */}
-        <div className="relative z-10 flex-1 flex items-center w-full">
-          <div className="max-w-7xl mx-auto w-full px-5 sm:px-8 lg:px-10 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-14 lg:pb-20 flex flex-col items-center sm:items-start">
-
-            <p className="fade-up fade-up-1 eyebrow text-[11px] sm:text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-4" style={{ color: 'var(--gold)' }}>
-              <span className="gold-rule" /> WELCOME TO WILLSTONE
-            </p>
-
-            <h1 className="hero-heading fade-up fade-up-2 display text-white font-semibold leading-[1.12] max-w-2xl text-center sm:text-left"
-              style={{ fontSize: 'clamp(2.1rem, 7vw, 3.4rem)' }}>
-              Building Solutions.<br />
-              Delivering Impact.<br />
-              Creating Tomorrow.
+        {/* Content — full-width container, centered text/buttons */}
+        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16">
+          <div className="w-full max-w-7xl mx-auto mt-15 py-20 flex flex-col items-center text-center">
+            <p className="fade-up fade-up-1 eyebrow text-[11px] sm:text-[12px] font-semibold flex items-center justify-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>WELCOME TO WILLSTONE</p>
+            <h1 className="hero-heading fade-up fade-up-2 display text-white leading-[1.12] w-full max-w-5xl text-center"
+              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.4rem, 8vw, 3.5rem)' }}>
+             Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
             </h1>
-
-            <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 max-w-lg leading-relaxed text-center sm:text-left mx-auto sm:mx-0"
-              style={{ fontSize: 'clamp(14px, 2.5vw, 16px)' }}>
+            <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 w-full max-w-2xl leading-relaxed text-center"
+              style={{ fontSize: 'clamp(14px, 2.5vw, 17px)' }}>
               Willstone Strategic Industries Limited delivers innovative solutions and
               trusted services across industries, driving growth, enabling progress, and
               building a stronger tomorrow.
             </p>
 
             {/* CTA buttons */}
-            <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4 mt-9 sm:mt-10 mb-2 w-full sm:w-auto items-center sm:items-start">
-              <a href="#about"
-                className="inline-flex items-center justify-center gap-2 btn-slate px-7 py-3.5 rounded-lg text-[13px] font-semibold tracking-wide cursor-pointer w-full sm:w-auto">
-                DISCOVER MORE
-                <svg className="float-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
-              <a href="#contact"
-                className="inline-flex items-center justify-center gap-2 btn-outline-gold px-7 py-3.5 rounded-lg text-[13px] font-semibold tracking-wide cursor-pointer w-full sm:w-auto">
-                PARTNER WITH US
-              </a>
+           <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4 mt-7 sm:mt-8 w-full sm:w-auto items-center justify-center">
+            <a
+              href="/about"
+              className="inline-flex items-center justify-center w-full sm:w-auto"
+              style={{
+                fontFamily: "Satoshi, Inter, sans-serif",
+                fontSize: "15px",
+                fontWeight: "700",
+                lineHeight: "150%",
+                minWidth: "200px",
+                height: "48px",
+                padding: "8px 24px",
+                gap: "8px",
+                background: "rgba(207, 207, 207, 0.4)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.25)",
+                borderRadius: "10px",
+                color: "rgb(255, 255, 255)",
+                textDecoration: "none",
+                transition: "opacity 200ms",
+                cursor: "pointer",
+              }}>
+              DISCOVER MORE
+            </a>
+            <a
+              href="/#contact"
+              className="inline-flex items-center justify-center w-full sm:w-auto"
+              style={{
+                fontFamily: "Satoshi, Inter, sans-serif",
+                fontSize: "15px",
+                fontWeight: 700,
+                lineHeight: "150%",
+                minWidth: "200px",
+                height: "48px",
+                padding: "8px 24px",
+                gap: "8px",
+                backgroundColor: "rgb(215, 181, 109)",
+                color: "rgb(1, 5, 39)",
+                borderRadius: "10px",
+                textDecoration: "none",
+                transition: "opacity 200ms",
+                cursor: "pointer",
+              }}
+            >
+              PARTNER WITH US
+            </a>
             </div>
 
             {/* Industry pills — infinite scroll ticker, desktop only */}
