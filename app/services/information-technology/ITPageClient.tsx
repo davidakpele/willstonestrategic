@@ -86,7 +86,7 @@ const PROJECTS = [
       'REST / gRPC for easy integration',
     ],
     platforms: ['Web Platform', 'Mobile App (Android & iOS)', 'Secure API', 'Enterprise Ready'],
-    image: '/assets/images/software.jpg',
+    image: '/assets/images/epay.png',
     badge: 'FEATURED APPLICATION',
     featured: true,
   },
@@ -291,16 +291,13 @@ export default function ITPageClient() {
 
             {/* Right — dashboard mockup */}
             <div className="hidden lg:flex items-center justify-end">
-              <div className="relative" style={{ width: '480px', height: '320px' }}>
+              <div className="relative" style={{ width: '620px', height: '420px' }}>
                 <Image
-                  src="/assets/images/software.jpg"
-                  alt="Dashboard software mockup"
+                  src="/assets/images/college-app.png"
+                  alt="ePay dashboard mockup"
                   fill
-                  className="object-cover rounded-2xl"
-                  style={{ boxShadow: '0 32px 80px rgba(0,0,0,0.5)', border: '1px solid rgba(201,162,75,0.2)' }}
+                  className="object-contain rounded-2xl"
                 />
-                {/* Gold frame accent */}
-                <div className="absolute -inset-2 rounded-2xl pointer-events-none" style={{ border: '1px solid rgba(201,162,75,0.12)' }} />
               </div>
             </div>
 
@@ -393,7 +390,7 @@ export default function ITPageClient() {
               {/* Right — screenshot */}
               <div className="relative min-h-[280px] lg:min-h-0">
                 <Image
-                  src="/assets/images/software-about-1.png"
+                  src="/assets/images/epay.png"
                   alt="ePay payment platform dashboard screenshot"
                   fill
                   className="object-cover"
