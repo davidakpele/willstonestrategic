@@ -1313,3 +1313,130 @@ html::-webkit-scrollbar-thumb:hover {
     border-radius: 14px;
   }
 }
+
+/* ==============================
+   IT PAGE — WHAT WE BUILD CARDS
+   ============================== */
+
+.it-cat-card {
+  padding: 18px 16px;
+  border-radius: 12px;
+  border: 1px solid #eaecf2;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.it-cat-card:hover {
+  border-color: rgba(201,162,75,0.45);
+  box-shadow: 0 6px 24px -6px rgba(201,162,75,0.15);
+  transform: translateY(-2px);
+}
+
+.it-cat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(11,27,51,0.05);
+  color: var(--navy);
+}
+
+.it-cat-card:hover .it-cat-icon {
+  background: rgba(201,162,75,0.1);
+  color: var(--gold);
+}
+
+/* ==============================
+   IT PAGE — PROJECT CARDS
+   ============================== */
+
+.it-project-card {
+  border-radius: 14px;
+  border: 1px solid #eaecf2;
+  overflow: hidden;
+  background: #fff;
+  transition: box-shadow 0.25s, transform 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.it-project-card:hover {
+  box-shadow: 0 12px 40px -8px rgba(11,27,51,0.14);
+  transform: translateY(-3px);
+}
+
+/* ==============================
+   IT PAGE — TECH CHIPS
+   ============================== */
+
+.it-tech-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px solid #eaecf2;
+  background: #fafafa;
+  transition: border-color 0.2s, background 0.2s;
+  gap: 4px;
+}
+
+.it-tech-chip:hover {
+  border-color: rgba(201,162,75,0.4);
+  background: #fff;
+}
+
+/* ==============================
+   IT PAGE — PROCESS STEPS
+   ============================== */
+
+.it-process-step {
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.it-process-step:hover {
+  background: rgba(201,162,75,0.06);
+  border-color: rgba(201,162,75,0.18);
+}
+
+/* ==============================
+   IT PAGE — SERVICE CARDS
+   ============================== */
+
+.it-service-card {
+  padding: 22px 20px;
+  border-radius: 14px;
+  border: 1px solid #eaecf2;
+  background: #fff;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.it-service-card:hover {
+  border-color: rgba(201,162,75,0.5);
+  box-shadow: 0 8px 28px -8px rgba(201,162,75,0.18);
+  transform: translateY(-3px);
+}
+
+.it-service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: rgba(11,27,51,0.05);
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.it-service-card:hover .it-service-icon {
+  background: rgba(201,162,75,0.1);
+  color: var(--gold);
+}

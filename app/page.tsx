@@ -284,7 +284,7 @@ export default function Home() {
               WELCOME TO WILLSTONE
             </p>
             <h1 className="hero-heading fade-up fade-up-2 display text-white leading-[1.08] w-full max-w-6xl text-center"
-              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.6rem, 6vw, 5.5rem)' }}>
+              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.4rem, 6vw, 5.5rem)' }}>
               Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
             </h1>
             <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 w-full max-w-3xl leading-relaxed text-center"
@@ -569,26 +569,22 @@ export default function Home() {
         {/* Dark overlay */}
         <div className="absolute inset-0" style={{ background: 'rgba(5,12,26,.78)' }} />
 
-        <div className="relative z-10 max-w-screen-2xl mx-auto px-6 lg:px-16 xl:px-24 py-20">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 items-center">
+        <div className="relative z-10 w-full px-5 sm:px-8 lg:px-16 xl:px-24 py-12 lg:py-20">
 
-            {/* Left */}
-            <div>
-              <p className="eyebrow text-[11px] font-semibold mb-3 tracking-widest" style={{ color: 'var(--gold)' }}>
-                PARTNER WITH US
-              </p>
-              <h2 className="display font-bold text-white leading-tight mb-8"
-                style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)' }}>
-                One partner,<br />every step of the journey.
-              </h2>
+          {/* Heading + button — full width on mobile */}
+          <div className="mb-10 lg:hidden text-center">
+            <p className="eyebrow text-[11px] font-semibold mb-3 tracking-widest" style={{ color: 'var(--gold)' }}>
+              PARTNER WITH US
+            </p>
+            <h2 className="display font-bold text-white leading-tight mb-6"
+              style={{ fontSize: 'clamp(1.7rem, 7vw, 2.5rem)' }}>
+              One partner,<br />every step of the journey.
+            </h2>
+            <div className="flex justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 font-semibold rounded-md cursor-pointer"
-                style={{
-                  background: 'var(--gold)', color: '#1a1408',
-                  padding: '12px 28px', fontSize: '14px',
-                  borderRadius: '8px',
-                }}
+                className="inline-flex items-center gap-3 font-semibold"
+                style={{ background: 'var(--gold)', color: '#1a1408', padding: '12px 24px', fontSize: '14px', borderRadius: '8px' }}
               >
                 Let&apos;s Work Together
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -596,9 +592,41 @@ export default function Home() {
                 </svg>
               </Link>
             </div>
+          </div>
 
-            {/* Right — 4 pillars */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+          {/* 4 pillars — 2 col on mobile, 4 col on tablet+ */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 lg:hidden">
+            {PARTNER_PILLARS.map((pillar) => (
+              <div key={pillar.title} className="flex flex-col items-center text-center">
+                <span className="partner-pillar-icon mb-3">{pillar.icon}</span>
+                <h4 className="font-semibold text-white text-[14px] mb-1 leading-snug">{pillar.title}</h4>
+                <p className="text-white/55 text-[12px] leading-snug">{pillar.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: side-by-side */}
+          <div className="hidden lg:grid lg:grid-cols-[1fr_2fr] gap-16 items-center">
+            <div>
+              <p className="eyebrow text-[11px] font-semibold mb-3 tracking-widest" style={{ color: 'var(--gold)' }}>
+                PARTNER WITH US
+              </p>
+              <h2 className="display font-bold text-white leading-tight mb-8"
+                style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
+                One partner,<br />every step of the journey.
+              </h2>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 font-semibold"
+                style={{ background: 'var(--gold)', color: '#1a1408', padding: '12px 28px', fontSize: '14px', borderRadius: '8px' }}
+              >
+                Let&apos;s Work Together
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </Link>
+            </div>
+            <div className="grid grid-cols-4 gap-6">
               {PARTNER_PILLARS.map((pillar) => (
                 <div key={pillar.title} className="partner-pillar">
                   <span className="partner-pillar-icon">{pillar.icon}</span>
@@ -608,6 +636,7 @@ export default function Home() {
               ))}
             </div>
           </div>
+
         </div>
       </section>
 

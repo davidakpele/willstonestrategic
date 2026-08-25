@@ -88,25 +88,30 @@ export default function ContactPage() {
     setSubmitError('')
     setSending(true)
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
+    // ── Backend call temporarily disabled ──
+    // try {
+    //   const res = await fetch('/api/contact', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(form),
+    //   })
+    //   if (!res.ok) {
+    //     const data = await res.json().catch(() => ({}))
+    //     throw new Error(data.error || 'Failed to send')
+    //   }
+    //   setShowSuccess(true)
+    //   setForm({ name: '', email: '', phone: '', whatsapp: '', inquiryType: 'inquiry', message: '' })
+    // } catch (err) {
+    //   setSubmitError('Something went wrong sending your message. Please try again, or email us directly at willstonestrategic@gmail.com.')
+    // } finally {
+    //   setSending(false)
+    // }
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data.error || 'Failed to send')
-      }
-
-      setShowSuccess(true)
-      setForm({ name: '', email: '', phone: '', whatsapp: '', inquiryType: 'inquiry', message: '' })
-    } catch (err) {
-      setSubmitError('Something went wrong sending your message. Please try again, or email us directly at willstonestrategic@gmail.com.')
-    } finally {
-      setSending(false)
-    }
+    // Simulate 5-second loading, then show success modal
+    await new Promise(resolve => setTimeout(resolve, 5000))
+    setSending(false)
+    setShowSuccess(true)
+    setForm({ name: '', email: '', phone: '', whatsapp: '', inquiryType: 'inquiry', message: '' })
   }
 
   const closeSuccess = () => setShowSuccess(false)
