@@ -1137,3 +1137,179 @@ html::-webkit-scrollbar-thumb:hover {
     font-size: 15px;
   }
   }
+
+/* ==============================
+   GLOBAL REACH SECTION
+   ============================== */
+
+.reach-map-side {
+  min-height: 300px;
+}
+
+.reach-text-side {
+  position: relative;
+}
+
+.reach-stat {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  padding-right: 8px;
+}
+
+.reach-stat-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(201, 162, 75, 0.25);
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+
+/* Re-animate arcs on scroll into view */
+@keyframes arcDraw {
+  from { stroke-dashoffset: var(--arc-len, 1000); }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ==============================
+   SERVICE CARDS (new grid style)
+   ============================== */
+
+.service-card-new {
+  padding: 22px 20px;
+  border-radius: 14px;
+  border: 1px solid #eaecf2;
+  background: #fff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  cursor: default;
+}
+
+.service-card-new:hover {
+  border-color: rgba(201, 162, 75, 0.5);
+  box-shadow: 0 8px 28px -8px rgba(201, 162, 75, 0.18);
+  transform: translateY(-3px);
+}
+
+.service-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: rgba(11, 27, 51, 0.05);
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.service-card-new:hover .service-card-icon {
+  background: rgba(201, 162, 75, 0.1);
+  color: var(--gold);
+}
+
+/* ==============================
+   PARTNER BANNER SECTION
+   ============================== */
+
+.partner-banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(25%) brightness(0.55);
+  transform: scale(1.04);
+  transition: transform 8s ease;
+}
+
+.partner-banner:hover .partner-banner-bg {
+  transform: scale(1.0);
+}
+
+.partner-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.partner-pillar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(201, 162, 75, 0.15);
+  border: 1px solid rgba(201, 162, 75, 0.3);
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.partner-pillar:hover .partner-pillar-icon {
+  background: rgba(201, 162, 75, 0.28);
+}
+
+/* ==============================
+   ABOUT — 3-IMAGE MOSAIC
+   ============================== */
+
+.about-mosaic {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.about-mosaic-main {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.about-mosaic-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.about-mosaic-sm {
+  position: relative;
+  flex: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.about-mosaic-main img,
+.about-mosaic-sm img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-mosaic-main:hover img,
+.about-mosaic-sm:hover img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 640px) {
+  .about-mosaic {
+    height: 300px;
+    grid-template-columns: 1fr;
+  }
+  .about-mosaic-side {
+    display: none;
+  }
+  .about-mosaic-main {
+    border-radius: 14px;
+  }
+}
