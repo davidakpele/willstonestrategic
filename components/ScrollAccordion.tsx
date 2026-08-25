@@ -72,8 +72,8 @@ export default function ScrollAccordion() {
   }, [])
 
   return (
-    <section className="py-20 px-6 lg:px-10 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
+      <div className="max-w-screen-2xl mx-auto">
 
         {/* Mobile header */}
         <div className="lg:hidden text-center mb-12">

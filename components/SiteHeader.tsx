@@ -202,7 +202,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
             WebkitBackdropFilter: 'blur(12px)',
             borderRadius: '20px',
             border: '1px solid rgba(255,255,255,0.08)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
+            boxShadow: 'none',
           }}
         >
 

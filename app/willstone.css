@@ -110,10 +110,10 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* ---- Hero text legibility over the starfield/animation ---- */
 .hero-heading {
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.75), 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 .hero-subtext {
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
 }
 
 .card-hover {
@@ -477,9 +477,28 @@ html::-webkit-scrollbar-thumb:hover {
   .fade-up { opacity: 1; transform: none; }
 }
 
-/* ==============================
-   CONTACT PAGE
-   ============================== */
+/* ── Contact page redesign — Polaris-style hero ── */
+
+/* On mobile the form card sits below the image, not overlapping it */
+@media (max-width: 767px) {
+  .contact-hero-card {
+    position: static !important;
+    margin: -40px 12px 0;
+    width: calc(100% - 24px) !important;
+    max-width: 100% !important;
+  }
+  .contact-hero-image {
+    height: 300px !important;
+  }
+}
+
+/* Input focus ring using gold */
+.contact-input-light:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px rgba(201,162,75,0.12);
+}
+
+
 
 /* Info cards */
 .contact-card {

@@ -303,7 +303,7 @@ export default function InformationTechnologyPage() {
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
         <div className="absolute inset-0 z-10 flex items-center" style={{ paddingTop: '88px' }}>
-          <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-10 py-8 text-center sm:text-left">
+          <div className="max-w-screen-2xl w-full mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-8 text-center sm:text-left">
             <p className="eyebrow text-[12px] font-semibold flex items-center justify-center sm:justify-start gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> OUR SERVICES
             </p>
@@ -325,8 +325,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── INTRO ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
           <div>
             <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> DIGITAL TRANSFORMATION
@@ -367,8 +367,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── TABS + TECH STACK ── */}
-      <section className="py-16 sm:py-20 px-5 sm:px-8 lg:px-10 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 sm:py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white overflow-hidden">
+        <div className="max-w-screen-2xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
 
             {/* Left */}
@@ -440,8 +440,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── PROJECTS ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-screen-2xl mx-auto">
           <div className="mb-14">
             <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> SOME OF OUR PROJECTS
@@ -460,8 +460,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── OFFERINGS ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-screen-2xl mx-auto">
           <div className="mb-12">
             <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> WHAT WE OFFER
@@ -487,8 +487,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--navy)' }}>
-        <div className="max-w-5xl mx-auto">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--navy)' }}>
+        <div className="max-w-screen-2xl mx-auto">
           <div className="text-center mb-14">
             <p className="eyebrow text-[12px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> HOW WE WORK <span className="gold-rule" />
@@ -515,8 +515,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── OTHER SERVICES ── */}
-      <section className="py-16 px-5 sm:px-8 lg:px-10 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white border-t border-gray-100">
+        <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-6" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> EXPLORE OTHER SERVICES
           </p>
@@ -535,8 +535,8 @@ export default function InformationTechnologyPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-16 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="py-16 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-screen-2xl mx-auto text-center">
           <h2 className="display font-semibold text-[24px] sm:text-[30px] mb-4" style={{ color: 'var(--ink)' }}>
             Ready to build something great?
           </h2>

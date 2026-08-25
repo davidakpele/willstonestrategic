@@ -81,7 +81,7 @@ export default function BlogPage() {
 
       <BlogHero />
 
-      <main className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-12">
+      <main className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-12">
         {/* Blog list + sidebar client-side */}
         <BlogListClient posts={POSTS} />
       </main>

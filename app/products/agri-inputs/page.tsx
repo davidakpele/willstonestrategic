@@ -56,7 +56,7 @@ export default function AgriInputsPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-20 flex flex-col items-start">
+        <div className="relative z-10 max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-20 flex flex-col items-start">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-6 text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -108,7 +108,7 @@ export default function AgriInputsPage() {
 
       {/* ── Products Gallery ── */}
       <section style={{ background: 'var(--paper)' }}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-16">
+        <div className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-16">
           {/* Section header */}
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
@@ -138,7 +138,7 @@ export default function AgriInputsPage() {
 
       {/* ── Why Willstone strip ── */}
       <section style={{ background: 'var(--navy)' }}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-14">
+        <div className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-14">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             {(
               [

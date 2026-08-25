@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function NewsletterCTA() {
   return (
     <section className="mt-12 bg-[#071633] text-white py-8">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
           <p className="font-semibold text-[18px]">Stay Updated</p>
           <p className="text-white/70">Get the latest insights, industry updates, and company news delivered straight to your inbox.</p>

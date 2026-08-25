@@ -100,8 +100,8 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── WHY WILLSTONE AGRI ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 bg-white">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
 
           {/* Left */}
           <div>
@@ -172,8 +172,8 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── PRODUCTS WE WORK WITH ── */}
-      <section className="py-14 px-5 sm:px-10 lg:px-16 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-14 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white border-t border-gray-100">
+        <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-10 text-center" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> PRODUCTS WE WORK WITH <span className="gold-rule" />
           </p>
@@ -191,8 +191,8 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── WHY CHOOSE US ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_2fr] gap-14 items-start">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white border-t border-gray-100">
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-[1fr_2fr] gap-14 items-start">
 
           {/* Left — sticky heading */}
           <div className="lg:sticky lg:top-28">
@@ -232,10 +232,10 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── OUR IMPACT ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 relative overflow-hidden" style={{ background: 'var(--navy)' }}>
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 relative overflow-hidden" style={{ background: 'var(--navy)' }}>
         {/* subtle background texture */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(201,162,75,.4) 0%, transparent 60%), radial-gradient(circle at 80% 50%, rgba(201,162,75,.2) 0%, transparent 60%)' }} />
-        <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="relative z-10 max-w-screen-2xl mx-auto">
           <div className="mb-12">
             <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> OUR IMPACT
@@ -274,8 +274,8 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── OUR PROCESS ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto">
           <div className="text-center mb-14">
             <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> OUR PROCESS <span className="gold-rule" />
@@ -306,8 +306,8 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── EXPLORE OTHER SERVICES ── */}
-      <section className="py-14 px-5 sm:px-10 lg:px-16 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-14 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white border-t border-gray-100">
+        <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-6" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> EXPLORE OTHER SERVICES
           </p>
@@ -330,8 +330,8 @@ export default function AgriculturePageClient() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-16 px-5 sm:px-10 lg:px-16" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-2xl border" style={{ borderColor: 'rgba(201,162,75,.2)', background: '#fff' }}>
+      <section className="py-16 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-2xl border" style={{ borderColor: 'rgba(201,162,75,.2)', background: '#fff' }}>
           <div>
             <h2 className="display font-bold text-[22px] sm:text-[26px] mb-2" style={{ color: 'var(--ink)' }}>
               Ready to grow with Willstone?

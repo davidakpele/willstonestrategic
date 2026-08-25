@@ -122,8 +122,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── OUR STORY ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* LEFT — story text */}
@@ -236,8 +236,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── MISSION · CULTURE · VISION ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-6 items-stretch">
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-3 gap-6 items-stretch">
 
           {/* Mission — left text card */}
           <div className="about-mv-card">
@@ -303,7 +303,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <section className="py-20 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--navy)' }}>
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--navy)' }}>
         <div className="max-w-2xl mx-auto text-center">
           <h2
             className="display text-white font-semibold leading-tight mb-4"

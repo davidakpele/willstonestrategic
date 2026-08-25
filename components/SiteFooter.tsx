@@ -60,10 +60,10 @@ function BackToTop() {
 export default function SiteFooter() {
   return (
     <>
-    <footer id="contact" className="pb-8 px-6 lg:px-10" style={{ background: '#03080f' }}>
+    <footer id="contact" className="pb-8 px-6 lg:px-16 xl:px-24" style={{ background: '#03080f' }}>
       <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
 
-      <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pt-14">
+      <div className="max-w-screen-2xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pt-14">
         <div>
           <Link href="/" className="site-logo-footer mb-5 block" aria-label="Willstone Strategic Industries Limited" />
           <p className="text-white/50 text-[13px] leading-relaxed max-w-xs">
@@ -132,7 +132,7 @@ export default function SiteFooter() {
                 <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
               </svg>
               <a href="tel:+2348051234567" className="hover:text-[#C9A24B] transition-colors">
-                +234 901 938 4496
+                +234 706 196 4340
               </a>
             </li>
             <li className="flex items-start gap-2">
@@ -149,7 +149,7 @@ export default function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/40">
+      <div className="max-w-screen-2xl mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/40">
         <p>&copy; 2026 Willstone Strategic Industries Limited. All rights reserved.</p>
         <div className="flex gap-5">
           <Link href="/privacy-policy" className="hover:text-[#C9A24B] transition-colors">Privacy Policy</Link>

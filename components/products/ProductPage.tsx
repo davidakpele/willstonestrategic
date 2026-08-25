@@ -55,7 +55,7 @@ export default function ProductPage({
       <section className="relative overflow-hidden" style={{ paddingTop: 88, minHeight: 320 }}>
         <Image src={hero.img} alt={hero.imgAlt} fill className="object-cover object-center" priority sizes="100vw" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(105deg,rgba(6,15,31,.93) 0%,rgba(6,15,31,.72) 55%,rgba(6,15,31,.35) 100%)' }} />
-        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 py-16">
+        <div className="relative z-10 max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-16">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-6 text-[12px]" style={{ color: 'rgba(255,255,255,.45)' }}>
             {breadcrumb.map((crumb, i) => (
@@ -85,8 +85,8 @@ export default function ProductPage({
       </section>
 
       {/* Main content */}
-      <article className="py-16 px-5 sm:px-8 lg:px-10 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-12">
+      <article className="py-16 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-3 gap-12">
 
           {/* Left: body content */}
           <div className="lg:col-span-2 space-y-12">
@@ -169,8 +169,8 @@ export default function ProductPage({
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="py-14 px-5 sm:px-8 lg:px-10" style={{ background: 'var(--paper)' }}>
-          <div className="max-w-6xl mx-auto">
+        <section className="py-14 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+          <div className="max-w-screen-2xl mx-auto">
             <h2 className="display font-semibold text-[20px] mb-8" style={{ color: 'var(--ink)' }}>Related Products</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {related.map(r => (

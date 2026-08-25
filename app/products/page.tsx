@@ -67,7 +67,7 @@ export default function ProductsPage() {
           />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-16 flex flex-col items-start">
+        <div className="relative z-10 max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-16 flex flex-col items-start">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-5 text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -123,7 +123,7 @@ export default function ProductsPage() {
 
       {/* ── Stats strip ── */}
       <section style={{ background: 'var(--navy)' }}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-8">
+        <div className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
               { value: '22+',  label: 'Products Listed' },
@@ -147,7 +147,7 @@ export default function ProductsPage() {
 
       {/* ── Catalogue ── */}
       <section id="catalogue" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 py-14">
+        <div className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-14">
 
           {/* Section heading */}
           <div className="mb-8">

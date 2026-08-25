@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function BlogHero() {
   return (
     <section className="bg-[#071633] text-white" style={{ paddingTop: 96 }}>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 py-16 grid md:grid-cols-3 gap-6 items-center">
+      <div className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-16 grid md:grid-cols-3 gap-6 items-center">
         <div className="md:col-span-2">
           <p className="eyebrow text-[11px] font-semibold mb-3" style={{ color: 'var(--gold)' }}>OUR BLOG</p>
           <h1 className="display font-semibold text-[32px] sm:text-[40px] leading-tight mb-4">Insights. Ideas. Impact.</h1>

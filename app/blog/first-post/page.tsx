@@ -17,7 +17,7 @@ export default function FirstPost() {
     <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
       <SiteHeader variant="solid" />
 
-      <main style={{ paddingTop: 96 }} className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-10 py-16">
+      <main style={{ paddingTop: 96 }} className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-16">
         <h1 className="display font-semibold text-[26px] mb-4" style={{ color: 'var(--ink)' }}>Introducing Willstone: Building Solutions, Delivering Impact</h1>
         <p className="text-slate-500 mb-6">Welcome to the Willstone blog. This space will share company updates, sector insights and case studies about our work across technology, agriculture, energy and logistics.</p>
 

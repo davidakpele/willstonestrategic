@@ -186,13 +186,13 @@ export default function Home() {
             }}
           />
         </div>
-        {/* Overlay — left-heavy dark so text is readable, thins out on the right to show the animation */}
+        {/* Overlay — light center vignette so the earth animation stays vivid */}
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(135deg, rgba(6,15,31,.94) 0%, rgba(6,15,31,.78) 30%, rgba(6,15,31,.45) 60%, rgba(6,15,31,.15) 100%)',
+          background: 'linear-gradient(135deg, rgba(6,15,31,.62) 0%, rgba(6,15,31,.42) 30%, rgba(6,15,31,.18) 60%, rgba(6,15,31,.05) 100%)',
         }} />
-        {/* Extra bottom fade so stats bar sits cleanly */}
+        {/* Subtle bottom fade */}
         <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-          style={{ background: 'linear-gradient(0deg, rgba(6,15,31,.6) 0%, transparent 100%)' }} />
+          style={{ background: 'linear-gradient(0deg, rgba(6,15,31,.35) 0%, transparent 100%)' }} />
 
         {/* Content — full-width container, centered text/buttons */}
         <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16">
@@ -310,8 +310,8 @@ export default function Home() {
       </div>
 
       {/* INDUSTRIES */}
-      <section id="industries" className="py-20 px-6 lg:px-10" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-7xl mx-auto">
+      <section id="industries" className="py-20 px-6 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-2" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> DRIVEN ACROSS INDUSTRIES
           </p>
@@ -334,7 +334,7 @@ export default function Home() {
       <ScrollAccordion />
 
       {/* GLOBAL REACH */}
-      <section className="relative py-20 px-6 lg:px-10 overflow-hidden" style={{ background: 'var(--navy)' }}>
+      <section className="relative py-20 px-6 lg:px-16 xl:px-24 overflow-hidden" style={{ background: 'var(--navy)' }}>
         <svg className="absolute right-0 top-0 h-full opacity-20" width="620" viewBox="0 0 620 400" fill="none" aria-hidden="true">
           <g fill="#C9A24B">
             {[[40,40],[70,45],[100,42],[130,60],[160,55],[200,70],[230,90],[260,100],[300,95],[340,110],[380,130],[420,120],[460,140],[500,160],[60,120],[100,150],[140,170],[180,190],[220,200],[260,210],[300,220],[340,230],[380,240],[420,250],[460,260],[200,250],[240,270],[280,280],[320,290],[360,300]].map(([cx,cy]) => (
@@ -342,7 +342,7 @@ export default function Home() {
             ))}
           </g>
         </svg>
-        <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-screen-2xl mx-auto relative z-10 grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <h3 className="display text-white text-2xl sm:text-3xl font-semibold leading-tight">
               Global Reach.<br />Stronger Impact.
@@ -363,8 +363,8 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-20 px-6 lg:px-10 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section id="services" className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-2" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> OUR SERVICES
           </p>
@@ -386,7 +386,7 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="service-flow" className="py-16 px-6 lg:px-10 bg-white border-t border-gray-100">
+      <section id="service-flow" className="py-16 px-6 lg:px-16 xl:px-24 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="eyebrow text-[12px] font-semibold flex items-center justify-center gap-3 mb-2" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> HOW IT WORKS <span className="gold-rule" />
@@ -402,8 +402,8 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="relative py-20 px-6 lg:px-10 overflow-hidden" style={{ background: 'var(--navy)' }}>
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+      <section id="about" className="relative py-20 px-6 lg:px-16 xl:px-24 overflow-hidden" style={{ background: 'var(--navy)' }}>
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
           <div>
             <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> ABOUT WILLSTONE
@@ -436,8 +436,8 @@ export default function Home() {
       </section>
 
       {/* OUR COMMITMENT */}
-      <section className="py-16 px-6 lg:px-10 bg-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-6 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-8" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> OUR COMMITMENT
           </p>
