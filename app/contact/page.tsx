@@ -111,6 +111,121 @@ export default function ContactPage() {
 
   const closeSuccess = () => setShowSuccess(false)
 
+  const formContent = (
+    <>
+      <h2 className="font-bold text-[22px] mb-1" style={{ color: 'var(--ink)', fontFamily: 'var(--font-display, sans-serif)' }}>
+        Message us
+      </h2>
+      <div className="w-10 h-[2px] mb-3" style={{ background: 'var(--gold)' }} />
+      <p className="text-slate-500 text-[13px] leading-relaxed mb-6">
+        We&apos;re here to answer your questions and explore new possibilities. Our team are trained to the highest standard to answer and solve any technical or product queries you may have. 
+      </p>
+
+      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+        <div>
+          <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Name</label>
+          <input
+            type="text"
+            value={form.name}
+            placeholder="Enter your name"
+            onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+            className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.name ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
+            style={{ color: 'var(--ink)' }}
+          />
+          {errors.name && <p className="text-red-500 text-[11.5px] mt-1">{errors.name}</p>}
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex-1">
+            <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>E-mail address</label>
+            <input
+              type="email"
+              value={form.email}
+              placeholder="Enter your e-mail address"
+              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+              className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.email ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
+              style={{ color: 'var(--ink)' }}
+            />
+            {errors.email && <p className="text-red-500 text-[11.5px] mt-1">{errors.email}</p>}
+          </div>
+          <div className="flex-1">
+            <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Phone <span className="font-normal text-slate-400">(Optional)</span></label>
+            <input
+              type="tel"
+              value={form.phone}
+              placeholder="+234 ..."
+              onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+              className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.phone ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
+              style={{ color: 'var(--ink)' }}
+            />
+            {errors.phone && <p className="text-red-500 text-[11.5px] mt-1">{errors.phone}</p>}
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Inquiry Type</label>
+          <div className="relative">
+            <select
+              value={form.inquiryType}
+              onChange={e => setForm(f => ({ ...f, inquiryType: e.target.value }))}
+              className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all appearance-none pr-9 cursor-pointer${errors.inquiryType ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
+              style={{ color: 'var(--ink)' }}
+            >
+              {INQUIRY_TYPES.map(type => (
+                <option key={type.value} value={type.value}>{type.label}</option>
+              ))}
+            </select>
+            <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
+          {errors.inquiryType && <p className="text-red-500 text-[11.5px] mt-1">{errors.inquiryType}</p>}
+        </div>
+
+        <div>
+          <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Message</label>
+          <textarea
+            rows={4}
+            value={form.message}
+            placeholder={MESSAGE_PLACEHOLDERS[form.inquiryType] || 'Let us know what you are interested in...'}
+            onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+            className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all resize-none${errors.message ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
+            style={{ color: 'var(--ink)' }}
+          />
+          {errors.message && <p className="text-red-500 text-[11.5px] mt-1">{errors.message}</p>}
+        </div>
+
+        {submitError && <p className="text-red-500 text-[12px]">{submitError}</p>}
+
+        <button
+          type="submit"
+          disabled={sending}
+          className="w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 transition-all"
+          style={{ background: 'var(--navy)', color: '#fff' }}
+          onMouseEnter={e => { if (!sending) e.currentTarget.style.background = 'var(--navy-2)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'var(--navy)' }}
+        >
+          {sending ? (
+            <>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ animation: 'spin 0.8s linear infinite' }}>
+                <circle cx="12" cy="12" r="10" strokeOpacity="0.25" />
+                <path d="M12 2a10 10 0 0 1 10 10" />
+              </svg>
+              Sending…
+            </>
+          ) : (
+            <>
+              Send a message
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </>
+          )}
+        </button>
+      </form>
+    </>
+  )
+
   return (
     <div
       className={`${spaceGrotesk.variable} ${inter.variable}`}
@@ -119,12 +234,10 @@ export default function ContactPage() {
       <SiteHeader variant="solid" />
 
       {/* ── HERO + FORM ── */}
-      <section
-        className="relative overflow-hidden bg-white"
-        style={{ paddingTop: '88px' }}
-      >
-        {/* ── Top white area: heading ── */}
-        <div className="w-full px-5 sm:px-10 lg:px-16 xl:px-24 pt-14 pb-8 bg-white">
+      <section className="bg-white" style={{ paddingTop: '88px' }}>
+
+        {/* Heading */}
+        <div className="w-full px-5 sm:px-10 lg:px-16 xl:px-24 pt-14 pb-8">
           <div className="max-w-screen-2xl mx-auto">
             <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-5" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> GET IN TOUCH
@@ -133,159 +246,47 @@ export default function ContactPage() {
               className="display font-bold leading-[1.08]"
               style={{ color: 'var(--ink)', fontSize: 'clamp(2rem, 5vw, 3.6rem)', maxWidth: '680px' }}
             >
-              Interested in our services,<br />
-              products, or a potential<br />
-              partnership?
+              Let&apos;s Work Together
             </h1>
           </div>
         </div>
 
-        {/* ── Image panel with overlapping white form card ── */}
-        <div className="relative w-full px-5 sm:px-10 lg:px-16 xl:px-24 pb-16">
-          <div className="max-w-screen-2xl mx-auto relative">
+        {/* Image + form panel */}
+        <div className="w-full px-5 sm:px-10 lg:px-16 xl:px-24 pb-16">
+          <div className="max-w-screen-2xl mx-auto">
 
-            {/* Full-width image */}
-            <div className="contact-hero-image relative w-full rounded-2xl overflow-hidden" style={{ height: 'clamp(520px, 75vh, 780px)' }}>
-              <img
-                src="/assets/images/contact-us-image.png"
-                alt=""
-                aria-hidden="true"
-                className="w-full h-full object-cover object-center"
-              />
-              {/* subtle right-side darkening so image stays visible on right */}
+            {/* ── MOBILE: form card only, no image ── */}
+            <div className="md:hidden">
               <div
-                className="absolute inset-0"
-                style={{ background: 'linear-gradient(100deg, rgba(6,15,31,.15) 0%, rgba(6,15,31,.05) 60%, rgba(6,15,31,.0) 100%)' }}
-              />
+                className="bg-white rounded-2xl p-6"
+                style={{ boxShadow: '0 8px 32px rgba(11,27,51,0.10)', border: '1px solid #eaecf2' }}
+              >
+                {formContent}
+              </div>
             </div>
 
-            {/* White form card — absolutely positioned over left side of image on desktop, stacks below on mobile */}
-            <div
-              className="contact-hero-card absolute top-8 left-8 sm:left-12 lg:left-16 w-full"
-              style={{ maxWidth: '550px' }}
-            >
-              <div
-                className="bg-white rounded-2xl p-8"
-                style={{ boxShadow: '0 20px 60px rgba(11,27,51,0.18)', border: '1px solid #eaecf2' }}
-              >
-                <h2 className="font-bold text-[22px] mb-1" style={{ color: 'var(--ink)', fontFamily: 'var(--font-display, sans-serif)' }}>
-                  Let&apos;s Work Together
-                </h2>
-                <div className="w-10 h-[2px] mb-3" style={{ background: 'var(--gold)' }} />
-                <p className="text-slate-500 text-[13px] leading-relaxed mb-6">
-                  We&apos;re here to answer your questions and explore new possibilities.
-                </p>
+            {/* ── DESKTOP: flex row — form card left, image fills right ── */}
+            <div className="hidden md:flex rounded-2xl overflow-hidden" style={{ minHeight: '560px', boxShadow: '0 20px 60px rgba(11,27,51,0.12)', border: '1px solid #eaecf2' }}>
 
-                <form onSubmit={handleSubmit} noValidate className="space-y-4">
-                  <div>
-                    <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Name</label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      placeholder="Enter your name"
-                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.name ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
-                      style={{ color: 'var(--ink)' }}
-                    />
-                    {errors.name && <p className="text-red-500 text-[11.5px] mt-1">{errors.name}</p>}
-                  </div>
-
-                  <div className="flex flex-col lg:flex-row gap-4">
-                    <div className="flex-1">
-                      <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>E-mail address</label>
-                      <input
-                        type="email"
-                        value={form.email}
-                        placeholder="Enter your e-mail address"
-                        onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                        className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.email ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
-                        style={{ color: 'var(--ink)' }}
-                      />
-                      {errors.email && <p className="text-red-500 text-[11.5px] mt-1">{errors.email}</p>}
-                    </div>
-
-                    <div className="flex-1">
-                      <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Phone <span className="font-normal text-slate-400">(Optional)</span></label>
-                      <input
-                        type="tel"
-                        value={form.phone}
-                        placeholder="+234 ..."
-                        onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                        className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.phone ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
-                        style={{ color: 'var(--ink)' }}
-                      />
-                      {errors.phone && <p className="text-red-500 text-[11.5px] mt-1">{errors.phone}</p>}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Inquiry Type</label>
-                    <div className="relative">
-                      <select
-                        value={form.inquiryType}
-                        onChange={e => setForm(f => ({ ...f, inquiryType: e.target.value }))}
-                        className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all appearance-none pr-9 cursor-pointer${errors.inquiryType ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
-                        style={{ color: 'var(--ink)' }}
-                      >
-                        {INQUIRY_TYPES.map(type => (
-                          <option key={type.value} value={type.value}>{type.label}</option>
-                        ))}
-                      </select>
-                      <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </div>
-                    {errors.inquiryType && <p className="text-red-500 text-[11.5px] mt-1">{errors.inquiryType}</p>}
-                  </div>
-
-                  <div>
-                    <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Message</label>
-                    <textarea
-                      rows={4}
-                      value={form.message}
-                      placeholder={MESSAGE_PLACEHOLDERS[form.inquiryType] || 'Let us know what you are interested in...'}
-                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                      className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all resize-none${errors.message ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
-                      style={{ color: 'var(--ink)' }}
-                    />
-                    {errors.message && <p className="text-red-500 text-[11.5px] mt-1">{errors.message}</p>}
-                  </div>
-
-                  {submitError && (
-                    <p className="text-red-500 text-[12px]">{submitError}</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={sending}
-                    className="w-full py-3 rounded-lg text-[13px] font-semibold cursor-pointer flex items-center justify-center gap-2 disabled:opacity-70 transition-all"
-                    style={{ background: 'var(--navy)', color: '#fff' }}
-                    onMouseEnter={e => { if (!sending) e.currentTarget.style.background = 'var(--navy-2)' }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'var(--navy)' }}
-                  >
-                    {sending ? (
-                      <>
-                        <svg
-                          width="15" height="15" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="2.5"
-                          style={{ animation: 'spin 0.8s linear infinite' }}
-                        >
-                          <circle cx="12" cy="12" r="10" strokeOpacity="0.25" />
-                          <path d="M12 2a10 10 0 0 1 10 10" />
-                        </svg>
-                        Sending…
-                      </>
-                    ) : (
-                      <>
-                        Send a message
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M5 12h14M13 6l6 6-6 6" />
-                        </svg>
-                      </>
-                    )}
-                  </button>
-                </form>
+              {/* Form card — fixed width, white bg, scrolls with content */}
+              <div className="bg-white p-8 lg:p-10 flex flex-col justify-center" style={{ width: '520px', flexShrink: 0 }}>
+                {formContent}
               </div>
+
+              {/* Image — fills remaining width and always matches card height */}
+              <div className="relative flex-1 min-h-full">
+                <img
+                  src="/assets/images/contact-us-image.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(270deg, rgba(6,15,31,.05) 0%, rgba(6,15,31,.18) 100%)' }}
+                />
+              </div>
+
             </div>
 
           </div>

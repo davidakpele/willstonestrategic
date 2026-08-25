@@ -52,6 +52,11 @@ const INDUSTRIES = [
     alt: 'Modern building facade representing real estate',
     src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80',
   },
+  {
+    name: 'Defence',
+    alt: 'Defence and security solutions',
+    src: '/assets/images/Security-Defense-about.png',
+  },
 ]
 
 const SERVICES = [
@@ -318,7 +323,7 @@ export default function Home() {
           <h2 className="display text-2xl sm:text-3xl font-semibold mb-10" style={{ color: 'var(--ink)' }}>
             Diverse expertise. Unified by purpose.
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
             {INDUSTRIES.map((tile) => (
               <div key={tile.name} className="industry-tile rounded-lg aspect-[3/4]">
                 <Image src={tile.src} alt={tile.alt} fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw" className="object-cover" />
