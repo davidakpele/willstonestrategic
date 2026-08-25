@@ -284,7 +284,7 @@ export default function Home() {
               WELCOME TO WILLSTONE
             </p>
             <h1 className="hero-heading fade-up fade-up-2 display text-white leading-[1.08] w-full max-w-6xl text-center"
-              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.4rem, 6vw, 5.5rem)' }}>
+              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}>
               Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
             </h1>
             <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 w-full max-w-3xl leading-relaxed text-center"
