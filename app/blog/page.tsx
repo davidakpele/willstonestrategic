@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -5,6 +6,8 @@ import BlogHero from '@/components/blog/BlogHero'
 import NewsletterCTA from '@/components/blog/NewsletterCTA'
 import BlogListClient from '@/components/blog/BlogListClient'
 import '../willstone.css'
+
+const BASE = 'https://willstonestrategic.com'
 
 const POSTS = [
   {
@@ -69,26 +72,79 @@ const POSTS = [
   },
 ]
 
-export const metadata = {
-  title: 'Blog | Willstone Strategic Industries Limited',
-  description: 'Insights, ideas, and impact from Willstone — industry updates, thought leadership, and company news.',
+export const metadata: Metadata = {
+  title: 'Blog | Industry Insights & Company News — Willstone Strategic Industries',
+  description: 'Read the latest insights, industry updates, thought leadership articles, and company news from Willstone Strategic Industries Limited — covering agribusiness, technology, logistics, energy, and more.',
+  keywords: [
+    'Willstone blog', 'agribusiness news Nigeria',
+    'commodity trading insights', 'logistics Nigeria news',
+    'technology Nigeria blog', 'Nigerian business insights',
+    'Willstone Strategic Industries news', 'supply chain Africa',
+    'export Nigeria articles', 'industry trends Nigeria',
+  ],
+  alternates: { canonical: `${BASE}/blog` },
+  openGraph: {
+    title: 'Blog | Willstone Strategic Industries Limited',
+    description: 'Industry insights, thought leadership, and company news from Willstone — covering agribusiness, technology, logistics, energy, and more.',
+    url: `${BASE}/blog`,
+    siteName: 'Willstone Strategic Industries Limited',
+    images: [{ url: `${BASE}/assets/images/about-banner.png`, width: 1200, height: 630, alt: 'Willstone Strategic Industries Blog' }],
+    locale: 'en_NG',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Willstone Strategic Industries Limited',
+    description: 'Industry insights and company news from Willstone — agribusiness, technology, logistics, energy.',
+    images: [`${BASE}/assets/images/about-banner.png`],
+  },
 }
 
 export default function BlogPage() {
   return (
-    <div>
-      <SiteHeader variant="solid" />
-
-      <BlogHero />
-
-      <main className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-12">
-        {/* Blog list + sidebar client-side */}
-        <BlogListClient posts={POSTS} />
-      </main>
-
-      <NewsletterCTA />
-
-      <SiteFooter />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            '@id': `${BASE}/blog#blog`,
+            'url': `${BASE}/blog`,
+            'name': 'Willstone Strategic Industries Blog',
+            'description': 'Industry insights, thought leadership, and company news from Willstone Strategic Industries Limited.',
+            'publisher': { '@id': `${BASE}/#organization` },
+            'inLanguage': 'en-NG',
+            'breadcrumb': {
+              '@type': 'BreadcrumbList',
+              'itemListElement': [
+                { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': BASE },
+                { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': `${BASE}/blog` },
+              ],
+            },
+            'blogPost': POSTS.map((post, i) => ({
+              '@type': 'BlogPosting',
+              'position': i + 1,
+              'headline': post.title,
+              'description': post.excerpt,
+              'url': `${BASE}${post.href}`,
+              'datePublished': post.date,
+              'articleSection': post.category,
+              'author': { '@id': `${BASE}/#organization` },
+              'publisher': { '@id': `${BASE}/#organization` },
+            })),
+          }),
+        }}
+      />
+      <div>
+        <SiteHeader variant="solid" />
+        <BlogHero />
+        <main className="max-w-screen-2xl mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-12">
+          <BlogListClient posts={POSTS} />
+        </main>
+        <NewsletterCTA />
+        <SiteFooter />
+      </div>
+    </>
   )
 }
