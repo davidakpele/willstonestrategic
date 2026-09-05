@@ -146,7 +146,7 @@ export default function ContactPage() {
             <input
               type="email"
               value={form.email}
-              placeholder="Enter your e-mail address"
+              placeholder="Email address"
               onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
               className={`w-full px-4 py-2.5 rounded-lg border text-[13.5px] outline-none transition-all${errors.email ? ' border-red-400 bg-red-50' : ' border-gray-200 bg-white focus:border-[var(--gold)]'}`}
               style={{ color: 'var(--ink)' }}

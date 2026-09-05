@@ -8,6 +8,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import ScrollAccordion from '@/components/ScrollAccordion'
 
+
 import Link from 'next/link'
 
 const spaceGrotesk = Space_Grotesk({
@@ -252,113 +253,44 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           HERO
       ══════════════════════════════════════════ */}
-      <section id="home" className="relative flex flex-col overflow-hidden" style={{ background: '#0B1B33', minHeight: '100svh' }}>
-        {/* Orbital hero loop — full-bleed iframe */}
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
-          <iframe
-            src="/earth-hero-loop.html"
-            title=""
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: 'max(100%, 186.182vh)',
-              height: 'max(100%, 53.7109vw)',
-              transform: 'translate(-50%, -50%)',
-              border: 'none',
-              pointerEvents: 'none',
-            }}
+      <section id="home" className="relative w-full overflow-hidden" style={{ background: '#0B1B33' }}>
+        {/* Full-bleed banner image */}
+        <div className="hero-banner-frame relative w-full">
+          <Image
+            src="/assets/images/prime-banner.png"
+            alt="Willstone Strategic Industries"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
           />
-        </div>
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(135deg, rgba(6,15,31,.62) 0%, rgba(6,15,31,.42) 30%, rgba(6,15,31,.18) 60%, rgba(6,15,31,.05) 100%)',
-        }} />
-        <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-          style={{ background: 'linear-gradient(0deg, rgba(6,15,31,.35) 0%, transparent 100%)' }} />
+          {/* Dark gradient — heavier at bottom so text is always readable */}
+          <div className="absolute inset-0" style={{
+            background: 'linear-gradient(to bottom, rgba(6,15,31,.30) 0%, rgba(6,15,31,.55) 55%, rgba(6,15,31,.82) 100%)',
+          }} />
 
-        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16">
-          <div className="w-full max-w-7xl mx-auto mt-5 py-20 flex flex-col items-center text-center">
-            <p className="fade-up fade-up-1 eyebrow font-semibold flex items-center justify-center gap-3 mb-4"
-              style={{ color: 'var(--gold)', fontSize: 'clamp(11px, 1vw, 14px)', letterSpacing: '0.16em' }}>
-              WELCOME TO WILLSTONE
-            </p>
-            <h1 className="hero-heading fade-up fade-up-2 display text-white leading-[1.08] w-full max-w-6xl text-center"
-              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}>
-              Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
-            </h1>
-            <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 w-full max-w-3xl leading-relaxed text-center"
-              style={{ fontSize: 'clamp(15px, 1.5vw, 21px)' }}>
-              Willstone Strategic Industries Limited delivers innovative solutions and
-              trusted services across industries, driving growth, enabling progress, and
-              building a stronger tomorrow.
-            </p>
+          {/* Text overlay — bottom-anchored on mobile, centred on desktop */}
+          <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-4 sm:px-8 lg:px-16 pb-8 sm:pb-10 lg:pb-0 lg:justify-center" style={{ paddingTop: '0px' }}>
+            <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
+              <p className="fade-up fade-up-1 eyebrow font-semibold mb-1 sm:mb-3"
+                style={{ color: 'var(--gold)', fontSize: 'clamp(9px, 2vw, 13px)', letterSpacing: '0.16em' }}>
+                WELCOME TO WILLSTONE
+              </p>
+              <h1 className="hero-heading fade-up fade-up-2 display text-white w-full"
+                style={{ fontFamily: 'Satoshi, Inter, sans-serif', fontSize: 'clamp(1.05rem, 4vw, 3.8rem)', lineHeight: 1.12 }}>
+                Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
+              </h1>
+              <p className="hero-subtext fade-up fade-up-3 text-white/80 mt-2 sm:mt-4 w-full max-w-2xl leading-relaxed"
+                style={{ fontSize: 'clamp(10.5px, 1.8vw, 17px)' }}>
+                Willstone Strategic Industries Limited delivers innovative solutions and
+                trusted services across industries, driving growth, enabling progress, and
+                building a stronger tomorrow.
+              </p>
 
-            {/* CTA buttons */}
-           <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4 mt-7 sm:mt-8 w-full sm:w-auto items-center justify-center">
-            <a
-              href="/about"
-              className="inline-flex items-center justify-center w-full sm:w-auto"
-              style={{
-                fontFamily: "Satoshi, Inter, sans-serif",
-                fontSize: "15px",
-                fontWeight: "700",
-                lineHeight: "150%",
-                minWidth: "200px",
-                height: "48px",
-                padding: "8px 24px",
-                gap: "8px",
-                background: "rgba(207, 207, 207, 0.4)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255, 255, 255, 0.25)",
-                borderRadius: "10px",
-                color: "rgb(255, 255, 255)",
-                textDecoration: "none",
-                transition: "opacity 200ms",
-                cursor: "pointer",
-              }}>
-              DISCOVER MORE
-            </a>
-            <a
-              href="/#contact"
-              className="inline-flex items-center justify-center w-full sm:w-auto"
-              style={{
-                fontFamily: "Satoshi, Inter, sans-serif",
-                fontSize: "15px",
-                fontWeight: 700,
-                lineHeight: "150%",
-                minWidth: "200px",
-                height: "48px",
-                padding: "8px 24px",
-                gap: "8px",
-                backgroundColor: "rgb(215, 181, 109)",
-                color: "rgb(1, 5, 39)",
-                borderRadius: "10px",
-                textDecoration: "none",
-                transition: "opacity 200ms",
-                cursor: "pointer",
-              }}
-            >
-              PARTNER WITH US
-            </a>
-            </div>
-
-            {/* Industry pills — infinite scroll ticker, desktop only */}
-            <div className="fade-up fade-up-4 hidden sm:block mt-6 sm:mt-8 pill-ticker-wrap">
-              <div className="pill-ticker-track">
-                {/* Render twice so the loop is seamless */}
-                {[0, 1].map((copy) => (
-                  <div key={copy} className="pill-ticker-set" aria-hidden={copy === 1}>
-                    {['Technology','Logistics','Energy','Real Estate','Agriculture','Procurement','Import / Export'].map((tag) => (
-                      <span key={tag} className="hero-pill">{tag}</span>
-                    ))}
-                  </div>
-                ))}
-              </div>
+              {/* CTA buttons removed */}
             </div>
           </div>
         </div>
-
       </section>
 
       {/* ══════════════════════════════════════════
