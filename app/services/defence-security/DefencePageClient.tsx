@@ -279,12 +279,26 @@ export default function DefenceSecurityPage() {
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden" style={{ background: 'var(--navy)', height: 'clamp(380px, 55vw, 520px)' }}>
-        <Image
-          src="/assets/images/drone.jpg"
-          alt="Security officer monitoring surveillance screens"
-          fill priority sizes="100vw"
-          className="object-cover object-center"
-        />
+        {/* Video background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/assets/images/Security-Defense-about.png"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        >
+          <source src="/videos/436d4497982da99eb163df6590f4ba91_720w.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgba(6,15,31,.93) 0%, rgba(6,15,31,.70) 50%, rgba(6,15,31,.30) 100%)' }} />
         <div className="absolute inset-0 z-10 flex items-center" style={{ paddingTop: '88px' }}>
           <div className="max-w-screen-2xl w-full mx-auto px-5 sm:px-10 lg:px-16 xl:px-24 py-8 text-center sm:text-left">

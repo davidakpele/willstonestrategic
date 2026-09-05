@@ -1440,3 +1440,220 @@ html::-webkit-scrollbar-thumb:hover {
   background: rgba(201,162,75,0.1);
   color: var(--gold);
 }
+
+/* ==============================
+   HERO BANNER CAROUSEL
+   ============================== */
+
+/* ── Outer hero wrapper ── */
+.hero-section-wrap {
+  position: relative;
+  width: 100%;
+  background: #0B1B33;
+  overflow: hidden;
+  /* Mobile: height comes from the carousel's own aspect ratio — no extra space */
+  /* Desktop: full viewport height */
+}
+
+@media (min-width: 1024px) {
+  .hero-section-wrap {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* ── Carousel ── */
+
+/* Mobile: in-flow block, height driven by aspect ratio */
+.hero-carousel-root {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0B1B33;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .hero-carousel-root {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Desktop: absolute fill of the parent hero section */
+@media (min-width: 1024px) {
+  .hero-carousel-root {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+  }
+}
+
+/* ── Individual slide ── */
+.hero-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.hero-carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Image inside slide ── */
+/* Mobile: contain so the full image is visible */
+.hero-carousel-img {
+  object-fit: cover !important;
+  object-position: center center !important;
+  background: #0B1B33;
+}
+
+/* ── Dark gradient overlay (separate from the carousel, sits above it) ── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 15, 31, 0.55) 0%,
+    rgba(6, 15, 31, 0.35) 40%,
+    rgba(6, 15, 31, 0.65) 80%,
+    rgba(6, 15, 31, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+/* ── Text + CTA content — desktop only, centred over the image ── */
+.hero-content-overlay {
+  display: none;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 120px 0 100px;
+}
+
+@media (min-width: 1024px) {
+  .hero-content-overlay {
+    display: flex;
+  }
+}
+
+/* ── Dot indicators ── */
+
+/* Mobile: normal flow, sits beneath the image */
+.hero-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0 10px;
+  background: #0B1B33;
+  z-index: 3;
+}
+
+/* Desktop: pinned inside the hero frame above the bottom edge */
+@media (min-width: 1024px) {
+  .hero-carousel-dots {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background: transparent;
+    pointer-events: auto;
+  }
+}
+
+.hero-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.35);
+  transition: width 0.3s ease, background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.hero-carousel-dot.active {
+  width: 28px;
+  background: var(--gold);
+}
+
+.hero-carousel-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* Reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-carousel-slide { transition: none; }
+  .hero-carousel-dot   { transition: none; }
+}
+
+/* ==============================
+   HERO VIDEO BACKGROUND
+   ============================== */
+
+/* Container — positioned absolutely to fill the desktop hero section */
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  /* poster image sits as the background — visible while video opacity is 0 */
+  background-image: url('/assets/images/prime-banner.png');
+  background-size: cover;
+  background-position: center center;
+}
+
+/* The video element itself — covers the full frame, never distorts */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  /* opacity controlled by JS — fades in once canplaythrough fires */
+}
+
+/* ==============================
+   HOME HERO BANNER FRAME
+   ============================== */
+
+/* Mobile: tall enough to fit all content without scrolling */
+.hero-banner-frame {
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .hero-banner-frame {
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+}
+
+/* Desktop: wide cinematic ratio */
+@media (min-width: 1024px) {
+  .hero-banner-frame {
+    aspect-ratio: 16 / 7;
+    min-height: 500px;
+  }
+}
