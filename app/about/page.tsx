@@ -5,6 +5,7 @@ import { Space_Grotesk, Inter } from 'next/font/google'
 import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import AboutStatsBar from '@/components/AboutStatsBar'
 
 export const metadata: Metadata = {
   title: 'About Willstone Strategic Industries Limited | Supplier & Procurement Partner — Nigeria',
@@ -39,11 +40,6 @@ const inter = Inter({
   variable: '--font-body',
 })
 
-const STATS = [
-  { value: '40+',  label: 'No. of Corporate Clients' },
-  { value: '300+', label: 'Full-Time & Skilled Employees' },
-  { value: '85+',  label: 'Projects, Products & Services' },
-]
 
 export default function AboutPage() {
   return (
@@ -104,21 +100,7 @@ export default function AboutPage() {
         </div>
 
         {/* ── STATS BAR — pinned to bottom of hero ── */}
-        <div
-          className="relative z-10 w-full border-t border-white/10 grid grid-cols-3 divide-x divide-white/10 shrink-0"
-          style={{ background: 'rgba(6,14,29,.88)', backdropFilter: 'blur(4px)' }}
-        >
-          {STATS.map(({ value, label }) => (
-            <div key={label} className="py-5 sm:py-7 text-center px-2 sm:px-4">
-              <p className="display font-bold text-xl sm:text-3xl" style={{ color: 'var(--gold-light)' }}>
-                {value}
-              </p>
-              <p className="text-[10px] sm:text-[11px] tracking-widest text-white/55 mt-1 leading-tight uppercase">
-                {label}
-              </p>
-            </div>
-          ))}
-        </div>
+        <AboutStatsBar />
       </section>
 
       {/* ── OUR STORY ── */}
@@ -438,7 +420,7 @@ export default function AboutPage() {
             name: 'Christian Akpele',
             title: 'Managing Director / Co-Founder',
             bio: "Leads the company's vision, strategy and global partnerships with over 15 years of experience in trade and industrial solutions.",
-            img: '/assets/images/osas.jpg',
+            img: '/assets/images/Osas.jpg',
           },
           {
             name: 'Chinwe Okafor',
