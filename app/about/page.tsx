@@ -302,6 +302,215 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── INDUSTRIES WE SERVE ── */}
+<section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{background: 'var(--paper)'}}>
+  <div className="max-w-screen-2xl mx-auto">
+    {/* heading block */}
+    <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div>
+        <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4" style={{color: 'var(--gold)'}}>
+          OUR INDUSTRIES SERVED
+        </p>
+        <h2 className="display font-bold leading-tight mb-4" style={{fontSize: 'clamp(1.7rem, 4vw, 2.5rem)', color: 'var(--ink)'}}>
+          Industries We Serve
+        </h2>
+        <p className="text-slate-500 leading-relaxed max-w-xl" style={{fontSize: '14.5px'}}>
+          We provide integrated solutions across multiple industries, combining experience, technology and industry expertise to deliver real value.
+        </p>
+      </div>
+      <Link
+        href="/services"
+        className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold shrink-0"
+      >
+        Explore Our Services →
+      </Link>
+    </div>
+    {/* grid */}
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {[
+        { name: 'Agriculture & Agribusiness', src: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Technology & IT Solutions', src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Logistics & Supply Chain', src: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Trade & Global Commerce', src: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Real Estate & Infrastructure', src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Energy & Renewable Resources', src: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Industrial Equipment & Machinery', src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80' },
+        { name: 'Defence & Security', src: '/assets/images/Security-Defense-about.png' },
+      ].map((industry) => (
+        <div
+          key={industry.name}
+          className="aspect-square rounded-xl overflow-hidden relative group cursor-pointer"
+        >
+          <Image
+            src={industry.src}
+            alt={industry.name}
+            fill
+            sizes="(max-width: 1024px) 50vw, 25vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div
+            className="absolute inset-0"
+            style={{background: 'linear-gradient(to top, rgba(6,15,31,.85) 0%, rgba(6,15,31,.35) 50%, transparent 100%)'}}
+          />
+          <p className="absolute bottom-3 left-3 right-3 text-white text-sm font-semibold leading-tight">
+            {industry.name}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* ── LEADERSHIP TEAM ── */}
+<section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+  <div className="max-w-screen-2xl mx-auto">
+    <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div>
+        <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4" style={{color: 'var(--gold)'}}>
+          OUR LEADERSHIP
+        </p>
+        <h2 className="display font-bold leading-tight mb-4" style={{fontSize: 'clamp(1.7rem, 4vw, 2.5rem)', color: 'var(--ink)'}}>
+          Meet Our Leadership Team
+        </h2>
+        <p className="text-slate-500 leading-relaxed max-w-xl" style={{fontSize: '14.5px'}}>
+          Our leadership team brings a wealth of experience, delivering knowledge and a strong commitment to our mission. They guide our strategy, drive innovation and ensure we deliver on our promise.
+        </p>
+      </div>
+      <Link
+        href="/about"
+        className="btn-outline-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold shrink-0"
+      >
+        View Full Team →
+      </Link>
+    </div>
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { name: 'David Adewale', title: 'CEO & Founder', bio: 'Leads the company\'s vision, strategy and global partnerships with over 15 years of experience in trade and industrial sectors.' },
+        { name: 'Chinwe Okafor', title: 'Chief Operations Officer', bio: 'Oversees operations, supply chain, and project delivery across all sectors.' },
+        { name: 'Emmanuel Udo', title: 'Chief Financial Officer', bio: 'Drives financial strategy, risk management and sustainable growth.' },
+        { name: 'Tunde Bello', title: 'Director of Business Development', bio: 'Builds strategic partnerships and expands market opportunities globally.' },
+      ].map((leader) => (
+        <div
+          key={leader.name}
+          className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+        >
+          {/* placeholder image area */}
+          <div
+            className="w-full bg-slate-100 flex items-center justify-center"
+            style={{height: '200px'}}
+          >
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+          </div>
+          <div className="p-4">
+            <p className="font-bold text-[15px]" style={{color: 'var(--ink)'}}>{leader.name}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-wide mt-0.5 mb-2" style={{color: 'var(--gold)'}}>{leader.title}</p>
+            <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">{leader.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* ── WHY CHOOSE WILLSTONE ── */}
+<section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{background: '#0B1B33'}}>
+  <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+
+    {/* LEFT — 3/5 width */}
+    <div className="lg:col-span-3">
+      <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4" style={{color: 'var(--gold)'}}>
+        WHY CHOOSE US
+      </p>
+      <h2 className="display text-white font-bold leading-tight mb-5" style={{fontSize: 'clamp(1.7rem, 4vw, 2.6rem)'}}>
+        Your Trusted Partner for Sustainable Growth
+      </h2>
+      <p className="text-white/60 leading-relaxed mb-8" style={{fontSize: '14.5px'}}>
+        We don&apos;t just deliver products and services — we deliver solutions. With a focus on quality, reliability, and long-term partnerships, Willstone is your strategic partner for business success in Africa and beyond.
+      </p>
+      <ul className="flex flex-col gap-4">
+        {[
+          { title: 'Proven Track Record', desc: 'Trusted by 40+ corporate clients across multiple sectors.' },
+          { title: 'End-to-End Solutions', desc: 'We don\u2019t just connect, we handle it all.' },
+          { title: 'Global Network', desc: 'Access to international markets and partners.' },
+          { title: 'Customer-Centric Approach', desc: 'Your success is our priority.' },
+        ].map((item) => (
+          <li key={item.title} className="flex items-start gap-3">
+            <span
+              className="mt-0.5 shrink-0 w-5 h-5 rounded-full flex items-center justify-center"
+              style={{background: 'rgba(201,162,75,.18)', border: '1px solid rgba(201,162,75,.4)'}}
+            >
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="3">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+            <div>
+              <span className="text-white text-[14px] font-semibold">{item.title}</span>
+              <span className="text-white/55 text-[13px]"> — {item.desc}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* RIGHT — 2/5 width */}
+    <div className="lg:col-span-2">
+      <p className="text-[11px] font-semibold mb-4 tracking-wide" style={{color: 'var(--gold)'}}>OUR GLOBAL PRESENCE</p>
+      {/* Simple world map SVG */}
+      <div
+        className="rounded-2xl p-5 mb-6"
+        style={{background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)'}}
+      >
+        <svg viewBox="0 0 200 110" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full opacity-60">
+          {/* Simplified continent outlines */}
+          {/* North America */}
+          <path d="M10 20 L30 15 L45 18 L50 30 L40 45 L30 50 L15 45 L10 35 Z" fill="none" stroke="#C9A24B" strokeWidth="1" />
+          {/* South America */}
+          <path d="M35 55 L50 52 L55 65 L50 85 L38 88 L30 75 L32 62 Z" fill="none" stroke="#C9A24B" strokeWidth="1" />
+          {/* Europe */}
+          <path d="M88 15 L100 12 L108 18 L105 28 L95 30 L85 25 Z" fill="none" stroke="#C9A24B" strokeWidth="1" />
+          {/* Africa - highlighted */}
+          <path d="M90 32 L105 30 L115 38 L118 55 L112 72 L100 80 L88 72 L82 55 L85 40 Z" fill="rgba(201,162,75,0.15)" stroke="#C9A24B" strokeWidth="1.5" />
+          {/* Asia */}
+          <path d="M110 12 L145 10 L165 20 L170 35 L155 42 L135 40 L118 32 L112 22 Z" fill="none" stroke="#C9A24B" strokeWidth="1" />
+          {/* Australia */}
+          <path d="M148 60 L165 58 L172 68 L168 78 L152 80 L144 70 Z" fill="none" stroke="#C9A24B" strokeWidth="1" />
+          {/* Dot on Nigeria */}
+          <circle cx="100" cy="52" r="3" fill="#C9A24B" />
+          <circle cx="100" cy="52" r="6" fill="none" stroke="#C9A24B" strokeWidth="1" strokeDasharray="2 2" />
+        </svg>
+      </div>
+      <p className="text-white/60 text-[13px] leading-relaxed mb-5">
+        Headquartered in Ibadan, Oyo State, Nigeria, we operate locally and internationally, connecting markets and creating opportunities.
+      </p>
+      <div className="flex flex-col gap-2">
+        <div
+          className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[12px] font-medium"
+          style={{background: 'rgba(201,162,75,.12)', border: '1px solid rgba(201,162,75,.25)', color: '#C9A24B'}}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
+          </svg>
+          Ibadan, Oyo State, Nigeria
+        </div>
+        <div
+          className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[12px] font-medium"
+          style={{background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.1)', color: 'rgba(255,255,255,0.7)'}}
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20" />
+          </svg>
+          Global Partnerships
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
       {/* ── CTA BANNER ── */}
       <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'var(--navy)' }}>
         <div className="max-w-2xl mx-auto text-center">

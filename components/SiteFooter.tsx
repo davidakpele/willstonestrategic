@@ -5,27 +5,20 @@ import Link from 'next/link'
 
 const QUICK_LINKS = [
   { href: '/about',    label: 'About Us' },
+  { href: '/services', label: 'Our Services' },
   { href: '/products', label: 'Products' },
+  { href: '/blog',     label: 'Blog' },
   { href: '/contact',  label: 'Contact' },
 ]
 
-const FOOTER_SERVICES = [
-  { label: 'Agriculture & Agribusiness',                    href: '/services/agriculture-agribusiness' },
-  { label: 'Information Technology & Software Development', href: '/services/information-technology' },
-  { label: 'Electrical & Electronic Solutions',             href: '/services/electrical-electronic' },
-  { label: 'Defence, Security & Protective Solutions',      href: '/services/defence-security' },
-]
-
-const FOOTER_PRODUCTS = [
-  { label: 'Sesame Seeds',  href: '/products/sesame-seeds' },
-  { label: 'Palm Oil',      href: '/products/palm-oil' },
-  { label: 'Cocoa',         href: '/products/cocoa' },
-  { label: 'Soybeans',      href: '/products/soybeans' },
-  { label: 'Maize',         href: '/products/maize' },
-  { label: 'Cassava',       href: '/products/cassava' },
-  { label: 'Charcoal',      href: '/products/charcoal' },
-  { label: 'Ginger',        href: '/products/ginger' },
-  { label: 'View all →',    href: '/products' },
+const INDUSTRIES = [
+  { label: 'Agriculture & Agribusiness',    href: '/services/agriculture-agribusiness' },
+  { label: 'Technology & IT Solutions',     href: '/services/information-technology' },
+  { label: 'Logistics & Supply Chain',      href: '/services' },
+  { label: 'Real Estate & Infrastructure',  href: '/services' },
+  { label: 'Energy & Renewable',            href: '/services' },
+  { label: 'Defence & Security',            href: '/services/defence-security' },
+  { label: 'More Industries →',             href: '/services' },
 ]
 
 const SOCIAL = [
@@ -34,6 +27,15 @@ const SOCIAL = [
   { label: 'Facebook', href: 'https://facebook.com',  d: 'M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04v2.36H8v3.1h2.7v8z' },
   { label: 'YouTube',  href: 'https://youtube.com',   d: 'M22 12s0-3.2-.4-4.7a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 002-2C22 15.2 22 12 22 12zM10 15.3V8.7l6 3.3z' },
 ]
+
+function ColHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mb-5">
+      <p className="text-white font-semibold text-[13px] tracking-wide uppercase mb-2">{children}</p>
+      <div style={{width: '24px', height: '2px', background: '#C9A24B', borderRadius: '999px'}} />
+    </div>
+  )
+}
 
 function BackToTop() {
   const [visible, setVisible] = useState(false)
@@ -58,18 +60,30 @@ function BackToTop() {
 }
 
 export default function SiteFooter() {
+  const [email, setEmail] = useState('')
+
+  function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault()
+    setEmail('')
+  }
+
   return (
     <>
-    <footer id="contact" className="pb-8 px-6 lg:px-16 xl:px-24" style={{ background: '#03080f' }}>
-      <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
+    <footer id="contact" className="pb-8 px-6 lg:px-16 xl:px-24" style={{background: '#03080f'}}>
+      <div style={{background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px'}} />
 
       <div className="max-w-screen-2xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pt-14">
+
+        {/* Column 1 — Brand */}
         <div>
           <Link href="/" className="site-logo-footer mb-5 block" aria-label="Willstone Strategic Industries Limited" />
-          <p className="text-white/50 text-[13px] leading-relaxed max-w-xs">
-            Your strategic partner for today&apos;s challenges and tomorrow&apos;s opportunities.
+          <p className="text-white/50 text-[13px] leading-relaxed max-w-xs mb-2">
+            Building Solutions. Delivering Impact.
           </p>
-          <div className="flex gap-3 mt-5">
+          <p className="text-white/35 text-[12px] leading-relaxed max-w-xs mb-5">
+            20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
+          </p>
+          <div className="flex gap-3">
             {SOCIAL.map(({ label, d, href }) => (
               <a key={label} href={href} aria-label={label} target="_blank" rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C9A24B] hover:border-[#C9A24B] transition-colors cursor-pointer">
@@ -79,9 +93,9 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        {/* Quick Links */}
+        {/* Column 2 — Quick Links */}
         <div>
-          <p className="text-white font-semibold text-[13px] tracking-wide mb-4">QUICK LINKS</p>
+          <ColHeading>Quick Links</ColHeading>
           <ul className="space-y-2.5 text-[13px] text-white/50">
             {QUICK_LINKS.map((link) => (
               <li key={link.href}>
@@ -91,11 +105,11 @@ export default function SiteFooter() {
           </ul>
         </div>
 
-        {/* Services */}
+        {/* Column 3 — Industries */}
         <div>
-          <p className="text-white font-semibold text-[13px] tracking-wide mb-4">SERVICES</p>
+          <ColHeading>Industries</ColHeading>
           <ul className="space-y-2.5 text-[13px] text-white/50">
-            {FOOTER_SERVICES.map((item) => (
+            {INDUSTRIES.map((item) => (
               <li key={item.label}>
                 <Link href={item.href} className="hover:text-[#C9A24B] transition-colors">{item.label}</Link>
               </li>
@@ -103,36 +117,32 @@ export default function SiteFooter() {
           </ul>
         </div>
 
-        {/* Products */}
+        {/* Column 4 — Contact */}
         <div>
-          <p className="text-white font-semibold text-[13px] tracking-wide mb-4">PRODUCTS</p>
-          <ul className="space-y-2.5 text-[13px] text-white/50">
-            {FOOTER_PRODUCTS.map((item) => (
-              <li key={item.label}>
-                <Link href={item.href} className="hover:text-[#C9A24B] transition-colors">{item.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <p className="text-white font-semibold text-[13px] tracking-wide mb-4">CONTACT</p>
+          <ColHeading>Contact Us</ColHeading>
           <ul className="space-y-3 text-[13px] text-white/50">
             <li className="flex items-start gap-2">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
                 <path d="M4 4h16v16H4zM4 4l8 8 8-8" />
               </svg>
-              <a href="mailto:willstonestrategic@gmail.com" className="hover:text-[#C9A24B] transition-colors">
-                info@willstone.com.ng
+              <a href="mailto:info@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all">
+                info@willstonestrategic.com
               </a>
             </li>
             <li className="flex items-start gap-2">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
                 <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
               </svg>
-              <a href="tel:+2348051234567" className="hover:text-[#C9A24B] transition-colors">
+              <a href="tel:+2347061964340" className="hover:text-[#C9A24B] transition-colors">
                 +234 706 196 4340
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
+                <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
+              </svg>
+              <a href="tel:+2349019384496" className="hover:text-[#C9A24B] transition-colors">
+                +234 901 938 4496
               </a>
             </li>
             <li className="flex items-start gap-2">
@@ -140,25 +150,59 @@ export default function SiteFooter() {
                 <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
-              <a href="https://maps.google.com/?q=Lagos,Nigeria" target="_blank" rel="noopener noreferrer" className="hover:text-[#C9A24B] transition-colors">
-                20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
-              </a>
+              <span>20, 3 Joop Berkhout Crescent, Onireke - Ibadan</span>
             </li>
           </ul>
         </div>
+
+        {/* Column 5 — Newsletter */}
+        <div>
+          <ColHeading>Join Our Network</ColHeading>
+          <p className="text-white/50 text-[13px] mb-4 leading-relaxed">
+            Subscribe to our newsletter
+          </p>
+          <form onSubmit={handleSubscribe} className="flex items-center gap-0">
+            <div
+              className="flex items-center flex-1 rounded-full overflow-hidden"
+              style={{background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)'}}
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                required
+                className="flex-1 bg-transparent px-4 py-2.5 text-[12px] text-white/70 placeholder:text-white/30 outline-none min-w-0"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center mr-0.5 transition-opacity hover:opacity-80"
+                style={{background: '#C9A24B'}}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </form>
+          <p className="text-white/25 text-[11px] mt-3 leading-relaxed">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
       </div>
 
       {/* Bottom bar */}
-      <div className="max-w-screen-2xl mx-auto mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/40">
+      <div className="max-w-screen-2xl mx-auto mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/40" style={{borderTop: '1px solid rgba(201,162,75,0.2)'}}>
         <p>&copy; 2026 Willstone Strategic Industries Limited. All rights reserved.</p>
         <div className="flex gap-5">
           <Link href="/privacy-policy" className="hover:text-[#C9A24B] transition-colors">Privacy Policy</Link>
-          <Link href="/terms-of-use" className="hover:text-[#C9A24B] transition-colors">Terms of Use</Link>
+          <Link href="/terms-of-use" className="hover:text-[#C9A24B] transition-colors">Terms &amp; Conditions</Link>
         </div>
       </div>
     </footer>
 
-    {/* Back to top — rendered outside footer so it sits above everything */}
     <BackToTop />
     </>
   )
