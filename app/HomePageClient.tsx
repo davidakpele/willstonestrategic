@@ -245,7 +245,7 @@ function BackToTop() {
 
 function GlobalReachSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [visible, setVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const [counts, setCounts] = useState([0, 0, 0])
   const targets = [15, 500, 100]
 
@@ -255,7 +255,7 @@ function GlobalReachSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true)
+          setIsVisible(true)
           observer.disconnect()
         }
       },
@@ -266,7 +266,7 @@ function GlobalReachSection() {
   }, [])
 
   useEffect(() => {
-    if (!visible) return
+    if (!isVisible) return
     const duration = 1800
     const steps = 60
     const interval = duration / steps
@@ -279,7 +279,7 @@ function GlobalReachSection() {
       if (step >= steps) clearInterval(timer)
     }, interval)
     return () => clearInterval(timer)
-  }, [visible])
+  }, [isVisible])
 
   const STATS = [
     { val: counts[0], suffix: '+', label: 'Countries' },
@@ -294,138 +294,194 @@ function GlobalReachSection() {
     { text: 'Impact.', gold: false },
   ]
 
-  const PARTICLES = [
-    { size: 6, top: '18%', left: '12%', delay: '0s', duration: '7s' },
-    { size: 4, top: '65%', left: '22%', delay: '1.2s', duration: '9s' },
-    { size: 8, top: '30%', left: '75%', delay: '0.6s', duration: '11s' },
-    { size: 5, top: '72%', left: '80%', delay: '2s', duration: '8s' },
-    { size: 3, top: '48%', left: '50%', delay: '1.5s', duration: '10s' },
-  ]
-
-  const RINGS = [
-    { size: 120, top: '10%', left: '8%', delay: '0s', duration: '12s' },
-    { size: 80, top: '60%', left: '78%', delay: '2s', duration: '15s' },
-    { size: 60, top: '40%', left: '88%', delay: '1s', duration: '10s' },
+  const ORBS = [
+    { size: 8, top: '18%', left: '12%', delay: '0s', duration: '2.8s' },
+    { size: 6, top: '65%', left: '22%', delay: '0.7s', duration: '3.5s' },
+    { size: 10, top: '30%', left: '78%', delay: '1.3s', duration: '2.2s' },
+    { size: 7, top: '72%', left: '83%', delay: '2s', duration: '4s' },
+    { size: 5, top: '50%', left: '55%', delay: '1.5s', duration: '3.1s' },
+    { size: 9, top: '15%', left: '60%', delay: '0.4s', duration: '2.6s' },
+    { size: 6, top: '85%', left: '45%', delay: '1.8s', duration: '3.8s' },
+    { size: 4, top: '42%', left: '8%', delay: '2.4s', duration: '2.9s' },
   ]
 
   return (
     <section
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{background: '#06101f',
-        minHeight: 'clamp(480px, 65vw, 680px)',}}
+      style={{background: '#06101f', minHeight: 'clamp(520px, 70vw, 680px)'}}
     >
       <style>{`
-        @keyframes gr-float {
-          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.55; }
-          50% { transform: translateY(-18px) scale(1.15); opacity: 0.9; }
+        @keyframes gr-morph {
+          0% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+          100% { border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%; }
         }
-        @keyframes gr-orbit {
-          0% { transform: rotate(0deg) translateX(0) scale(1); opacity: 0.18; }
-          50% { transform: rotate(180deg) translateX(10px) scale(1.05); opacity: 0.35; }
-          100% { transform: rotate(360deg) translateX(0) scale(1); opacity: 0.18; }
+        @keyframes gr-morph2 {
+          0% { border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%; }
+          100% { border-radius: 70% 30% 40% 60% / 40% 60% 40% 60%; }
         }
-        @keyframes gr-glow-pulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,75,0); opacity: 0.45; }
-          50% { box-shadow: 0 0 18px 4px rgba(201,162,75,0.45); opacity: 1; }
+        @keyframes gr-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes gr-spin-reverse {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(-360deg); }
+        }
+        @keyframes gr-pulse {
+          0%, 100% { opacity: 0.4; transform: scale(0.9); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+        @keyframes gr-streak {
+          0% { transform: rotate(35deg) translateY(-60px); opacity: 0; }
+          30% { opacity: 1; }
+          70% { opacity: 1; }
+          100% { transform: rotate(35deg) translateY(60px); opacity: 0; }
         }
         @keyframes gr-line-glow {
-          0%, 100% { opacity: 0.4; box-shadow: 0 0 0px 0px rgba(201,162,75,0); }
-          50% { opacity: 1; box-shadow: 0 0 12px 3px rgba(201,162,75,0.6); }
+          0%, 100% { opacity: 0.6; box-shadow: 0 0 4px 1px rgba(201,162,75,0.3); }
+          50% { opacity: 1; box-shadow: 0 0 12px 3px rgba(201,162,75,0.65); }
         }
         @keyframes gr-fade-up {
           from { opacity: 0; transform: translateY(28px); }
-          to   { opacity: 1; transform: translateY(0); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        .gr-visible .gr-eyebrow {
-          animation: gr-fade-up 0.6s ease forwards;
-          animation-delay: 0.1s;
-        }
+        .gr-visible .gr-eyebrow { animation: gr-fade-up 0.6s ease forwards; animation-delay: 0.1s; }
         .gr-visible .gr-word-0 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.3s; }
         .gr-visible .gr-word-1 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.45s; }
         .gr-visible .gr-word-2 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.6s; }
         .gr-visible .gr-word-3 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.75s; }
-        .gr-visible .gr-body {
-          animation: gr-fade-up 0.6s ease forwards;
-          animation-delay: 0.95s;
-        }
-        .gr-visible .gr-divider {
-          animation: gr-line-glow 2.5s ease-in-out infinite;
-          animation-delay: 1.1s;
-        }
+        .gr-visible .gr-body { animation: gr-fade-up 0.6s ease forwards; animation-delay: 0.9s; }
+        .gr-visible .gr-divider { animation: gr-line-glow 2.5s ease-in-out infinite; animation-delay: 1.05s; opacity: 1; }
         .gr-visible .gr-stat-0 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 1.2s; }
         .gr-visible .gr-stat-1 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 1.35s; }
         .gr-visible .gr-stat-2 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 1.5s; }
-        .gr-eyebrow, .gr-word-0, .gr-word-1, .gr-word-2, .gr-word-3, .gr-body, .gr-stat-0, .gr-stat-1, .gr-stat-2 {
-          opacity: 0;
-        }
-        .gr-visible .gr-divider {
-          opacity: 1;
-        }
+        .gr-eyebrow, .gr-word-0, .gr-word-1, .gr-word-2, .gr-word-3, .gr-body, .gr-stat-0, .gr-stat-1, .gr-stat-2 { opacity: 0; }
+        .gr-divider { opacity: 0; }
+        .gr-stat-card:hover { transform: translateY(-3px); }
+        .gr-stat-card { transition: transform 0.25s ease; }
+        .gr-stat-card:hover .gr-stat-underline { opacity: 1; transform: scaleX(1); }
+        .gr-stat-underline { opacity: 0; transform: scaleX(0); transition: opacity 0.25s ease, transform 0.25s ease; transform-origin: center; }
       `}</style>
 
-      {/* Background image with dark overlay */}
-      <div className="absolute inset-0">
-        <Image
-          src="/assets/images/connection.png"
-          alt="World map showing Willstone's global connections across borders"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          priority
-        />
-        <div
-          className="absolute inset-0"
-          style={{background:
-              'linear-gradient(135deg, rgba(6,16,31,0.92) 0%, rgba(6,16,31,0.78) 50%, rgba(6,16,31,0.92) 100%)',}}
-        />
-      </div>
-
-      {/* Floating particles */}
-      {PARTICLES.map((p, i) => (
-        <div
-          key={i}
-          aria-hidden="true"
-          className="absolute rounded-full"
-          style={{
-            width: p.size,
-            height: p.size,
-            top: p.top,
-            left: p.left,
-            background: 'var(--gold)',
-            animation: `gr-float ${p.duration} ease-in-out infinite`,
-            animationDelay: p.delay,
-            opacity: 0.55,
-          }}
-        />
-      ))}
-
-      {/* Orbit rings */}
-      {RINGS.map((r, i) => (
-        <div
-          key={i}
-          aria-hidden="true"
-          className="absolute rounded-full"
-          style={{
-            width: r.size,
-            height: r.size,
-            top: r.top,
-            left: r.left,
-            border: '1px solid rgba(201,162,75,0.28)',
-            animation: `gr-orbit ${r.duration} linear infinite`,
-            animationDelay: r.delay,
-          }}
-        />
-      ))}
-
-      {/* Content */}
+      {/* 1. Large morphing blob — centred-right */}
       <div
-        className={`relative z-10 flex flex-col items-center justify-center text-center px-6 py-16 lg:py-24${
-          visible ? ' gr-visible' : ''
-        }`}
-        style={{minHeight: 'clamp(480px, 65vw, 680px)'}}
+        aria-hidden="true"
+        style={{position: 'absolute',
+          width: '650px',
+          height: '650px',
+          right: '-100px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          borderRadius: '60% 40% 70% 30% / 50% 60% 40% 50%',
+          background: 'radial-gradient(circle, rgba(201,162,75,0.12) 0%, transparent 70%)',
+          animation: 'gr-morph 12s ease-in-out infinite alternate',
+          pointerEvents: 'none',}}
+      />
+
+      {/* 2. Second blob — top-left */}
+      <div
+        aria-hidden="true"
+        style={{position: 'absolute',
+          width: '350px',
+          height: '350px',
+          left: '-80px',
+          top: '-60px',
+          borderRadius: '30% 70% 50% 50% / 60% 40% 60% 40%',
+          background: 'radial-gradient(circle, rgba(37,211,102,0.07) 0%, transparent 70%)',
+          animation: 'gr-morph2 8s ease-in-out infinite alternate',
+          pointerEvents: 'none',}}
+      />
+
+      {/* 3. Grid dot pattern */}
+      <div
+        aria-hidden="true"
+        style={{position: 'absolute',
+          inset: 0,
+          background: 'radial-gradient(circle, rgba(201,162,75,0.06) 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
+          pointerEvents: 'none',}}
+      />
+
+      {/* 4. Concentric rings */}
+      {[180, 320, 460, 600].map((size, i) => (
+        <div
+          key={size}
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            width: size,
+            height: size,
+            top: '50%',
+            left: '50%',
+            marginTop: -size / 2,
+            marginLeft: -size / 2,
+            border: '1px solid rgba(201,162,75,0.12)',
+            borderRadius: '50%',
+            animation: `${i % 2 === 0 ? 'gr-spin' : 'gr-spin-reverse'} ${[60, 90, 120, 160][i]}s linear infinite`,
+            pointerEvents: 'none',
+          }}
+        />
+      ))}
+
+      {/* 5. Dashed orbit ellipse */}
+      <div
+        aria-hidden="true"
+        style={{position: 'absolute',
+          width: '700px',
+          height: '200px',
+          top: '50%',
+          left: '50%',
+          marginTop: -100,
+          marginLeft: -350,
+          border: '1.5px dashed rgba(201,162,75,0.18)',
+          borderRadius: '50%',
+          animation: 'gr-spin 25s linear infinite',
+          pointerEvents: 'none',}}
+      />
+
+      {/* 6. Glowing orbs / nodes */}
+      {ORBS.map((orb, i) => (
+        <div
+          key={i}
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            width: orb.size,
+            height: orb.size,
+            top: orb.top,
+            left: orb.left,
+            borderRadius: '50%',
+            background: 'rgba(201,162,75,0.7)',
+            boxShadow: '0 0 12px 4px rgba(201,162,75,0.35)',
+            animation: `gr-pulse ${orb.duration} ease-in-out infinite`,
+            animationDelay: orb.delay,
+            pointerEvents: 'none',
+          }}
+        />
+      ))}
+
+      {/* 7. Diagonal light streak */}
+      <div
+        aria-hidden="true"
+        style={{position: 'absolute',
+          width: '2px',
+          height: '300px',
+          right: '30%',
+          top: '10%',
+          transform: 'rotate(35deg)',
+          background: 'linear-gradient(to bottom, transparent, rgba(201,162,75,0.4), transparent)',
+          animation: 'gr-streak 4s ease-in-out infinite',
+          animationDelay: '2s',
+          pointerEvents: 'none',}}
+      />
+
+      {/* Content layer */}
+      <div
+        className={`relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 lg:py-24${isVisible ? ' gr-visible' : ''}`}
+        style={{minHeight: 'clamp(520px, 70vw, 680px)'}}
       >
-        <div style={{maxWidth: '700px', width: '100%'}}>
+        <div style={{maxWidth: '680px', width: '100%'}}>
           {/* Eyebrow */}
           <p
             className="gr-eyebrow font-semibold mb-4 tracking-widest uppercase"
@@ -434,9 +490,9 @@ function GlobalReachSection() {
             GLOBAL REACH
           </p>
 
-          {/* Headline — word by word */}
+          {/* Headline word by word */}
           <h2
-            className="display font-bold leading-tight mb-5"
+            className="display font-bold leading-tight mb-6"
             style={{fontSize: 'clamp(2rem, 5vw, 3.2rem)'}}
           >
             {WORDS.map((w, i) => (
@@ -452,7 +508,7 @@ function GlobalReachSection() {
 
           {/* Body */}
           <p
-            className="gr-body text-white/65 leading-relaxed mb-8"
+            className="gr-body text-white/65 leading-relaxed"
             style={{fontSize: 'clamp(13px, 1.6vw, 16px)', maxWidth: '540px', margin: '0 auto 2rem'}}
           >
             Operating with a global mindset and local expertise, we deliver solutions that
@@ -462,9 +518,9 @@ function GlobalReachSection() {
           {/* Glowing divider */}
           <div
             className="gr-divider mx-auto mb-8"
-            style={{height: '2px',
-              width: '160px',
-              background: 'linear-gradient(90deg, transparent, var(--gold), transparent)',
+            style={{height: '1px',
+              width: '200px',
+              background: 'var(--gold)',
               borderRadius: '2px',}}
           />
 
@@ -474,14 +530,14 @@ function GlobalReachSection() {
               <div key={label} className="flex items-stretch">
                 {i > 0 && (
                   <div
+                    aria-hidden="true"
                     style={{width: '1px',
                       background: 'rgba(201,162,75,0.3)',
                       margin: '0 clamp(16px,3vw,36px)',
                       alignSelf: 'stretch',}}
-                    aria-hidden="true"
                   />
                 )}
-                <div className={`gr-stat-${i} flex flex-col items-center`}>
+                <div className={`gr-stat-${i} gr-stat-card flex flex-col items-center`}>
                   <p
                     className="display font-bold"
                     style={{color: 'var(--gold)',
@@ -497,6 +553,13 @@ function GlobalReachSection() {
                   >
                     {label}
                   </p>
+                  <div
+                    className="gr-stat-underline mt-2"
+                    style={{height: '2px',
+                      width: '32px',
+                      background: 'var(--gold)',
+                      borderRadius: '2px',}}
+                  />
                 </div>
               </div>
             ))}
