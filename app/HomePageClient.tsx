@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import './willstone.css'
@@ -243,6 +243,270 @@ function BackToTop() {
   )
 }
 
+function GlobalReachSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [visible, setVisible] = useState(false)
+  const [counts, setCounts] = useState([0, 0, 0])
+  const targets = [15, 500, 100]
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.25 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!visible) return
+    const duration = 1800
+    const steps = 60
+    const interval = duration / steps
+    let step = 0
+    const timer = setInterval(() => {
+      step++
+      const progress = step / steps
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCounts(targets.map((t) => Math.round(t * eased)))
+      if (step >= steps) clearInterval(timer)
+    }, interval)
+    return () => clearInterval(timer)
+  }, [visible])
+
+  const STATS = [
+    { val: counts[0], suffix: '+', label: 'Countries' },
+    { val: counts[1], suffix: '+', label: 'Projects Delivered' },
+    { val: counts[2], suffix: '+', label: 'Global Partners' },
+  ]
+
+  const WORDS = [
+    { text: 'Global', gold: true },
+    { text: 'Reach.', gold: true },
+    { text: 'Stronger', gold: false },
+    { text: 'Impact.', gold: false },
+  ]
+
+  const PARTICLES = [
+    { size: 6, top: '18%', left: '12%', delay: '0s', duration: '7s' },
+    { size: 4, top: '65%', left: '22%', delay: '1.2s', duration: '9s' },
+    { size: 8, top: '30%', left: '75%', delay: '0.6s', duration: '11s' },
+    { size: 5, top: '72%', left: '80%', delay: '2s', duration: '8s' },
+    { size: 3, top: '48%', left: '50%', delay: '1.5s', duration: '10s' },
+  ]
+
+  const RINGS = [
+    { size: 120, top: '10%', left: '8%', delay: '0s', duration: '12s' },
+    { size: 80, top: '60%', left: '78%', delay: '2s', duration: '15s' },
+    { size: 60, top: '40%', left: '88%', delay: '1s', duration: '10s' },
+  ]
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden"
+      style={{background: '#06101f',
+        minHeight: 'clamp(480px, 65vw, 680px)',}}
+    >
+      <style>{`
+        @keyframes gr-float {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.55; }
+          50% { transform: translateY(-18px) scale(1.15); opacity: 0.9; }
+        }
+        @keyframes gr-orbit {
+          0% { transform: rotate(0deg) translateX(0) scale(1); opacity: 0.18; }
+          50% { transform: rotate(180deg) translateX(10px) scale(1.05); opacity: 0.35; }
+          100% { transform: rotate(360deg) translateX(0) scale(1); opacity: 0.18; }
+        }
+        @keyframes gr-glow-pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,75,0); opacity: 0.45; }
+          50% { box-shadow: 0 0 18px 4px rgba(201,162,75,0.45); opacity: 1; }
+        }
+        @keyframes gr-line-glow {
+          0%, 100% { opacity: 0.4; box-shadow: 0 0 0px 0px rgba(201,162,75,0); }
+          50% { opacity: 1; box-shadow: 0 0 12px 3px rgba(201,162,75,0.6); }
+        }
+        @keyframes gr-fade-up {
+          from { opacity: 0; transform: translateY(28px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .gr-visible .gr-eyebrow {
+          animation: gr-fade-up 0.6s ease forwards;
+          animation-delay: 0.1s;
+        }
+        .gr-visible .gr-word-0 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.3s; }
+        .gr-visible .gr-word-1 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.45s; }
+        .gr-visible .gr-word-2 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.6s; }
+        .gr-visible .gr-word-3 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 0.75s; }
+        .gr-visible .gr-body {
+          animation: gr-fade-up 0.6s ease forwards;
+          animation-delay: 0.95s;
+        }
+        .gr-visible .gr-divider {
+          animation: gr-line-glow 2.5s ease-in-out infinite;
+          animation-delay: 1.1s;
+        }
+        .gr-visible .gr-stat-0 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 1.2s; }
+        .gr-visible .gr-stat-1 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 1.35s; }
+        .gr-visible .gr-stat-2 { animation: gr-fade-up 0.55s ease forwards; animation-delay: 1.5s; }
+        .gr-eyebrow, .gr-word-0, .gr-word-1, .gr-word-2, .gr-word-3, .gr-body, .gr-stat-0, .gr-stat-1, .gr-stat-2 {
+          opacity: 0;
+        }
+        .gr-visible .gr-divider {
+          opacity: 1;
+        }
+      `}</style>
+
+      {/* Background image with dark overlay */}
+      <div className="absolute inset-0">
+        <Image
+          src="/assets/images/connection.png"
+          alt="World map showing Willstone's global connections across borders"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        <div
+          className="absolute inset-0"
+          style={{background:
+              'linear-gradient(135deg, rgba(6,16,31,0.92) 0%, rgba(6,16,31,0.78) 50%, rgba(6,16,31,0.92) 100%)',}}
+        />
+      </div>
+
+      {/* Floating particles */}
+      {PARTICLES.map((p, i) => (
+        <div
+          key={i}
+          aria-hidden="true"
+          className="absolute rounded-full"
+          style={{
+            width: p.size,
+            height: p.size,
+            top: p.top,
+            left: p.left,
+            background: 'var(--gold)',
+            animation: `gr-float ${p.duration} ease-in-out infinite`,
+            animationDelay: p.delay,
+            opacity: 0.55,
+          }}
+        />
+      ))}
+
+      {/* Orbit rings */}
+      {RINGS.map((r, i) => (
+        <div
+          key={i}
+          aria-hidden="true"
+          className="absolute rounded-full"
+          style={{
+            width: r.size,
+            height: r.size,
+            top: r.top,
+            left: r.left,
+            border: '1px solid rgba(201,162,75,0.28)',
+            animation: `gr-orbit ${r.duration} linear infinite`,
+            animationDelay: r.delay,
+          }}
+        />
+      ))}
+
+      {/* Content */}
+      <div
+        className={`relative z-10 flex flex-col items-center justify-center text-center px-6 py-16 lg:py-24${
+          visible ? ' gr-visible' : ''
+        }`}
+        style={{minHeight: 'clamp(480px, 65vw, 680px)'}}
+      >
+        <div style={{maxWidth: '700px', width: '100%'}}>
+          {/* Eyebrow */}
+          <p
+            className="gr-eyebrow font-semibold mb-4 tracking-widest uppercase"
+            style={{color: 'var(--gold)', fontSize: '11px', letterSpacing: '0.2em'}}
+          >
+            GLOBAL REACH
+          </p>
+
+          {/* Headline — word by word */}
+          <h2
+            className="display font-bold leading-tight mb-5"
+            style={{fontSize: 'clamp(2rem, 5vw, 3.2rem)'}}
+          >
+            {WORDS.map((w, i) => (
+              <span
+                key={i}
+                className={`gr-word-${i} inline-block mr-[0.25em]`}
+                style={{color: w.gold ? 'var(--gold)' : '#fff'}}
+              >
+                {w.text}
+              </span>
+            ))}
+          </h2>
+
+          {/* Body */}
+          <p
+            className="gr-body text-white/65 leading-relaxed mb-8"
+            style={{fontSize: 'clamp(13px, 1.6vw, 16px)', maxWidth: '540px', margin: '0 auto 2rem'}}
+          >
+            Operating with a global mindset and local expertise, we deliver solutions that
+            create lasting value across borders and industries.
+          </p>
+
+          {/* Glowing divider */}
+          <div
+            className="gr-divider mx-auto mb-8"
+            style={{height: '2px',
+              width: '160px',
+              background: 'linear-gradient(90deg, transparent, var(--gold), transparent)',
+              borderRadius: '2px',}}
+          />
+
+          {/* Stats */}
+          <div className="flex items-start justify-center gap-0">
+            {STATS.map(({ val, suffix, label }, i) => (
+              <div key={label} className="flex items-stretch">
+                {i > 0 && (
+                  <div
+                    style={{width: '1px',
+                      background: 'rgba(201,162,75,0.3)',
+                      margin: '0 clamp(16px,3vw,36px)',
+                      alignSelf: 'stretch',}}
+                    aria-hidden="true"
+                  />
+                )}
+                <div className={`gr-stat-${i} flex flex-col items-center`}>
+                  <p
+                    className="display font-bold"
+                    style={{color: 'var(--gold)',
+                      fontSize: 'clamp(2rem, 4vw, 3rem)',
+                      lineHeight: 1,
+                      fontVariantNumeric: 'tabular-nums',}}
+                  >
+                    {val}{suffix}
+                  </p>
+                  <p
+                    className="text-white/50 uppercase tracking-widest mt-2"
+                    style={{fontSize: 'clamp(9px, 1vw, 11px)', letterSpacing: '0.18em'}}
+                  >
+                    {label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function HomePageClient() {
   return (
     <div className={`${spaceGrotesk.variable} ${inter.variable} bg-white`}>
@@ -342,69 +606,7 @@ export default function HomePageClient() {
       {/* ══════════════════════════════════════════
           GLOBAL REACH — STRONGER IMPACT
       ══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden" style={{ background: '#06101f' }}>
-        <div className="block lg:hidden relative w-full" style={{ aspectRatio: '16/9', minHeight: '420px' }}>
-          <Image
-            src="/assets/images/connection.png"
-            alt="World map showing Willstone's global connections across borders"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0" style={{
-            background: 'linear-gradient(to bottom, rgba(6,16,31,0) 20%, rgba(6,16,31,0.6) 55%, rgba(6,16,31,0.97) 100%)'
-          }} />
-          <div className="absolute bottom-0 left-0 right-0 px-6 pb-8">
-            <p className="eyebrow text-[11px] font-semibold mb-2 tracking-widest" style={{ color: 'var(--gold)' }}>GLOBAL REACH</p>
-            <h2 className="display font-bold leading-tight mb-3" style={{ color: '#fff', fontSize: 'clamp(1.6rem, 5vw, 2.2rem)' }}>
-              <span style={{ color: 'var(--gold)' }}>Global Reach.</span><br />Stronger Impact.
-            </h2>
-            <p className="text-white/65 text-[13px] leading-relaxed mb-6" style={{ maxWidth: '480px' }}>
-              Operating with a global mindset and local expertise, we deliver solutions that create lasting value across borders and industries.
-            </p>
-            <div className="flex items-center justify-between w-full" style={{ maxWidth: '480px' }}>
-              {[{ val: '15+', label: 'Countries' }, { val: '500+', label: 'Projects' }, { val: '100+', label: 'Partners' }].map(({ val, label }, i) => (
-                <div key={label} className="flex items-center">
-                  {i > 0 && <div style={{ width: '1px', height: '40px', background: 'rgba(201,162,75,0.35)', marginRight: '18px' }} />}
-                  <div>
-                    <p className="display font-bold" style={{ color: 'var(--gold)', fontSize: 'clamp(1.5rem, 5vw, 2rem)', lineHeight: 1 }}>{val}</p>
-                    <p className="text-white/50 text-[10px] tracking-widest uppercase mt-1">{label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="hidden lg:flex flex-row items-center w-full" style={{ height: '320px' }}>
-          <div className="w-1/2 h-full relative overflow-hidden">
-            <Image src="/assets/images/connection.png" alt="World map showing Willstone's global connections across borders" fill sizes="50vw" className="object-contain object-left" priority />
-          </div>
-          <div className="w-1/2 h-full flex items-center justify-end pr-14 xl:pr-24 pl-6">
-            <div style={{ maxWidth: '400px' }}>
-              <p className="eyebrow text-[11px] font-semibold mb-3 tracking-widest" style={{ color: 'var(--gold)' }}>GLOBAL REACH</p>
-              <h2 className="display font-bold leading-tight mb-4" style={{ color: '#fff', fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)' }}>
-                <span style={{ color: 'var(--gold)' }}>Global Reach.</span><br />Stronger Impact.
-              </h2>
-              <p className="text-white/60 text-[14px] leading-relaxed mb-7">
-                Operating with a global mindset and local expertise, we deliver solutions that create lasting value across borders and industries.
-              </p>
-              <div className="flex items-center">
-                {[{ val: '15+', label: 'Countries' }, { val: '500+', label: 'Projects' }, { val: '100+', label: 'Partners' }].map(({ val, label }, i) => (
-                  <div key={label} className="flex items-center">
-                    {i > 0 && <div style={{ width: '1px', height: '44px', background: 'rgba(201,162,75,0.3)', margin: '0 20px' }} />}
-                    <div>
-                      <p className="display font-bold" style={{ color: 'var(--gold)', fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', lineHeight: 1 }}>{val}</p>
-                      <p className="text-white/50 text-[11px] tracking-widest uppercase mt-1">{label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GlobalReachSection />
 
       {/* ══════════════════════════════════════════
           SERVICES
