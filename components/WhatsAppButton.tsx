@@ -1,7 +1,27 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Droplets } from "lucide-react";
+import {
+  Droplet,
+  Droplets,
+  Flame,
+  Code2,
+  Database,
+  Smartphone,
+  Lightbulb,
+  RefreshCw,
+  ShieldCheck,
+  Zap,
+  Cog,
+  Sun,
+  ClipboardList,
+  Wrench,
+  Video,
+  Fingerprint,
+  ShieldAlert,
+  Lock,
+  Package,
+} from "lucide-react";
 
 const WHATSAPP_NUMBER = "2347061964340";
 
@@ -17,8 +37,14 @@ function WhatsAppIcon({ className = "h-8 w-8" }: { className?: string }) {
 
 function ChevronRight() {
   return (
-    <svg className="ml-auto h-4 w-4 shrink-0 transition-colors text-gray-300 group-hover:text-[#25D366]"
-      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+    <svg
+      className="ml-auto h-4 w-4 shrink-0 transition-colors text-gray-300 group-hover:text-[#25D366]"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+      aria-hidden="true"
+    >
       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
     </svg>
   );
@@ -68,17 +94,19 @@ function IconChat({ className = "h-5 w-5" }: { className?: string }) {
 
 // ─── Data types ───────────────────────────────────────────────────────────────
 
-/** A leaf — opens WhatsApp directly */
-type Leaf = { kind: "leaf"; label: string; message: string };
-
-/** A node — opens a deeper list */
-type Node = { kind: "node"; label: string; children: MenuItem[] };
-
-type MenuItem = Leaf | Node;
+type IconComponent = React.ComponentType<{ className?: string }>;
 
 type TopicIcon =
   | { kind: "emoji"; value: string }
-  | { kind: "svg"; component: React.FC<{ className?: string }> };
+  | { kind: "svg"; component: IconComponent };
+
+/** A leaf — opens WhatsApp directly */
+type Leaf = { kind: "leaf"; label: string; message: string; icon: TopicIcon };
+
+/** A branch — opens a deeper list */
+type Branch = { kind: "node"; label: string; icon: TopicIcon; children: MenuItem[] };
+
+type MenuItem = Leaf | Branch;
 
 type Topic = {
   id: string;
@@ -86,22 +114,26 @@ type Topic = {
   icon: TopicIcon;
   /** Direct leaf — skips the sub-menu entirely */
   message?: string;
-  /** Sub-menu items (Node or Leaf) */
+  /** Sub-menu items (Branch or Leaf) */
   children?: MenuItem[];
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function leaf(label: string, product: string, extra = ""): Leaf {
+const emoji = (value: string): TopicIcon => ({ kind: "emoji", value });
+const svg = (component: IconComponent): TopicIcon => ({ kind: "svg", component });
+
+function leaf(label: string, product: string, icon: TopicIcon, extra = ""): Leaf {
   return {
     kind: "leaf",
     label,
+    icon,
     message: `Hello Willstone Strategic, I'd like to enquire about your ${product} supply and pricing.${extra ? " " + extra : ""}`,
   };
 }
 
-function node(label: string, children: MenuItem[]): Node {
-  return { kind: "node", label, children };
+function node(label: string, icon: TopicIcon, children: MenuItem[]): Branch {
+  return { kind: "node", label, icon, children };
 }
 
 // ─── Topic data ───────────────────────────────────────────────────────────────
@@ -110,73 +142,70 @@ const TOPICS: Topic[] = [
   {
     id: "agro",
     label: "Agriculture & Agribusiness",
-    icon: { kind: "emoji", value: "🌾" },
+    icon: emoji("🌾"),
     children: [
-      // Oils (nested)
-      node("Oils", [
-        leaf("Palm Oil",   "Palm Oil"),
-        leaf("Edible Oil", "Edible Oil"),
+      node("Oils", svg(Droplets), [
+        leaf("Palm Oil", "Palm Oil", emoji("🌴")),
+        leaf("Edible Oil", "Edible Oil", svg(Droplet)),
       ]),
-      // Charcoal (nested)
-      node("Charcoal", [
-        leaf("Hardwood Lump Charcoal",   "Hardwood Lump Charcoal"),
-        leaf("BBQ Charcoal",             "BBQ Charcoal"),
-        leaf("Coconut Shell Charcoal",   "Coconut Shell Charcoal"),
-        leaf("Acacia Hardwood Charcoal", "Acacia Hardwood Charcoal"),
+      node("Charcoal", svg(Flame), [
+        leaf("Hardwood Lump Charcoal", "Hardwood Lump Charcoal", emoji("🪵")),
+        leaf("BBQ Charcoal", "BBQ Charcoal", emoji("🍖")),
+        leaf("Coconut Shell Charcoal", "Coconut Shell Charcoal", emoji("🥥")),
+        leaf("Acacia Hardwood Charcoal", "Acacia Hardwood Charcoal", emoji("🌳")),
       ]),
-      // Direct leaves
-      leaf("Sesame Seeds", "Sesame Seeds"),
-      leaf("Maize",        "Maize"),
-      leaf("Soybeans",     "Soybeans"),
-      leaf("Cocoa",        "Cocoa"),
-      leaf("Cassava",      "Cassava"),
-      leaf("Ginger",       "Ginger"),
-      leaf("Turmeric",     "Turmeric"),
-      leaf("Rice",         "Rice"),
-      leaf("Agri-Inputs",  "Agricultural Inputs (fertilisers, seeds, agrochemicals)"),
+      leaf("Sesame Seeds", "Sesame Seeds", emoji("🌱")),
+      leaf("Maize", "Maize", emoji("🌽")),
+      leaf("Soybeans", "Soybeans", emoji("🌿")),
+      leaf("Cocoa", "Cocoa", emoji("🍫")),
+      leaf("Cassava", "Cassava", emoji("🥔")),
+      leaf("Ginger", "Ginger", emoji("🌶️")),
+      leaf("Turmeric", "Turmeric", emoji("🟡")),
+      leaf("Rice", "Rice", emoji("🍚")),
+      leaf("Agri-Inputs", "Agricultural Inputs (fertilisers, seeds, agrochemicals)", emoji("🚜")),
     ],
   },
   {
     id: "tech",
     label: "Software & IT Solutions",
-    icon: { kind: "svg", component: IconTech },
+    icon: svg(IconTech),
     children: [
-      leaf("Custom Software Development", "Custom Software Development services"),
-      leaf("ERP & Business Systems",      "ERP & Business Systems solutions"),
-      leaf("Web & Mobile Applications",   "Web & Mobile Application development"),
-      leaf("IT Consultancy",              "IT Consultancy services"),
-      leaf("Digital Transformation",      "Digital Transformation services"),
-      leaf("Cybersecurity Solutions",     "Cybersecurity solutions"),
+      leaf("Custom Software Development", "Custom Software Development services", svg(Code2)),
+      leaf("ERP & Business Systems", "ERP & Business Systems solutions", svg(Database)),
+      leaf("Web & Mobile Applications", "Web & Mobile Application development", svg(Smartphone)),
+      leaf("IT Consultancy", "IT Consultancy services", svg(Lightbulb)),
+      leaf("Digital Transformation", "Digital Transformation services", svg(RefreshCw)),
+      leaf("Cybersecurity Solutions", "Cybersecurity solutions", svg(ShieldCheck)),
     ],
   },
   {
     id: "electrical",
     label: "Electrical & Electronic Solutions",
-    icon: { kind: "svg", component: IconElectrical },
+    icon: svg(IconElectrical),
     children: [
-      leaf("Power Systems & Installation",        "Power Systems & Installation services"),
-      leaf("Industrial Automation",               "Industrial Automation solutions"),
-      leaf("Solar & Renewable Energy",            "Solar & Renewable Energy systems"),
-      leaf("Electrical Engineering Consultancy",  "Electrical Engineering Consultancy"),
-      leaf("Electronic Maintenance & Repair",     "Electronic Maintenance & Repair services"),
+      leaf("Power Systems & Installation", "Power Systems & Installation services", svg(Zap)),
+      leaf("Industrial Automation", "Industrial Automation solutions", svg(Cog)),
+      leaf("Solar & Renewable Energy", "Solar & Renewable Energy systems", svg(Sun)),
+      leaf("Electrical Engineering Consultancy", "Electrical Engineering Consultancy", svg(ClipboardList)),
+      leaf("Electronic Maintenance & Repair", "Electronic Maintenance & Repair services", svg(Wrench)),
     ],
   },
   {
     id: "defence",
     label: "Defence, Security & Protective Solutions",
-    icon: { kind: "svg", component: IconDefence },
+    icon: svg(IconDefence),
     children: [
-      leaf("Surveillance & CCTV Systems",       "Surveillance & CCTV Systems"),
-      leaf("Access Control Systems",            "Access Control Systems"),
-      leaf("Threat Assessment & Risk Advisory", "Threat Assessment & Risk Advisory services"),
-      leaf("Asset Protection Solutions",        "Asset Protection Solutions"),
-      leaf("Security Equipment Supply",         "Security Equipment Supply"),
+      leaf("Surveillance & CCTV Systems", "Surveillance & CCTV Systems", svg(Video)),
+      leaf("Access Control Systems", "Access Control Systems", svg(Fingerprint)),
+      leaf("Threat Assessment & Risk Advisory", "Threat Assessment & Risk Advisory services", svg(ShieldAlert)),
+      leaf("Asset Protection Solutions", "Asset Protection Solutions", svg(Lock)),
+      leaf("Security Equipment Supply", "Security Equipment Supply", svg(Package)),
     ],
   },
   {
     id: "general",
     label: "General Enquiry",
-    icon: { kind: "svg", component: IconChat },
+    icon: svg(IconChat),
     message: "Hello Willstone Strategic, I'd like to make a general enquiry about your products and services.",
   },
 ];
@@ -189,16 +218,37 @@ type StackFrame =
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
+/** Icon used for top-level topics and the breadcrumb bar */
 function TopicIconSlot({ icon, small = false }: { icon: TopicIcon; small?: boolean }) {
   if (icon.kind === "emoji") {
-    return <span className={small ? "text-base leading-none" : "text-lg leading-none shrink-0"}>{icon.value}</span>;
+    return (
+      <span className={small ? "text-base leading-none" : "text-lg leading-none shrink-0"}>
+        {icon.value}
+      </span>
+    );
   }
   const Comp = icon.component;
   return (
-    <span className={`shrink-0 flex items-center justify-center rounded-lg ${
-      small ? "h-5 w-5 text-[#25D366]" : "h-8 w-8 bg-[#e9f9f0] text-[#067f33]"
-    }`}>
+    <span
+      className={`shrink-0 flex items-center justify-center rounded-lg ${
+        small ? "h-5 w-5 text-[#25D366]" : "h-8 w-8 bg-[#e9f9f0] text-[#067f33]"
+      }`}
+    >
       <Comp className={small ? "h-5 w-5" : "h-4 w-4"} />
+    </span>
+  );
+}
+
+/** Icon used for every row inside a sub-menu (products / services) */
+function ItemIconSlot({ icon, branch = false }: { icon: TopicIcon; branch?: boolean }) {
+  const tone = branch ? "bg-amber-100 text-amber-700" : "bg-green-50 text-[#067f33]";
+  return (
+    <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${tone}`}>
+      {icon.kind === "emoji" ? (
+        <span className="text-base leading-none">{icon.value}</span>
+      ) : (
+        <icon.component className="h-4 w-4" />
+      )}
     </span>
   );
 }
@@ -206,10 +256,9 @@ function TopicIconSlot({ icon, small = false }: { icon: TopicIcon; small?: boole
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function WhatsAppButton() {
-  const [open, setOpen]     = useState(false);
-  // Navigation stack — each push goes deeper, pop goes back
-  const [stack, setStack]   = useState<StackFrame[]>([{ kind: "topics" }]);
-  const containerRef        = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const [stack, setStack] = useState<StackFrame[]>([{ kind: "topics" }]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const current = stack[stack.length - 1];
 
@@ -229,7 +278,7 @@ export default function WhatsAppButton() {
   // Outside click
   useEffect(() => {
     function h(e: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(e.target as globalThis.Node)) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setOpen(false);
         setStack([{ kind: "topics" }]);
       }
@@ -250,6 +299,14 @@ export default function WhatsAppButton() {
     return () => document.removeEventListener("keydown", h);
   }, [open, stack]);
 
+  function openWhatsApp(message: string) {
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+
   function handleTopicClick(topic: Topic) {
     if (topic.message) {
       openWhatsApp(topic.message);
@@ -264,38 +321,14 @@ export default function WhatsAppButton() {
       openWhatsApp(item.message);
       closeAll();
     } else {
-      // It's a node — push a new frame with this node's children
-      pushFrame({
-        kind: "items",
-        label: item.label,
-        icon: item.label === "Oils"
-          ? { kind: "svg", component: ({ className = "h-5 w-5" }) => <Droplets className={className} /> }
-          : { kind: "emoji", value: "📦" },
-        items: item.children,
-      });
+      pushFrame({ kind: "items", label: item.label, icon: item.icon, items: item.children });
     }
-  }
-
-  function openWhatsApp(message: string) {
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
   }
 
   function toggleOpen() {
     if (open) closeAll();
     else setOpen(true);
   }
-
-  // Decide what to render in the list
-  const listItems: ({ id?: string } & (
-    | { type: "topic"; topic: Topic }
-    | { type: "menuitem"; item: MenuItem; index: number }
-  ))[] = current.kind === "topics"
-    ? TOPICS.map((t) => ({ type: "topic" as const, topic: t, id: t.id }))
-    : (current.items ?? []).map((item, i) => ({ type: "menuitem" as const, item, index: i, id: String(i) }));
 
   const headerLabel = current.kind === "topics" ? null : current;
 
@@ -313,17 +346,14 @@ export default function WhatsAppButton() {
         .wa-pop   { animation: wa-pop-in  0.22s cubic-bezier(0.34,1.56,0.64,1) both; }
         .wa-slide { animation: wa-slide-in 0.18s ease both; }
 
-        /* Custom slim scrollbar in WhatsApp green */
-        .wa-scroll::-webkit-scrollbar        { width: px; }
+        .wa-scroll::-webkit-scrollbar        { width: 6px; }
         .wa-scroll::-webkit-scrollbar-track  { background: #f0faf4; border-radius: 99px; }
         .wa-scroll::-webkit-scrollbar-thumb  { background: #076429; border-radius: 99px; }
         .wa-scroll::-webkit-scrollbar-thumb:hover { background: #076429; }
-        /* Firefox */
         .wa-scroll { scrollbar-width: thin; scrollbar-color: #076429 #f0faf4; }
       `}</style>
 
       <div ref={containerRef} className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3">
-
         {/* ── Card ── */}
         {open && (
           <div
@@ -339,28 +369,39 @@ export default function WhatsAppButton() {
                   aria-label="Back"
                   className="flex items-center justify-center w-7 h-7 rounded-full shrink-0 transition-colors"
                   style={{ background: "rgba(255,255,255,0.18)" }}
-                  onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.30)")}
-                  onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.30)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.18)")}
                 >
                   <ChevronLeft />
                 </button>
               )}
-              <div className="flex h-9 w-9 items-center justify-center rounded-full shrink-0"
-                   style={{ background: "rgba(255,255,255,0.20)" }}>
+              <div
+                className="flex h-9 w-9 items-center justify-center rounded-full shrink-0"
+                style={{ background: "rgba(255,255,255,0.20)" }}
+              >
                 <WhatsAppIcon className="h-5 w-5 text-white" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-semibold text-white leading-tight truncate">Willstone Strategic</p>
-                <p style={{ fontSize: "11px" }} className="text-green-200">Typically replies instantly</p>
+                {stack.length === 1 && (
+                  <p className="text-sm font-semibold text-white leading-tight truncate">Willstone Strategic</p>
+                )}
+                <p style={{ fontSize: stack.length > 1 ? "10px" : "11px" }} className="text-green-200">
+                  Typically replies instantly
+                </p>
               </div>
-              {/* Close — turns WhatsApp green on hover */}
               <button
                 onClick={closeAll}
                 aria-label="Close"
                 className="shrink-0 rounded-full w-7 h-7 flex items-center justify-center transition-colors"
                 style={{ color: "rgba(255,255,255,0.75)" }}
-                onMouseEnter={e => { (e.currentTarget.style.color = "#25D366"); (e.currentTarget.style.background = "rgba(255,255,255,0.12)"); }}
-                onMouseLeave={e => { (e.currentTarget.style.color = "rgba(255,255,255,0.75)"); (e.currentTarget.style.background = "transparent"); }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#25D366";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "rgba(255,255,255,0.75)";
+                  e.currentTarget.style.background = "transparent";
+                }}
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -373,68 +414,52 @@ export default function WhatsAppButton() {
               {headerLabel ? (
                 <div className="wa-slide flex items-center gap-2" key={headerLabel.label}>
                   <TopicIconSlot icon={headerLabel.icon} small />
-                  <p className="text-xs font-semibold text-[#067f33] leading-tight truncate">{headerLabel.label}</p>
+                  <p className="text-xs font-semibold text-[#067f33] leading-tight truncate">
+                    {headerLabel.label}
+                  </p>
                 </div>
               ) : (
-                <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">What can we help you with?</p>
+                <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">
+                  What can we help you with?
+                </p>
               )}
             </div>
 
             {/* List */}
             <ul className="wa-scroll py-1 max-h-72 overflow-y-auto overscroll-contain">
-              {listItems.map((entry, i) => {
-                if (entry.type === "topic") {
-                  const { topic } = entry;
-                  const hasChildren = !!topic.children?.length;
-                  return (
+              {current.kind === "topics"
+                ? TOPICS.map((topic, i) => (
                     <li key={topic.id}>
                       <button
                         onClick={() => handleTopicClick(topic)}
                         className="w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-green-50 transition-colors group"
                       >
-                        <TopicIconSlot icon={topic.icon} />
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-[10px] font-bold text-[#067f33]">
+                          {i + 1}
+                        </span>
                         <span className="text-sm font-medium text-gray-700 group-hover:text-[#067f33] leading-snug flex-1">
                           {topic.label}
                         </span>
                         <ChevronRight />
                       </button>
                     </li>
-                  );
-                }
-
-                const { item, index } = entry;
-                const isNode = item.kind === "node";
-                return (
-                  <li key={index}>
-                    <button
-                      onClick={() => handleMenuItemClick(item)}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-green-50 transition-colors group"
-                    >
-                      {isNode ? (
-                        /* Node: icon varies by label */
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
-                          {item.label === "Oils" ? (
-                            <Droplets className="h-3.5 w-3.5" />
-                          ) : (
-                            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
-                            </svg>
-                          )}
-                        </span>
-                      ) : (
-                        /* Leaf: numbered badge */
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-100 text-[10px] font-bold text-[#067f33]">
+                  ))
+                : current.items.map((item, i) => (
+                    <li key={`${item.label}-${i}`}>
+                      <button
+                        onClick={() => handleMenuItemClick(item)}
+                        className="w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-green-50 transition-colors group"
+                      >
+                        <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${item.kind === "node" ? "bg-amber-100 text-amber-700" : "bg-green-100 text-[#067f33]"}`}>
                           {i + 1}
                         </span>
-                      )}
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-[#067f33] leading-snug flex-1">
-                        {item.label}
-                      </span>
-                      <ChevronRight />
-                    </button>
-                  </li>
-                );
-              })}
+                        <span className="text-sm font-medium text-gray-700 group-hover:text-[#067f33] leading-snug flex-1">
+                          {item.label}
+                        </span>
+                        <ChevronRight />
+                      </button>
+                    </li>
+                  ))}
             </ul>
 
             {/* Footer */}
