@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import './willstone.css'
@@ -9,43 +8,7 @@ import ScrollAccordion from '@/components/ScrollAccordion'
 import HeroBannerCarousel from '@/components/HeroBannerCarousel'
 import Link from 'next/link'
 
-const INDUSTRIES = [
-  {
-    name: 'Technology',
-    alt: 'Software engineers working on technology solutions',
-    src: '/assets/images/software-engineers.jpg',
-  },
-  {
-    name: 'Agriculture',
-    alt: 'Agricultural operations and commodity supply chain',
-    src: '/assets/images/agric-banner.avif',
-  },
-  {
-    name: 'Logistics',
-    alt: 'Global logistics and supply chain operations',
-    src: '/assets/images/globalization-supply-chain.jpg',
-  },
-  {
-    name: 'Infrastructure',
-    alt: 'Industrial equipment and infrastructure',
-    src: '/assets/images/Industrial-Equipment-Machinery.avif',
-  },
-  {
-    name: 'Energy',
-    alt: 'Solar panels representing renewable energy solutions',
-    src: '/assets/images/solar-panel.jpg',
-  },
-  {
-    name: 'Real Estate',
-    alt: 'Real estate development and property',
-    src: '/assets/images/real-estate-1.jpg',
-  },
-  {
-    name: 'Defence',
-    alt: 'Defence and security solutions',
-    src: '/assets/images/Security-Defense-about.png',
-  },
-]
+// ── Data ────────────────────────────────────────────────────────────────────
 
 const SERVICES = [
   {
@@ -125,6 +88,44 @@ const SERVICES = [
   },
 ]
 
+const INDUSTRIES = [
+  {
+    name: 'Technology',
+    alt: 'Software engineers working on technology solutions',
+    src: '/assets/images/software-engineers.jpg',
+  },
+  {
+    name: 'Agriculture',
+    alt: 'Agricultural operations and commodity supply chain',
+    src: '/assets/images/agric-banner.avif',
+  },
+  {
+    name: 'Logistics',
+    alt: 'Global logistics and supply chain operations',
+    src: '/assets/images/globalization-supply-chain.jpg',
+  },
+  {
+    name: 'Infrastructure',
+    alt: 'Industrial equipment and infrastructure',
+    src: '/assets/images/Industrial-Equipment-Machinery.avif',
+  },
+  {
+    name: 'Energy',
+    alt: 'Solar panels representing renewable energy solutions',
+    src: '/assets/images/solar-panel.jpg',
+  },
+  {
+    name: 'Real Estate',
+    alt: 'Real estate development and property',
+    src: '/assets/images/real-estate-1.jpg',
+  },
+  {
+    name: 'Defence',
+    alt: 'Defence and security solutions',
+    src: '/assets/images/Security-Defense-about.png',
+  },
+]
+
 const PARTNER_PILLARS = [
   {
     title: 'Expertise',
@@ -169,55 +170,15 @@ const PARTNER_PILLARS = [
   },
 ]
 
-const COMMITMENTS = [
-  {
-    title: 'Excellence',
-    desc: 'Delivering quality in everything we do',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2l2.4 5 5.6.6-4 3.9 1 5.5L12 14l-5 3 1-5.5-4-3.9 5.6-.6z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Integrity',
-    desc: 'Building trust through transparency',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Innovation',
-    desc: 'Creating solutions for a better tomorrow',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0012 3z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Sustainability',
-    desc: 'Building a better world for future generations',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-        <path d="M12 2C6 2 3 8 3 12c0 2.5 1.5 5 3 6.5L12 22l6-3.5C19.5 17 21 14.5 21 12c0-4-3-10-9-10z" />
-        <path d="M12 8v8M8 12h8" />
-      </svg>
-    ),
-  },
-]
+// ── BackToTop ────────────────────────────────────────────────────────────────
 
 function BackToTop() {
   const [visible, setVisible] = useState(false)
-
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 400)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -231,16 +192,19 @@ function BackToTop() {
   )
 }
 
+// ── Page ─────────────────────────────────────────────────────────────────────
+
 export default function HomePageClient() {
   return (
     <div className="bg-white">
+
+      {/* 1 — Header */}
       <SiteHeader />
 
+      {/* 2 — Hero carousel */}
       <HeroBannerCarousel />
 
-      {/* ══════════════════════════════════════════
-          TICKER STRIP
-      ══════════════════════════════════════════ */}
+      {/* 3 — Ticker strip */}
       <div className="ticker-strip overflow-hidden py-3" style={{ background: 'var(--gold)' }}>
         <div className="ticker-track flex whitespace-nowrap">
           {[0, 1].map((i) => (
@@ -256,27 +220,148 @@ export default function HomePageClient() {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════
-          INDUSTRIES
-      ══════════════════════════════════════════ */}
+      {/* 4 — About / Company intro */}
+      <section id="about" className="py-20 px-6 lg:px-16 xl:px-24" style={{ background: 'var(--navy)' }}>
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* Left: text */}
+          <div>
+            <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> ABOUT WILLSTONE
+            </p>
+            <h2
+              className="font-bold leading-tight mb-5 text-white"
+              style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)' }}
+            >
+              Strategic Industries.<br />Stronger Tomorrow.
+            </h2>
+            <p className="text-white/70 text-[15px] leading-relaxed mb-8 max-w-md">
+              Willstone Strategic Industries Limited is a diversified Nigerian supplier, exporter, and procurement partner.
+              We deliver integrated solutions across technology, agriculture, logistics, infrastructure, real estate, energy, and more.
+            </p>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 font-semibold text-[13px] rounded-lg"
+              style={{ background: '#C9A24B', color: '#1a1408', padding: '12px 26px' }}
+            >
+              Learn More
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-4 gap-4 mt-10">
+              {[
+                { stat: '15+', label: 'Countries' },
+                { stat: '500+', label: 'Projects' },
+                { stat: '10+', label: 'Sectors' },
+                { stat: '100+', label: 'Partners' },
+              ].map(({ stat, label }) => (
+                <div key={label} className="flex flex-col">
+                  <span className="font-bold text-2xl sm:text-3xl" style={{ color: 'var(--gold)' }}>{stat}</span>
+                  <span className="text-white/60 text-[12px] mt-0.5">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: image mosaic */}
+          <div className="about-mosaic">
+            <div className="about-mosaic-main">
+              <Image
+                src="/assets/images/about-banner.png"
+                alt="Willstone Strategic Industries operations"
+                fill
+                sizes="(max-width: 1024px) 80vw, 40vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="about-mosaic-side">
+              <div className="about-mosaic-sm">
+                <Image
+                  src="/assets/images/agric-banner.avif"
+                  alt="Agricultural operations"
+                  fill
+                  sizes="20vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="about-mosaic-sm">
+                <Image
+                  src="/assets/images/electrical-electronic.jpg"
+                  alt="Electrical and electronic infrastructure"
+                  fill
+                  sizes="20vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5 — Scroll Accordion (What We Do) */}
+      <ScrollAccordion />
+
+      {/* 6 — Services */}
+      <section id="services" className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto">
+          <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
+            <span className="gold-rule" /> OUR SERVICES
+          </p>
+          <h2
+            className="font-bold leading-tight mb-10"
+            style={{ color: 'var(--ink)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+          >
+            Integrated solutions. Strategic execution.
+          </h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {SERVICES.map((service) => (
+              <div key={service.title} className="service-card-new">
+                <span className="service-card-icon">{service.icon}</span>
+                <h4 className="font-semibold text-[14px] mt-3 mb-1 leading-snug" style={{ color: 'var(--ink)' }}>
+                  {service.title}
+                </h4>
+                <p className="text-[12.5px] text-slate-500 leading-snug">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7 — Industries */}
       <section id="industries" className="py-20 px-6 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
         <div className="max-w-screen-2xl mx-auto">
-          <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-2" style={{ color: 'var(--gold)' }}>
-            <span className="gold-rule" /> OUR INDUSTRIES
+          <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
+            <span className="gold-rule" /> INDUSTRIES WE SERVE
           </p>
-          <h2 className="display text-2xl sm:text-3xl font-semibold mb-2" style={{ color: 'var(--ink)' }}>
-            Diverse expertise.
+          <h2
+            className="font-bold leading-tight mb-10"
+            style={{ color: 'var(--ink)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+          >
+            Diverse expertise across 10+ sectors
           </h2>
-          <p className="text-slate-500 text-[15px] mb-10 max-w-lg">
-            We operate across a broad range of industries, bringing deep expertise and innovative solutions to the sectors that power the world.
-          </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
             {INDUSTRIES.map((tile) => (
-              <div key={tile.name} className="industry-tile rounded-lg aspect-[3/4]">
-                <Image src={tile.src} alt={tile.alt} fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw" className="object-cover" />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(11,27,51,0) 40%, rgba(11,27,51,.85) 100%)' }} />
-                <p className="absolute bottom-3 left-3 text-white font-semibold text-sm">{tile.name}</p>
-                <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full flex items-center justify-center" style={{ background: 'rgba(201,162,75,.2)', border: '1px solid rgba(201,162,75,.4)' }}>
+              <div key={tile.name} className="industry-tile rounded-lg aspect-[3/4] relative overflow-hidden">
+                <Image
+                  src={tile.src}
+                  alt={tile.alt}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                  className="object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: 'linear-gradient(180deg, rgba(11,27,51,0) 40%, rgba(11,27,51,.85) 100%)' }}
+                />
+                <p className="absolute bottom-3 left-3 text-white font-bold text-sm">{tile.name}</p>
+                <div
+                  className="absolute bottom-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
+                  style={{ background: 'rgba(201,162,75,.2)', border: '1px solid rgba(201,162,75,.4)' }}
+                >
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2.5">
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
@@ -287,150 +372,58 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          SCROLL ACCORDION  (What We Do)
-      ══════════════════════════════════════════ */}
-      <ScrollAccordion />
-
-      {/* ══════════════════════════════════════════
-          SERVICES
-      ══════════════════════════════════════════ */}
-      <section id="services" className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
-        <div className="max-w-screen-2xl mx-auto">
-          <div className="grid lg:grid-cols-[300px_1fr] gap-10 lg:gap-16 items-start">
-            <div className="lg:sticky lg:top-28">
-              <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
-                <span className="gold-rule" /> OUR SERVICES
-              </p>
-              <h2 className="display font-semibold leading-tight" style={{ color: 'var(--ink)', fontSize: 'clamp(1.6rem, 3vw, 2.1rem)' }}>
-                Integrated solutions.<br />Strategic execution.<br /><span style={{ color: 'var(--gold)' }}>Sustainable impact.</span>
-              </h2>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {SERVICES.map((service) => (
-                <div key={service.title} className="service-card-new">
-                  <span className="service-card-icon">{service.icon}</span>
-                  <h4 className="font-semibold text-[14px] mt-3 mb-1 leading-snug" style={{ color: 'var(--ink)' }}>{service.title}</h4>
-                  <p className="text-[12.5px] text-slate-500 leading-snug">{service.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          PARTNER CTA
-      ══════════════════════════════════════════ */}
+      {/* 8 — CTA Partner Banner */}
       <section className="partner-banner relative overflow-hidden">
         <div className="partner-banner-bg" aria-hidden="true" />
-        <div className="absolute inset-0" style={{ background: 'rgba(5,12,26,.78)' }} />
-        <div className="relative z-10 w-full px-5 sm:px-8 lg:px-16 xl:px-24 py-12 lg:py-20">
-          <div className="mb-10 lg:hidden text-center">
-            <p className="eyebrow text-[11px] font-semibold mb-3 tracking-widest" style={{ color: 'var(--gold)' }}>PARTNER WITH US</p>
-            <h2 className="display font-bold text-white leading-tight mb-6" style={{ fontSize: 'clamp(1.7rem, 7vw, 2.5rem)' }}>
-              One partner,<br />every step of the journey.
+        <div className="absolute inset-0" style={{ background: 'rgba(5,12,26,0.80)' }} />
+        <div className="relative z-10 w-full px-6 sm:px-8 lg:px-16 xl:px-24 py-16 lg:py-24">
+          {/* Main content — mobile: centered, desktop: left */}
+          <div className="text-center lg:text-left mb-10 lg:mb-12 lg:max-w-xl">
+            <p className="eyebrow text-[11px] font-semibold tracking-widest mb-3" style={{ color: 'var(--gold)' }}>
+              PARTNER WITH US
+            </p>
+            <h2
+              className="font-bold text-white leading-tight mb-4"
+              style={{ fontSize: 'clamp(1.8rem, 5vw, 2.8rem)' }}
+            >
+              One partner, every step of the journey.
             </h2>
-            <div className="flex justify-center">
-              <Link href="/contact" className="inline-flex items-center gap-3 font-semibold"
-                style={{ background: 'var(--gold)', color: '#1a1408', padding: '12px 24px', fontSize: '14px', borderRadius: '8px' }}>
+            <p className="text-white/65 text-[15px] mb-8 max-w-lg mx-auto lg:mx-0">
+              We bring expertise, reliability, and impact across every sector we serve.
+            </p>
+            <div className="flex justify-center lg:justify-start">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 font-semibold rounded-lg"
+                style={{ background: 'var(--gold)', color: '#1a1408', padding: '13px 28px', fontSize: '14px' }}
+              >
                 Let&apos;s Work Together
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 lg:hidden">
+
+          {/* 4 pillars */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {PARTNER_PILLARS.map((pillar) => (
-              <div key={pillar.title} className="flex flex-col items-center text-center">
-                <span className="partner-pillar-icon mb-3">{pillar.icon}</span>
-                <h4 className="font-semibold text-white text-[14px] mb-1 leading-snug">{pillar.title}</h4>
-                <p className="text-white/55 text-[12px] leading-snug">{pillar.desc}</p>
+              <div key={pillar.title} className="partner-pillar">
+                <span className="partner-pillar-icon">{pillar.icon}</span>
+                <h4 className="font-semibold text-white text-[15px] mt-4 mb-1">{pillar.title}</h4>
+                <p className="text-white/55 text-[12.5px] leading-snug">{pillar.desc}</p>
               </div>
             ))}
           </div>
-          <div className="hidden lg:grid lg:grid-cols-[1fr_2fr] gap-16 items-center">
-            <div>
-              <p className="eyebrow text-[11px] font-semibold mb-3 tracking-widest" style={{ color: 'var(--gold)' }}>PARTNER WITH US</p>
-              <h2 className="display font-bold text-white leading-tight mb-8" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>
-                One partner,<br />every step of the journey.
-              </h2>
-              <Link href="/contact" className="inline-flex items-center gap-3 font-semibold"
-                style={{ background: 'var(--gold)', color: '#1a1408', padding: '12px 28px', fontSize: '14px', borderRadius: '8px' }}>
-                Let&apos;s Work Together
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </Link>
-            </div>
-            <div className="grid grid-cols-4 gap-6">
-              {PARTNER_PILLARS.map((pillar) => (
-                <div key={pillar.title} className="partner-pillar">
-                  <span className="partner-pillar-icon">{pillar.icon}</span>
-                  <h4 className="font-semibold text-white text-[15px] mt-3 mb-1">{pillar.title}</h4>
-                  <p className="text-white/55 text-[12.5px] leading-snug">{pillar.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          ABOUT
-      ══════════════════════════════════════════ */}
-      <section id="about" className="py-16 px-6 lg:px-16 xl:px-24 bg-white">
-        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
-              <span className="gold-rule" /> ABOUT WILLSTONE
-            </p>
-            <h2 className="display font-semibold leading-tight mb-5" style={{ color: 'var(--ink)', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)' }}>
-              Strategic industries.<br />Stronger tomorrow.
-            </h2>
-            <p className="text-slate-500 text-[15px] leading-relaxed mb-8 max-w-md">
-              Willstone Strategic Industries Limited is a multi-sector company delivering
-              integrated solutions across technology, agriculture, logistics, infrastructure,
-              real estate, energy, and more.
-            </p>
-            <Link href="/about" className="inline-flex items-center gap-2 font-semibold text-[13px] cursor-pointer"
-              style={{ background: 'var(--navy)', color: '#fff', padding: '12px 26px', borderRadius: '8px' }}>
-              Learn More About Us
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-            </Link>
-          </div>
-          <div className="about-mosaic">
-            <div className="about-mosaic-main">
-              <Image src="/assets/images/about-banner.png" alt="Cargo plane on tarmac representing Willstone's logistics operations" fill sizes="(max-width: 1024px) 80vw, 40vw" className="object-cover" />
-            </div>
-            <div className="about-mosaic-side">
-              <div className="about-mosaic-sm">
-                <Image src="/assets/images/agric-banner.avif" alt="Shipping containers stacked at a port" fill sizes="20vw" className="object-cover" />
-              </div>
-              <div className="about-mosaic-sm">
-                <Image src="/assets/images/electrical-electronic.jpg" alt="Industrial facility representing infrastructure" fill sizes="20vw" className="object-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          COMMITMENT BAR
-      ══════════════════════════════════════════ */}
-      <section className="py-14 px-6 lg:px-16 xl:px-24 border-t border-gray-100 bg-white">
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
-          {COMMITMENTS.map((item) => (
-            <div key={item.title} className="flex items-start gap-4">
-              <span className="commit-icon-light shrink-0">{item.icon}</span>
-              <div>
-                <p className="font-semibold text-[14px]" style={{ color: 'var(--ink)' }}>{item.title}</p>
-                <p className="text-slate-500 text-[12.5px] leading-snug mt-0.5">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+      {/* 9 — Footer */}
       <SiteFooter />
+
+      {/* 10 — Back to top */}
       <BackToTop />
+
     </div>
   )
 }
