@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const MD_BREAKPOINT = 786 // desktop starts at 786px
@@ -9,7 +10,7 @@ const MD_BREAKPOINT = 786 // desktop starts at 786px
 const NAV_LINKS = [
   { href: '/',                label: 'HOME' },
   { href: '/about',           label: 'ABOUT US' },
-  { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
+  // { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
   { href: '#',                label: 'PRODUCTS', hasDropdown: true, dropdownId: 'products' },
   { href: '/blog',            label: 'BLOG' },
 ]
@@ -247,7 +248,16 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                   >
                     {/* ── Left panel ── */}
                     <div className="mega-left">
-                      <img src="/assets/images/NavItem.png" alt="" aria-hidden="true" className="mega-left-bg" />
+                      <div style={{ position: 'absolute', inset: 0 }}>
+                        <Image
+                          src="/assets/images/NavItem.png"
+                          alt=""
+                          fill
+                          sizes="220px"
+                          className="object-cover"
+                          aria-hidden="true"
+                        />
+                      </div>
                       <div className="mega-left-overlay" />
                       <div className="mega-left-content">
                         <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>

@@ -1,17 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Geist, Space_Grotesk, Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Loaded once here; CSS variables are applied to <html> so every page can use them
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -104,12 +122,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${spaceGrotesk.variable} ${inter.variable} ${montserrat.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#0B1B33" />
         <meta name="robots" content="index,follow" />
-        <meta httpEquiv="Cache-control" content="no-cache" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="msapplication-TileColor" content="#0B1B33" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -198,9 +215,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         {children}
         <WhatsAppButton />
       </body>

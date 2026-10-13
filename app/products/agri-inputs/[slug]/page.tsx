@@ -2,22 +2,10 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../../../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import { PRODUCTS } from '@/lib/agriProducts'
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-display',
-})
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-})
 
 // Generate static params for all products
 export async function generateStaticParams() {
@@ -88,7 +76,7 @@ export default async function AgriProductDetailPage(
           }),
         }}
       />
-    <div className={`${spaceGrotesk.variable} ${inter.variable} bg-white`}
+    <div className="bg-white"
       style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
       <SiteHeader variant="solid" />
 

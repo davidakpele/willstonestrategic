@@ -1,12 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../../app/willstone.css'
 import SiteHeader from '../SiteHeader'
 import SiteFooter from '../SiteFooter'
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
-const inter = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
 
 export interface ProductSpec {
   label: string
@@ -47,7 +43,7 @@ export default function ProductPage({
   breadcrumb, hero, overview, supplyRole, specs, buyers, supplyInfo, faqs, related, jsonLd
 }: ProductPageProps) {
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+    <div style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SiteHeader variant="solid" />
 

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import { GitBranch, BadgeCheck, Truck } from 'lucide-react'
 import '../../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
@@ -14,21 +13,9 @@ export const metadata: Metadata = {
     'Premium agricultural commodities — soybeans, cocoa, maize, cassava, sesame, palm oil and more. Sourced, graded and distributed across Nigeria and international markets.',
 }
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-display',
-})
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-})
-
 export default function AgriInputsPage() {
   return (
     <div
-      className={`${spaceGrotesk.variable} ${inter.variable}`}
       style={{ fontFamily: 'var(--font-body, sans-serif)' }}
     >
       <SiteHeader variant="solid" />

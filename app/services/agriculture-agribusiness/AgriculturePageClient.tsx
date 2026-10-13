@@ -2,13 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
-const inter        = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
 
 const PRODUCTS = [
   { label: 'Charcoal',      src: '/assets/images/charcoal.jpg' },
@@ -62,7 +58,7 @@ const OTHER_SERVICES = [
 
 export default function AgriculturePageClient() {
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <div>
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}

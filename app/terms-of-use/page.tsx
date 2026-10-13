@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
@@ -12,12 +11,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: false },
 }
 
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
-const inter = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
-
 export default function TermsOfUsePage() {
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body,sans-serif)' }}>
+    <div>
       <SiteHeader variant="solid" />
       <main className="max-w-3xl mx-auto px-5 sm:px-8 py-24" style={{ paddingTop: 128 }}>
         <nav className="flex items-center gap-2 mb-8 text-[12px] text-slate-400">

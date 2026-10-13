@@ -3,13 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
-const inter        = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
 
 const OFFERINGS = [
   {
@@ -109,7 +105,7 @@ const PROJECTS = [
       'New 11kV/415V transformer stations with SCADA-linked monitoring',
       'Full load analysis and power factor correction implemented',
     ],
-    img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/electrical-electronic.jpg',
     bg: '#eef6ff',
   },
   {
@@ -121,7 +117,7 @@ const PROJECTS = [
       'Remote monitoring dashboard with real-time energy generation analytics',
       'ROI achieved within 3.5 years based on fuel savings',
     ],
-    img: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/solar-panel.jpg',
     bg: '#f0fdf4',
   },
   {
@@ -133,7 +129,7 @@ const PROJECTS = [
       '22% reduction in energy consumption through automated HVAC scheduling',
       'Predictive maintenance alerts based on real-time equipment data',
     ],
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/real-estate-1.jpg',
     bg: '#fdf4ff',
   },
   {
@@ -145,7 +141,7 @@ const PROJECTS = [
       'OM4 multimode fibre backbone between server racks and distribution frames',
       'Colour-coded cable management with full documentation and labelling',
     ],
-    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/Electrical-Energy-about-3.png',
     bg: '#fffbeb',
   },
 ]
@@ -235,7 +231,7 @@ export default function ElectricalElectronicPage() {
   const tab = TABS.find((t) => t.id === activeTab)!
 
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <div>
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
@@ -303,7 +299,7 @@ export default function ElectricalElectronicPage() {
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-lg">
             <Image
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1000&q=80"
+              src="/assets/images/Industrial-Equipment-Machinery.avif"
               alt="Engineers working on electrical infrastructure"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

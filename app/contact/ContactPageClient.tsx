@@ -1,22 +1,9 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-display',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-})
 
 const INQUIRY_TYPES = [
   { value: 'inquiry', label: 'Inquiries' },
@@ -190,7 +177,7 @@ export default function ContactPageClient() {
   )
 
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`} style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+    <div>
       <SiteHeader variant="solid" />
 
       {/* ── HERO + FORM ── */}

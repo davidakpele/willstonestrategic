@@ -1,56 +1,44 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import './willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import ScrollAccordion from '@/components/ScrollAccordion'
+import HeroBannerCarousel from '@/components/HeroBannerCarousel'
 import Link from 'next/link'
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-display',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-})
 
 const INDUSTRIES = [
   {
     name: 'Technology',
-    alt: 'Circuit board representing the technology sector',
-    src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80',
+    alt: 'Software engineers working on technology solutions',
+    src: '/assets/images/software-engineers.jpg',
   },
   {
     name: 'Agriculture',
-    alt: 'Green farmland rows representing agriculture',
-    src: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=500&q=80',
+    alt: 'Agricultural operations and commodity supply chain',
+    src: '/assets/images/agric-banner.avif',
   },
   {
     name: 'Logistics',
-    alt: 'Cargo ship carrying containers representing logistics',
-    src: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=500&q=80',
+    alt: 'Global logistics and supply chain operations',
+    src: '/assets/images/globalization-supply-chain.jpg',
   },
   {
     name: 'Infrastructure',
-    alt: 'Suspension bridge representing infrastructure',
-    src: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&w=500&q=80',
+    alt: 'Industrial equipment and infrastructure',
+    src: '/assets/images/Industrial-Equipment-Machinery.avif',
   },
   {
     name: 'Energy',
-    alt: 'Wind turbines and solar panels representing energy',
-    src: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=500&q=80',
+    alt: 'Solar panels representing renewable energy solutions',
+    src: '/assets/images/solar-panel.jpg',
   },
   {
     name: 'Real Estate',
-    alt: 'Modern building facade representing real estate',
-    src: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80',
+    alt: 'Real estate development and property',
+    src: '/assets/images/real-estate-1.jpg',
   },
   {
     name: 'Defence',
@@ -245,45 +233,10 @@ function BackToTop() {
 
 export default function HomePageClient() {
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable} bg-white`}>
+    <div className="bg-white">
       <SiteHeader />
 
-      {/* ══════════════════════════════════════════
-          HERO
-      ══════════════════════════════════════════ */}
-      <section id="home" className="relative w-full overflow-hidden" style={{ background: '#0B1B33' }}>
-        <div className="hero-banner-frame relative w-full">
-          <Image
-            src="/assets/images/prime-banner.png"
-            alt="Willstone Strategic Industries — advancing industries through technology, trade and energy"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0" style={{
-            background: 'linear-gradient(to bottom, rgba(6,15,31,.30) 0%, rgba(6,15,31,.55) 55%, rgba(6,15,31,.82) 100%)',
-          }} />
-          <div className="absolute inset-0 flex flex-col items-center justify-end text-center px-4 sm:px-8 lg:px-16 pb-8 sm:pb-10 lg:pb-0 lg:justify-center" style={{ paddingTop: '0px' }}>
-            <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-              <p className="fade-up fade-up-1 eyebrow font-semibold mb-1 sm:mb-3"
-                style={{ color: 'var(--gold)', fontSize: 'clamp(9px, 2vw, 13px)', letterSpacing: '0.16em' }}>
-                WELCOME TO WILLSTONE
-              </p>
-              <h1 className="hero-heading fade-up fade-up-2 display text-white w-full"
-                style={{ fontFamily: 'Satoshi, Inter, sans-serif', fontSize: 'clamp(1.05rem, 4vw, 3.8rem)', lineHeight: 1.12 }}>
-                Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
-              </h1>
-              <p className="hero-subtext fade-up fade-up-3 text-white/80 mt-2 sm:mt-4 w-full max-w-2xl leading-relaxed"
-                style={{ fontSize: 'clamp(10.5px, 1.8vw, 17px)' }}>
-                Willstone Strategic Industries Limited delivers innovative solutions and
-                trusted services across industries, driving growth, enabling progress, and
-                building a stronger tomorrow.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroBannerCarousel />
 
       {/* ══════════════════════════════════════════
           TICKER STRIP

@@ -3,13 +3,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
-import { Space_Grotesk, Inter } from 'next/font/google'
 import '../../willstone.css'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-display' })
-const inter        = Inter({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-body' })
 
 const OFFERINGS = [
   {
@@ -59,37 +55,37 @@ const PRODUCTS = [
     name: 'Tactical UAV — Recon Series',
     category: 'Unmanned Aerial Vehicles',
     desc: 'Long-endurance fixed-wing and multi-rotor UAVs for ISR (Intelligence, Surveillance & Reconnaissance) missions. Equipped with EO/IR payloads, encrypted data links, and autonomous flight modes.',
-    img: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=80',
+    img: '/assets/images/drone.jpg',
   },
   {
     name: 'Thermal PTZ CCTV Array',
     category: 'Surveillance Cameras',
     desc: 'Military-spec thermal and optical PTZ cameras with 360° coverage, auto-tracking, licence plate recognition, and AI-based behaviour analytics. Rated for harsh outdoor environments.',
-    img: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80',
+    img: '/assets/images/Security-Defense-about.png',
   },
   {
     name: 'Kallon Integrated Security Platform',
     category: 'Command & Control',
     desc: 'The Kallon platform fuses data from CCTV, access control, perimeter sensors, and alarm systems into a single command-and-control interface — enabling real-time threat assessment and coordinated response.',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
+    img: '/assets/images/TradeGlobal.jpg',
   },
   {
     name: 'Body Armour & Tactical Gear',
     category: 'Military-Grade Equipment',
     desc: 'NIJ-certified ballistic vests, plate carriers, helmets, tactical boots, and communications equipment sourced from approved international manufacturers for security forces and private clients.',
-    img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80',
+    img: '/assets/images/DRONE-P1.jpg',
   },
   {
     name: 'Night Vision & Optics',
     category: 'Surveillance Technology',
     desc: 'Gen 3 image intensifier goggles, thermal monoculars, laser rangefinders, and day/night rifle optics for low-light surveillance, patrol, and protective operations.',
-    img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    img: '/assets/images/electrical-electronic.jpg',
   },
   {
     name: 'Perimeter Radar & Sensor Systems',
     category: 'Perimeter Protection',
     desc: 'Ground surveillance radar, seismic intruder detectors, and fibre-optic fence sensors that provide automatic alerts on perimeter breach — integrated with your command centre.',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    img: '/assets/images/global-trade-routes-stockcake.jpg',
   },
 ]
 
@@ -148,7 +144,7 @@ const PROJECTS = [
       '120-channel CCTV with AI-based motion analytics and licence plate recognition',
       'Centralised control room with integrated alarm and intercom management',
     ],
-    img: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/Security-Defense-about.png',
     bg: '#eef6ff',
   },
   {
@@ -160,7 +156,7 @@ const PROJECTS = [
       'Armed QRF (Quick Reaction Force) with sub-5-minute response across the site',
       'Zero perimeter breaches in 18 months of continuous operation',
     ],
-    img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/DRONE-P1.jpg',
     bg: '#f0fdf4',
   },
   {
@@ -172,7 +168,7 @@ const PROJECTS = [
       'Bag and body screening at all entry points with zero prohibited items admitted',
       'Incident-free event with successful crowd dispersal at close',
     ],
-    img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/Global-Business-Networking-at-Trade-Expo.jpg',
     bg: '#fdf4ff',
   },
   {
@@ -184,7 +180,7 @@ const PROJECTS = [
       'Anti-ram bollards and shutter upgrades at all customer-facing branches',
       'Security awareness training delivered to 200+ bank staff across three states',
     ],
-    img: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=900&q=80',
+    img: '/assets/images/connection.png',
     bg: '#fffbeb',
   },
 ]
@@ -274,7 +270,7 @@ export default function DefenceSecurityPage() {
   const tab = TABS.find((t) => t.id === activeTab)!
 
   return (
-    <div className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <div>
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
@@ -356,7 +352,7 @@ export default function DefenceSecurityPage() {
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-lg">
             <Image
-              src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1000&q=80"
+              src="/assets/images/Security-Defense-about.png"
               alt="Security professional at a modern facility"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
