@@ -250,7 +250,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                     <div className="mega-left">
                       <div style={{ position: 'absolute', inset: 0 }}>
                         <Image
-                          src="/assets/images/NavItem.png"
+                          src="/assets/images/navitem.png"
                           alt=""
                           fill
                           sizes="220px"

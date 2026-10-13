@@ -50,7 +50,7 @@ export default function RicePage() {
         { q: 'Can rice be exported?', a: 'Our primary rice supply is domestic. International export enquiries are considered on a case-by-case basis depending on availability.' },
       ]}
       related={[
-        { name: 'Maize', href: '/products/maize', img: '/assets/images/Maize.jpg' },
+        { name: 'Maize', href: '/products/maize', img: '/assets/images/maize.jpg' },
         { name: 'Cassava', href: '/products/cassava', img: '/assets/images/cassava.jpg' },
         { name: 'Soybeans', href: '/products/soybeans', img: '/assets/images/soybeans.jpg' },
         { name: 'Sesame Seeds', href: '/products/sesame-seeds', img: '/assets/images/sesame.webp' },

@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   description: 'Willstone Strategic Industries Limited supplies bulk maize grain from Nigeria for animal feed manufacturers, food processors, starch producers, and commodity traders. Request a wholesale quotation for maize supply.',
   keywords: ['maize supplier Nigeria','maize exporter Nigeria','bulk maize Nigeria','maize grain supplier','wholesale maize Nigeria','corn supplier Nigeria'],
   alternates: { canonical: URL },
-  openGraph: { title: 'Maize Supplier & Exporter | Willstone Nigeria', description: 'Bulk maize grain supply from Nigeria for animal feed, food processing, and industrial use.', url: URL, siteName: 'Willstone Strategic Industries Limited', images: [{ url: `${BASE}/assets/images/Maize.jpg`, width: 1200, height: 630, alt: 'Bulk maize grain supplied by Willstone Strategic Industries Limited' }], locale: 'en_NG', type: 'website' },
-  twitter: { card: 'summary_large_image', title: 'Maize Supplier & Exporter | Willstone Nigeria', description: 'Bulk maize grain supply from Nigeria.', images: [`${BASE}/assets/images/Maize.jpg`] },
+  openGraph: { title: 'Maize Supplier & Exporter | Willstone Nigeria', description: 'Bulk maize grain supply from Nigeria for animal feed, food processing, and industrial use.', url: URL, siteName: 'Willstone Strategic Industries Limited', images: [{ url: `${BASE}/assets/images/maize.jpg`, width: 1200, height: 630, alt: 'Bulk maize grain supplied by Willstone Strategic Industries Limited' }], locale: 'en_NG', type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Maize Supplier & Exporter | Willstone Nigeria', description: 'Bulk maize grain supply from Nigeria.', images: [`${BASE}/assets/images/maize.jpg`] },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Product', '@id': `${URL}#product`,
   'name': 'Maize (Corn)', 'description': 'Bulk maize grain sourced and supplied by Willstone Strategic Industries Limited, Nigeria.',
-  'image': `${BASE}/assets/images/Maize.jpg`,
+  'image': `${BASE}/assets/images/maize.jpg`,
   'brand': { '@type': 'Brand', 'name': 'Willstone Strategic Industries Limited' },
   'offers': { '@type': 'Offer', 'seller': { '@id': `${BASE}/#organization` }, 'availability': 'https://schema.org/InStock', 'areaServed': 'GLOBAL', 'priceSpecification': { '@type': 'PriceSpecification', 'priceCurrency': 'USD', 'description': 'Price on request' } },
   'breadcrumb': { '@type': 'BreadcrumbList', 'itemListElement': [

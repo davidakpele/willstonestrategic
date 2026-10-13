@@ -55,7 +55,7 @@ export default function SesamePage() {
       ]}
       related={[
         { name: 'Soybeans', href: '/products/soybeans', img: '/assets/images/soybeans.jpg' },
-        { name: 'Maize', href: '/products/maize', img: '/assets/images/Maize.jpg' },
+        { name: 'Maize', href: '/products/maize', img: '/assets/images/maize.jpg' },
         { name: 'Cocoa', href: '/products/cocoa', img: '/assets/images/cocoawebp.webp' },
         { name: 'Palm Oil', href: '/products/palm-oil', img: '/assets/images/palm-oil-main.png' },
       ]}

@@ -55,7 +55,7 @@ export default function TurmericPage() {
         { name: 'Ginger', href: '/products/ginger', img: '/assets/images/ginger.jpg' },
         { name: 'Sesame Seeds', href: '/products/sesame-seeds', img: '/assets/images/sesame.webp' },
         { name: 'Cassava', href: '/products/cassava', img: '/assets/images/cassava.jpg' },
-        { name: 'Maize', href: '/products/maize', img: '/assets/images/Maize.jpg' },
+        { name: 'Maize', href: '/products/maize', img: '/assets/images/maize.jpg' },
       ]}
       jsonLd={jsonLd}
     />

@@ -71,12 +71,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/assets/images/logo/PNG/Willstone-Logo-Navy.png", type: "image/png" },
+      { url: "/assets/images/logo/png/willstone-logo-navy.png", type: "image/png" },
     ],
     apple: [
-      { url: "/assets/images/logo/PNG/Willstone-Logo-Navy.png", type: "image/png" },
+      { url: "/assets/images/logo/png/willstone-logo-navy.png", type: "image/png" },
     ],
-    shortcut: "/assets/images/logo/PNG/Willstone-Logo-Navy.png",
+    shortcut: "/assets/images/logo/png/willstone-logo-navy.png",
   },
   openGraph: {
     title: "Willstone Strategic Industries Limited – Building Solutions. Delivering Impact.",
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     siteName: "Willstone Strategic Industries Limited",
     images: [
       {
-        url: "/assets/images/logo/PNG/Willstone-Logo-FullColor.png",
+        url: "/assets/images/logo/png/willstone-logo-fullcolor.png",
         width: 1200,
         height: 630,
         alt: "Willstone Strategic Industries Limited",
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Willstone Strategic Industries Limited",
     description: "Agribusiness · Software Development · Logistics · Engineering · Real Estate · Energy · Defence — Nigeria's trusted multi-sector partner.",
-    images: ["/assets/images/logo/PNG/Willstone-Logo-White.png"],
+    images: ["/assets/images/logo/png/willstone-logo-white.png"],
   },
   robots: {
     index: true,
@@ -132,7 +132,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="/assets/images/Willstone-AppIcon-Navy.png" />
+        <link rel="shortcut icon" href="/assets/images/willstone-appicon-navy.png" />
         {/* JSON-LD: Organization + WebSite entities with stable @id anchors */}
         <script
           type="application/ld+json"
@@ -147,7 +147,7 @@ export default function RootLayout({
                 "url": "https://willstonestrategic.com",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://willstonestrategic.com/assets/images/logo/PNG/Willstone-Logo-FullColor.png",
+                  "url": "https://willstonestrategic.com/assets/images/logo/png/willstone-logo-fullcolor.png",
                   "width": 400,
                   "height": 96
                 },

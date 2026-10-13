@@ -61,19 +61,19 @@ const PRODUCTS = [
     name: 'Thermal PTZ CCTV Array',
     category: 'Surveillance Cameras',
     desc: 'Military-spec thermal and optical PTZ cameras with 360° coverage, auto-tracking, licence plate recognition, and AI-based behaviour analytics. Rated for harsh outdoor environments.',
-    img: '/assets/images/Security-Defense-about.png',
+    img: '/assets/images/security-defense-about.png',
   },
   {
     name: 'Kallon Integrated Security Platform',
     category: 'Command & Control',
     desc: 'The Kallon platform fuses data from CCTV, access control, perimeter sensors, and alarm systems into a single command-and-control interface — enabling real-time threat assessment and coordinated response.',
-    img: '/assets/images/TradeGlobal.jpg',
+    img: '/assets/images/tradeglobal.jpg',
   },
   {
     name: 'Body Armour & Tactical Gear',
     category: 'Military-Grade Equipment',
     desc: 'NIJ-certified ballistic vests, plate carriers, helmets, tactical boots, and communications equipment sourced from approved international manufacturers for security forces and private clients.',
-    img: '/assets/images/DRONE-P1.jpg',
+    img: '/assets/images/drone-p1.jpg',
   },
   {
     name: 'Night Vision & Optics',
@@ -144,7 +144,7 @@ const PROJECTS = [
       '120-channel CCTV with AI-based motion analytics and licence plate recognition',
       'Centralised control room with integrated alarm and intercom management',
     ],
-    img: '/assets/images/Security-Defense-about.png',
+    img: '/assets/images/security-defense-about.png',
     bg: '#eef6ff',
   },
   {
@@ -156,7 +156,7 @@ const PROJECTS = [
       'Armed QRF (Quick Reaction Force) with sub-5-minute response across the site',
       'Zero perimeter breaches in 18 months of continuous operation',
     ],
-    img: '/assets/images/DRONE-P1.jpg',
+    img: '/assets/images/drone-p1.jpg',
     bg: '#f0fdf4',
   },
   {
@@ -168,7 +168,7 @@ const PROJECTS = [
       'Bag and body screening at all entry points with zero prohibited items admitted',
       'Incident-free event with successful crowd dispersal at close',
     ],
-    img: '/assets/images/Global-Business-Networking-at-Trade-Expo.jpg',
+    img: '/assets/images/global-business-networking-at-trade-expo.png',
     bg: '#fdf4ff',
   },
   {
@@ -282,7 +282,7 @@ export default function DefenceSecurityPage() {
           loop
           playsInline
           preload="auto"
-          poster="/assets/images/Security-Defense-about.png"
+          poster="/assets/images/security-defense-about.png"
           aria-hidden="true"
           style={{
             position: 'absolute',
@@ -352,7 +352,7 @@ export default function DefenceSecurityPage() {
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-lg">
             <Image
-              src="/assets/images/Security-Defense-about.png"
+              src="/assets/images/security-defense-about.png"
               alt="Security professional at a modern facility"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"

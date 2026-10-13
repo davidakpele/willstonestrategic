@@ -52,7 +52,7 @@ export default function HomePage() {
               'url': BASE,
               'telephone': '+234-901-938-4496',
               'email': 'willstonestrategic@gmail.com',
-              'logo': `${BASE}/assets/images/logo/PNG/Willstone-Logo-FullColor.png`,
+              'logo': `${BASE}/assets/images/logo/png/willstone-logo-fullcolor.png`,
               'image': `${BASE}/assets/images/prime-banner.png`,
               'description': 'Diversified Nigerian supplier, exporter, and procurement partner across agribusiness, technology, logistics, engineering, energy, and defence.',
               'address': {

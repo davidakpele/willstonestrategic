@@ -55,7 +55,7 @@ export default function PalmOilPage() {
         { name: 'Soybeans', href: '/products/soybeans', img: '/assets/images/soybeans.jpg' },
         { name: 'Sesame Seeds', href: '/products/sesame-seeds', img: '/assets/images/sesame.webp' },
         { name: 'Cocoa', href: '/products/cocoa', img: '/assets/images/cocoawebp.webp' },
-        { name: 'Maize', href: '/products/maize', img: '/assets/images/Maize.jpg' },
+        { name: 'Maize', href: '/products/maize', img: '/assets/images/maize.jpg' },
       ]}
       jsonLd={jsonLd}
     />

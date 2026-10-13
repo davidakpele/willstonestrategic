@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: 'Custom software, cloud solutions, ERP, cybersecurity, and IT consultancy — built to power businesses across Nigeria and West Africa.',
     url: `${BASE}/services/information-technology`,
     siteName: 'Willstone Strategic Industries Limited',
-    images: [{ url: `${BASE}/assets/images/NavItem.png`, width: 1200, height: 630, alt: 'Willstone IT & Software Development Solutions' }],
+    images: [{ url: `${BASE}/assets/images/navitem.png`, width: 1200, height: 630, alt: 'Willstone IT & Software Development Solutions' }],
     locale: 'en_NG',
     type: 'website',
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'IT & Software Development | Willstone Strategic Industries',
     description: 'Custom software, cloud solutions, ERP, cybersecurity, and IT consultancy across Nigeria.',
-    images: [`${BASE}/assets/images/NavItem.png`],
+    images: [`${BASE}/assets/images/navitem.png`],
   },
 }
 

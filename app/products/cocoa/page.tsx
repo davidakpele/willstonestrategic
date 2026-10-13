@@ -57,7 +57,7 @@ export default function CocoaPage() {
         { name: 'Palm Oil', href: '/products/palm-oil', img: '/assets/images/palm-oil-main.png' },
         { name: 'Sesame Seeds', href: '/products/sesame-seeds', img: '/assets/images/sesame.webp' },
         { name: 'Soybeans', href: '/products/soybeans', img: '/assets/images/soybeans.jpg' },
-        { name: 'Maize', href: '/products/maize', img: '/assets/images/Maize.jpg' },
+        { name: 'Maize', href: '/products/maize', img: '/assets/images/maize.jpg' },
       ]}
       jsonLd={jsonLd}
     />

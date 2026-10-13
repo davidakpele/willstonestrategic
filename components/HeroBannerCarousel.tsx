@@ -23,7 +23,7 @@ const SLIDES: Slide[] = [
     cta: { label: 'Our Services', href: '/services/agriculture-agribusiness' },
   },
   {
-    src: '/assets/images/Global-Business-Networking-at-Trade-Expo.png',
+    src: '/assets/images/global-business-networking-at-trade-expo.png',
     alt: 'Global trade and business networking representing Willstone export operations',
     eyebrow: 'GLOBAL REACH',
     heading: 'Connecting Nigerian Markets to the World',
@@ -47,7 +47,7 @@ const SLIDES: Slide[] = [
     cta: { label: 'IT Services', href: '/services/information-technology' },
   },
   {
-    src: '/assets/images/Energy-renewable.jpg',
+    src: '/assets/images/energy-renewable.jpg',
     alt: 'Solar panels representing Willstone energy and power systems solutions',
     eyebrow: 'ENERGY SOLUTIONS',
     heading: 'Powering Homes and Businesses With Clean, Reliable Energy',
