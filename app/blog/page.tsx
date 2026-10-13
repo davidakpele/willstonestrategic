@@ -37,7 +37,7 @@ const POSTS = [
     date: 'May 10, 2024',
     readTime: '4 min read',
     excerpt: 'Why collaboration and trust are at the heart of every successful business.',
-    image: '/assets/images/navitem.png',
+    image: '/assets/images/NavItem.png',
     href: '/blog/partnerships-that-drive-progress',
   },
   {
