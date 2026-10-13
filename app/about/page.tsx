@@ -162,7 +162,7 @@ export default function AboutPage() {
               {/* Card 2 — middle, tallest, with Willstone brand overlay */}
               <div className="relative rounded-2xl overflow-hidden flex-1" style={{ height: '100%', boxShadow: '0 16px 48px -10px rgba(11,27,51,.32)' }}>
                 <Image
-                  src="/assets/images/security-defense-about.png"
+                  src="/assets/images/Security-Defense-about.png"
                   alt="Agriculture and agribusiness"
                   fill
                   sizes="15vw"
@@ -189,7 +189,7 @@ export default function AboutPage() {
               {/* Card 3 — right, shorter */}
               <div className="relative rounded-2xl overflow-hidden flex-1" style={{ height: '75%', boxShadow: '0 12px 40px -8px rgba(11,27,51,.20)' }}>
                 <Image
-                  src="/assets/images/electrical-energy-about-3.png"
+                  src="/assets/images/Electrical-Energy-about-3.png"
                   alt="Electrical and energy solutions"
                   fill
                   sizes="15vw"
@@ -315,7 +315,7 @@ export default function AboutPage() {
           },
           {
             name: 'Trade & Global\nCommerce',
-            src: '/assets/images/tradeglobal.jpg',
+            src: '/assets/images/TradeGlobal.jpg',
             icon: <><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18"/></>,
           },
           {
@@ -325,17 +325,17 @@ export default function AboutPage() {
           },
           {
             name: 'Energy &\nRenewable',
-            src: '/assets/images/energy-renewable.jpg',
+            src: '/assets/images/Energy-renewable.jpg',
             icon: <path strokeLinecap="round" strokeLinejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>,
           },
           {
             name: 'Industrial Equipment\n& Machinery',
-            src: '/assets/images/industrial-equipment-machinery.avif',
+            src: '/assets/images/Industrial-Equipment-Machinery.avif',
             icon: <><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></>,
           },
           {
             name: 'Defence &\nSecurity',
-            src: '/assets/images/security-defense-about.png',
+            src: '/assets/images/Security-Defense-about.png',
             icon: <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/>,
           },
         ].map((industry) => (
@@ -406,19 +406,19 @@ export default function AboutPage() {
             name: 'Christian Akpele',
             title: 'Managing Director / Co-Founder',
             bio: "Leads the company's vision, strategy and global partnerships with over 15 years of experience in trade and industrial solutions.",
-            img: '/assets/images/osas.jpg',
+            img: '/assets/images/Osas.jpg',
           },
           {
             name: 'Chinwe Okafor',
             title: 'IT Manager',
             bio: 'Oversees operations, supply chain, and project delivery across all sectors.',
-            img: '/assets/images/chinwe.jpg',
+            img: '/assets/images/Chinwe.jpg',
           },
           {
             name: 'Precious Freeborn ',
             title: 'Logistics & Supply Chain Officer',
             bio: 'Responsible for Transportation, delivery schedules, freight and distribution.',
-            img: '/assets/images/precious-freeborn.png',
+            img: '/assets/images/Precious-Freeborn.png',
           },
         ].map((leader) => (
           <div
@@ -458,7 +458,7 @@ export default function AboutPage() {
     {/* COL 1 — dark navy image card, flush left */}
    <div className="relative flex h-full min-h-[380px] flex-col justify-end overflow-hidden">
   <Image
-    src="/assets/images/global-business-networking-at-trade-expo.png"
+    src="/assets/images/Global-Business-Networking-at-Trade-Expo.png"
     alt="Business partnership and trade"
     fill
     sizes="(max-width: 1024px) 100vw, 38vw"

@@ -107,7 +107,7 @@ const INDUSTRIES = [
   {
     name: 'Infrastructure',
     alt: 'Industrial equipment and infrastructure',
-    src: '/assets/images/industrial-equipment-machinery.avif',
+    src: '/assets/images/Industrial-Equipment-Machinery.avif',
   },
   {
     name: 'Energy',
@@ -122,7 +122,7 @@ const INDUSTRIES = [
   {
     name: 'Defence',
     alt: 'Defence and security solutions',
-    src: '/assets/images/security-defense-about.png',
+    src: '/assets/images/Security-Defense-about.png',
   },
 ]
 

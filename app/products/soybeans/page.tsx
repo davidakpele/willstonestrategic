@@ -51,7 +51,7 @@ export default function SoybeansPage() {
         { q: 'What protein level is typical?', a: 'Nigerian soybeans typically show 38–42% crude protein on a dry basis. Exact values depend on the growing season and variety. Testing can be arranged.' },
       ]}
       related={[
-        { name: 'Maize', href: '/products/maize', img: '/assets/images/maize.jpg' },
+        { name: 'Maize', href: '/products/maize', img: '/assets/images/Maize.jpg' },
         { name: 'Sesame Seeds', href: '/products/sesame-seeds', img: '/assets/images/sesame.webp' },
         { name: 'Palm Oil', href: '/products/palm-oil', img: '/assets/images/palm-oil-main.png' },
         { name: 'Cassava', href: '/products/cassava', img: '/assets/images/cassava.jpg' },

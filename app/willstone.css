@@ -241,7 +241,7 @@ html::-webkit-scrollbar-thumb:hover {
   display: block;
   width: 140px;
   height: 40px;
-  background: url('/assets/images/logo/png/willstone-logo-reversed.png') no-repeat left center;
+  background: url('/assets/images/logo/PNG/Willstone-Logo-Reversed.png') no-repeat left center;
   background-size: contain;
 }
 
@@ -314,14 +314,14 @@ html::-webkit-scrollbar-thumb:hover {
   display: block;
   width: 200px;
   height: 48px;
-  background: url('/assets/images/logo/png/willstone-logo-reversed.png') no-repeat left center;
+  background: url('/assets/images/logo/PNG/Willstone-Logo-Reversed.png') no-repeat left center;
   background-size: contain;
 }
 
 .site-logo-footer {
   width: 200px;
   height: 48px;
-  background: url('/assets/images/logo/png/willstone-logo-reversed.png') no-repeat left center;
+  background: url('/assets/images/logo/PNG/Willstone-Logo-Reversed.png') no-repeat left center;
   background-size: contain;
 }
 
@@ -1220,7 +1220,7 @@ html::-webkit-scrollbar-thumb:hover {
 .partner-banner-bg {
   position: absolute;
   inset: 0;
-  background-image: url('/assets/images/tradeglobal.jpg');
+  background-image: url('/assets/images/TradeGlobal.jpg');
   background-size: cover;
   background-position: center;
   filter: grayscale(25%) brightness(0.55);

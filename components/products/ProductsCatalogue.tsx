@@ -41,7 +41,7 @@ const ALL_PRODUCTS: Product[] = [
     name: 'Maize (Corn)',
     category: 'Agri Commodities',
     description: 'Dried yellow maize grains ideal for food processing, animal feed production, and starch extraction. Consistently graded and cleaned.',
-    src: '/assets/images/maize.jpg',
+    src: '/assets/images/Maize.jpg',
     tags: ['Food Crop', 'Feed Grain', 'Processing'],
   },
   {
@@ -97,7 +97,7 @@ const ALL_PRODUCTS: Product[] = [
     name: 'Haricot Beans',
     category: 'Agri Commodities',
     description: 'Clean, dried haricot (white) beans sourced from smallholder farms across Nigeria. Ideal for canning, food processing, and direct export.',
-    src: '/assets/images/harich-potato.webp',
+    src: '/assets/images/Harich-potato.webp',
     tags: ['Export', 'Legume', 'Processing'],
   },
   {

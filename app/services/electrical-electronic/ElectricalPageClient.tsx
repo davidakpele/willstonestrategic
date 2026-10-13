@@ -141,7 +141,7 @@ const PROJECTS = [
       'OM4 multimode fibre backbone between server racks and distribution frames',
       'Colour-coded cable management with full documentation and labelling',
     ],
-    img: '/assets/images/electrical-energy-about-3.png',
+    img: '/assets/images/Electrical-Energy-about-3.png',
     bg: '#fffbeb',
   },
 ]
@@ -299,7 +299,7 @@ export default function ElectricalElectronicPage() {
           </div>
           <div className="rounded-2xl overflow-hidden aspect-[4/3] relative shadow-lg">
             <Image
-              src="/assets/images/industrial-equipment-machinery.avif"
+              src="/assets/images/Industrial-Equipment-Machinery.avif"
               alt="Engineers working on electrical infrastructure"
               fill sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
