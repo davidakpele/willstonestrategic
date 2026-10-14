@@ -608,3 +608,54 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
 .wa-scroll::-webkit-scrollbar-thumb  { background: #076429; border-radius: 99px; }
 .wa-scroll::-webkit-scrollbar-thumb:hover { background: #076429; }
 .wa-scroll { scrollbar-width: thin; scrollbar-color: #076429 #f0faf4; }
+
+/* ── partner-scroll animation (AboutStatsBar) ── */
+@keyframes partner-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── display font class ── */
+.display {
+  font-family: var(--font-display, 'Montserrat', sans-serif);
+}
+
+/* ── About page specific classes ── */
+.about-mv-card {
+  padding: 36px 32px;
+  border-radius: 18px;
+  border: 1px solid #eaecf2;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.about-mv-card:hover {
+  border-color: rgba(201, 162, 75, 0.35);
+  box-shadow: 0 10px 36px -10px rgba(201, 162, 75, 0.15);
+}
+.about-mv-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(201, 162, 75, 0.1);
+  border: 1px solid rgba(201, 162, 75, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.about-culture-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 420px;
+  box-shadow: 0 20px 48px -12px rgba(11, 27, 51, 0.3);
+}
+@media (max-width: 1023px) {
+  .about-culture-card { min-height: 360px; }
+}
