@@ -1,5 +1,4 @@
-import './index.css'
-import HomePage from './components/HomePage'
+import HomePage from './pages/HomePage'
 
 export default function App() {
   return <HomePage />
