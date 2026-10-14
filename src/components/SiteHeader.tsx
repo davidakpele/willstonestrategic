@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const MD_BREAKPOINT = 786
 
@@ -132,7 +133,7 @@ interface SiteHeaderProps {
 }
 
 export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHeaderProps) {
-  const pathname = typeof window !== 'undefined' ? window.location.pathname : '/'
+  const { pathname } = useLocation()
 
   const [isMenuOpen, setIsMenuOpen]                     = useState(false)
   const [isServicesOpen, setIsServicesOpen]             = useState(false)
@@ -195,15 +196,13 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
       <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:px-8 md:pt-5">
         <div
           className="mx-auto flex items-center justify-between px-5 md:px-8 py-3"
-          style={{
-            maxWidth: '56rem',
+          style={{maxWidth: '56rem',
             background: 'rgba(11,27,51,0.92)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             borderRadius: '20px',
             border: '1px solid rgba(255,255,255,0.08)',
-            boxShadow: 'none',
-          }}
+            boxShadow: 'none',}}
         >
           {/* Logo → home */}
           <a href="/" className="site-logo cursor-pointer" aria-label="Willstone Strategic Industries Limited" />
@@ -232,11 +231,9 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                     <svg
                       width="12" height="12" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" strokeWidth="2.5"
-                      style={{
-                        transform: (link.dropdownId === 'products' ? isProductsOpen : isServicesOpen)
+                      style={{transform: (link.dropdownId === 'products' ? isProductsOpen : isServicesOpen)
                           ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.2s ease',
-                      }}
+                        transition: 'transform 0.2s ease',}}
                     >
                       <path d="M6 9l6 6 6-6" />
                     </svg>
@@ -250,17 +247,17 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                   >
                     {/* Left panel */}
                     <div className="mega-left">
-                      <div style={{ position: 'absolute', inset: 0 }}>
+                      <div style={{position: 'absolute', inset: 0}}>
                         <img
                           src="/assets/images/NavItem.png"
                           alt=""
                           aria-hidden="true"
-                          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                          style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover'}}
                         />
                       </div>
                       <div className="mega-left-overlay" />
                       <div className="mega-left-content">
-                        <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{ color: 'var(--gold)' }}>
+                        <p className="text-[11px] font-semibold tracking-widest uppercase mb-2" style={{color: 'var(--gold)'}}>
                           {link.dropdownId === 'products' ? 'Our Products' : 'Our Services'}
                         </p>
                         <h3 className="text-[18px] font-bold text-white leading-snug mb-3">
@@ -278,7 +275,7 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                             else setIsServicesOpen(false)
                           }}
                           className="mt-auto inline-flex items-center gap-2 text-[12px] font-semibold rounded-full px-4 py-2 cursor-pointer"
-                          style={{ background: 'var(--gold)', color: '#1a1408' }}
+                          style={{background: 'var(--gold)', color: '#1a1408'}}
                         >
                           Get in touch
                           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -289,7 +286,7 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                     </div>
 
                     {/* Middle panel */}
-                    <div style={{ background: '#ffffff', padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <div style={{background: '#ffffff', padding: '20px 18px', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                       {(link.dropdownId === 'products' ? MEGA_PRODUCTS : MEGA_SERVICES).map((svc) => {
                         const isCurrentPage = pathname === svc.href || pathname.startsWith(svc.href + '/')
                         return (
@@ -327,8 +324,7 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                             }}
                           >
                             <span
-                              style={{
-                                flexShrink: 0,
+                              style={{flexShrink: 0,
                                 width: 34,
                                 height: 34,
                                 borderRadius: 8,
@@ -337,14 +333,13 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                marginTop: 1,
-                              }}
+                                marginTop: 1,}}
                             >
                               {svc.icon}
                             </span>
                             <div>
-                              <p style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 2, lineHeight: 1.3 }}>{svc.label}</p>
-                              <p style={{ fontSize: 11.5, color: '#64748b', lineHeight: 1.5 }}>{svc.desc}</p>
+                              <p style={{fontSize: 13, fontWeight: 600, color: '#0f172a', marginBottom: 2, lineHeight: 1.3}}>{svc.label}</p>
+                              <p style={{fontSize: 11.5, color: '#64748b', lineHeight: 1.5}}>{svc.desc}</p>
                             </div>
                           </a>
                         )
@@ -352,11 +347,11 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                     </div>
 
                     {/* Right panel: quick links */}
-                    <div style={{ background: '#ffffff', padding: '28px 22px 28px 20px', borderLeft: '1px solid #f1f5f9' }}>
-                      <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 16 }}>
+                    <div style={{background: '#ffffff', padding: '28px 22px 28px 20px', borderLeft: '1px solid #f1f5f9'}}>
+                      <p style={{fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 16}}>
                         Quick Links
                       </p>
-                      <ul style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                      <ul style={{display: 'flex', flexDirection: 'column', gap: 2}}>
                         {(link.dropdownId === 'products' ? MEGA_PRODUCT_QUICK_LINKS : MEGA_QUICK_LINKS).map((l) => (
                           <li key={l.label + l.href}>
                             <a
@@ -365,15 +360,13 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                                 if (link.dropdownId === 'products') setIsProductsOpen(false)
                                 else setIsServicesOpen(false)
                               }}
-                              style={{
-                                display: 'block',
+                              style={{display: 'block',
                                 padding: '7px 10px',
                                 fontSize: 13,
                                 color: '#334155',
                                 borderRadius: 6,
                                 textDecoration: 'none',
-                                transition: 'background 0.15s ease, color 0.15s ease',
-                              }}
+                                transition: 'background 0.15s ease, color 0.15s ease',}}
                               onMouseEnter={(e) => {
                                 ;(e.currentTarget as HTMLElement).style.background = '#f1f5f9'
                                 ;(e.currentTarget as HTMLElement).style.color = '#0f172a'
@@ -407,7 +400,7 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
           <a
             href="/contact"
             className="hidden md:inline-flex items-center gap-2 text-[13px] font-semibold px-5 py-[9px] rounded-full cursor-pointer tracking-wide transition-colors"
-            style={{ background: '#ffffff', color: 'var(--navy)' }}
+            style={{background: '#ffffff', color: 'var(--navy)'}}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#f0f0f0' }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = '#ffffff' }}
           >
@@ -464,7 +457,7 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
         <nav className="flex flex-col px-6 py-5 gap-0 text-[17px] text-white/90 font-semibold tracking-wide overflow-y-auto flex-1">
           {NAV_LINKS.map((link) =>
             link.hasDropdown ? (
-              <div key={link.href + link.label} className="border-b border-white/10">
+              <div key={link.href + link.label} className="mnav-link border-b border-white/10">
                 <button
                   className="w-full flex items-center justify-between py-5 cursor-pointer"
                   onClick={() => {
@@ -472,15 +465,13 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
                     else setIsMobileServicesOpen((o) => !o)
                   }}
                 >
-                  <span style={{ color: isActive(link.href) ? 'var(--gold-light)' : undefined }}>{link.label}</span>
+                  <span style={{color: isActive(link.href) ? 'var(--gold-light)' : undefined}}>{link.label}</span>
                   <svg
                     width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2.5"
-                    style={{
-                      transform: (link.dropdownId === 'products' ? isMobileProductsOpen : isMobileServicesOpen)
+                    style={{transform: (link.dropdownId === 'products' ? isMobileProductsOpen : isMobileServicesOpen)
                         ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 0.25s ease',
-                    }}
+                      transition: 'transform 0.25s ease',}}
                   >
                     <path d="M6 9l6 6 6-6" />
                   </svg>
@@ -506,12 +497,12 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
               <a
                 key={link.href}
                 href={link.href}
-                className={`py-5 border-b border-white/10 transition-colors cursor-pointer ${
+                className={`mnav-link py-5 border-b border-white/10 transition-colors cursor-pointer ${
                   isActive(link.href) ? 'text-[#C9A24B]' : 'hover:text-[#C9A24B]'
                 }`}
                 onClick={closeMenu}
               >
-                {link.label}
+                {link.href === '/' && link.label === 'HOME' ? link.label : link.label}
               </a>
             )
           )}
@@ -523,7 +514,7 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
             href="/contact"
             onClick={closeMenu}
             className="flex items-center justify-center gap-2 btn-slate text-[14px] font-semibold px-5 py-3 rounded-full cursor-pointer w-full"
-            style={{ background: '#ffffff', color: 'var(--navy)' }}
+            style={{background: '#ffffff', color: 'var(--navy)'}}
           >
             CONTACT US
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
