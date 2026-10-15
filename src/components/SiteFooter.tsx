@@ -4,7 +4,6 @@ const QUICK_LINKS = [
   { href: '/about',    label: 'About Us' },
   { href: '/services', label: 'Our Services' },
   { href: '/products', label: 'Products' },
-  { href: '/blog',     label: 'Blog' },
   { href: '/contact',  label: 'Contact' },
 ]
 
@@ -74,9 +73,6 @@ export default function SiteFooter() {
           {/* Column 1 — Brand */}
           <div>
             <a href="/" className="site-logo-footer mb-5 block" aria-label="Willstone Strategic Industries Limited" />
-            <p className="text-white/50 text-[13px] leading-relaxed max-w-xs mb-2">
-              Strategic Solutions. Global Impact.
-            </p>
             <p className="text-white/35 text-[12px] leading-relaxed max-w-xs mb-5">
               20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
             </p>
@@ -140,14 +136,6 @@ export default function SiteFooter() {
                 </svg>
                 <a href="tel:+2347061964340" className="hover:text-[#C9A24B] transition-colors">
                   +234 706 196 4340
-                </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
-                </svg>
-                <a href="tel:+2349019384496" className="hover:text-[#C9A24B] transition-colors">
-                  +234 901 938 4496
                 </a>
               </li>
               <li className="flex items-start gap-2">

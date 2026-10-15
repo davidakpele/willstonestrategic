@@ -1,6 +1,5 @@
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
-import AboutStatsBar from '../components/AboutStatsBar'
 
 export default function AboutPage() {
   return (
@@ -58,7 +57,6 @@ export default function AboutPage() {
         </div>
 
         {/* ── STATS BAR — pinned to bottom of hero ── */}
-        <AboutStatsBar />
       </section>
 
       {/* ── OUR STORY ── */}
@@ -339,7 +337,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── LEADERSHIP TEAM ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: '#0B1B33' }}>
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'rgba(11,27,51,0.06)' }}>
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-16 items-center">
 
@@ -348,10 +346,10 @@ export default function AboutPage() {
               <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-5" style={{ color: 'var(--gold)' }}>
                 <span className="gold-rule" /> OUR LEADERSHIP
               </p>
-              <h2 className="display font-bold leading-tight mb-5 text-white" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)' }}>
+              <h2 className="display font-bold leading-tight mb-5" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
                 Meet Our Leadership Team
               </h2>
-              <p className="leading-relaxed mb-8" style={{ color: 'rgba(255,255,255,0.6)', fontSize: '14.5px' }}>
+              <p className="leading-relaxed mb-8 text-slate-500" style={{ fontSize: '14.5px' }}>
                 Our leadership team brings a wealth of experience, industry knowledge and a shared commitment to our mission. They guide our strategy, drive innovation and ensure we deliver on our promise.
               </p>
               <a
@@ -388,7 +386,7 @@ export default function AboutPage() {
                 <div
                   key={leader.name}
                   className="rounded-xl overflow-hidden flex flex-col"
-                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201,162,75,0.2)' }}
+                  style={{ background: '#fff', border: '1px solid #e8ecf2', boxShadow: '0 2px 12px rgba(11,27,51,0.06)' }}
                 >
                   {/* Portrait photo */}
                   <div className="relative w-full overflow-hidden" style={{ height: '200px' }}>
@@ -400,10 +398,10 @@ export default function AboutPage() {
                   </div>
                   {/* Info — bottom */}
                   <div className="p-4 flex flex-col gap-1.5 flex-1">
-                    <p className="font-bold text-white text-[14px] leading-tight">{leader.name}</p>
+                    <p className="font-bold text-[14px] leading-tight" style={{ color: 'var(--ink)' }}>{leader.name}</p>
                     <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: 'var(--gold)' }}>{leader.title}</p>
                     <div className="mt-1" style={{ height: '1.5px', width: '28px', background: 'var(--gold)', opacity: 0.5 }} />
-                    <p className="text-[12px] leading-relaxed mt-1" style={{ color: 'rgba(255,255,255,0.55)' }}>{leader.bio}</p>
+                    <p className="text-[12px] leading-relaxed mt-1 text-slate-500">{leader.bio}</p>
                   </div>
                 </div>
               ))}
