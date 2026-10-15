@@ -6,6 +6,7 @@ import ProductsPage from './pages/ProductsPage'
 import AgriInputsPage from './pages/AgriInputsPage'
 import AgriInputsProductPage from './pages/AgriInputsProductPage'
 import AgricultureServicePage from './pages/AgricultureServicePage'
+import ITServicePage from './pages/ITServicePage'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/products/agri-inputs" element={<AgriInputsPage />} />
         <Route path="/products/agri-inputs/:slug" element={<AgriInputsProductPage />} />
         <Route path="/services/agriculture-agribusiness" element={<AgricultureServicePage />} />
+        <Route path="/services/information-technology" element={<ITServicePage />} />
       </Routes>
     </BrowserRouter>
   )
