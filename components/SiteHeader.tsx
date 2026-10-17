@@ -10,7 +10,7 @@ const MD_BREAKPOINT = 786 // desktop starts at 786px
 const NAV_LINKS = [
   { href: '/',                label: 'HOME' },
   { href: '/about',           label: 'ABOUT US' },
-  // { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
+  { href: '#',                label: 'OUR SERVICES', hasDropdown: true, dropdownId: 'services' },
   { href: '#',                label: 'PRODUCTS', hasDropdown: true, dropdownId: 'products' },
   { href: '/blog',            label: 'BLOG' },
 ]
@@ -245,7 +245,7 @@ export default function SiteHeader({ variant = 'transparent' }: SiteHeaderProps)
                     className={`mega-dropdown${(link.dropdownId === 'products' ? isProductsOpen : isServicesOpen) ? ' open' : ''}`}
                     onMouseEnter={() => openDropdown(link.dropdownId)}
                     onMouseLeave={() => closeDropdown(link.dropdownId)}
-                  >
+                  > 
                     {/* ── Left panel ── */}
                     <div className="mega-left">
                       <div style={{ position: 'absolute', inset: 0 }}>
