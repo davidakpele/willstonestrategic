@@ -8,6 +8,6 @@ export default defineConfig({
     react(),
   ],
   preview: {
-    allowedHosts: 'all',
+    allowedHosts: true,
   },
 })
