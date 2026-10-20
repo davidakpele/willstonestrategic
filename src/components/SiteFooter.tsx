@@ -18,10 +18,10 @@ const INDUSTRIES = [
 ]
 
 const SOCIAL = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/willstone-strategic-industries-limited-710016424', d: 'M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9z' },
-  { label: 'Twitter',  href: 'https://twitter.com',  d: 'M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 00-7 3.7A11.6 11.6 0 013 4.9a4 4 0 001.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 01-1.9.1 4.1 4.1 0 003.8 2.8A8.3 8.3 0 012 18.6a11.6 11.6 0 006.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/willstone-strategic-industries-limited-710016424', d: 'M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.2-2.1 2.5-2.1 2.7 0 3.2 1.8 3.2 4.1V21H17v-18.7h-4.1v2.4h.1c.5-1 1.7-2.1 3.8-2.1 4.1 0 4.9 2.7 4.9 6.2V21h-4v-19.1c0-1.1-.1-2.6-1.6-2.6-1.6 0-1.9 1.3-1.9 2.6V21H9z' },
+  { label: 'Twitter',  href: 'https://twitter.com',  d: 'M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.5-1.3 1.8-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 00-7 3.7A11.6 11.6 0 013 4.9a4 4 0 001.3 5.5c-.7 0-1.3-.2-1.9-.5v.1c0 2 1.4 3.7 3.3 4.1-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1.6 1.8 2.3 3.2 4.3 3.2A8.3 8.3 0 012 18.5 11.7 11.7 0 0012 21c7.1 0 11-5.9 11-11v-.5c.8-.5 1.5-1.2 2-2z' },
   { label: 'Facebook', href: 'https://facebook.com', d: 'M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.04v2.36H8v3.1h2.7v8z' },
-  { label: 'YouTube',  href: 'https://youtube.com',  d: 'M22 12s0-3.2-.4-4.7a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 002-2C22 15.2 22 12 22 12zM10 15.3V8.7l6 3.3z' },
+  { label: 'YouTube',  href: 'https://youtube.com',  d: 'M22 12s0-3.2-.4-4.7a2.9 2.9 0 00-2-2C17.9 5 12 5 12 5s-5.9 0-7.6.3a2.9 2.9 0 00-2 2C2 8.8 2 12 2 12s0 3.2.4 4.7a2.9 2.9 0 002 2C6.1 19 12 19 12 19s5.9 0 7.6-.3a2.9 2.9 0 002-2c.4-1.5.4-4.7.4-4.7zm-11 3.1V8.9l6 3.1-6 3.1z' },
 ]
 
 function ColHeading({ children }: { children: React.ReactNode }) {
@@ -126,13 +126,18 @@ export default function SiteFooter() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
                   <path d="M4 4h16v16H4zM4 4l8 8 8-8" />
                 </svg>
-                <a href="mailto:info@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all">
-                  info@willstonestrategic.com
-                </a>
+                <div className="space-y-1">
+                  <a href="mailto:info@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
+                    info@willstonestrategic.com
+                  </a>
+                  <a href="mailto:business@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
+                    business@willstonestrategic.com
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-2">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.2a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2.1z" />
+                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.9 1.4a2 2 0 002.1.5c.9-.3 1.8-.5 2.7-.6z" />
                 </svg>
                 <a href="tel:+2347061964340" className="hover:text-[#C9A24B] transition-colors">
                   +234 706 196 4340
