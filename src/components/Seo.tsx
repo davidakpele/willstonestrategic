@@ -17,7 +17,7 @@ const DEFAULT_DESCRIPTION =
 const SITE_NAME = 'Willstone Strategic Industries Limited'
 const SITE_URL = 'https://willstonestrategic.com'
 
-function ensureMeta(tagName: string, attribute: 'name' | 'property', value: string, content: string) {
+function ensureMeta(tagName: string, attribute: 'name' | 'property', content: string) {
   let element = document.head.querySelector(`meta[${attribute}="${tagName}"]`) as HTMLMetaElement | null
 
   if (!element) {
@@ -57,22 +57,22 @@ export default function Seo({
   useEffect(() => {
     document.title = pageTitle
 
-    ensureMeta('description', 'name', 'description', description)
-    ensureMeta('robots', 'name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1')
-    ensureMeta('og:type', 'property', 'og:type', type)
-    ensureMeta('og:title', 'property', 'og:title', pageTitle)
-    ensureMeta('og:description', 'property', 'og:description', description)
-    ensureMeta('og:url', 'property', 'og:url', pageUrl)
-    ensureMeta('og:site_name', 'property', 'og:site_name', SITE_NAME)
-    ensureMeta('og:image', 'property', 'og:image', `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`)
-    ensureMeta('og:locale', 'property', 'og:locale', locale)
-    ensureMeta('twitter:card', 'name', 'twitter:card', 'summary_large_image')
-    ensureMeta('twitter:title', 'name', 'twitter:title', pageTitle)
-    ensureMeta('twitter:description', 'name', 'twitter:description', description)
-    ensureMeta('twitter:image', 'name', 'twitter:image', `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`)
+    ensureMeta('description', 'name', description)
+    ensureMeta('robots', 'name', 'index,follow,max-image-preview:large,max-snippet:-1')
+    ensureMeta('og:type', 'property', type)
+    ensureMeta('og:title', 'property', pageTitle)
+    ensureMeta('og:description', 'property', description)
+    ensureMeta('og:url', 'property', pageUrl)
+    ensureMeta('og:site_name', 'property', SITE_NAME)
+    ensureMeta('og:image', 'property', `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`)
+    ensureMeta('og:locale', 'property', locale)
+    ensureMeta('twitter:card', 'name', 'summary_large_image')
+    ensureMeta('twitter:title', 'name', pageTitle)
+    ensureMeta('twitter:description', 'name', description)
+    ensureMeta('twitter:image', 'name', `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`)
 
     if (keywords.length > 0) {
-      ensureMeta('keywords', 'name', 'keywords', keywords.join(', '))
+      ensureMeta('keywords', 'name', keywords.join(', '))
     }
 
     ensureLink('canonical', pageUrl)
