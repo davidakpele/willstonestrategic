@@ -2,10 +2,22 @@ import { Link } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import ProductsCatalogue from '../components/products/ProductsCatalogue'
+import Seo from '../components/Seo'
 
 export default function ProductsPage() {
   return (
     <div style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+      <Seo
+        title="Products | Agricultural Commodities & Industrial Supplies — Willstone"
+        description="Browse Willstone's product catalogue — bulk agricultural commodities including sesame seeds, palm oil, cocoa, cassava, maize, soybeans, ginger, charcoal, and more. Request a quotation today."
+        canonical="/products"
+        keywords={[
+          'agricultural commodities Nigeria', 'sesame seeds Nigeria', 'palm oil Nigeria',
+          'cocoa beans Nigeria', 'soybeans Nigeria', 'Nigerian agricultural exporter',
+          'bulk commodities supplier', 'charcoal Nigeria', 'maize Nigeria',
+        ]}
+        image="/assets/images/banner.png"
+      />
       <SiteHeader variant="solid" />
 
       {/* ── Hero ── */}

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 
 /* ─── DATA ──────────────────────────────────────────────────────────────── */
 
@@ -191,6 +192,39 @@ export default function ITServicePage() {
 
   return (
     <div style={{ fontFamily: 'var(--font-display)' }}>
+      <Seo
+        title="Software Development & IT Solutions | Willstone Strategic Industries"
+        description="Custom software development, web apps, mobile apps, enterprise systems, and IT consultancy from Willstone Strategic Industries Limited, based in Ibadan, Nigeria."
+        canonical="/services/information-technology"
+        keywords={[
+          'software development Nigeria', 'IT company Ibadan', 'custom software Nigeria',
+          'web app development Nigeria', 'mobile app development Nigeria',
+          'enterprise software Nigeria', 'IT solutions Ibadan', 'Willstone IT services',
+          'software company Nigeria', 'technology solutions Nigeria',
+        ]}
+        image="/assets/images/soft.jpg"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          '@id': 'https://willstonestrategic.com/services/information-technology',
+          name: 'Software Development & IT Solutions',
+          description: 'Custom software development, web applications, mobile apps, enterprise systems, and IT consultancy from Willstone Strategic Industries Limited.',
+          provider: { '@id': 'https://willstonestrategic.com/#organization' },
+          areaServed: [
+            { '@type': 'Country', name: 'Nigeria' },
+            { '@type': 'Place', name: 'Africa' },
+          ],
+          serviceType: 'Software Development & IT Consultancy',
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://willstonestrategic.com' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://willstonestrategic.com/services' },
+              { '@type': 'ListItem', position: 3, name: 'Information Technology', item: 'https://willstonestrategic.com/services/information-technology' },
+            ],
+          },
+        }}
+      />
       <SiteHeader variant="transparent" />
 
       {/* ══════════════════════════════════════════════════════════════

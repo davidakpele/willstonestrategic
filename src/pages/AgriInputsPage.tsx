@@ -3,10 +3,22 @@ import { GitBranch, BadgeCheck, Truck } from 'lucide-react'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import AgriProductsGallery from '../components/agri/AgriProductsGallery'
+import Seo from '../components/Seo'
 
 export default function AgriInputsPage() {
   return (
     <div style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+      <Seo
+        title="Agri Inputs & Agricultural Products | Willstone Nigeria"
+        description="Source premium agricultural inputs and commodities from Willstone Strategic Industries Limited. We supply sesame seeds, palm oil, cocoa, cassava, maize, soybeans, and more across Nigeria and globally."
+        canonical="/products/agri-inputs"
+        keywords={[
+          'agri inputs Nigeria', 'agricultural commodities supplier Nigeria',
+          'sesame seeds exporter', 'palm oil supplier Nigeria', 'cocoa beans exporter Nigeria',
+          'bulk commodity supplier Ibadan', 'cassava chips Nigeria', 'soybeans Nigeria export',
+        ]}
+        image="/assets/images/agric-banner.avif"
+      />
       <SiteHeader variant="solid" />
 
       {/* ── Hero Banner ── */}

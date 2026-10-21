@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FormEvent, ChangeEvent } from 'react'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 
 const INQUIRY_TYPES = [
   { value: 'inquiry',     label: 'Inquiries' },
@@ -61,6 +62,36 @@ const EMPTY_FORM: FormState = {
 }
 
 const PHONE_RE = /^[+\d][\d\s-]{6,}$/
+
+const CONTACT_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': 'https://willstonestrategic.com/contact',
+  name: 'Contact Willstone Strategic Industries Limited',
+  url: 'https://willstonestrategic.com/contact',
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://willstonestrategic.com' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://willstonestrategic.com/contact' },
+    ],
+  },
+  mainEntity: {
+    '@type': 'Organization',
+    '@id': 'https://willstonestrategic.com/#organization',
+    name: 'Willstone Strategic Industries Limited',
+    telephone: '+2347061964340',
+    email: 'info@willstonestrategic.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '20 Cambridge House, Onireke Jericho',
+      addressLocality: 'Ibadan',
+      addressRegion: 'Oyo State',
+      postalCode: '200284',
+      addressCountry: 'NG',
+    },
+  },
+}
 
 export default function ContactPage() {
   const [form, setForm]               = useState<FormState>(EMPTY_FORM)
@@ -224,6 +255,18 @@ export default function ContactPage() {
 
   return (
     <div>
+      <Seo
+        title="Contact Us | Get in Touch with Willstone Strategic Industries Limited"
+        description="Contact Willstone Strategic Industries Limited in Ibadan, Nigeria. Reach our team for inquiries about agricultural commodity supply, software development, logistics, energy, or defence solutions."
+        canonical="/contact"
+        keywords={[
+          'contact Willstone Strategic Industries', 'Ibadan Nigeria contact',
+          'Nigerian supplier contact', 'agricultural export inquiry Nigeria',
+          'IT company contact Ibadan', 'business inquiry Nigeria',
+        ]}
+        image="/assets/images/contact-us-image.png"
+        jsonLd={CONTACT_JSON_LD}
+      />
       <SiteHeader variant="solid" />
 
       {/* ── HERO + FORM ── */}
@@ -360,12 +403,13 @@ export default function ContactPage() {
                   <p className="text-[10.5px] font-bold tracking-widest uppercase mb-1.5" style={{ color: 'var(--gold)' }}>Email Us</p>
                   <p className="text-[13px] font-medium leading-relaxed" style={{ color: 'var(--ink)' }}>info@willstonestrategic.com</p>
                   <p className="text-[13px] font-medium leading-relaxed" style={{ color: 'var(--ink)' }}>business@willstonestrategic.com</p>
+                  <p className="text-[13px] font-medium leading-relaxed" style={{ color: 'var(--ink)' }}>office@willstonestrategic.com</p>
                 </div>
               </a>
 
               {/* Phone */}
               <a
-                href="tel:+2349019384496"
+                href="tel:+2347061964340"
                 className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-200"
                 style={{ background: '#fff', border: '1px solid #e8ecf2', boxShadow: '0 2px 12px rgba(11,27,51,0.06)' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(201,162,75,0.4)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 24px rgba(11,27,51,0.10)' }}
@@ -378,7 +422,6 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="text-[10.5px] font-bold tracking-widest uppercase mb-1.5" style={{ color: 'var(--gold)' }}>Call Us</p>
-                  <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>+234 901 938 4496</p>
                   <p className="text-[13px] font-medium" style={{ color: 'var(--ink)' }}>+234 706 196 4340</p>
                 </div>
               </a>

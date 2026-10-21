@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://willstonestrategic.com/sitemap.xml
+Host: https://willstonestrategic.com

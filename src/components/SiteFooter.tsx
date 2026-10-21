@@ -133,6 +133,9 @@ export default function SiteFooter() {
                   <a href="mailto:business@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
                     business@willstonestrategic.com
                   </a>
+                  <a href="mailto:office@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
+                    office@willstonestrategic.com
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-2">

@@ -4,6 +4,121 @@ import SiteFooter from './SiteFooter'
 import ScrollAccordion from './ScrollAccordion'
 import HeroBannerCarousel from './HeroBannerCarousel'
 import WhatsAppButton from './WhatsAppButton'
+import Seo from './Seo'
+
+const HOME_JSON_LD = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://willstonestrategic.com/#organization',
+    name: 'Willstone Strategic Industries Limited',
+    legalName: 'Willstone Strategic Industries Limited',
+    url: 'https://willstonestrategic.com',
+    logo: 'https://willstonestrategic.com/assets/images/Willstone-AppIcon-Navy.png',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '20 Cambridge House, Onireke Jericho',
+      addressLocality: 'Ibadan',
+      addressRegion: 'Oyo State',
+      postalCode: '200284',
+      addressCountry: 'NG',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 7.3775, longitude: 3.947 },
+    telephone: '+2347061964340',
+    email: 'info@willstonestrategic.com',
+    openingHours: 'Mo-Fr 08:00-17:00',
+    priceRange: '$$',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+2347061964340',
+      contactType: 'sales',
+      areaServed: ['NG', 'GLOBAL'],
+      availableLanguage: 'English',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Willstone Products & Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Agricultural Commodity Supply' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Software & IT Solutions' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Logistics & Supply Chain' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Energy Solutions' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Procurement & Trading' } },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://willstonestrategic.com/#website',
+    url: 'https://willstonestrategic.com',
+    name: 'Willstone Strategic Industries Limited',
+    publisher: { '@id': 'https://willstonestrategic.com/#organization' },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://willstonestrategic.com/products?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': 'https://willstonestrategic.com/#localbusiness',
+    name: 'Willstone Strategic Industries Limited',
+    image: 'https://willstonestrategic.com/assets/images/prime-banner.png',
+    url: 'https://willstonestrategic.com',
+    telephone: '+2347061964340',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '20 Cambridge House, Onireke Jericho',
+      addressLocality: 'Ibadan',
+      addressRegion: 'Oyo State',
+      postalCode: '200284',
+      addressCountry: 'NG',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 7.3775, longitude: 3.947 },
+    openingHours: 'Mo-Fr 08:00-17:00',
+    priceRange: '$$',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What services does Willstone Strategic Industries provide?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Willstone provides integrated solutions across agriculture, software & IT, logistics, energy, real estate, procurement, and defence sectors.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Where is Willstone Strategic Industries based?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'We are headquartered in Ibadan, Oyo State, Nigeria, and serve clients across Nigeria and internationally.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does Willstone export agricultural commodities?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. We supply and export sesame seeds, cocoa beans, palm oil, soybeans, maize, cassava, ginger, charcoal, and more.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I get a quote for products or services?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can contact us via our website contact form, email info@willstonestrategic.com, or call +234 706 196 4340.',
+        },
+      },
+    ],
+  },
+]
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -150,6 +265,19 @@ function BackToTop() {
 export default function HomePage() {
   return (
     <div className="bg-white">
+      <Seo
+        title="Willstone Strategic Industries Limited | Supplier, Exporter & Procurement Partner — Nigeria"
+        description="Willstone Strategic Industries Limited is a diversified Nigerian supplier, exporter, and procurement partner based in Ibadan. We deliver agribusiness, software & IT, electrical engineering, logistics, real estate, energy, and defence solutions across Nigeria and beyond."
+        canonical="/"
+        keywords={[
+          'supplier Nigeria', 'exporter Nigeria', 'procurement partner Nigeria',
+          'agribusiness Nigeria', 'IT company Ibadan', 'logistics Nigeria',
+          'agricultural commodities Nigeria', 'Willstone Strategic Industries',
+          'industrial solutions Nigeria', 'Nigerian export company',
+        ]}
+        image="/assets/images/prime-banner.png"
+        jsonLd={HOME_JSON_LD}
+      />
 
       {/* 1 — Header */}
       <SiteHeader />
@@ -328,7 +456,7 @@ export default function HomePage() {
 
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:willstonestrategic@gmail.com"
+                href="mailto:info@willstonestrategic.com"
                 className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
               >
                 <span className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
@@ -338,13 +466,13 @@ export default function HomePage() {
                 </span>
                 <div className="min-w-0">
                   <p className="text-[11px] text-slate-400 mb-0.5">You can email us here</p>
-                  <p className="text-[13px] font-semibold truncate" style={{ color: 'var(--ink)' }}>willstonestrategic@gmail.com</p>
+                  <p className="text-[13px] font-semibold truncate" style={{ color: 'var(--ink)' }}>info@willstonestrategic.com</p>
                 </div>
                 <svg className="ml-auto shrink-0 opacity-30 group-hover:opacity-100 transition-opacity" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
 
               <a
-                href="tel:+2349019384496"
+                href="tel:+2347061964340"
                 className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
               >
                 <span className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
@@ -354,7 +482,7 @@ export default function HomePage() {
                 </span>
                 <div className="min-w-0">
                   <p className="text-[11px] text-slate-400 mb-0.5">Give us a call</p>
-                  <p className="text-[13px] font-semibold" style={{ color: 'var(--ink)' }}>+234 901 938 4496</p>
+                  <p className="text-[13px] font-semibold" style={{ color: 'var(--ink)' }}>+234 706 196 4340</p>
                 </div>
                 <svg className="ml-auto shrink-0 opacity-30 group-hover:opacity-100 transition-opacity" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>

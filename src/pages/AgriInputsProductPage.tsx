@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import { PRODUCTS } from '../lib/agriProducts'
+import Seo from '../components/Seo'
 
 export default function AgriInputsProductPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -19,8 +20,54 @@ export default function AgriInputsProductPage() {
   const prevProduct = idx > 0 ? PRODUCTS[idx - 1] : null
   const nextProduct = idx < PRODUCTS.length - 1 ? PRODUCTS[idx + 1] : null
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': `https://willstonestrategic.com/products/agri-inputs/${product.slug}`,
+    name: product.name,
+    description: product.description,
+    image: `https://willstonestrategic.com${product.src}`,
+    ...(product.scientificName ? { alternateName: product.scientificName } : {}),
+    brand: {
+      '@type': 'Brand',
+      name: 'Willstone Strategic Industries Limited',
+      '@id': 'https://willstonestrategic.com/#organization',
+    },
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'USD',
+      seller: {
+        '@type': 'Organization',
+        name: 'Willstone Strategic Industries Limited',
+        '@id': 'https://willstonestrategic.com/#organization',
+      },
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://willstonestrategic.com' },
+        { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://willstonestrategic.com/products' },
+        { '@type': 'ListItem', position: 3, name: 'Agri Inputs', item: 'https://willstonestrategic.com/products/agri-inputs' },
+        { '@type': 'ListItem', position: 4, name: product.name, item: `https://willstonestrategic.com/products/agri-inputs/${product.slug}` },
+      ],
+    },
+  }
+
   return (
     <div className="bg-white" style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+      <Seo
+        title={`${product.name} Supplier & Exporter | Bulk ${product.name} Nigeria — Willstone`}
+        description={`${product.description} Available in bulk for export and domestic supply. Request a quote from Willstone Strategic Industries Limited, Ibadan, Nigeria.`}
+        canonical={`/products/agri-inputs/${product.slug}`}
+        keywords={[
+          `${product.name} Nigeria`, `${product.name} exporter Nigeria`,
+          `bulk ${product.name} supplier`, `Nigerian ${product.name} export`,
+          'agricultural commodities Nigeria', 'Willstone Strategic Industries',
+        ]}
+        image={product.src}
+        jsonLd={productJsonLd}
+      />
       <SiteHeader variant="solid" />
 
       {/* ── Hero banner ── */}
@@ -180,13 +227,13 @@ export default function AgriInputsProductPage() {
                   </svg>
                   info@willstonestrategic.com
                 </a>
-                <a href="tel:+2348000000000"
+                <a href="tel:+2347061964340"
                   className="flex items-center gap-3 text-sm transition-colors hover:text-white"
                   style={{ color: 'rgba(255,255,255,0.5)' }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.07 2.18 2 2 0 012.06 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
                   </svg>
-                  Call our sales team
+                  +234 706 196 4340
                 </a>
               </div>
             </div>

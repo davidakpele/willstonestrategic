@@ -7,6 +7,8 @@ interface Slide {
   heading: string
   sub: string
   cta?: { label: string; href: string }
+  objectPosition?: string
+  overlayStrength?: 'normal' | 'strong'
 }
 
 const SLIDES: Slide[] = [
@@ -17,6 +19,7 @@ const SLIDES: Slide[] = [
     heading: 'Advancing Industries Through Technology, Trade and Energy',
     sub: 'Willstone Strategic Industries Limited delivers innovative solutions and trusted services across industries, driving growth, enabling progress, and building a stronger tomorrow.',
     cta: { label: 'Our Services', href: '/services/agriculture-agribusiness' },
+    objectPosition: 'center 30%',
   },
   {
     src: '/assets/images/Global-Business-Networking-at-Trade-Expo.png',
@@ -25,6 +28,8 @@ const SLIDES: Slide[] = [
     heading: 'Connecting Nigerian Markets to the World',
     sub: 'From bulk agricultural commodities to industrial supplies — we source, grade, and deliver to buyers across Africa, Europe, Asia, and beyond.',
     cta: { label: 'View Products', href: '/products' },
+    objectPosition: 'center 20%',
+    overlayStrength: 'strong',
   },
   {
     src: '/assets/images/agric-banner.avif',
@@ -33,6 +38,7 @@ const SLIDES: Slide[] = [
     heading: 'Cultivating Value Across the Agricultural Value Chain',
     sub: 'Sesame seeds, palm oil, cocoa, cassava, ginger and more — sourced from verified Nigerian farms and delivered to global markets.',
     cta: { label: 'Agri Products', href: '/products/agri-inputs' },
+    objectPosition: 'center 40%',
   },
   {
     src: '/assets/images/software-engineers.jpg',
@@ -41,6 +47,7 @@ const SLIDES: Slide[] = [
     heading: 'Building Digital Solutions That Drive Real Business Results',
     sub: 'Custom software, enterprise platforms, ERP systems and IT consultancy for organisations across Nigeria and West Africa.',
     cta: { label: 'IT Services', href: '/services/information-technology' },
+    objectPosition: 'center 25%',
   },
   {
     src: '/assets/images/Energy-renewable.jpg',
@@ -49,6 +56,7 @@ const SLIDES: Slide[] = [
     heading: 'Powering Homes and Businesses With Clean, Reliable Energy',
     sub: 'Solar panels, battery systems, and energy-saving appliances for homes, businesses, and off-grid communities across Nigeria.',
     cta: { label: 'Power Systems', href: '/products/power-systems' },
+    objectPosition: 'center 50%',
   },
 ]
 
@@ -99,6 +107,7 @@ export default function HeroBannerCarousel() {
           {SLIDES.map((slide, i) => {
             const isActive = i === current
             const isPrev   = i === prev
+            const strong   = slide.overlayStrength === 'strong'
             return (
               <div
                 key={slide.src}
@@ -115,12 +124,29 @@ export default function HeroBannerCarousel() {
                   alt={slide.alt}
                   draggable={false}
                   className="hero-slide-image"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: slide.objectPosition ?? 'center',
+                  }}
+                />
+                {/* Per-slide overlay — stronger for light/washed-out images */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: strong
+                      ? 'linear-gradient(160deg, rgba(6,15,31,0.82) 0%, rgba(6,15,31,0.65) 50%, rgba(6,15,31,0.78) 100%)'
+                      : 'linear-gradient(160deg, rgba(6,15,31,0.60) 0%, rgba(6,15,31,0.40) 55%, rgba(6,15,31,0.65) 100%)',
+                  }}
                 />
               </div>
             )
           })}
 
+          {/* Base overlay for extra text contrast at bottom */}
           <div className="hero-carousel-overlay" />
         </div>
 
@@ -129,22 +155,22 @@ export default function HeroBannerCarousel() {
           <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
             <p
               key={`eyebrow-${current}`}
-              className="carousel-text-in eyebrow font-semibold mb-1 sm:mb-3"
-              style={{ color: 'var(--gold)', fontSize: 'clamp(9px, 2vw, 13px)', letterSpacing: '0.16em' }}
+              className="carousel-text-in eyebrow font-semibold mb-2 sm:mb-3"
+              style={{ color: 'var(--gold)', fontSize: 'clamp(10px, 2.5vw, 13px)', letterSpacing: '0.16em' }}
             >
               {SLIDES[current].eyebrow}
             </p>
             <h1
               key={`heading-${current}`}
               className="carousel-text-in carousel-text-delay-1 hero-heading display text-white w-full"
-              style={{ fontSize: 'clamp(1.05rem, 4vw, 3.8rem)', lineHeight: 1.12 }}
+              style={{ fontSize: 'clamp(1.55rem, 5.5vw, 3.8rem)', lineHeight: 1.12 }}
             >
               {SLIDES[current].heading}
             </h1>
             <p
               key={`sub-${current}`}
-              className="carousel-text-in carousel-text-delay-2 hero-subtext text-white/80 mt-2 sm:mt-4 w-full max-w-2xl leading-relaxed"
-              style={{ fontSize: 'clamp(10.5px, 1.8vw, 17px)' }}
+              className="carousel-text-in carousel-text-delay-2 hero-subtext text-white/80 mt-3 sm:mt-5 w-full max-w-2xl leading-relaxed"
+              style={{ fontSize: 'clamp(13px, 2vw, 17px)' }}
             >
               {SLIDES[current].sub}
             </p>

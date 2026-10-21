@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 
 const AGRI_SHOWCASE_PRODUCTS = [
   { label: 'Charcoal',      src: '/assets/images/charcoal.jpg' },
@@ -56,6 +57,41 @@ const OTHER_SERVICES = [
 export default function AgricultureServicePage() {
   return (
     <div>
+      <Seo
+        title="Agriculture & Agribusiness | Crop Supply, Trading & Agro-Logistics — Willstone"
+        description="Willstone Strategic Industries Limited provides end-to-end agriculture and agribusiness solutions in Nigeria — crop production, agro-processing, bulk commodity trading, agro-logistics, and agricultural input supply."
+        canonical="/services/agriculture-agribusiness"
+        keywords={[
+          'agribusiness Nigeria', 'agricultural commodity trading Nigeria',
+          'agro-logistics Nigeria', 'crop supply Nigeria', 'sesame seeds exporter Nigeria',
+          'palm oil supplier Nigeria', 'bulk agricultural commodities', 'agro-processing Nigeria',
+          'farm to export Nigeria', 'Willstone agribusiness',
+        ]}
+        image="/assets/images/agric-banner.avif"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          '@id': 'https://willstonestrategic.com/services/agriculture-agribusiness',
+          name: 'Agriculture & Agribusiness Services',
+          description: 'End-to-end agribusiness solutions including crop production, commodity trading, agro-processing, agro-logistics, and agricultural input supply.',
+          provider: { '@id': 'https://willstonestrategic.com/#organization' },
+          areaServed: [
+            { '@type': 'Country', name: 'Nigeria' },
+            { '@type': 'Place', name: 'West Africa' },
+            { '@type': 'Place', name: 'Europe' },
+            { '@type': 'Place', name: 'Asia' },
+          ],
+          serviceType: 'Agribusiness & Commodity Supply',
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://willstonestrategic.com' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://willstonestrategic.com/services' },
+              { '@type': 'ListItem', position: 3, name: 'Agriculture & Agribusiness', item: 'https://willstonestrategic.com/services/agriculture-agribusiness' },
+            ],
+          },
+        }}
+      />
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}

@@ -519,7 +519,7 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 500px;
+  min-height: 560px;
   overflow: hidden;
 }
 .hero-carousel-track {
@@ -546,8 +546,16 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
 .hero-carousel-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(11,27,51,0.35) 0%, rgba(11,27,51,0.55) 100%);
+  /* Bottom-weighted dark band ensures dots/progress and text base always contrast */
+  background: linear-gradient(
+    to bottom,
+    rgba(6,15,31,0.0)  0%,
+    rgba(6,15,31,0.0)  40%,
+    rgba(6,15,31,0.45) 75%,
+    rgba(6,15,31,0.70) 100%
+  );
   pointer-events: none;
+  z-index: 1;
 }
 .hero-carousel-content {
   position: absolute;
@@ -559,6 +567,21 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
   padding: 100px 24px 80px;
   text-align: center;
   z-index: 3;
+}
+/* Mobile: lighter top padding so content stays centred below header */
+@media (max-width: 767px) {
+  .hero-carousel-section { min-height: 100svh; }
+  .hero-carousel-content {
+    padding: 80px 20px 110px;
+    justify-content: center;
+  }
+  /* On mobile, boost text-shadow so it punches through any bright image area */
+  .hero-heading {
+    text-shadow: 0 2px 16px rgba(0,0,0,0.90), 0 1px 4px rgba(0,0,0,0.80) !important;
+  }
+  .hero-subtext {
+    text-shadow: 0 1px 10px rgba(0,0,0,0.85) !important;
+  }
 }
 .carousel-arrow {
   position: absolute;
@@ -579,8 +602,12 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
   backdrop-filter: blur(4px);
 }
 .carousel-arrow:hover { background: rgba(255,255,255,0.22); }
-.carousel-arrow-left { left: 20px; }
-.carousel-arrow-right { right: 20px; }
+.carousel-arrow-left { left: 12px; }
+.carousel-arrow-right { right: 12px; }
+@media (min-width: 768px) {
+  .carousel-arrow-left  { left: 20px; }
+  .carousel-arrow-right { right: 20px; }
+}
 
 @keyframes carouselTextIn {
   from { opacity: 0; transform: translateY(16px); }

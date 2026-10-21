@@ -1,9 +1,21 @@
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
+import Seo from '../components/Seo'
 
 export default function AboutPage() {
   return (
     <div style={{ fontFamily: 'var(--font-body, sans-serif)' }}>
+      <Seo
+        title="About Willstone Strategic Industries Limited | Supplier & Procurement Partner — Nigeria"
+        description="Learn about Willstone Strategic Industries Limited — a diversified Nigerian supplier and procurement partner headquartered in Ibadan, Oyo State. Discover our mission, vision, values, and leadership team."
+        canonical="/about"
+        keywords={[
+          'about Willstone Strategic Industries', 'Nigerian supplier company',
+          'procurement partner Nigeria', 'Ibadan business', 'multi-sector company Nigeria',
+          'agribusiness company Nigeria', 'IT company Nigeria',
+        ]}
+        image="/assets/images/about.png"
+      />
       <SiteHeader variant="solid" />
 
       {/* ── HERO ── */}
