@@ -347,6 +347,36 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+{/* ── POWERING BUSINESSES ACROSS BORDERS ── */}
+      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto">
+
+          {/* Header */}
+          <div className="text-center mb-10 max-w-2xl mx-auto">
+            <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
+              <span className="gold-rule" /> OUR GLOBAL PRESENCE
+            </p>
+            <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
+              Powering Businesses Across Borders
+            </h2>
+            <p className="text-slate-500 leading-relaxed" style={{ fontSize: '14.5px' }}>
+              We proudly serve clients across India, USA, UK, UAE, Australia, Europe, and Asia. Regardless of geography, our commitment remains the same — quality, transparency, and results.
+            </p>
+          </div>
+
+          {/* SVG map */}
+          <div className="relative w-full rounded-2xl overflow-hidden" style={{ background: '#fff', border: '1px solid #e8ecf2', boxShadow: '0 4px 24px rgba(11,27,51,0.06)' }}>
+            <img
+              src="/assets/images/willstone-global-presence.svg"
+              alt="Global presence across international markets"
+              loading="lazy"
+              className="w-full h-auto block"
+            />
+          </div>
+
+        </div>
+      </section>
+
 
       {/* ── LEADERSHIP TEAM ── */}
       <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'rgba(11,27,51,0.06)' }}>

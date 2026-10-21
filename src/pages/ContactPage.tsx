@@ -402,8 +402,6 @@ export default function ContactPage() {
                 <div>
                   <p className="text-[10.5px] font-bold tracking-widest uppercase mb-1.5" style={{ color: 'var(--gold)' }}>Email Us</p>
                   <p className="text-[13px] font-medium leading-relaxed" style={{ color: 'var(--ink)' }}>info@willstonestrategic.com</p>
-                  <p className="text-[13px] font-medium leading-relaxed" style={{ color: 'var(--ink)' }}>business@willstonestrategic.com</p>
-                  <p className="text-[13px] font-medium leading-relaxed" style={{ color: 'var(--ink)' }}>office@willstonestrategic.com</p>
                 </div>
               </a>
 
@@ -444,7 +442,7 @@ export default function ContactPage() {
                 <div>
                   <p className="text-[10.5px] font-bold tracking-widest uppercase mb-1.5" style={{ color: 'var(--gold)' }}>Visit Us</p>
                   <p className="text-[13px] font-medium leading-snug" style={{ color: 'var(--ink)' }}>
-                    20 Cambridge House,<br />Onireke Jericho, Ibadan<br />Oyo State, Nigeria
+                    20 Cambridge House, Onireke Jericho, Ibadan - Oyo State, Nigeria
                   </p>
                 </div>
               </a>
