@@ -281,10 +281,113 @@ export default function HomePage() {
 
       {/* 1 — Header */}
       <SiteHeader />
+        <section id="home" className="relative flex flex-col overflow-hidden" style={{ background: '#0B1B33', minHeight: '100svh' }}>
+        {/* Orbital hero loop — full-bleed iframe */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
+          <iframe
+            src="/agri-hero-loop-natural.html"
+            title=""
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: 'max(100%, 186.182vh)',
+              height: 'max(100%, 53.7109vw)',
+              transform: 'translate(-50%, -50%)',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+          />
+        </div>
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(135deg, rgba(6,15,31,.62) 0%, rgba(6,15,31,.42) 30%, rgba(6,15,31,.18) 60%, rgba(6,15,31,.05) 100%)',
+        }} />
+        <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
+          style={{ background: 'linear-gradient(0deg, rgba(6,15,31,.35) 0%, transparent 100%)' }} />
 
-      {/* 2 — Hero carousel */}
-      <HeroBannerCarousel />
+        <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center px-6 sm:px-10 lg:px-16">
+          <div className="w-full max-w-7xl mx-auto mt-5 py-20 flex flex-col items-center text-center">
+            <p className="fade-up fade-up-1 eyebrow font-semibold flex items-center justify-center gap-3 mb-4"
+              style={{ color: 'var(--gold)', fontSize: 'clamp(11px, 1vw, 14px)', letterSpacing: '0.16em' }}>
+              WELCOME TO WILLSTONE
+            </p>
+            <h1 className="hero-heading fade-up fade-up-2 display text-white leading-[1.08] w-full max-w-6xl text-center"
+              style={{ fontFamily: "Satoshi, Inter, sans-serif", fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}>
+              Advancing Industries Through Technology, Trade and Energy and Securing Tomorrow
+            </h1>
+            <p className="hero-subtext fade-up fade-up-3 text-white/85 mt-6 w-full max-w-3xl leading-relaxed text-center"
+              style={{ fontSize: 'clamp(15px, 1.5vw, 21px)' }}>
+              Willstone Strategic Industries Limited delivers innovative solutions and
+              trusted services across industries, driving growth, enabling progress, and
+              building a stronger tomorrow.
+            </p>
 
+            {/* CTA buttons */}
+           <div className="fade-up fade-up-4 flex flex-col sm:flex-row gap-4 mt-7 sm:mt-8 w-full sm:w-auto items-center justify-center">
+            <a
+              href="/about"
+              className="inline-flex items-center justify-center w-full sm:w-auto"
+              style={{
+                fontFamily: "Satoshi, Inter, sans-serif",
+                fontSize: "15px",
+                fontWeight: "700",
+                lineHeight: "150%",
+                minWidth: "200px",
+                height: "48px",
+                padding: "8px 24px",
+                gap: "8px",
+                background: "rgba(207, 207, 207, 0.4)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.25)",
+                borderRadius: "10px",
+                color: "rgb(255, 255, 255)",
+                textDecoration: "none",
+                transition: "opacity 200ms",
+                cursor: "pointer",
+              }}>
+              DISCOVER MORE
+            </a>
+            <a
+              href="/#contact-and-partnership-form"
+              className="inline-flex items-center justify-center w-full sm:w-auto"
+              style={{
+                fontFamily: "Satoshi, Inter, sans-serif",
+                fontSize: "15px",
+                fontWeight: 700,
+                lineHeight: "150%",
+                minWidth: "200px",
+                height: "48px",
+                padding: "8px 24px",
+                gap: "8px",
+                backgroundColor: "rgb(215, 181, 109)",
+                color: "rgb(1, 5, 39)",
+                borderRadius: "10px",
+                textDecoration: "none",
+                transition: "opacity 200ms",
+                cursor: "pointer",
+              }}
+            >
+              PARTNER WITH US
+            </a>
+            </div>
+
+            {/* Industry pills — infinite scroll ticker, desktop only */}
+            {/* <div className="fade-up fade-up-4 hidden sm:block mt-6 sm:mt-8 pill-ticker-wrap">
+              <div className="pill-ticker-track">
+                {[0, 1].map((copy) => (
+                  <div key={copy} className="pill-ticker-set" aria-hidden={copy === 1}>
+                    {['Technology','Logistics','Energy','Real Estate','Agriculture','Procurement','Import / Export'].map((tag) => (
+                      <span key={tag} className="hero-pill">{tag}</span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div> */}
+          </div>
+        </div>
+
+      </section>
       {/* 3 — Ticker strip */}
       <div className="ticker-strip overflow-hidden py-3" style={{ background: 'var(--gold)' }}>
         <div className="ticker-track flex whitespace-nowrap">
@@ -449,7 +552,7 @@ export default function HomePage() {
         <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
           {/* Left */}
-          <div>
+          <div id="contact-and-partnership-form">
             <h2 className="font-bold leading-tight mb-10" style={{ color: 'var(--ink)', fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)' }}>
               Interested in our services, products, or a potential partnership?
             </h2>

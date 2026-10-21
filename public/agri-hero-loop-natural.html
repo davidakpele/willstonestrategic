@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agri hero loop</title>
+<style>
+  :root { --navy: #0b1b33; --navy-2: #0e2242; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; background: #0b1b33; overflow: hidden; }
+
+  .stage {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #0b1b33;
+  }
+  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* soft vignette so text placed over the hero stays readable */
+  .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(11,27,51,.55) 100%),
+      linear-gradient(to bottom, rgba(11,27,51,.35) 0%, transparent 25%, transparent 75%, rgba(11,27,51,.45) 100%);
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <canvas id="scene" aria-label="Golden hour over crop fields, a survey drone scanning the rows" role="img"></canvas>
+    <div class="vignette"></div>
+  </div>
+
+<script>
+/* ---------- tweak here ---------- */
+const C = {
+  speed: 0.32,        // field travel, in crop-bands per second (lower = calmer)
+  bands: 16,          // depth bands in the field
+  rows: 15,           // crop rows each side of centre
+  horizon: 0.56,      // horizon height as a fraction of viewport height
+  droneOn: true,
+  pingsOn: true,
+  labels: ['Soil moisture 62%', 'pH 6.4', 'NDVI 0.81', 'Yield +12%', 'Irrigation OK', 'Nitrogen 38 ppm']
+};
+/* -------------------------------- */
+
+const cv  = document.getElementById('scene');
+const ctx = cv.getContext('2d');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let W = 0, H = 0, dpr = 1;
+
+// seeded random so the layout is stable between loads
+let seed = 42;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+const stars = Array.from({ length: 70 }, () => ({
+  x: rnd(), y: rnd() * 0.5, r: 0.5 + rnd() * 1.3, ph: rnd() * 6.28, sp: 0.6 + rnd() * 1.6
+}));
+const clouds = Array.from({ length: 7 }, () => ({
+  x: rnd(), y: 0.08 + rnd() * 0.26, s: 0.6 + rnd() * 1.1, sp: 0.004 + rnd() * 0.01, a: 0.18 + rnd() * 0.22
+}));
+const flies = Array.from({ length: 46 }, () => ({
+  x: rnd(), y: rnd(), r: 0.8 + rnd() * 1.8, sp: 0.01 + rnd() * 0.03, ph: rnd() * 6.28
+}));
+const pings = Array.from({ length: 6 }, (_, i) => ({
+  lane: (rnd() * 2 - 1) * (C.rows * 0.7), u: i / 6 + rnd() * 0.05, label: C.labels[i % C.labels.length]
+}));
+
+function resize() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = cv.clientWidth; H = cv.clientHeight;
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+addEventListener('resize', resize);
+resize();
+
+// hill silhouette height at x (static, so the barn can sit on it)
+function hillY(x, layer, horizon) {
+  const k = [ { b: 0.020, a: 0.060, f: 0.0042, o: 1.3 },
+              { b: 0.004, a: 0.045, f: 0.0060, o: 4.1 },
+              { b: -0.004, a: 0.030, f: 0.0085, o: 2.2 } ][layer];
+  const v = Math.sin(x * k.f + k.o) * 0.6 + Math.sin(x * k.f * 2.3 + k.o * 1.7) * 0.4;
+  return horizon - H * (k.b + k.a * (v * 0.5 + 0.5));
+}
+
+function drawSky(horizon, t) {
+  const g = ctx.createLinearGradient(0, 0, 0, horizon);
+  g.addColorStop(0.00, '#0b1b33');
+  g.addColorStop(0.40, '#0e2242');
+  g.addColorStop(0.75, '#3b566e');
+  g.addColorStop(1.00, '#f3b867');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, horizon + 2);
+
+  // stars
+  for (const s of stars) {
+    const a = (0.25 + 0.75 * (0.5 + 0.5 * Math.sin(t * s.sp + s.ph))) * (1 - s.y / 0.5) * 0.9;
+    ctx.fillStyle = `rgba(255,248,225,${a.toFixed(3)})`;
+    ctx.beginPath(); ctx.arc(s.x * W, s.y * horizon, s.r, 0, 6.283); ctx.fill();
+  }
+
+  // sun
+  const sx = W * 0.5 + Math.sin(t * 0.07) * W * 0.02;
+  const sy = horizon - H * 0.035 + Math.sin(t * 0.11) * 3;
+  const R = Math.min(W, H) * (0.26 + 0.01 * Math.sin(t * 0.6));
+  const sg = ctx.createRadialGradient(sx, sy, 0, sx, sy, R);
+  sg.addColorStop(0.00, 'rgba(255,246,208,1)');
+  sg.addColorStop(0.12, 'rgba(255,224,150,.95)');
+  sg.addColorStop(0.35, 'rgba(255,184,92,.45)');
+  sg.addColorStop(1.00, 'rgba(255,160,60,0)');
+  ctx.fillStyle = sg;
+  ctx.fillRect(0, 0, W, horizon + 2);
+  return { sx, sy };
+}
+
+function drawClouds(horizon, t) {
+  for (const c of clouds) {
+    const cx = (((c.x + t * c.sp) % 1.4) - 0.2) * W;
+    const cy = c.y * horizon;
+    const sz = Math.min(W, H) * 0.16 * c.s;
+    // warmer as they get closer to the horizon
+    const warm = Math.min(1, c.y / 0.34);
+    for (let i = 0; i < 5; i++) {
+      const bx = cx + (i - 2) * sz * 0.5;
+      const by = cy + Math.sin(i * 1.9) * sz * 0.12;
+      const r  = sz * (0.55 + 0.18 * Math.sin(i * 2.7));
+      const g = ctx.createRadialGradient(bx, by, 0, bx, by, r);
+      g.addColorStop(0, `rgba(255,${Math.round(235 - 40 * warm)},${Math.round(200 - 80 * warm)},${c.a})`);
+      g.addColorStop(1, 'rgba(255,220,170,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(bx - r, by - r, r * 2, r * 2);
+    }
+  }
+}
+
+function drawBarn(x, y, s) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = '#0b1b33';
+  // barn body + gambrel roof
+  ctx.beginPath();
+  ctx.moveTo(-30, 0); ctx.lineTo(-30, -22); ctx.lineTo(-20, -32); ctx.lineTo(0, -38);
+  ctx.lineTo(20, -32); ctx.lineTo(30, -22); ctx.lineTo(30, 0); ctx.closePath(); ctx.fill();
+  // silo
+  ctx.fillRect(34, -46, 13, 46);
+  ctx.beginPath(); ctx.arc(40.5, -46, 6.5, Math.PI, 0); ctx.fill();
+  // warm window glow
+  ctx.fillStyle = 'rgba(255,200,110,.85)';
+  ctx.fillRect(-4, -20, 8, 10);
+  ctx.restore();
+}
+
+function drawWindmill(x, y, s, t) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = '#0b1b33'; ctx.strokeStyle = '#0b1b33';
+  ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(3, 0); ctx.lineTo(1.2, -64); ctx.lineTo(-1.2, -64); ctx.closePath(); ctx.fill();
+  ctx.translate(0, -64);
+  ctx.rotate(t * 0.45);
+  ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  for (let i = 0; i < 3; i++) {
+    ctx.rotate(Math.PI * 2 / 3);
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -30); ctx.stroke();
+  }
+  ctx.beginPath(); ctx.arc(0, 0, 2.6, 0, 6.283); ctx.fill();
+  ctx.restore();
+}
+
+function drawHills(horizon, t) {
+  const cols = ['#2c4e73', '#183a63', '#0e2242'];
+  for (let layer = 0; layer < 3; layer++) {
+    ctx.fillStyle = cols[layer];
+    ctx.beginPath();
+    ctx.moveTo(0, horizon + 3);
+    for (let x = 0; x <= W + 8; x += 8) ctx.lineTo(x, hillY(x, layer, horizon));
+    ctx.lineTo(W, horizon + 3); ctx.closePath(); ctx.fill();
+
+    if (layer === 1) {
+      const bx = W * 0.2;
+      drawBarn(bx, hillY(bx, 1, horizon) + 3, Math.max(0.7, W / 1500));
+    }
+    if (layer === 0) {
+      const wx = W * 0.8;
+      drawWindmill(wx, hillY(wx, 0, horizon) + 2, Math.max(0.7, W / 1600), t);
+    }
+  }
+}
+
+const hash = (a, b) => { const v = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return v - Math.floor(v); };
+
+function drawTreeline(horizon) {
+  ctx.fillStyle = '#0b1b33';
+  for (let x = -10; x < W + 10; x += 7) {
+    const r = H * (0.008 + 0.012 * hash(x * 0.13, 3));
+    ctx.beginPath(); ctx.arc(x, horizon - r * 0.6 - H * 0.004 * Math.sin(x * 0.01), r, 0, 6.283); ctx.fill();
+  }
+  ctx.fillRect(0, horizon - 2, W, 4);
+}
+
+const n2 = (x, y) => {
+  const xi = Math.floor(x), yi = Math.floor(y), fx = x - xi, fy = y - yi;
+  const u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy);
+  const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
+  return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+};
+
+function field(horizon, t, phase) {
+  const fh = H - horizon;
+  const vpx = W * 0.5 + Math.sin(t * 0.12) * W * 0.03;
+  const S = W / (C.rows * 0.9);
+  const P = v => Math.pow(v, 2.3);
+  const bend = s => Math.sin(s * 2.4 + 0.6) * W * 0.07 * s;
+  const X = (k, s) => vpx + (k + (hash(k, 1) - 0.5) * 0.14) * S * s + bend(s);   // rows are slightly uneven
+  const tram = k => ((k + C.rows) % 9) === 0;                                    // tractor lane every 9th row
+  const B = C.bands, fr = phase % 1, base = Math.floor(phase), N = 18;
+  const strip = (k, w, c0, c1) => {
+    ctx.beginPath();
+    for (let j = 0; j <= N; j++) { const s = P(0.02 + 0.98 * j / N); ctx.lineTo(X(k, s) - S * s * w, horizon + fh * s); }
+    for (let j = N; j >= 0; j--) { const s = P(0.02 + 0.98 * j / N); ctx.lineTo(X(k, s) + S * s * w, horizon + fh * s); }
+    ctx.closePath(); ctx.fill();
+  };
+
+  // soil
+  const g = ctx.createLinearGradient(0, horizon, 0, H);
+  g.addColorStop(0.00, '#8a7442'); g.addColorStop(0.15, '#5e472a');
+  g.addColorStop(0.55, '#3b2a17'); g.addColorStop(1.00, '#141a24');
+  ctx.fillStyle = g; ctx.fillRect(0, horizon, W, fh + 1);
+
+  // furrow shadows between rows, tractor tracks in the lanes
+  ctx.fillStyle = 'rgba(0,0,0,.24)';
+  for (let k = -C.rows; k <= C.rows; k++) strip(k + 0.5, 0.11, 0, 0);
+  ctx.fillStyle = 'rgba(12,8,4,.35)';
+  for (let k = -C.rows; k <= C.rows; k++) if (tram(k)) { strip(k - 0.2, 0.05); strip(k + 0.2, 0.05); }
+
+  // canopy strip per row, soft edged
+  const cg = ctx.createLinearGradient(0, horizon, 0, H);
+  cg.addColorStop(0.00, '#a3a04a'); cg.addColorStop(0.20, '#6f8f38');
+  cg.addColorStop(0.60, '#386a2a'); cg.addColorStop(1.00, '#1f4a1e');
+  ctx.fillStyle = cg;
+  for (let k = -C.rows; k <= C.rows; k++) {
+    if (tram(k)) continue;
+    const wd = 0.25 + 0.08 * hash(k, 2), va = 0.85 + 0.15 * hash(k, 7);
+    ctx.globalAlpha = 0.35 * va; strip(k, wd * 1.25);
+    ctx.globalAlpha = 0.85 * va; strip(k, wd);
+  }
+  ctx.globalAlpha = 1;
+
+  // patchy health: dry yellow and lush dark areas drifting with the field
+  for (let i = 0; i < B; i++) {
+    const t0 = Math.max(0.02, (i + fr) / B), t1 = Math.min(1, (i + 1 + fr) / B);
+    if (t1 <= t0) continue;
+    const s0 = P(t0), s1 = P(t1), y0 = horizon + fh * s0, y1 = horizon + fh * s1 + 0.6;
+    for (let k = -C.rows; k <= C.rows; k++) {
+      if (tram(k)) continue;
+      const pn = n2(k * 0.3, (i - base) * 0.15), a = Math.abs(pn - 0.5) * 0.9;
+      if (a < 0.05) continue;
+      const wd = 0.25 + 0.08 * hash(k, 2), xa = X(k, s0), xb = X(k, s1);
+      ctx.fillStyle = pn > 0.5 ? `rgba(205,180,70,${a.toFixed(3)})` : `rgba(8,40,14,${a.toFixed(3)})`;
+      ctx.beginPath();
+      ctx.moveTo(xa - S * s0 * wd, y0); ctx.lineTo(xa + S * s0 * wd, y0);
+      ctx.lineTo(xb + S * s1 * wd, y1); ctx.lineTo(xb - S * s1 * wd, y1); ctx.fill();
+    }
+  }
+
+  // clods, shadows and individual plants, far to near
+  ctx.lineCap = 'round';
+  for (let i = 0; i <= B; i++) for (let sub = 0; sub < 2; sub++) {
+    const tt = (i + fr + sub * 0.5) / B;
+    if (tt < 0.05 || tt > 1.06) continue;
+    const s = P(tt), y = horizon + fh * s, size = S * s * 0.5;
+    const fade = Math.min(1, tt * 5), lit = 0.3 + 0.7 * (1 - s);
+    const id = (i - base) * 2 + sub, nb = s < 0.2 ? 3 : s < 0.5 ? 4 : 6;
+
+    if (s > 0.3) {                                  // soil clods + plant shadows (sun is behind, shadows fall toward us)
+      ctx.fillStyle = 'rgba(8,6,3,.30)'; ctx.beginPath();
+      for (let k = -C.rows; k <= C.rows; k++) {
+        if (tram(k)) continue;
+        const x0 = X(k, s); if (x0 < -size * 2 || x0 > W + size * 2) continue;
+        ctx.moveTo(x0 + size * 0.5, y + size * 0.05);
+        ctx.ellipse(x0 + size * 0.15, y + size * 0.05, size * 0.45, size * 0.1, 0, 0, 6.283);
+        if (hash(id, k) > 0.5) {
+          const cx = X(k + 0.5, s) + (hash(k, id) - 0.5) * S * s * 0.1;
+          ctx.moveTo(cx + size * 0.08, y); ctx.ellipse(cx, y, size * 0.08, size * 0.045, 0, 0, 6.283);
+        }
+      }
+      ctx.fill();
+    }
+
+    ctx.lineWidth = Math.max(0.7, size * 0.08);
+    for (let k = -C.rows; k <= C.rows; k++) {
+      if (tram(k)) continue;
+      const x0 = X(k, s);
+      if (x0 < -size * 2 || x0 > W + size * 2) continue;
+      const h1 = hash(k, id), h2 = hash(k + 50, id), h3 = hash(id, k * 3.1);
+      const px = x0 + (h1 - 0.5) * size * 0.5;
+      const wave = 0.6 * Math.sin(t * 1.3 - px * 0.006 - s * 4) + 0.4 * Math.sin(t * 0.7 - px * 0.002 + s * 2);
+      const lean = (h2 - 0.5) * 0.5 + wave * 0.18;
+      const ph = size * (0.7 + 0.6 * h3);
+      const pn = n2(k * 0.3, (i - base) * 0.15), dry = Math.max(0, pn - 0.55) * 2;
+      const lt = Math.max(0, Math.min(1, lit * (0.8 + 0.4 * h1) + 0.08 * wave + (pn - 0.5) * 0.3));
+      const r = Math.round(70 + 120 * lt + 60 * dry), gg = Math.round(120 + 90 * lt - 15 * dry), b = Math.round(35 + 25 * lt);
+      const al = (0.95 * fade).toFixed(3);
+      ctx.strokeStyle = `rgba(${r},${gg},${b},${al})`;
+      const tips = s > 0.25 ? [] : null;
+      ctx.beginPath();
+      for (let j = 0; j < nb; j++) {
+        const m = j - (nb - 1) / 2, a = m * 0.32 + lean + (hash(j, id + k) - 0.5) * 0.25;
+        const bx = px + m * size * 0.08, len = ph * (0.7 + 0.6 * hash(j + 9, id + k));
+        const c1x = bx + Math.sin(a) * len * 0.15, c1y = y - len * 0.6;
+        const tx = bx + Math.sin(a) * len * 0.7, ty = y - Math.cos(a) * len;
+        ctx.moveTo(bx, y); ctx.quadraticCurveTo(c1x, c1y, tx, ty);
+        if (tips) tips.push(0.16 * bx + 0.48 * c1x + 0.36 * tx, 0.16 * y + 0.48 * c1y + 0.36 * ty, tx, ty);
+      }
+      ctx.stroke();
+      if (tips) {                                   // sun-caught blade tips
+        ctx.strokeStyle = `rgba(${Math.min(255, r + 55)},${Math.min(255, gg + 40)},${b + 25},${al})`;
+        ctx.lineWidth = Math.max(0.6, size * 0.055);
+        ctx.beginPath();
+        for (let q = 0; q < tips.length; q += 4) { ctx.moveTo(tips[q], tips[q + 1]); ctx.lineTo(tips[q + 2], tips[q + 3]); }
+        ctx.stroke();
+        ctx.lineWidth = Math.max(0.7, size * 0.08);
+      }
+    }
+  }
+
+  // warm haze where field meets the sky
+  const hz = ctx.createLinearGradient(0, horizon - 4, 0, horizon + fh * 0.22);
+  hz.addColorStop(0, 'rgba(255,196,110,.55)');
+  hz.addColorStop(1, 'rgba(255,196,110,0)');
+  ctx.fillStyle = hz;
+  ctx.fillRect(0, horizon - 4, W, fh * 0.22 + 4);
+
+  return { vpx, S, P, fh, X };
+}
+
+function drawPings(horizon, t, f) {
+  const rate = C.speed / C.bands;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  for (const p of pings) {
+    const tt = (p.u + t * rate) % 1;
+    const s = f.P(tt);
+    if (s < 0.12) continue;
+    const x = f.X(p.lane, s);
+    const y = horizon + f.fh * s;
+    if (x < 0 || x > W) continue;
+    const a = Math.sin(Math.PI * tt) * 0.95;
+    const pulse = ((t * 0.7 + p.u * 7) % 1);
+
+    ctx.strokeStyle = `rgba(150,255,200,${(a * (1 - pulse) * 0.8).toFixed(3)})`;
+    ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.ellipse(x, y, (8 + pulse * 40) * s, (3 + pulse * 14) * s, 0, 0, 6.283); ctx.stroke();
+
+    ctx.fillStyle = `rgba(190,255,220,${a.toFixed(3)})`;
+    ctx.beginPath(); ctx.arc(x, y, Math.max(1.8, 4 * s), 0, 6.283); ctx.fill();
+
+    if (s > 0.28) {
+      const fs = Math.max(10, 9 + s * 7);
+      ctx.font = `600 ${fs}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
+      ctx.fillStyle = `rgba(230,255,240,${(a * 0.95).toFixed(3)})`;
+      ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = 4;
+      ctx.fillText(p.label, x + 10 + 6 * s, y - 14 * s - 4);
+      ctx.shadowBlur = 0;
+    }
+  }
+}
+
+function drawDrone(horizon, t) {
+  const x = W * (0.5 + 0.36 * Math.sin(t * 0.13));
+  const y = H * (0.30 + 0.035 * Math.sin(t * 0.37 + 1));
+  const dir = Math.cos(t * 0.13) >= 0 ? 1 : -1;
+  const tilt = 0.12 * dir * Math.cos(t * 0.13);
+  const sc = Math.max(0.8, Math.min(W, H) / 800);
+
+  // scan beam
+  const gx = x + dir * W * 0.03, gy = H * 0.80;
+  const bg = ctx.createLinearGradient(0, y, 0, gy);
+  bg.addColorStop(0, 'rgba(170,255,205,.34)');
+  bg.addColorStop(1, 'rgba(170,255,205,.05)');
+  ctx.fillStyle = bg;
+  ctx.beginPath();
+  ctx.moveTo(x - 4 * sc, y + 6 * sc); ctx.lineTo(x + 4 * sc, y + 6 * sc);
+  ctx.lineTo(gx + W * 0.11, gy); ctx.lineTo(gx - W * 0.11, gy); ctx.closePath(); ctx.fill();
+
+  // scan lines sweeping down the beam
+  ctx.strokeStyle = 'rgba(210,255,230,.35)'; ctx.lineWidth = 1;
+  for (let i = 0; i < 3; i++) {
+    const u = ((t * 0.5 + i / 3) % 1);
+    const yy = y + (gy - y) * u;
+    const half = (4 * sc) + (W * 0.11 - 4 * sc) * u;
+    ctx.globalAlpha = Math.sin(Math.PI * u) * 0.8;
+    ctx.beginPath(); ctx.moveTo(gx * u + x * (1 - u) - half, yy); ctx.lineTo(gx * u + x * (1 - u) + half, yy); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+
+  // ground spot
+  const sg = ctx.createRadialGradient(gx, gy, 0, gx, gy, W * 0.11);
+  sg.addColorStop(0, 'rgba(190,255,215,.32)'); sg.addColorStop(1, 'rgba(190,255,215,0)');
+  ctx.fillStyle = sg;
+  ctx.beginPath(); ctx.ellipse(gx, gy, W * 0.11, W * 0.03, 0, 0, 6.283); ctx.fill();
+
+  // body
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(tilt); ctx.scale(sc, sc);
+  ctx.fillStyle = '#e9f0e4';
+  ctx.beginPath(); ctx.roundRect(-11, -4, 22, 9, 4); ctx.fill();
+  ctx.fillStyle = '#0b1b33';
+  ctx.beginPath(); ctx.roundRect(-5, 0, 10, 6, 3); ctx.fill();
+  ctx.fillStyle = '#7dffb5'; ctx.beginPath(); ctx.arc(dir * 8, 0, 1.6, 0, 6.283); ctx.fill();
+  // arms + spinning rotors
+  ctx.strokeStyle = '#cfd8c8'; ctx.lineWidth = 1.6;
+  for (const sx of [-1, 1]) {
+    ctx.beginPath(); ctx.moveTo(sx * 9, -2); ctx.lineTo(sx * 20, -7); ctx.stroke();
+    const rx = sx * 20, ry = -8;
+    ctx.fillStyle = `rgba(235,245,230,${0.28 + 0.18 * Math.sin(t * 60 + sx)})`;
+    ctx.beginPath(); ctx.ellipse(rx, ry, 11, 1.8, 0, 0, 6.283); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawFlies(horizon, t) {
+  for (const f of flies) {
+    const fx = ((f.x + Math.sin(t * 0.3 + f.ph) * 0.01) % 1) * W;
+    const fy = horizon + (((f.y - t * f.sp) % 1 + 1) % 1) * (H - horizon) * 0.95;
+    const a = (0.25 + 0.55 * (0.5 + 0.5 * Math.sin(t * 1.7 + f.ph))) * 0.9;
+    const g = ctx.createRadialGradient(fx, fy, 0, fx, fy, f.r * 5);
+    g.addColorStop(0, `rgba(255,236,150,${a.toFixed(3)})`);
+    g.addColorStop(1, 'rgba(255,236,150,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(fx - f.r * 5, fy - f.r * 5, f.r * 10, f.r * 10);
+  }
+}
+
+function frame(t, phase) {
+  const horizon = H * C.horizon;
+  ctx.clearRect(0, 0, W, H);
+  drawSky(horizon, t);
+  drawClouds(horizon, t);
+  drawHills(horizon, t);
+  drawTreeline(horizon);
+  const f = field(horizon, t, phase);
+  if (C.pingsOn) drawPings(horizon, t, f);
+  drawFlies(horizon, t);
+  if (C.droneOn) drawDrone(horizon, t);
+}
+
+if (reduce) {
+  frame(3, 0.3);
+  addEventListener('resize', () => frame(3, 0.3));
+} else {
+  let last = performance.now(), time = 0, phase = 0;
+  (function loop(now) {
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now; time += dt; phase += dt * C.speed;
+    frame(time, phase);
+    requestAnimationFrame(loop);
+  })(last);
+}
+</script>
+</body>
+</html>
