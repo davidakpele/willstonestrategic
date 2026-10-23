@@ -64,15 +64,15 @@ export default function ScrollAccordion() {
   }, [])
 
   return (
-    <section className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
+    <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-16 xl:px-24 bg-white">
       <div className="max-w-screen-2xl mx-auto">
 
         {/* Mobile header */}
-        <div className="lg:hidden text-center mb-12">
+        <div className="lg:hidden text-center mb-8 sm:mb-12">
           <p className="eyebrow text-[12px] font-semibold flex items-center justify-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> WHAT WE DO <span className="gold-rule" />
           </p>
-          <h2 className="display text-2xl sm:text-3xl font-semibold" style={{ color: 'var(--ink)' }}>
+          <h2 className="display text-xl sm:text-3xl font-semibold" style={{ color: 'var(--ink)' }}>
             Integrated solutions,<br />across every sector.
           </h2>
         </div>
@@ -168,16 +168,16 @@ export default function ScrollAccordion() {
 
                 <div className="flex-1 min-w-0">
                   <h3
-                    className="font-bold text-[19px] sm:text-[21px] mb-3"
+                    className="font-bold text-[17px] sm:text-[21px] mb-2 sm:mb-3"
                     style={{ color: card.dark ? '#fff' : 'var(--ink)' }}
                   >
                     {card.title}
                   </h3>
-                  <p className={`text-[14px] leading-relaxed mb-3 ${card.dark ? 'text-white/70' : 'text-slate-500'}`}>
+                  <p className={`text-[13px] sm:text-[14px] leading-relaxed mb-3 ${card.dark ? 'text-white/70' : 'text-slate-500'}`}>
                     {card.desc}
                   </p>
                   <p
-                    className="text-[11px] font-semibold tracking-wide mb-6"
+                    className="text-[10px] sm:text-[11px] font-semibold tracking-wide mb-5 sm:mb-6"
                     style={{ color: card.dark ? 'rgba(255,255,255,.35)' : 'rgba(11,27,51,.35)' }}
                   >
                     {card.keywords}

@@ -283,12 +283,12 @@ export default function HomePage() {
       <HeroBannerCarousel />
 
       {/* 3 — Ticker strip */}
-      <div className="ticker-strip overflow-hidden py-3" style={{ background: 'var(--gold)' }}>
+      <div className="ticker-strip overflow-hidden py-2.5 sm:py-3" style={{ background: 'var(--gold)' }}>
         <div className="ticker-track flex whitespace-nowrap">
           {[0, 1].map((i) => (
             <div key={i} className="ticker-items flex shrink-0 items-center" aria-hidden={i === 1}>
               {['15+ COUNTRIES', '500+ PROJECTS DELIVERED', '100+ PARTNERS WORLDWIDE', '10+ INDUSTRIES SERVED'].map((item) => (
-                <span key={item} className="flex items-center gap-4 px-6 text-[12px] font-bold tracking-[0.18em] text-[#1a1408]">
+                <span key={item} className="flex items-center gap-3 px-4 sm:px-6 text-[10px] sm:text-[12px] font-bold tracking-[0.15em] text-[#1a1408]">
                   {item}
                   <span style={{ opacity: 0.4 }}>◆</span>
                 </span>
@@ -298,7 +298,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* 4 — About / Company intro */}
+            {/* 4 — About / Company intro */}
       <section id="about" className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
         <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -376,26 +376,28 @@ export default function HomePage() {
       {/* 5 — Scroll Accordion (What We Do) */}
       <ScrollAccordion />
 
+
+
       {/* 6 — Services */}
-      <section id="services" className="py-20 px-6 lg:px-16 xl:px-24 bg-white">
+      <section id="services" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-16 xl:px-24 bg-white">
         <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> OUR SERVICES
           </p>
           <h2
-            className="font-bold leading-tight mb-10"
-            style={{ color: 'var(--ink)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+            className="font-bold leading-tight mb-8 sm:mb-10"
+            style={{ color: 'var(--ink)', fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}
           >
             Integrated solutions. Strategic execution.
           </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {SERVICES.map((service) => (
               <div key={service.title} className="service-card-new">
                 <span className="service-card-icon">{service.icon}</span>
-                <h4 className="font-semibold text-[14px] mt-3 mb-1 leading-snug" style={{ color: 'var(--ink)' }}>
+                <h4 className="font-semibold text-[13px] sm:text-[14px] mt-2 sm:mt-3 mb-1 leading-snug" style={{ color: 'var(--ink)' }}>
                   {service.title}
                 </h4>
-                <p className="text-[12.5px] text-slate-500 leading-snug">{service.desc}</p>
+                <p className="text-[11.5px] sm:text-[12.5px] text-slate-500 leading-snug">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -403,9 +405,9 @@ export default function HomePage() {
       </section>
 
       {/* 6b — Global Footprint */}
-      <section className="py-16 sm:py-20 px-6 lg:px-16 xl:px-24" style={{ background: 'var(--navy)' }}>
+      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-16 xl:px-24" style={{ background: 'var(--navy)' }}>
         <div className="max-w-screen-2xl mx-auto">
-          <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-16">
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-8 sm:gap-10 lg:gap-16">
 
             {/* Image */}
             <div className="w-full lg:w-1/2">
@@ -424,12 +426,12 @@ export default function HomePage() {
               </p>
               <h2
                 className="display font-bold text-white leading-tight mb-4"
-                style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)' }}
+                style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
               >
                 Global Footprint
               </h2>
               <div className="w-12 h-[3px] rounded-full mb-5" style={{ background: 'var(--gold)' }} />
-              <p className="leading-relaxed text-[15px]" style={{ color: 'rgba(255,255,255,0.60)' }}>
+              <p className="leading-relaxed text-[14px] sm:text-[15px]" style={{ color: 'rgba(255,255,255,0.60)' }}>
                 Delivering innovative solutions across borders with worldwide impact.
               </p>
             </div>
@@ -439,18 +441,18 @@ export default function HomePage() {
       </section>
 
       {/* 7 — Industries */}
-      <section id="industries" className="py-20 px-6 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+      <section id="industries" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
         <div className="max-w-screen-2xl mx-auto">
           <p className="eyebrow text-[12px] font-semibold flex items-center gap-3 mb-3" style={{ color: 'var(--gold)' }}>
             <span className="gold-rule" /> INDUSTRIES WE SERVE
           </p>
           <h2
-            className="font-bold leading-tight mb-10"
-            style={{ color: 'var(--ink)', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+            className="font-bold leading-tight mb-8 sm:mb-10"
+            style={{ color: 'var(--ink)', fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}
           >
             Diverse expertise across 10+ sectors
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 sm:gap-4">
             {INDUSTRIES.map((tile) => (
               <div key={tile.name} className="industry-tile rounded-lg aspect-[3/4] relative overflow-hidden">
                 <img
@@ -462,12 +464,12 @@ export default function HomePage() {
                   className="absolute inset-0"
                   style={{ background: 'linear-gradient(180deg, rgba(11,27,51,0) 40%, rgba(11,27,51,.85) 100%)' }}
                 />
-                <p className="absolute bottom-3 left-3 text-white font-bold text-sm">{tile.name}</p>
+                <p className="absolute bottom-3 left-3 text-white font-bold text-xs sm:text-sm">{tile.name}</p>
                 <div
-                  className="absolute bottom-2 right-2 w-6 h-6 rounded-full flex items-center justify-center"
+                  className="absolute bottom-2 right-2 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center"
                   style={{ background: 'rgba(201,162,75,.2)', border: '1px solid rgba(201,162,75,.4)' }}
                 >
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2.5">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2.5">
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </div>
@@ -478,44 +480,44 @@ export default function HomePage() {
       </section>
 
       {/* 10 — Contact CTA */}
-      <section className="py-20 px-6 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
-        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-16 xl:px-24" style={{ background: 'var(--paper)' }}>
+        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-start">
 
           {/* Left */}
           <div>
-            <h2 className="font-bold leading-tight mb-10" style={{ color: 'var(--ink)', fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)' }}>
+            <h2 className="font-bold leading-tight mb-8 sm:mb-10" style={{ color: 'var(--ink)', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}>
               Interested in our services, products, or a potential partnership?
             </h2>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               <a
                 href="mailto:info@willstonestrategic.com"
-                className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
+                className="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 sm:py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
               >
-                <span className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
                   </svg>
                 </span>
                 <div className="min-w-0">
                   <p className="text-[11px] text-slate-400 mb-0.5">You can email us here</p>
-                  <p className="text-[13px] font-semibold truncate" style={{ color: 'var(--ink)' }}>info@willstonestrategic.com</p>
+                  <p className="text-[12px] sm:text-[13px] font-semibold truncate" style={{ color: 'var(--ink)' }}>info@willstonestrategic.com</p>
                 </div>
                 <svg className="ml-auto shrink-0 opacity-30 group-hover:opacity-100 transition-opacity" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
 
               <a
                 href="tel:+2347061964340"
-                className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
+                className="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 sm:py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
               >
-                <span className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.2-1.5a2 2 0 012-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/>
                   </svg>
                 </span>
                 <div className="min-w-0">
                   <p className="text-[11px] text-slate-400 mb-0.5">Give us a call</p>
-                  <p className="text-[13px] font-semibold" style={{ color: 'var(--ink)' }}>+234 706 196 4340</p>
+                  <p className="text-[12px] sm:text-[13px] font-semibold" style={{ color: 'var(--ink)' }}>+234 706 196 4340</p>
                 </div>
                 <svg className="ml-auto shrink-0 opacity-30 group-hover:opacity-100 transition-opacity" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
@@ -524,16 +526,16 @@ export default function HomePage() {
                 href="https://maps.app.goo.gl/ZjZ5eCgY7MjJnvvj6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
+                className="flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3 sm:py-4 rounded-xl bg-white border border-gray-100 hover:border-[var(--gold)] transition-colors group"
               >
-                <span className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(201,162,75,0.10)', color: 'var(--gold)' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
                   </svg>
                 </span>
                 <div className="min-w-0">
                   <p className="text-[11px] text-slate-400 mb-0.5">Get directions to our location</p>
-                  <p className="text-[13px] font-semibold leading-snug" style={{ color: 'var(--ink)' }}>20 Cambridge House, Onireke Jericho, Ibadan</p>
+                  <p className="text-[12px] sm:text-[13px] font-semibold leading-snug" style={{ color: 'var(--ink)' }}>20 Cambridge House, Onireke Jericho, Ibadan</p>
                 </div>
                 <svg className="ml-auto shrink-0 opacity-30 group-hover:opacity-100 transition-opacity" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </a>
@@ -541,11 +543,11 @@ export default function HomePage() {
           </div>
 
           {/* Right — quick contact form */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-            <h3 className="font-bold text-[20px] mb-1" style={{ color: 'var(--ink)' }}>Let&apos;s Work Together</h3>
-            <p className="text-slate-400 text-[13px] mb-6">We are here to answer your questions and explore new possibilities.</p>
+          <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-gray-100">
+            <h3 className="font-bold text-[18px] sm:text-[20px] mb-1" style={{ color: 'var(--ink)' }}>Let&apos;s Work Together</h3>
+            <p className="text-slate-400 text-[13px] mb-5 sm:mb-6">We are here to answer your questions and explore new possibilities.</p>
 
-            <form action="/contact" method="get" className="flex flex-col gap-4">
+            <form action="/contact" method="get" className="flex flex-col gap-3 sm:gap-4">
               <div>
                 <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Name</label>
                 <input

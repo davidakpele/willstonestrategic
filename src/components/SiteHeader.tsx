@@ -150,21 +150,23 @@ export default function SiteHeader({ variant: _variant = 'transparent' }: SiteHe
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:px-8 md:pt-5">
+      <header className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 md:px-8 md:pt-5">
         <div
-          className="mx-auto flex items-center justify-between px-5 md:px-8 py-3"
+          className="mx-auto flex items-center justify-between px-3 sm:px-5 md:px-8 py-2.5 md:py-3"
           style={{
             maxWidth: '56rem',
             background: 'rgba(11,27,51,0.92)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
-            borderRadius: '20px',
+            borderRadius: '16px',
             border: '1px solid rgba(255,255,255,0.08)',
             boxShadow: 'none',
           }}
         >
           {/* Logo */}
-          <Link to="/" className="site-logo cursor-pointer" aria-label="Willstone Strategic Industries Limited" />
+          <Link to="/" className="site-logo cursor-pointer" aria-label="Willstone Strategic Industries Limited"
+            style={{ width: 'clamp(120px, 35vw, 200px)', height: '38px' }}
+          />
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6 text-[13px] text-white/85 font-medium">

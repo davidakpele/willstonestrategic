@@ -65,18 +65,18 @@ export default function SiteFooter() {
 
   return (
     <>
-      <footer id="contact" className="pb-8 px-6 lg:px-16 xl:px-24" style={{ background: '#0B1B33' }}>
+      <footer id="contact" className="pb-8 px-4 sm:px-6 lg:px-16 xl:px-24" style={{ background: '#0B1B33' }}>
         <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
 
-        <div className="max-w-screen-2xl mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pt-14">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pt-10 sm:pt-14">
 
           {/* Column 1 — Brand */}
-          <div>
-            <a href="/" className="site-logo-footer mb-5 block" aria-label="Willstone Strategic Industries Limited" />
+          <div className="sm:col-span-2 lg:col-span-1">
+            <a href="/" className="site-logo-footer mb-4 block" aria-label="Willstone Strategic Industries Limited" />
             <p className="text-white/35 text-[12px] leading-relaxed max-w-xs mb-5">
               20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
             </p>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               {SOCIAL.map(({ label, d, href }) => (
                 <a
                   key={label}
@@ -84,7 +84,7 @@ export default function SiteFooter() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C9A24B] hover:border-[#C9A24B] transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C9A24B] hover:border-[#C9A24B] transition-colors cursor-pointer"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d={d} />
@@ -157,14 +157,14 @@ export default function SiteFooter() {
           </div>
 
           {/* Column 5 — Newsletter */}
-          <div>
+          <div className="sm:col-span-2 lg:col-span-1">
             <ColHeading>Join Our Network</ColHeading>
             <p className="text-white/50 text-[13px] mb-4 leading-relaxed">
               Subscribe to our newsletter
             </p>
             <form onSubmit={handleSubscribe} className="flex items-center gap-0">
               <div
-                className="flex items-center flex-1 rounded-full overflow-hidden"
+                className="flex items-center flex-1 rounded-full overflow-hidden min-w-0"
                 style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}
               >
                 <input
@@ -173,7 +173,7 @@ export default function SiteFooter() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
                   required
-                  className="flex-1 bg-transparent px-4 py-2.5 text-[12px] text-white/70 placeholder:text-white/30 outline-none min-w-0"
+                  className="flex-1 bg-transparent px-3 py-2.5 text-[12px] text-white/70 placeholder:text-white/30 outline-none min-w-0 w-0"
                 />
                 <button
                   type="submit"
@@ -193,11 +193,11 @@ export default function SiteFooter() {
 
         {/* Bottom bar */}
         <div
-          className="max-w-screen-2xl mx-auto mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/40"
+          className="max-w-screen-2xl mx-auto mt-10 sm:mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-[12px] text-white/40 text-center"
           style={{ borderTop: '1px solid rgba(201,162,75,0.2)' }}
         >
           <p>&copy; 2026 Willstone Strategic Industries Limited. All rights reserved.</p>
-          <div className="flex gap-5">
+          <div className="flex gap-4 sm:gap-5">
             <a href="/privacy-policy" className="hover:text-[#C9A24B] transition-colors">Privacy Policy</a>
             <a href="/terms-of-use" className="hover:text-[#C9A24B] transition-colors">Terms &amp; Conditions</a>
           </div>

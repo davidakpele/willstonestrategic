@@ -21,7 +21,7 @@ export default function AboutPage() {
       {/* ── HERO ── */}
       <section
         className="relative flex flex-col overflow-hidden"
-        style={{ minHeight: 'clamp(480px, 75vh, 680px)', paddingTop: '88px' }}
+        style={{ minHeight: 'clamp(380px, 70vh, 680px)', paddingTop: '80px' }}
       >
         {/* full-bleed background image */}
         <img
@@ -35,21 +35,21 @@ export default function AboutPage() {
           style={{ background: 'linear-gradient(180deg, rgba(6,15,31,.80) 0%, rgba(6,15,31,.62) 50%, rgba(6,15,31,.90) 100%)' }}
         />
 
-        {/* centred text content — grows to fill available space above stats bar */}
-        <div className="relative z-10 flex-1 flex items-center justify-center text-center px-5 sm:px-8 py-12 sm:py-16">
+        {/* centred text content */}
+        <div className="relative z-10 flex-1 flex items-center justify-center text-center px-4 sm:px-8 py-10 sm:py-16">
           <div className="w-full max-w-2xl">
-            <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-5" style={{ color: 'var(--gold)' }}>
+            <p className="eyebrow text-[11px] font-semibold flex items-center justify-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> ABOUT WILLSTONE
             </p>
             <h1
-              className="display text-white font-semibold leading-[1.1] mb-5"
-              style={{ fontSize: 'clamp(1.75rem, 5vw, 3.2rem)' }}
+              className="display text-white font-semibold leading-[1.1] mb-4 sm:mb-5"
+              style={{ fontSize: 'clamp(1.5rem, 5vw, 3.2rem)' }}
             >
               Strategic Industries.<br />
               <span style={{ color: 'var(--gold-light)' }}>Stronger Tomorrow.</span>
             </h1>
             <p
-              className="text-white/70 leading-relaxed mb-8 mx-auto max-w-xl"
+              className="text-white/70 leading-relaxed mb-6 sm:mb-8 mx-auto max-w-xl"
               style={{ fontSize: 'clamp(13px, 2.5vw, 15px)' }}
             >
               Willstone Strategic Industries Limited is a diversified Nigerian enterprise delivering
@@ -58,7 +58,7 @@ export default function AboutPage() {
             </p>
             <a
               href="/contact"
-              className="btn-gold inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold mx-auto"
+              className="btn-gold inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full text-[13px] font-semibold mx-auto"
             >
               Partner With Us
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -67,12 +67,10 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-
-        {/* ── STATS BAR — pinned to bottom of hero ── */}
       </section>
 
       {/* ── OUR STORY ── */}
-      <section className="pt-20 pb-10 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+      <section className="pt-12 sm:pt-20 pb-8 sm:pb-10 px-4 sm:px-10 lg:px-16 xl:px-24 bg-white">
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -180,8 +178,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── MISSION · CULTURE · VISION ── */}
-      <section className="pt-10 pb-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
-        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-3 gap-6 items-stretch">
+      <section className="pt-6 sm:pt-10 pb-12 sm:pb-20 px-4 sm:px-10 lg:px-16 xl:px-24 bg-white">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
 
           {/* Mission — left text card */}
           <div className="about-mv-card">
@@ -245,24 +243,24 @@ export default function AboutPage() {
       </section>
 
       {/* ── INDUSTRIES WE SERVE ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+      <section className="py-12 sm:py-20 px-4 sm:px-10 lg:px-16 xl:px-24 bg-white">
         <div className="max-w-screen-2xl mx-auto">
-          <div className="grid lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-[300px_1fr] gap-8 sm:gap-12 lg:gap-16 items-center">
 
             {/* LEFT — text */}
             <div className="flex flex-col">
               <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4" style={{ color: 'var(--gold)' }}>
                 <span className="gold-rule" /> OUR DIVERSE SECTORS
               </p>
-              <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
+              <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
                 Industries We Serve
               </h2>
-              <p className="text-slate-500 leading-relaxed mb-8" style={{ fontSize: '14.5px' }}>
+              <p className="text-slate-500 leading-relaxed mb-6 sm:mb-8" style={{ fontSize: '14.5px' }}>
                 We provide integrated solutions across multiple industries, combining experience, technology and industry expertise to deliver real value.
               </p>
               <a
                 href="/services"
-                className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold self-start"
+                className="btn-gold inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full text-[13px] font-semibold self-start"
               >
                 Explore Our Services
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -270,7 +268,7 @@ export default function AboutPage() {
             </div>
 
             {/* RIGHT — 2-row × 4-col card grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               {[
                 {
                   name: 'Agriculture &\nAgribusiness',
@@ -318,7 +316,7 @@ export default function AboutPage() {
                   className="rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100 group cursor-pointer hover:shadow-md transition-shadow duration-200"
                 >
                   {/* Image top */}
-                  <div className="relative overflow-hidden" style={{ height: '110px' }}>
+                  <div className="relative overflow-hidden" style={{ height: '80px' }}>
                     <img
                       src={industry.src}
                       alt={industry.name.replace('\n', ' ')}
@@ -327,16 +325,16 @@ export default function AboutPage() {
                     />
                   </div>
                   {/* Label bottom — white bg, icon + name */}
-                  <div className="flex items-center gap-2 px-3 py-2.5">
+                  <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-2 sm:py-2.5">
                     <span
                       className="shrink-0 flex items-center justify-center rounded-full"
-                      style={{ width: '28px', height: '28px', background: 'rgba(201,162,75,0.12)' }}
+                      style={{ width: '24px', height: '24px', background: 'rgba(201,162,75,0.12)' }}
                     >
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
                         {industry.icon}
                       </svg>
                     </span>
-                    <p className="text-[11px] font-semibold leading-tight whitespace-pre-line" style={{ color: 'var(--ink)' }}>
+                    <p className="text-[10px] sm:text-[11px] font-semibold leading-tight whitespace-pre-line" style={{ color: 'var(--ink)' }}>
                       {industry.name}
                     </p>
                   </div>
@@ -348,7 +346,7 @@ export default function AboutPage() {
         </div>
       </section>
 {/* ── POWERING BUSINESSES ACROSS BORDERS ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24 bg-white">
+      <section className="py-12 sm:py-20 px-4 sm:px-10 lg:px-16 xl:px-24 bg-white">
         <div className="max-w-screen-2xl mx-auto">
 
           {/* Header */}
@@ -379,24 +377,24 @@ export default function AboutPage() {
 
 
       {/* ── LEADERSHIP TEAM ── */}
-      <section className="py-20 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'rgba(11,27,51,0.06)' }}>
+      <section className="py-12 sm:py-20 px-4 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'rgba(11,27,51,0.06)' }}>
         <div className="max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 lg:gap-16 items-center">
 
             {/* LEFT — text */}
             <div className="flex flex-col text-center lg:text-left items-center lg:items-start">
-              <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-5" style={{ color: 'var(--gold)' }}>
+              <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4 sm:mb-5" style={{ color: 'var(--gold)' }}>
                 <span className="gold-rule" /> OUR LEADERSHIP
               </p>
-              <h2 className="display font-bold leading-tight mb-5" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
+              <h2 className="display font-bold leading-tight mb-4 sm:mb-5" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
                 Meet Our Leadership Team
               </h2>
-              <p className="leading-relaxed mb-8 text-slate-500" style={{ fontSize: '14.5px' }}>
+              <p className="leading-relaxed mb-6 sm:mb-8 text-slate-500" style={{ fontSize: '14.5px' }}>
                 Our leadership team brings a wealth of experience, industry knowledge and a shared commitment to our mission. They guide our strategy, drive innovation and ensure we deliver on our promise.
               </p>
               <a
                 href="/contact"
-                className="btn-gold inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold self-start"
+                className="btn-gold inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full text-[13px] font-semibold self-start"
               >
                 View Full Team
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -455,10 +453,10 @@ export default function AboutPage() {
 
       {/* ── WHY CHOOSE WILLSTONE ── */}
       <section className="py-0" style={{ background: '#f0f2f5' }}>
-        <div className="max-w-screen-2xl mx-auto grid lg:grid-cols-[38%_32%_30%] items-stretch">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-[38%_32%_30%] items-stretch">
 
           {/* COL 1 — dark navy image card, flush left */}
-          <div className="relative flex h-full min-h-[380px] flex-col justify-end overflow-hidden">
+          <div className="relative flex h-full min-h-[280px] sm:min-h-[380px] flex-col justify-end overflow-hidden">
             <img
               src="/assets/images/Global-Business-Networking-at-Trade-Expo.png"
               alt="Business partnership and trade"
@@ -471,7 +469,7 @@ export default function AboutPage() {
                 background: 'linear-gradient(to right, rgba(11,27,51,0.96) 0%, rgba(11,27,51,0.82) 55%, rgba(11,27,51,0.45) 100%)',
               }}
             />
-            <div className="relative z-10 p-8 lg:p-10">
+            <div className="relative z-10 p-6 sm:p-8 lg:p-10">
               <p
                 className="mb-4 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest"
                 style={{ color: 'var(--gold)' }}
@@ -504,7 +502,7 @@ export default function AboutPage() {
           </div>
 
           {/* COL 2 — 4 bullet rows, plain background */}
-          <div className="flex flex-col justify-center gap-0 border-x border-gray-100 bg-white px-8 py-10">
+          <div className="flex flex-col justify-center gap-0 border-x border-gray-100 bg-white px-5 sm:px-8 py-8 sm:py-10">
             {[
               {
                 title: 'Proven Track Record',
@@ -576,7 +574,7 @@ export default function AboutPage() {
           </div>
 
           {/* COL 3 — global presence, plain background */}
-          <div className="flex flex-col px-8 py-10 bg-white">
+          <div className="flex flex-col px-5 sm:px-8 py-8 sm:py-10 bg-white">
             {/* Header */}
             <div className="flex items-center gap-3 mb-3">
               <span className="flex items-center justify-center rounded-full shrink-0" style={{ width: '36px', height: '36px', background: 'rgba(201,162,75,0.1)', border: '1px solid rgba(201,162,75,0.2)' }}>

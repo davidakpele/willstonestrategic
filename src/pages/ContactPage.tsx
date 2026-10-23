@@ -271,7 +271,7 @@ export default function ContactPage() {
 
       {/* ── HERO + FORM ── */}
       <section className="bg-white" style={{ paddingTop: '88px' }}>
-        <div className="w-full px-5 sm:px-10 lg:px-16 xl:px-24 pt-14 pb-8">
+        <div className="w-full px-4 sm:px-10 lg:px-16 xl:px-24 pt-10 sm:pt-14 pb-6 sm:pb-8">
           <div className="max-w-screen-2xl mx-auto">
             <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-5" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> GET IN TOUCH
@@ -285,7 +285,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="w-full px-5 sm:px-10 lg:px-16 xl:px-24 pb-16">
+        <div className="w-full px-4 sm:px-10 lg:px-16 xl:px-24 pb-12 sm:pb-16">
           <div className="max-w-screen-2xl mx-auto">
             {/* Mobile: form only */}
             <div className="md:hidden">
@@ -364,15 +364,15 @@ export default function ContactPage() {
       )}
 
       {/* ── WE'RE ALWAYS HERE ── */}
-      <section className="py-24 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: '#f8f9fc' }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-10 lg:px-16 xl:px-24" style={{ background: '#f8f9fc' }}>
         <div className="max-w-screen-2xl mx-auto">
 
           {/* Section header */}
-          <div className="max-w-xl mb-14">
+          <div className="max-w-xl mb-10 sm:mb-14">
             <p className="eyebrow text-[11px] font-semibold flex items-center gap-3 mb-4" style={{ color: 'var(--gold)' }}>
               <span className="gold-rule" /> REACH US
             </p>
-            <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: 'clamp(1.7rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
+            <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
               We're always here<br />to help.
             </h2>
             <p className="text-slate-500 text-[14px] leading-relaxed">
@@ -381,7 +381,7 @@ export default function ContactPage() {
           </div>
 
           {/* 3-column contact cards + map */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
 
             {/* LEFT — 3 stacked contact cards */}
             <div className="flex flex-col gap-4">
@@ -471,10 +471,10 @@ export default function ContactPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-24 px-5 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'rgba(11,27,51,0.06)' }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-10 lg:px-16 xl:px-24" style={{ background: 'rgba(11,27,51,0.06)' }}>
         <div className="max-w-screen-2xl mx-auto">
 
-          <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-12 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 sm:gap-12 lg:gap-20 items-start">
 
             {/* LEFT — sticky label */}
             <div className="lg:sticky lg:top-32">
@@ -515,13 +515,13 @@ export default function ContactPage() {
                   }}
                 >
                   <button
-                    className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
+                    className="w-full flex items-center justify-between gap-3 px-4 sm:px-6 py-4 sm:py-5 text-left cursor-pointer"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
                   >
-                    <span className="text-[14px] font-semibold leading-snug" style={{ color: 'var(--ink)' }}>{faq.q}</span>
+                    <span className="text-[13px] sm:text-[14px] font-semibold leading-snug" style={{ color: 'var(--ink)' }}>{faq.q}</span>
                     <span
-                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                      className="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors"
                       style={{
                         background: openFaq === i ? 'var(--gold)' : 'rgba(11,27,51,0.08)',
                         color: openFaq === i ? '#1a1408' : 'var(--navy)',
@@ -536,7 +536,7 @@ export default function ContactPage() {
                     </span>
                   </button>
                   {openFaq === i && (
-                    <div className="px-6 pb-5">
+                    <div className="px-4 sm:px-6 pb-4 sm:pb-5">
                       <div className="h-px mb-4" style={{ background: 'rgba(201,162,75,0.25)' }} />
                       <p className="text-[13.5px] leading-relaxed text-slate-500">{faq.a}</p>
                     </div>

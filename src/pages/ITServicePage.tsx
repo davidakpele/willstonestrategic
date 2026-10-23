@@ -4,12 +4,12 @@ import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
 
-/* shared inner container style — 80px side padding keeps content off the edges */
+/* shared inner container style — responsive side padding */
 const inner: React.CSSProperties = {
   maxWidth: '1200px',
   margin: '0 auto',
-  paddingLeft: '80px',
-  paddingRight: '80px',
+  paddingLeft: 'clamp(16px, 5vw, 80px)',
+  paddingRight: 'clamp(16px, 5vw, 80px)',
 }
 
 /* shared red divider */
@@ -60,7 +60,7 @@ export default function ITServicePage() {
       <SiteHeader variant="transparent" />
 
       {/* ══════════ HERO ══════════ */}
-      <section style={{ background: '#fff', paddingTop: '88px', overflow: 'hidden' }}>
+      <section style={{ background: '#fff', paddingTop: '80px', overflow: 'hidden' }}>
         <div style={{ ...inner, paddingTop: '48px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center' }} className="it-hero-grid">
 
           {/* Left */}
@@ -402,7 +402,7 @@ export default function ITServicePage() {
         </div>
       </section>
 
-      <section style={{ padding: '0 80px 48px' }}>
+      <section style={{ padding: '0 clamp(16px, 5vw, 80px) 48px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', borderRadius: '20px', overflow: 'hidden', position: 'relative' }}>
           <img
             src="/assets/images/we-dont-just-build-software-we-run-it-181788267017500.jpg"
