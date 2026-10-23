@@ -864,3 +864,100 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
 }
 .it-marquee-left  { animation: itMarqueeLeft  30s linear infinite; }
 .it-marquee-right { animation: itMarqueeRight 25s linear infinite; }
+
+/* ── IT Hero grid responsive ── */
+@media (max-width: 768px) {
+  .it-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .it-hero-grid > div:last-child {
+    display: none;
+  }
+}
+
+/* ── IT Problem grid responsive ── */
+@media (max-width: 768px) {
+  .it-problem-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .it-problem-grid > div:first-child {
+    display: none;
+  }
+}
+
+/* ── IT Why grid responsive ── */
+@media (max-width: 900px) {
+  .it-why-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 560px) {
+  .it-why-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── IT "We run it" banner responsive ── */
+@media (max-width: 768px) {
+  .it-banner-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .it-banner-grid > div:last-child {
+    display: none;
+  }
+}
+
+/* ── IT page wrapper responsive padding ── */
+.it-page-wrapper {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+@media (max-width: 1024px) {
+  .it-page-wrapper {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+@media (max-width: 640px) {
+  .it-page-wrapper {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ── IT Automation grid responsive ── */
+@media (max-width: 768px) {
+  .it-auto-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .it-auto-grid > div:last-child {
+    position: static !important;
+    display: none;
+  }
+}
+
+/* ── IT How We Work timeline responsive ── */
+@media (max-width: 900px) {
+  .it-how-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media (max-width: 560px) {
+  .it-how-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .it-how-grid > div:nth-child(1) > div:first-child + * {
+    display: none;
+  }
+}
+
+/* ── IT SaaS products grid responsive ── */
+@media (max-width: 1024px) {
+  .it-saas-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .it-saas-grid > div:first-child {
+    grid-row: auto !important;
+  }
+}

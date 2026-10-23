@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 650 545" width="650" height="545" role="img" aria-label="Animated illustration: a business dashboard with sales analytics, a handheld QR scanner, a product passport on a phone showing the supply chain journey, orbited by connected systems - accounting integrations, product passports, multi-warehouse inventory and customer portals.">
+<defs>
+
+<linearGradient id="gSide" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#101d3d"/><stop offset="1" stop-color="#1b2f5e"/>
+</linearGradient>
+<linearGradient id="gPanel" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f7f9fe"/>
+</linearGradient>
+<linearGradient id="gPhone" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#2b3550"/><stop offset="1" stop-color="#0e1526"/>
+</linearGradient>
+<linearGradient id="gScan" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#4a5468"/><stop offset="0.45" stop-color="#222a3c"/>
+  <stop offset="1" stop-color="#11161f"/>
+</linearGradient>
+<linearGradient id="gGrip" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#3b445a"/><stop offset="1" stop-color="#171d2a"/>
+</linearGradient>
+<linearGradient id="gSap" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#1b6fd0"/><stop offset="1" stop-color="#4fb8f0"/>
+</linearGradient>
+<linearGradient id="gSweep" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+  <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.55"/>
+  <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="gBeam" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#18c2e6" stop-opacity="0"/>
+  <stop offset="0.5" stop-color="#18c2e6" stop-opacity="0.85"/>
+  <stop offset="1" stop-color="#18c2e6" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="gTile1" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#eef3ff"/><stop offset="1" stop-color="#f9fbff"/>
+</linearGradient>
+<radialGradient id="gGlow"><stop offset="0" stop-color="#2f6bff" stop-opacity="0.22"/>
+  <stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></radialGradient>
+<filter id="fShadow" x="-25%" y="-25%" width="150%" height="160%">
+  <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#17306b" flood-opacity="0.16"/>
+</filter>
+<filter id="fSoft" x="-40%" y="-40%" width="180%" height="180%">
+  <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#17306b" flood-opacity="0.18"/>
+</filter>
+<filter id="fNode" x="-50%" y="-50%" width="200%" height="200%">
+  <feDropShadow dx="0" dy="2.5" stdDeviation="3" flood-color="#17306b" flood-opacity="0.16"/>
+</filter>
+<clipPath id="clipPhone"><rect x="513" y="229" width="110" height="218" rx="14"/></clipPath>
+<clipPath id="clipDash"><rect x="85" y="118" width="443" height="300" rx="10"/></clipPath>
+<clipPath id="clipDevScreen">
+  <ellipse cx="98.5" cy="348.7" rx="52.5" ry="24.4"
+           transform="rotate(-14 98.5 348.7)"/>
+</clipPath>
+<radialGradient id="gScanGlow">
+  <stop offset="0" stop-color="#18c2e6" stop-opacity="0.5"/>
+  <stop offset="1" stop-color="#18c2e6" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clipScreen"><rect x="-26" y="-18" width="52" height="36" rx="3"/></clipPath>
+<g id="qr"><rect x="0" y="0" width="13" height="13" fill="#fff"/><rect x="0" y="0" width="3" height="3" fill="#0b1733"/><rect x="10" y="0" width="3" height="3" fill="#0b1733"/><rect x="0" y="10" width="3" height="3" fill="#0b1733"/><rect x="4" y="0" width="1" height="1" fill="#0b1733"/><rect x="5" y="0" width="1" height="1" fill="#0b1733"/><rect x="7" y="0" width="1" height="1" fill="#0b1733"/><rect x="4" y="1" width="1" height="1" fill="#0b1733"/><rect x="5" y="1" width="1" height="1" fill="#0b1733"/><rect x="7" y="1" width="1" height="1" fill="#0b1733"/><rect x="8" y="1" width="1" height="1" fill="#0b1733"/><rect x="4" y="2" width="1" height="1" fill="#0b1733"/><rect x="5" y="2" width="1" height="1" fill="#0b1733"/><rect x="6" y="2" width="1" height="1" fill="#0b1733"/><rect x="8" y="2" width="1" height="1" fill="#0b1733"/><rect x="4" y="3" width="1" height="1" fill="#0b1733"/><rect x="8" y="3" width="1" height="1" fill="#0b1733"/><rect x="1" y="4" width="1" height="1" fill="#0b1733"/><rect x="3" y="4" width="1" height="1" fill="#0b1733"/><rect x="4" y="4" width="1" height="1" fill="#0b1733"/><rect x="5" y="4" width="1" height="1" fill="#0b1733"/><rect x="6" y="4" width="1" height="1" fill="#0b1733"/><rect x="8" y="4" width="1" height="1" fill="#0b1733"/><rect x="11" y="4" width="1" height="1" fill="#0b1733"/><rect x="0" y="5" width="1" height="1" fill="#0b1733"/><rect x="1" y="5" width="1" height="1" fill="#0b1733"/><rect x="2" y="5" width="1" height="1" fill="#0b1733"/><rect x="4" y="5" width="1" height="1" fill="#0b1733"/><rect x="5" y="5" width="1" height="1" fill="#0b1733"/><rect x="7" y="5" width="1" height="1" fill="#0b1733"/><rect x="8" y="5" width="1" height="1" fill="#0b1733"/><rect x="11" y="5" width="1" height="1" fill="#0b1733"/><rect x="3" y="6" width="1" height="1" fill="#0b1733"/><rect x="5" y="6" width="1" height="1" fill="#0b1733"/><rect x="6" y="6" width="1" height="1" fill="#0b1733"/><rect x="8" y="6" width="1" height="1" fill="#0b1733"/><rect x="10" y="6" width="1" height="1" fill="#0b1733"/><rect x="2" y="7" width="1" height="1" fill="#0b1733"/><rect x="6" y="7" width="1" height="1" fill="#0b1733"/><rect x="11" y="7" width="1" height="1" fill="#0b1733"/><rect x="3" y="8" width="1" height="1" fill="#0b1733"/><rect x="4" y="8" width="1" height="1" fill="#0b1733"/><rect x="6" y="8" width="1" height="1" fill="#0b1733"/><rect x="8" y="8" width="1" height="1" fill="#0b1733"/><rect x="9" y="8" width="1" height="1" fill="#0b1733"/><rect x="10" y="8" width="1" height="1" fill="#0b1733"/><rect x="12" y="8" width="1" height="1" fill="#0b1733"/><rect x="4" y="9" width="1" height="1" fill="#0b1733"/><rect x="5" y="9" width="1" height="1" fill="#0b1733"/><rect x="7" y="9" width="1" height="1" fill="#0b1733"/><rect x="8" y="9" width="1" height="1" fill="#0b1733"/><rect x="4" y="10" width="1" height="1" fill="#0b1733"/><rect x="5" y="10" width="1" height="1" fill="#0b1733"/><rect x="6" y="10" width="1" height="1" fill="#0b1733"/><rect x="9" y="10" width="1" height="1" fill="#0b1733"/><rect x="10" y="10" width="1" height="1" fill="#0b1733"/><rect x="11" y="10" width="1" height="1" fill="#0b1733"/><rect x="12" y="10" width="1" height="1" fill="#0b1733"/><rect x="6" y="11" width="1" height="1" fill="#0b1733"/><rect x="7" y="11" width="1" height="1" fill="#0b1733"/><rect x="8" y="11" width="1" height="1" fill="#0b1733"/><rect x="9" y="11" width="1" height="1" fill="#0b1733"/><rect x="7" y="12" width="1" height="1" fill="#0b1733"/><rect x="12" y="12" width="1" height="1" fill="#0b1733"/></g>
+
+<g id="icoWarehouse" fill="none" stroke="#ef4444" stroke-width="1.1" stroke-linejoin="round">
+  <path d="M1 6 L8 1.6 L15 6 V15 H1 Z"/>
+  <path d="M4.4 15 V9 H11.6 V15"/>
+  <path d="M4.4 11.4 H11.6"/>
+</g>
+<g id="icoPeople" fill="none" stroke="#ef4444" stroke-width="1.1" stroke-linecap="round">
+  <circle cx="6" cy="5" r="2.6"/><circle cx="12.4" cy="5.8" r="2"/>
+  <path d="M1.6 13.4c0-2.6 2-4.2 4.4-4.2s4.4 1.6 4.4 4.2"/>
+  <path d="M11.8 9.6c2 0 3.6 1.4 3.6 3.6"/>
+</g>
+</defs>
+<style>
+  svg { font-family: "Plus Jakarta Sans","Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  text { paint-order: stroke; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes dashmarch { to { stroke-dashoffset: -200; } }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  @keyframes floatY2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+  @keyframes pulseRing {
+    0%   { transform: scale(0.85); opacity: 0.55; }
+    70%  { transform: scale(1.5);  opacity: 0; }
+    100% { transform: scale(1.5);  opacity: 0; }
+  }
+  @keyframes popIn {
+    0%   { transform: scale(0.4); opacity: 0; }
+    60%  { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes riseIn {
+    0%   { transform: translateY(14px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slideRight {
+    0%   { transform: translateX(-14px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes growBar { 0% { transform: scaleY(0.04); } 100% { transform: scaleY(1); } }
+  @keyframes drawArc { to { stroke-dashoffset: 0; } }
+  @keyframes sweep { 0% { transform: translateX(-120px); } 55%,100% { transform: translateX(560px); } }
+  @keyframes beam { 0%,100% { transform: translateY(-13px); } 50% { transform: translateY(13px); } }
+  @keyframes blink { 0%,100%{opacity:.25} 50%{opacity:1} }
+  @keyframes fadeUpSm { 0%{transform:translateY(6px);opacity:0} 100%{transform:translateY(0);opacity:1} }
+  @keyframes scanGlow { 0%,100%{opacity:.25} 50%{opacity:.75} }
+  @keyframes tiltBob { 0%,100%{transform:rotate(0deg) translateY(0)} 50%{transform:rotate(-1.1deg) translateY(-4px)} }
+  @keyframes ping { 0% { transform:scale(.75); opacity:.5; } 100% { transform:scale(3.4); opacity:0; } }
+  @keyframes grow { 0%{transform:scale(.6);opacity:0} 100%{transform:scale(1);opacity:1} }
+
+  .orbit     { transform-origin: 332px 274px; animation: spin 150s linear infinite; }
+  .orbitDash { animation: dashmarch 14s linear infinite; }
+  .fl        { transform-box: fill-box; transform-origin: center; animation: floatY 6s ease-in-out infinite; }
+  .fl2       { transform-box: fill-box; transform-origin: center; animation: floatY2 7.5s ease-in-out infinite; }
+  .ring      { transform-box: fill-box; transform-origin: center; animation: pulseRing 3.4s ease-out infinite; }
+  .pop       { transform-box: fill-box; transform-origin: center; animation: popIn .8s cubic-bezier(.2,.9,.25,1) both; }
+  .rise      { transform-box: fill-box; animation: riseIn .9s cubic-bezier(.2,.9,.25,1) both; }
+  .slr       { transform-box: fill-box; animation: slideRight .7s cubic-bezier(.2,.9,.25,1) both; }
+  .fu        { transform-box: fill-box; animation: fadeUpSm .6s ease-out both; }
+  .bar       { transform-box: fill-box; transform-origin: bottom; animation: growBar 1.5s cubic-bezier(.2,.9,.25,1) both; }
+  .arc       { animation: drawArc 1.6s cubic-bezier(.2,.9,.25,1) both; }
+  .sweep     { animation: sweep 7s cubic-bezier(.4,0,.2,1) infinite; }
+  .beam      { animation: beam 2.6s cubic-bezier(.45,0,.55,1) infinite; }
+  .blink     { animation: blink 1.6s ease-in-out infinite; }
+  .glow      { animation: scanGlow 2.6s ease-in-out infinite; }
+  .bob       { transform-box: fill-box; transform-origin: 50% 70%; animation: tiltBob 7s ease-in-out infinite; }
+  .ping      { transform-box: fill-box; transform-origin: center; animation: ping 2.7s cubic-bezier(.2,.7,.3,1) infinite; }
+  .gr        { transform-box: fill-box; transform-origin: center; animation: grow .7s cubic-bezier(.2,.9,.25,1) both; }
+  @media (prefers-reduced-motion: reduce) {
+    .orbit,.orbitDash,.fl,.fl2,.ring,.pop,.rise,.slr,.fu,.bar,.arc,.sweep,.beam,.blink,.glow,.bob,.gr,.ping
+      { animation: none !important; }
+  }
+</style>
+<circle cx="332" cy="274" r="225" fill="none" stroke="#c3cede" stroke-width="1" stroke-dasharray="5 6" class="orbitDash"/>
+<g class="orbit" opacity="0.5"><circle cx="332" cy="274" r="225" fill="none" stroke="#9fb2cf" stroke-width="1" stroke-dasharray="2 16" stroke-linecap="round"/></g>
+<circle r="2.6" fill="#2f6bff" opacity="0.85"><animateMotion dur="18s" repeatCount="indefinite" path="M 332 49 a 225 225 0 1 1 -0.1 0"/></circle>
+<circle r="2.2" fill="#18c2e6" opacity="0.7"><animateMotion dur="18s" begin="-9s" repeatCount="indefinite" path="M 332 49 a 225 225 0 1 1 -0.1 0"/></circle>
+<g class="pop" style="animation-delay:0.15s"><circle cx="333" cy="48" r="28" fill="none" stroke="#2f6bff" stroke-width="1.2" class="ring" style="animation-delay:0.75s"/><g class="fl" style="animation-delay:0.15s"><circle cx="333" cy="48" r="27" fill="#13b5ea" filter="url(#fNode)"/><image href="data:image/png;base64,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" x="305" y="20" width="56" height="56" preserveAspectRatio="xMidYMid meet"/></g></g>
+<g class="pop" style="animation-delay:0.35s"><circle cx="215" cy="82" r="30" fill="none" stroke="#2f6bff" stroke-width="1.2" class="ring" style="animation-delay:0.95s"/><g class="fl" style="animation-delay:0.35s"><circle cx="215" cy="82" r="30" fill="#ffffff" stroke="#e9eef6" stroke-width="0.8" filter="url(#fNode)"/><image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAwCAMAAADZyI/9AAAAwFBMVEUBQYX+/v4AAAABPYIAJnQCNH0APoMBUaUAG20AKVezxtqZs87K1+UcUY8nWJSMqcdJd6czZJs7bKCku9M/cKPm7PLa4+1bhLBli7VzlrsALWF9nsAAOokAR5EAAlkADmMAGDsAIjwAKlcBJlcAN2cAN3MAO3sAQo8BR5ICSaG/z+AAAEAAJkIAIlMAMzMAN1sAMFsAMm0AQX0AVZwBU7AAXcMjTIx/oMIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADR+tCLAAAAQHRSTlP+/wD9/v4p/f4v/////////////////////zj/ji7//xMeRYZQbayq2P//BBtpBQ41mJG/2Dz//wAAAAAAAAAAM3w0hwAAAvpJREFUeNq1V9di2zAMFEmgpmVV0xqunT2b7v3/f1YtLomU5cTCU0KTdwCIAyjPW9ZuF0Vnqw90aXy6ND5dGp8ujU+XxtcIGEJjyMyNvQ3/19es+GtqEDCOSRVlWbSLPeCoNo7+MDziwKb9FwQ89Ikyv0TOen/FWgntAuj7CAmiFGDK/44AISAD85M2CthLKN4RbIY7yb9RFDp+Q4CMjG3TOga5XOiSZCEghKEbvyEAy5m8dZglaiUCJwExCsPErwm4bznSZcj4aYKg4E78JgLtzoLCyDjqKCFzEpAUFf53ahLATiK0OvCqQsSMpQ6SgU6Q1lsSGaAPDv8bArEr7jYx4Elfk7ww3BwSMMZjI382/JpAlKh/xaSCem2ZeYhRI9h2lyQOMxe+FgEJPG7UG0R9RQXqYgYEYktXxDZ8/Q4aeYGmGlG+UancHBJkGoEVnw4TkSVC+5iKkhU7djBKEVHcdnybDvYdBX8RFwhKfZIgAax7nTiagwvfruSykYFoID6XmQ6ZJNjHcak04YMLn7aFmY96HVd3EyMLZbtwCC1EFz7thkE0ZpAiQC1GB0HAnfj9PAAcUiR/tT4tiyXlVgJw48uRCRAbl53tNHmhyJF/aSPAj258bSYjh9TSWGNWa0O2bUsEEZ/CN18VyD0ybekglS8VTuVHEIBsERBOE/iVCKybtXVzmcZvCaBIeS9fSI+EkOnd1HPq1xRa7VVR1qnm/FgAyrbo7J8uJedBEOTkNILj+DWB3k7JaQQz8Kn9USGn+VVYRZssqkKejwnm4FPXGBcNunuxIlNPMEkwC7+OAKtRa0mMl4R1fm5xHn57yaaCg/SyGMzydjzkgwE9D5/2LwkI4yjz/SyK63e2F75vLdTf1Eys9j/NxKeDr4Pu88D6BcAMm4tPX/v9Mhefvgn/+unucb0AgcD/tLr9sp7Ri16dn8f7H9fPn71zE6j8P9/crX7ScxNo9/twePh6WP86dwRazp8ON/e/j13yu9Ps4pt++uLPxbEy/Q/6cCx9Hu2OdwAAAABJRU5ErkJggg==" x="183" y="66" width="64" height="32" preserveAspectRatio="xMidYMid meet"/></g></g>
+<g class="pop" style="animation-delay:0.55s"><circle cx="458" cy="88" r="30" fill="none" stroke="#2f6bff" stroke-width="1.2" class="ring" style="animation-delay:1.15s"/><g class="fl" style="animation-delay:0.55s"><circle cx="458" cy="88" r="30" fill="#ffffff" stroke="#e9eef6" stroke-width="0.8" filter="url(#fNode)"/><text x="458" y="93" font-size="20" font-weight="700" fill="#d8232a" text-anchor="middle" font-style="italic" font-family="Georgia,serif" letter-spacing="-0.5">Tally</text><path d="M432 97 Q458 104 484 94" stroke="#d8232a" stroke-width="1.6" fill="none" stroke-linecap="round"/></g></g>
+<g class="pop" style="animation-delay:0.75s"><circle cx="208" cy="461" r="26" fill="none" stroke="#2f6bff" stroke-width="1.2" class="ring" style="animation-delay:1.35s"/><g class="fl2" style="animation-delay:0.75s"><circle cx="208" cy="461" r="26" fill="#ffffff" stroke="#e9eef6" stroke-width="0.8" filter="url(#fNode)"/><g transform="translate(198.5,451.5) scale(1.48)"><g stroke="#f43f7f" stroke-width="1" fill="none"><path d="M0.4 2.6V0.4H2.6"/><path d="M10.6 0.4h2.2v2.2"/><path d="M12.8 10.6v2.2h-2.2"/><path d="M2.6 12.8H0.4v-2.2"/></g><g fill="#f43f7f"><rect x="2.6" y="2.6" width="3.2" height="3.2" rx="0.4"/><rect x="7.4" y="2.6" width="3.2" height="3.2" rx="0.4"/><rect x="2.6" y="7.4" width="3.2" height="3.2" rx="0.4"/><rect x="7.6" y="7.6" width="1.3" height="1.3"/><rect x="9.4" y="9.4" width="1.3" height="1.3"/><rect x="7.6" y="9.4" width="1.3" height="1.3" opacity="0.5"/></g></g></g></g>
+<g class="rise" style="animation-delay:1.0s"><text x="201" y="502" font-size="12" font-weight="500" fill="#0b1733" text-anchor="middle">Product Passports</text>
+</g>
+<g class="pop" style="animation-delay:0.95s"><circle cx="333" cy="499" r="26" fill="none" stroke="#2f6bff" stroke-width="1.2" class="ring" style="animation-delay:1.5499999999999998s"/><g class="fl" style="animation-delay:0.95s"><circle cx="333" cy="499" r="26" fill="#ffffff" stroke="#e9eef6" stroke-width="0.8" filter="url(#fNode)"/><g transform="translate(325,491) scale(1.0)"><use href="#icoWarehouse"/></g></g></g>
+<g class="rise" style="animation-delay:1.15s"><text x="333" y="452" font-size="12" font-weight="500" fill="#0b1733" text-anchor="middle">Multi-warehouse</text>
+<text x="333" y="466" font-size="12" font-weight="500" fill="#0b1733" text-anchor="middle">inventory</text>
+</g>
+<g class="pop" style="animation-delay:1.15s"><circle cx="453" cy="463" r="25" fill="none" stroke="#2f6bff" stroke-width="1.2" class="ring" style="animation-delay:1.75s"/><g class="fl2" style="animation-delay:1.15s"><circle cx="453" cy="463" r="25" fill="#ffffff" stroke="#e9eef6" stroke-width="0.8" filter="url(#fNode)"/><g transform="translate(444.5,454.5) scale(1.06)"><use href="#icoPeople"/></g></g></g>
+<g class="rise" style="animation-delay:1.3s"><text x="484" y="467" font-size="12" font-weight="500" fill="#0b1733">Portals</text>
+</g>
+<g class="rise" style="animation-delay:.1s">
+<g filter="url(#fShadow)"><rect x="85" y="118" width="443" height="300" rx="10" fill="url(#gPanel)"/>
+</g>
+<g clip-path="url(#clipDash)">
+<path d="M85 128 a10 10 0 0 1 10 -10 H165 V418 H95 a10 10 0 0 1 -10 -10 Z" fill="url(#gSide)"/>
+<circle cx="100" cy="140" r="7.5" fill="#ffffff" opacity="0.95"/><path d="M96.5 140a3.5 3.5 0 1 1 3.5 3.5" fill="none" stroke="#0b1733" stroke-width="1.3"/><text x="112" y="139.5" font-size="6.2" font-weight="700" fill="#ffffff" letter-spacing="0.6">ORIENTIQUE</text>
+<text x="112" y="146.5" font-size="2.9" font-weight="400" fill="#9fb0d0">beautify you, beautify your world</text>
+<g class="slr" style="animation-delay:0.35s"><rect x="92" y="161.5" width="66" height="14" rx="4" fill="#2f6bff"/>
+<rect x="92" y="161.5" width="66" height="14" rx="4" fill="#2f6bff" opacity="0.5"><animate attributeName="opacity" values="0.0;0.45;0.0" dur="3s" repeatCount="indefinite"/></rect><rect x="97" y="164.4" width="4.6" height="4.6" rx="1" fill="#ffffff" opacity="0.9"/><text x="105.5" y="168.8" font-size="4.4" font-weight="500" fill="#ffffff">Dashboard</text>
+</g><g class="slr" style="animation-delay:0.42s"><rect x="97" y="183.9" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="188.3" font-size="4.4" font-weight="500" fill="#9aa8c6">Leaderboard</text>
+</g><g class="slr" style="animation-delay:0.49s"><rect x="97" y="203.4" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="207.8" font-size="4.4" font-weight="500" fill="#9aa8c6">Order</text>
+</g><g class="slr" style="animation-delay:0.56s"><rect x="97" y="222.9" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="227.3" font-size="4.4" font-weight="500" fill="#9aa8c6">Products</text>
+</g><g class="slr" style="animation-delay:0.63s"><rect x="97" y="242.4" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="246.8" font-size="4.4" font-weight="500" fill="#9aa8c6">Sales Report</text>
+</g><g class="slr" style="animation-delay:0.70s"><rect x="97" y="261.9" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="266.3" font-size="4.4" font-weight="500" fill="#9aa8c6">Messages</text>
+</g><g class="slr" style="animation-delay:0.77s"><rect x="97" y="281.4" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="285.8" font-size="4.4" font-weight="500" fill="#9aa8c6">Settings</text>
+</g><g class="slr" style="animation-delay:0.84s"><rect x="97" y="300.9" width="4.6" height="4.6" rx="1" fill="#9aa8c6" opacity="0.9"/><text x="105.5" y="305.3" font-size="4.4" font-weight="500" fill="#9aa8c6">Sign Out</text>
+</g>
+<text x="350" y="139" font-size="6.6" font-weight="600" fill="#0b1733" text-anchor="middle">Business Dashboard</text>
+<text x="468" y="134" font-size="4.2" font-weight="600" fill="#0b1733" text-anchor="end">Vishal Singhal</text>
+<path d="M471 132 l2.6 2.6 l2.6 -2.6" fill="none" stroke="#8c97ad" stroke-width="0.9" stroke-linecap="round"/><text x="468" y="141.5" font-size="3.2" font-weight="500" fill="#8c97ad" text-anchor="end" letter-spacing="0.6">ADMIN</text>
+<circle cx="487" cy="136" r="7" fill="#2f6bff" opacity="0.14"/><circle cx="487" cy="133.6" r="2.4" fill="#2f6bff"/><path d="M482.6 141.4a4.6 4.6 0 0 1 8.8 0" fill="#2f6bff"/><line x1="165" y1="151" x2="528" y2="151" stroke="#e9eef6" stroke-width="1"/>
+<text x="172" y="162" font-size="4.4" font-weight="600" fill="#0b1733">Customer Statistics</text>
+<g class="fu" style="animation-delay:0.70s"><rect x="170" y="166" width="84" height="26" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<linearGradient id="tg0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9ced8"/><stop offset="1" stop-color="#eef1f5"/></linearGradient><rect x="174" y="170.5" width="22" height="17" rx="2" fill="url(#tg0)"/>
+<rect x="174" y="170.5" width="22" height="17" rx="2" fill="url(#gSweep)" opacity="0.8"><animate attributeName="opacity" values="0;0.9;0" dur="4s" begin="0.0s" repeatCount="indefinite"/></rect><text x="200" y="180" font-size="6" font-weight="700" fill="#0b1733">500K</text>
+<text x="200" y="186.5" font-size="3.1" font-weight="500" fill="#8c97ad">Platinum customers</text>
+</g><g class="fu" style="animation-delay:0.80s"><rect x="260" y="166" width="84" height="26" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<linearGradient id="tg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0b057"/><stop offset="1" stop-color="#f8ecd4"/></linearGradient><rect x="264" y="170.5" width="22" height="17" rx="2" fill="url(#tg1)"/>
+<rect x="264" y="170.5" width="22" height="17" rx="2" fill="url(#gSweep)" opacity="0.8"><animate attributeName="opacity" values="0;0.9;0" dur="4s" begin="0.5s" repeatCount="indefinite"/></rect><text x="290" y="180" font-size="6" font-weight="700" fill="#0b1733">500K</text>
+<text x="290" y="186.5" font-size="3.1" font-weight="500" fill="#8c97ad">Gold customers</text>
+</g><g class="fu" style="animation-delay:0.90s"><rect x="350" y="166" width="84" height="26" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<linearGradient id="tg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#aeb6c2"/><stop offset="1" stop-color="#eceff4"/></linearGradient><rect x="354" y="170.5" width="22" height="17" rx="2" fill="url(#tg2)"/>
+<rect x="354" y="170.5" width="22" height="17" rx="2" fill="url(#gSweep)" opacity="0.8"><animate attributeName="opacity" values="0;0.9;0" dur="4s" begin="1.0s" repeatCount="indefinite"/></rect><text x="380" y="180" font-size="6" font-weight="700" fill="#0b1733">500K</text>
+<text x="380" y="186.5" font-size="3.1" font-weight="500" fill="#8c97ad">Silver customers</text>
+</g><g class="fu" style="animation-delay:1.00s"><rect x="440" y="166" width="84" height="26" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<linearGradient id="tg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d59b55"/><stop offset="1" stop-color="#f6e6d2"/></linearGradient><rect x="444" y="170.5" width="22" height="17" rx="2" fill="url(#tg3)"/>
+<rect x="444" y="170.5" width="22" height="17" rx="2" fill="url(#gSweep)" opacity="0.8"><animate attributeName="opacity" values="0;0.9;0" dur="4s" begin="1.5s" repeatCount="indefinite"/></rect><text x="470" y="180" font-size="6" font-weight="700" fill="#0b1733">500K</text>
+<text x="470" y="186.5" font-size="3.1" font-weight="500" fill="#8c97ad">Online customers</text>
+</g>
+<text x="172" y="204" font-size="4.4" font-weight="600" fill="#0b1733">Total Sales Overview</text>
+<rect x="170" y="208" width="272" height="78" rx="5" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<g class="fu" style="animation-delay:0.95s"><rect x="174" y="213" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="183" cy="224" r="5.4" fill="#2f6bff" opacity="0.16"/><path d="M180.4 226.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#2f6bff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="191.5" y="223" font-size="3.3" font-weight="600" fill="#8c97ad">Indent</text>
+<text x="191.5" y="231.5" font-size="6" font-weight="700" fill="#0b1733">$500</text>
+<text x="179" y="241" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M210 240 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#2f6bff" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.01s"><rect x="241" y="213" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="250" cy="224" r="5.4" fill="#15b8a6" opacity="0.16"/><path d="M247.4 226.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#15b8a6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="258.5" y="223" font-size="3.3" font-weight="600" fill="#8c97ad">Top up</text>
+<text x="258.5" y="231.5" font-size="6" font-weight="700" fill="#0b1733">$5,400</text>
+<text x="246" y="241" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M277 240 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#15b8a6" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.07s"><rect x="308" y="213" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="317" cy="224" r="5.4" fill="#f5a524" opacity="0.16"/><path d="M314.4 226.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#f5a524" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="325.5" y="223" font-size="3.3" font-weight="600" fill="#8c97ad">Clearance</text>
+<text x="325.5" y="231.5" font-size="6" font-weight="700" fill="#0b1733">$4,500</text>
+<text x="313" y="241" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M344 240 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#f5a524" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.13s"><rect x="375" y="213" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="384" cy="224" r="5.4" fill="#7c5cff" opacity="0.16"/><path d="M381.4 226.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#7c5cff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="392.5" y="223" font-size="3.3" font-weight="600" fill="#8c97ad">Total Sales</text>
+<text x="392.5" y="231.5" font-size="6" font-weight="700" fill="#0b1733">$8,420</text>
+<text x="380" y="241" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M411 240 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#7c5cff" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.19s"><rect x="174" y="250" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="183" cy="261" r="5.4" fill="#2f6bff" opacity="0.16"/><path d="M180.4 263.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#2f6bff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="191.5" y="260" font-size="3.3" font-weight="600" fill="#8c97ad">Indent</text>
+<text x="191.5" y="268.5" font-size="6" font-weight="700" fill="#0b1733">$51,200</text>
+<text x="179" y="278" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M210 277 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#2f6bff" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.25s"><rect x="241" y="250" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="250" cy="261" r="5.4" fill="#15b8a6" opacity="0.16"/><path d="M247.4 263.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#15b8a6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="258.5" y="260" font-size="3.3" font-weight="600" fill="#8c97ad">Top up</text>
+<text x="258.5" y="268.5" font-size="6" font-weight="700" fill="#0b1733">$31,200</text>
+<text x="246" y="278" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M277 277 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#15b8a6" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.31s"><rect x="308" y="250" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="317" cy="261" r="5.4" fill="#f5a524" opacity="0.16"/><path d="M314.4 263.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#f5a524" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="325.5" y="260" font-size="3.3" font-weight="600" fill="#8c97ad">Clearance</text>
+<text x="325.5" y="268.5" font-size="6" font-weight="700" fill="#0b1733">$25,200</text>
+<text x="313" y="278" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M344 277 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#f5a524" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g><g class="fu" style="animation-delay:1.37s"><rect x="375" y="250" width="63" height="33" rx="4" fill="url(#gTile1)"/>
+<circle cx="384" cy="261" r="5.4" fill="#7c5cff" opacity="0.16"/><path d="M381.4 263.2 l2.4 -3 l2 1.8 l2.6 -3.6" fill="none" stroke="#7c5cff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><text x="392.5" y="260" font-size="3.3" font-weight="600" fill="#8c97ad">Total</text>
+<text x="392.5" y="268.5" font-size="6" font-weight="700" fill="#0b1733">$85,900</text>
+<text x="380" y="278" font-size="2.7" font-weight="500" fill="#8c97ad">Last Year</text>
+<path d="M411 277 l4 -4 l3 2.6 l5 -6" fill="none" stroke="#7c5cff" stroke-width="1" stroke-linecap="round" opacity="0.8"/></g>
+<g class="fu" style="animation-delay:1.35s"><rect x="448" y="208" width="76" height="78" rx="5" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="454" y="217" font-size="3.3" font-weight="600" fill="#0b1733">Customer Statistics</text>
+<text x="518" y="217" font-size="4.6" font-weight="700" fill="#2f6bff" text-anchor="middle">500</text>
+<rect x="452" y="228" width="68" height="15" rx="3" fill="#f7f9fe"/>
+<circle cx="459" cy="235.5" r="4.2" fill="#2f6bff" opacity="0.22"/><circle cx="459" cy="234" r="1.6" fill="#2f6bff"/><path d="M456 238.6a3 3 0 0 1 6 0" fill="#2f6bff"/><text x="466" y="237.5" font-size="3.1" font-weight="500" fill="#1e2b4d">Customer Orders</text>
+<rect x="452" y="246" width="68" height="15" rx="3" fill="#f7f9fe"/>
+<circle cx="459" cy="253.5" r="4.2" fill="#15b8a6" opacity="0.22"/><circle cx="459" cy="252" r="1.6" fill="#15b8a6"/><path d="M456 256.6a3 3 0 0 1 6 0" fill="#15b8a6"/><text x="466" y="255.5" font-size="3.1" font-weight="500" fill="#1e2b4d">Customer Browsing</text>
+<rect x="452" y="264" width="68" height="15" rx="3" fill="#f7f9fe"/>
+<circle cx="459" cy="271.5" r="4.2" fill="#f5a524" opacity="0.22"/><circle cx="459" cy="270" r="1.6" fill="#f5a524"/><path d="M456 274.6a3 3 0 0 1 6 0" fill="#f5a524"/><text x="466" y="273.5" font-size="3.1" font-weight="500" fill="#1e2b4d">Customers Interested</text>
+</g>
+<g class="fu" style="animation-delay:1.40s"><rect x="170" y="292" width="84" height="11" rx="3" fill="#eef3ff"/>
+<text x="212" y="300" font-size="3.6" font-weight="600" fill="#1e2b4d" text-anchor="middle">Indent</text>
+<rect x="170" y="305" width="84" height="24" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="177" y="316" font-size="7.2" font-weight="700" fill="#0b1733">99%</text>
+<text x="177" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">LAST YEAR</text>
+<text x="220" y="316" font-size="7.2" font-weight="700" fill="#2f6bff">99%</text>
+<text x="220" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">THIS YEAR</text>
+<line x1="215" y1="309" x2="215" y2="325" stroke="#e9eef6" stroke-width="0.8"/></g><g class="fu" style="animation-delay:1.48s"><rect x="260" y="292" width="84" height="11" rx="3" fill="#eef3ff"/>
+<text x="302" y="300" font-size="3.6" font-weight="600" fill="#1e2b4d" text-anchor="middle">Top up</text>
+<rect x="260" y="305" width="84" height="24" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="267" y="316" font-size="7.2" font-weight="700" fill="#0b1733">99%</text>
+<text x="267" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">LAST YEAR</text>
+<text x="310" y="316" font-size="7.2" font-weight="700" fill="#2f6bff">99%</text>
+<text x="310" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">THIS YEAR</text>
+<line x1="305" y1="309" x2="305" y2="325" stroke="#e9eef6" stroke-width="0.8"/></g><g class="fu" style="animation-delay:1.56s"><rect x="350" y="292" width="84" height="11" rx="3" fill="#eef3ff"/>
+<text x="392" y="300" font-size="3.6" font-weight="600" fill="#1e2b4d" text-anchor="middle">Clearance</text>
+<rect x="350" y="305" width="84" height="24" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="357" y="316" font-size="7.2" font-weight="700" fill="#0b1733">99%</text>
+<text x="357" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">LAST YEAR</text>
+<text x="400" y="316" font-size="7.2" font-weight="700" fill="#2f6bff">99%</text>
+<text x="400" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">THIS YEAR</text>
+<line x1="395" y1="309" x2="395" y2="325" stroke="#e9eef6" stroke-width="0.8"/></g><g class="fu" style="animation-delay:1.64s"><rect x="440" y="292" width="84" height="11" rx="3" fill="#eef3ff"/>
+<text x="482" y="300" font-size="3.6" font-weight="600" fill="#1e2b4d" text-anchor="middle">Total</text>
+<rect x="440" y="305" width="84" height="24" rx="4" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="447" y="316" font-size="7.2" font-weight="700" fill="#0b1733">99%</text>
+<text x="447" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">LAST YEAR</text>
+<text x="490" y="316" font-size="7.2" font-weight="700" fill="#2f6bff">99%</text>
+<text x="490" y="323.5" font-size="2.6" font-weight="500" fill="#8c97ad" letter-spacing="0.3">THIS YEAR</text>
+<line x1="485" y1="309" x2="485" y2="325" stroke="#e9eef6" stroke-width="0.8"/></g>
+<g class="fu" style="animation-delay:1.65s"><rect x="170" y="335" width="176" height="78" rx="5" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="176" y="345" font-size="4" font-weight="600" fill="#0b1733">Sales History 5 Years</text>
+<rect x="280" y="339" width="62" height="9" rx="4.5" fill="#f1f5fd"/>
+<circle cx="286" cy="343.5" r="2" fill="#2f6bff"/><text x="290" y="345.2" font-size="2.4" font-weight="500" fill="#1e2b4d">January 2020 - December 2025</text>
+<rect x="180" y="386" width="5.6" height="18" rx="1.6" fill="#2f6bff" class="bar" style="animation-delay:1.80s"/><rect x="188" y="378" width="5.6" height="26" rx="1.6" fill="#18c2e6" class="bar" style="animation-delay:1.85s"/><rect x="196" y="392" width="5.6" height="12" rx="1.6" fill="#15b8a6" class="bar" style="animation-delay:1.90s"/><text x="191" y="410" font-size="2.7" font-weight="500" fill="#8c97ad" text-anchor="middle">2020</text>
+<rect x="213" y="380" width="5.6" height="24" rx="1.6" fill="#2f6bff" class="bar" style="animation-delay:1.92s"/><rect x="221" y="390" width="5.6" height="14" rx="1.6" fill="#18c2e6" class="bar" style="animation-delay:1.97s"/><rect x="229" y="384" width="5.6" height="20" rx="1.6" fill="#15b8a6" class="bar" style="animation-delay:2.02s"/><text x="224" y="410" font-size="2.7" font-weight="500" fill="#8c97ad" text-anchor="middle">2021</text>
+<rect x="246" y="374" width="5.6" height="30" rx="1.6" fill="#2f6bff" class="bar" style="animation-delay:2.04s"/><rect x="254" y="384" width="5.6" height="20" rx="1.6" fill="#18c2e6" class="bar" style="animation-delay:2.09s"/><rect x="262" y="394" width="5.6" height="10" rx="1.6" fill="#15b8a6" class="bar" style="animation-delay:2.14s"/><text x="257" y="410" font-size="2.7" font-weight="500" fill="#8c97ad" text-anchor="middle">2022</text>
+<rect x="279" y="388" width="5.6" height="16" rx="1.6" fill="#2f6bff" class="bar" style="animation-delay:2.16s"/><rect x="287" y="376" width="5.6" height="28" rx="1.6" fill="#18c2e6" class="bar" style="animation-delay:2.21s"/><rect x="295" y="382" width="5.6" height="22" rx="1.6" fill="#15b8a6" class="bar" style="animation-delay:2.26s"/><text x="290" y="410" font-size="2.7" font-weight="500" fill="#8c97ad" text-anchor="middle">2023</text>
+<rect x="312" y="378" width="5.6" height="26" rx="1.6" fill="#2f6bff" class="bar" style="animation-delay:2.28s"/><rect x="320" y="392" width="5.6" height="12" rx="1.6" fill="#18c2e6" class="bar" style="animation-delay:2.33s"/><rect x="328" y="386" width="5.6" height="18" rx="1.6" fill="#15b8a6" class="bar" style="animation-delay:2.38s"/><text x="323" y="410" font-size="2.7" font-weight="500" fill="#8c97ad" text-anchor="middle">2024</text>
+<line x1="176" y1="404" x2="340" y2="404" stroke="#e9eef6" stroke-width="0.8"/></g>
+<g class="fu" style="animation-delay:1.75s"><rect x="352" y="335" width="172" height="78" rx="5" fill="#ffffff" stroke="#e9eef6" stroke-width="0.7"/>
+<text x="358" y="345" font-size="4" font-weight="600" fill="#0b1733">Chart Overview</text>
+<rect x="452" y="339" width="66" height="9" rx="4.5" fill="#f1f5fd"/>
+<circle cx="458" cy="343.5" r="2" fill="#2f6bff"/><text x="462" y="345.2" font-size="2.4" font-weight="500" fill="#1e2b4d">January 2020 - December 2025</text>
+<circle cx="438" cy="378" r="17" fill="none" stroke="#eef2f9" stroke-width="9"/><circle cx="438" cy="378" r="17" fill="none" stroke="#2f6bff" stroke-width="9" stroke-dasharray="44.86 61.95" stroke-dashoffset="44.86" transform="rotate(-90.00 438 378)" class="arc" style="animation-delay:1.90s"/><circle cx="438" cy="378" r="17" fill="none" stroke="#18c2e6" stroke-width="9" stroke-dasharray="32.04 74.77" stroke-dashoffset="32.04" transform="rotate(61.20 438 378)" class="arc" style="animation-delay:2.20s"/><circle cx="438" cy="378" r="17" fill="none" stroke="#f5a524" stroke-width="9" stroke-dasharray="29.91 76.91" stroke-dashoffset="29.91" transform="rotate(169.20 438 378)" class="arc" style="animation-delay:2.50s"/><circle cx="438" cy="378" r="10.5" fill="#ffffff"/><text x="438" y="380" font-size="4.4" font-weight="700" fill="#0b1733" text-anchor="middle">100%</text>
+<circle cx="358" cy="406" r="2" fill="#2f6bff"/><text x="362" y="407.4" font-size="2.7" font-weight="500" fill="#1e2b4d">Customer Orders</text>
+<circle cx="389.75" cy="406" r="2" fill="#18c2e6"/><text x="393.75" y="407.4" font-size="2.7" font-weight="500" fill="#1e2b4d">Customer Browsing Product</text>
+<circle cx="436.0" cy="406" r="2" fill="#f5a524"/><text x="440.0" y="407.4" font-size="2.7" font-weight="500" fill="#1e2b4d">Customers Interested</text>
+</g>
+<g class="sweep"><rect x="60" y="110" width="70" height="320" fill="url(#gSweep)" opacity="0.35" transform="skewX(-14)"/></g>
+</g>
+</g>
+<g class="rise" style="animation-delay:.55s">
+<g class="fl2" style="animation-delay:.2s">
+<g filter="url(#fShadow)"><rect x="510" y="226" width="116" height="224" rx="16" fill="url(#gPhone)"/>
+</g><rect x="513" y="229" width="110" height="218" rx="14" fill="#ffffff"/>
+<g clip-path="url(#clipPhone)">
+<text x="520" y="238" font-size="3.4" font-weight="700" fill="#0b1733">9:41</text>
+<rect x="604" y="234.5" width="8" height="3.6" rx="1" fill="#0b1733" opacity="0.8"/><rect x="596" y="234.5" width="5" height="3.6" rx="0.8" fill="#0b1733" opacity="0.5"/><rect x="551" y="229" width="34" height="6" rx="3" fill="#0b1733"/><line x1="513" y1="243" x2="623" y2="243" stroke="#e9eef6" stroke-width="0.8"/><text x="520" y="252" font-size="4" font-weight="700" fill="#0b1733" letter-spacing="0.4">ORIENTIQUE</text>
+<circle cx="612" cy="249.5" r="4.2" fill="#2f6bff" opacity="0.12"/><path d="M610 249.5h4M612 247.5v4" stroke="#2f6bff" stroke-width="1" stroke-linecap="round"/><rect x="518" y="256" width="100" height="9" rx="4.5" fill="#f3f6fc" stroke="#e9eef6" stroke-width="0.6"/>
+<circle cx="524" cy="260.5" r="2.2" fill="none" stroke="#8c97ad" stroke-width="0.8"/><line x1="525.6" y1="262.1" x2="527" y2="263.5" stroke="#8c97ad" stroke-width="0.8" stroke-linecap="round"/><text x="530" y="262" font-size="2.9" font-weight="500" fill="#8c97ad">Search product passport</text>
+<g class="fu" style="animation-delay:1.0s"><text x="520" y="280" font-size="7.4" font-weight="700" fill="#0b1733">Product Passport</text>
+</g><g class="fu" style="animation-delay:1.15s"><rect x="518" y="286" width="68" height="26" rx="4" fill="#f7faff" stroke="#e9eef6" stroke-width="0.6"/>
+<text x="523" y="294.5" font-size="3" font-weight="600" fill="#8c97ad">Composition:</text>
+<text x="523" y="302.5" font-size="3.9" font-weight="700" fill="#0b1733">100% organic cotton</text>
+<circle cx="578" cy="298" r="5.4" fill="#22c07d" opacity="0.14"/><path d="M578 295c2.6 0 4.2 1.5 4.2 3.6 0 1.8-1.5 2.9-3.3 2.9-2.1 0-3.6-1.5-3.6-3.6 0-1.1.5-2.1 1.3-2.9z" fill="#22c07d"/></g><g class="fu" style="animation-delay:1.25s"><g transform="translate(591,286) scale(1.65)"><use href="#qr"/></g><rect x="591" y="286" width="21.5" height="21.5" fill="#18c2e6" opacity="0.0"><animate attributeName="opacity" values="0;0.35;0" dur="3.2s" repeatCount="indefinite"/></rect></g><g class="fu" style="animation-delay:1.35s"><path d="M520 319.5 h4.5" stroke="#ef4444" stroke-width="1.4" stroke-linecap="round"/><circle cx="522" cy="316" r="1.6" fill="#ef4444"/><text x="529" y="321" font-size="5" font-weight="700" fill="#0b1733">Supply chain journey</text>
+</g><line x1="524" y1="338" x2="524" y2="422" stroke="#ef4444" stroke-width="1" stroke-dasharray="90" stroke-dashoffset="90" opacity="0.4" class="arc" style="animation-delay:1.5s;animation-duration:1.8s"/><g class="fu" style="animation-delay:1.60s"><circle cx="524" cy="338" r="3.2" fill="#ffffff" stroke="#ef4444" stroke-width="1.2"/><circle cx="524" cy="338" r="1.4" fill="#ef4444"/><circle cx="524" cy="338" r="3.2" fill="none" stroke="#ef4444" stroke-width="1" class="ring" style="animation-delay:2.60s"/><text x="532" y="337.5" font-size="3.9" font-weight="700" fill="#0b1733">Fibre</text>
+<text x="532" y="344" font-size="3" font-weight="500" fill="#8c97ad">Grown &amp; harvested</text>
+<rect x="592" y="332" width="22" height="16" rx="2.5" fill="#9fd6a0"/>
+<rect x="592" y="332" width="22" height="16" rx="2.5" fill="url(#gSweep)" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="5s" begin="0.0s" repeatCount="indefinite"/></rect><path d="M592 345 l6 -6 l4 3.5 l5 -5 l7 7 v3 h-22 z" fill="#ffffff" opacity="0.4"/></g><g class="fu" style="animation-delay:1.82s"><circle cx="524" cy="359" r="3.2" fill="#ffffff" stroke="#ef4444" stroke-width="1.2"/><circle cx="524" cy="359" r="1.4" fill="#ef4444"/><circle cx="524" cy="359" r="3.2" fill="none" stroke="#ef4444" stroke-width="1" class="ring" style="animation-delay:2.82s"/><text x="532" y="358.5" font-size="3.9" font-weight="700" fill="#0b1733">Spinning &amp; weaving</text>
+<text x="532" y="365" font-size="3" font-weight="500" fill="#8c97ad">Mill, certified</text>
+<rect x="592" y="353" width="22" height="16" rx="2.5" fill="#cbd5e1"/>
+<rect x="592" y="353" width="22" height="16" rx="2.5" fill="url(#gSweep)" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="5s" begin="0.6s" repeatCount="indefinite"/></rect><path d="M592 366 l6 -6 l4 3.5 l5 -5 l7 7 v3 h-22 z" fill="#ffffff" opacity="0.4"/></g><g class="fu" style="animation-delay:2.04s"><circle cx="524" cy="380" r="3.2" fill="#ffffff" stroke="#ef4444" stroke-width="1.2"/><circle cx="524" cy="380" r="1.4" fill="#ef4444"/><circle cx="524" cy="380" r="3.2" fill="none" stroke="#ef4444" stroke-width="1" class="ring" style="animation-delay:3.04s"/><text x="532" y="379.5" font-size="3.9" font-weight="700" fill="#0b1733">Dyeing &amp; finishing</text>
+<text x="532" y="386" font-size="3" font-weight="500" fill="#8c97ad">Low-impact dyes</text>
+<rect x="592" y="374" width="22" height="16" rx="2.5" fill="#b7d4ef"/>
+<rect x="592" y="374" width="22" height="16" rx="2.5" fill="url(#gSweep)" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="5s" begin="1.2s" repeatCount="indefinite"/></rect><path d="M592 387 l6 -6 l4 3.5 l5 -5 l7 7 v3 h-22 z" fill="#ffffff" opacity="0.4"/></g><g class="fu" style="animation-delay:2.26s"><circle cx="524" cy="401" r="3.2" fill="#ffffff" stroke="#ef4444" stroke-width="1.2"/><circle cx="524" cy="401" r="1.4" fill="#ef4444"/><circle cx="524" cy="401" r="3.2" fill="none" stroke="#ef4444" stroke-width="1" class="ring" style="animation-delay:3.26s"/><text x="532" y="400.5" font-size="3.9" font-weight="700" fill="#0b1733">Garment making</text>
+<text x="532" y="407" font-size="3" font-weight="500" fill="#8c97ad">Cut, sewn, checked</text>
+<rect x="592" y="395" width="22" height="16" rx="2.5" fill="#e5d4b8"/>
+<rect x="592" y="395" width="22" height="16" rx="2.5" fill="url(#gSweep)" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="5s" begin="1.7999999999999998s" repeatCount="indefinite"/></rect><path d="M592 408 l6 -6 l4 3.5 l5 -5 l7 7 v3 h-22 z" fill="#ffffff" opacity="0.4"/></g><g class="fu" style="animation-delay:2.48s"><circle cx="524" cy="422" r="3.2" fill="#ffffff" stroke="#ef4444" stroke-width="1.2"/><circle cx="524" cy="422" r="1.4" fill="#ef4444"/><circle cx="524" cy="422" r="3.2" fill="none" stroke="#ef4444" stroke-width="1" class="ring" style="animation-delay:3.48s"/><text x="532" y="421.5" font-size="3.9" font-weight="700" fill="#0b1733">Warehouse</text>
+<text x="532" y="428" font-size="3" font-weight="500" fill="#8c97ad">Shipped to retailer</text>
+<rect x="592" y="416" width="22" height="16" rx="2.5" fill="#d8c4a8"/>
+<rect x="592" y="416" width="22" height="16" rx="2.5" fill="url(#gSweep)" opacity="0"><animate attributeName="opacity" values="0;0.8;0" dur="5s" begin="2.4s" repeatCount="indefinite"/></rect><path d="M592 429 l6 -6 l4 3.5 l5 -5 l7 7 v3 h-22 z" fill="#ffffff" opacity="0.4"/></g></g>
+<rect x="551" y="441" width="34" height="2.4" rx="1.2" fill="#0b1733" opacity="0.25"/>
+</g></g>
+<g class="rise" style="animation-delay:.95s">
+<g class="bob">
+<g filter="url(#fSoft)"><image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACwCAMAAACsENVwAAACWFBMVEWam56oGyydlZheXl/vFyja2tuhoKLapqDZ2dpnZ2lmzuRcXl2joqPhJUjm4+OSYGTxS1kemK/v4BEiISRkHjGzIUQOz+ZeX2FamKmknGaU1+byyqQcZokbGxohISANX2whpsZdPWOniQDc1kw5OTksPWN4fZNEu9qZe4bubYXfssDT09M3N0MkSUldSAB4goeAdYC9vcG+vsGdtMP/iHHEv7/DvsMAAAAFCAsSFRgmJypHSEs1NjhVVlhmZ2oMGiYuOUiHiIsUJDL8/Px0dXiVlpmmp6tTWmUPNlI3Q1R2e4W0tLgPR2rGx8uXm6MNLEVZYnDs6OotSWXT1NgFZZJ6go61usObo60EWIYpLEQLVHZGOUnX3OIYQVxDTWJca4L9+TMjHRxvKUa6w8za4ulOK0ZEREbR/f751NYCPGUwU2/wBQsVFRUMhLQE+v00NDQ4NzckIyREOjyIiIsFd6gtAgYlJSWSKkf++0UgIB9lNFRgX2H+trTt2+MMDAwaGxs0NDRVVVV2SFZkbYmKNlXKAQfwKlP9q63p6esJCAkZGRkZGRknGikoKCg2NjZLJDpHR0hMdpFsAgl4eHh8i6SBgYGrqaq3t7nGxcb0JCv7eJD5hpfsmKr5x9P+/BIIDCQWFRYWl8UO5vApKCgmJSU3NjYxq81QAwZXiKRVxd5nZ2h2dXZ3eHpzl6+KAweAfoGFhYiV5POnNEmjpKW4uLmn6vaz8/vRZ3bW1db4WG3+ZHL4ucUUFBMAa6EoKCgsa4gnibBAQD9FRUZYWFhXV1hNqsV1IDhtbXDbpzuNAAAAyHRSTlOe/+5m/2Fa/6Cd/+Mj/9X/////8P///x///////1Kw//////8l/+L/6//9JRcH/zMYOrn//3RuAP7+/v7+/v7+/v7+/v7+/v7//v7+//7+//79//z///7///////3//////v////8N//////8O//+VzzL/Lf//Ef////////8tdQkK////////zksxzv9TUv+x//8T/w0xq07/////////sf//btW0/////zJV0f///m3//9LW////rf///5P/iv///1glsP//ks/bgHQAABu1SURBVHjazZ2HfxzF2cflDhjTO+RN729vO313bmd2dbu3qzudmiXZ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" x="8" y="298" width="152" height="159.24" preserveAspectRatio="xMidYMid meet"/></g>
+<g clip-path="url(#clipDevScreen)"><ellipse cx="101.2" cy="347.8" rx="34" ry="19" fill="url(#gScanGlow)" class="glow"/><g transform="rotate(-25 101.2 347.8)"><g class="beam"><rect x="61.2" y="345.3" width="80" height="5" fill="url(#gBeam)"/><line x1="63.2" y1="347.8" x2="139.2" y2="347.8" stroke="#18c2e6" stroke-width="0.8" opacity="0.9"/></g></g><g class="sweep" style="animation-duration:8s"><rect x="-22.0" y="308.0" width="16" height="110" fill="url(#gSweep)" opacity="0.35" transform="skewX(-20)"/></g></g>
+<circle cx="101.2" cy="347.8" r="12" fill="none" stroke="#18c2e6" stroke-width="1.1" opacity="0" class="ping" style="animation-delay:0.00s"/><circle cx="101.2" cy="347.8" r="12" fill="none" stroke="#18c2e6" stroke-width="1.1" opacity="0" class="ping" style="animation-delay:0.90s"/><circle cx="101.2" cy="347.8" r="12" fill="none" stroke="#18c2e6" stroke-width="1.1" opacity="0" class="ping" style="animation-delay:1.80s"/>
+</g>
+</g>
+<circle cx="150" cy="330" r="60" fill="url(#gGlow)" opacity="0.5"/>
+</svg>
