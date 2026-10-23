@@ -308,9 +308,7 @@ export default function HomePage() {
               <span className="gold-rule" /> ABOUT WILLSTONE
             </p>
             <h2
-              className="font-bold leading-tight mb-5"
-              style={{ color: 'var(--ink)', fontSize: 'clamp(1.9rem, 4vw, 2.8rem)' }}
-            >
+              className="font-bold leading-tight mb-5 home-header-title">
               Strategic Industries.<br />Stronger Tomorrow.
             </h2>
             <p className="text-slate-500 text-[15px] leading-relaxed mb-8 max-w-md">

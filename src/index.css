@@ -865,6 +865,10 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
 .it-marquee-left  { animation: itMarqueeLeft  30s linear infinite; }
 .it-marquee-right { animation: itMarqueeRight 25s linear infinite; }
 
+.home-header-title{
+  color: var(--ink);
+  font-size: 30px;
+}
 /* ── IT Hero grid responsive ── */
 @media (max-width: 768px) {
   .it-hero-grid {
@@ -948,6 +952,9 @@ html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.75); }
   }
   .it-how-grid > div:nth-child(1) > div:first-child + * {
     display: none;
+  }
+  .home-header-title{
+    font-size: 26.5px;
   }
 }
 
