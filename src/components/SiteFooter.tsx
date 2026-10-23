@@ -124,7 +124,8 @@ export default function SiteFooter() {
             <ul className="space-y-3 text-[13px] text-white/50">
               <li className="flex items-start gap-2">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M4 4h16v16H4zM4 4l8 8 8-8" />
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M2 7l10 7 10-7" />
                 </svg>
                 <div className="space-y-1">
                   <a href="mailto:info@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">

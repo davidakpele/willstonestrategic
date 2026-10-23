@@ -1,0 +1,21 @@
+{
+  "name": "Willstone Strategic Industries Limited",
+  "short_name": "Willstone",
+  "description": "Diversified Nigerian supplier, exporter and procurement partner headquartered in Ibadan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1b33",
+  "theme_color": "#0b1b33",
+  "icons": [
+    {
+      "src": "/assets/images/Willstone-AppIcon-Navy.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/Willstone-AppIcon-Navy.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

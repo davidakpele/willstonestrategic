@@ -3,6 +3,7 @@ import type { FormEvent, ChangeEvent } from 'react'
 import SiteHeader from '../components/SiteHeader'
 import SiteFooter from '../components/SiteFooter'
 import Seo from '../components/Seo'
+import { COUNTRIES } from '../lib/countries'
 
 const INQUIRY_TYPES = [
   { value: 'inquiry',     label: 'Inquiries' },
@@ -48,6 +49,7 @@ interface FormState {
   email:       string
   phone:       string
   whatsapp:    string
+  country:     string
   inquiryType: string
   message:     string
 }
@@ -57,6 +59,7 @@ const EMPTY_FORM: FormState = {
   email:       '',
   phone:       '',
   whatsapp:    '',
+  country:     '',
   inquiryType: 'inquiry',
   message:     '',
 }
@@ -187,10 +190,32 @@ export default function ContactPage() {
           </div>
         </div>
 
+        {/* Country */}
+        <div>
+          <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>
+            Country <span className="font-normal text-slate-400">(Optional)</span>
+          </label>
+          <div className="relative">
+            <select
+              value={form.country}
+              onChange={handleFieldChange('country')}
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-white text-[13.5px] outline-none transition-all appearance-none pr-9 cursor-pointer focus:border-[var(--gold)]"
+              style={{ color: form.country ? 'var(--ink)' : '#9ca3af' }}
+            >
+              <option value="">Select your country</option>
+              {COUNTRIES.map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+            <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
+        </div>
+
         {/* Inquiry Type */}
         <div>
-          <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Inquiry Type</label>
-          <div className="relative">
+          <label className="block text-[12px] font-semibold mb-1.5" style={{ color: 'var(--ink)' }}>Inquiry Type</label>          <div className="relative">
             <select
               value={form.inquiryType}
               onChange={handleFieldChange('inquiryType')}
