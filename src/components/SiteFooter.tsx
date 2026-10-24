@@ -55,155 +55,131 @@ function BackToTop() {
   )
 }
 
-export default function SiteFooter() {
-  const [email, setEmail] = useState('')
+const EMAILS = [
+  'info@willstonestrategic.com',
+  'business@willstonestrategic.com',
+  'office@willstonestrategic.com',
+];
 
-  function handleSubscribe(e: React.FormEvent) {
-    e.preventDefault()
-    setEmail('')
-  }
+const MailIcon = () => (
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#C9A24B"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="mt-0.5 shrink-0"
+    aria-hidden="true"
+  >
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="M2 7l10 7 10-7" />
+  </svg>
+);
+
+export default function SiteFooter() {
 
   return (
     <>
-      <footer id="contact" className="pb-8 px-4 sm:px-6 lg:px-16 xl:px-24" style={{ background: '#0B1B33' }}>
-        <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
+     <footer id="contact" className="pb-8 px-4 sm:px-6 lg:px-16 xl:px-24" style={{ background: '#0B1B33' }}>
+      <div style={{ background: 'linear-gradient(90deg, #C9A24B 0%, #e4cd8c 50%, #C9A24B 100%)', height: '3px' }} />
 
-        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pt-10 sm:pt-14">
+      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pt-10 sm:pt-14">
 
-          {/* Column 1 — Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <a href="/" className="site-logo-footer mb-4 block" aria-label="Willstone Strategic Industries Limited" />
-            <p className="text-white/35 text-[12px] leading-relaxed max-w-xs mb-5">
-              20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {SOCIAL.map(({ label, d, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C9A24B] hover:border-[#C9A24B] transition-colors cursor-pointer"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d={d} />
-                  </svg>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 2 — Quick Links */}
-          <div>
-            <ColHeading>Quick Links</ColHeading>
-            <ul className="space-y-2.5 text-[13px] text-white/50">
-              {QUICK_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="hover:text-[#C9A24B] transition-colors">{link.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3 — Industries */}
-          <div>
-            <ColHeading>Industries</ColHeading>
-            <ul className="space-y-2.5 text-[13px] text-white/50">
-              {INDUSTRIES.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} className="hover:text-[#C9A24B] transition-colors">{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4 — Contact */}
-          <div>
-            <ColHeading>Contact Us</ColHeading>
-            <ul className="space-y-3 text-[13px] text-white/50">
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="M2 7l10 7 10-7" />
-                </svg>
-                <div className="space-y-1">
-                  <a href="mailto:info@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
-                    info@willstonestrategic.com
-                  </a>
-                  <a href="mailto:business@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
-                    business@willstonestrategic.com
-                  </a>
-                  <a href="mailto:office@willstonestrategic.com" className="hover:text-[#C9A24B] transition-colors break-all block">
-                    office@willstonestrategic.com
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.9 1.4a2 2 0 002.1.5c.9-.3 1.8-.5 2.7-.6z" />
-                </svg>
-                <a href="tel:+2347061964340" className="hover:text-[#C9A24B] transition-colors">
-                  +234 706 196 4340
-                </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" className="mt-0.5 shrink-0">
-                  <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <span>20, 3 Joop Berkhout Crescent, Onireke - Ibadan</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 5 — Newsletter */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <ColHeading>Join Our Network</ColHeading>
-            <p className="text-white/50 text-[13px] mb-4 leading-relaxed">
-              Subscribe to our newsletter
-            </p>
-            <form onSubmit={handleSubscribe} className="flex items-center gap-0">
-              <div
-                className="flex items-center flex-1 rounded-full overflow-hidden min-w-0"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}
+        {/* Column 1 — Brand */}
+        <div>
+          <a href="/" className="site-logo-footer mb-4 block" aria-label="Willstone Strategic Industries Limited" />
+          <p className="text-white/35 text-[12px] leading-relaxed max-w-xs mb-5">
+            20 Cambridge House, Joop Berkhout Crescent, Onireke - Ibadan
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {SOCIAL.map(({ label, d, href }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-[#C9A24B] hover:border-[#C9A24B] transition-colors cursor-pointer"
               >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  required
-                  className="flex-1 bg-transparent px-3 py-2.5 text-[12px] text-white/70 placeholder:text-white/30 outline-none min-w-0 w-0"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="shrink-0 w-9 h-9 rounded-full flex items-center justify-center mr-0.5 transition-opacity hover:opacity-80"
-                  style={{ background: '#C9A24B' }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-            </form>
-          </div>
-
-        </div>
-
-        {/* Bottom bar */}
-        <div
-          className="max-w-screen-2xl mx-auto mt-10 sm:mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-[12px] text-white/40 text-center"
-          style={{ borderTop: '1px solid rgba(201,162,75,0.2)' }}
-        >
-          <p>&copy; 2026 Willstone Strategic Industries Limited. All rights reserved.</p>
-          <div className="flex gap-4 sm:gap-5">
-            <a href="/privacy-policy" className="hover:text-[#C9A24B] transition-colors">Privacy Policy</a>
-            <a href="/terms-of-use" className="hover:text-[#C9A24B] transition-colors">Terms &amp; Conditions</a>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={d} />
+                </svg>
+              </a>
+            ))}
           </div>
         </div>
-      </footer>
+
+        {/* Column 2 — Quick Links */}
+        <div>
+          <ColHeading>Quick Links</ColHeading>
+          <ul className="space-y-2.5 text-[13px] text-white/50">
+            {QUICK_LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="hover:text-[#C9A24B] transition-colors">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Column 3 — Industries */}
+        <div>
+          <ColHeading>Industries</ColHeading>
+          <ul className="space-y-2.5 text-[13px] text-white/50">
+            {INDUSTRIES.map((item) => (
+              <li key={item.label}>
+                <a href={item.href} className="hover:text-[#C9A24B] transition-colors">{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+       {/* Column 4 — Contact */}
+        <div>
+          <ColHeading>Contact Us</ColHeading>
+          <ul className="space-y-3 text-[13px] text-white/50">
+            {EMAILS.map((email) => (
+              <li key={email} className="flex items-start gap-2">
+                <MailIcon />
+                <a href={`mailto:${email}`} className="hover:text-[#C9A24B] transition-colors break-all block">
+                  {email}
+                </a>
+              </li>
+            ))}
+            <li className="flex items-start gap-2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0" aria-hidden="true">
+                <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2L8 9.6a16 16 0 006 6l1.9 1.4a2 2 0 002.1.5c.9-.3 1.8-.5 2.7-.6z" />
+              </svg>
+              <a href="tel:+2347061964340" className="hover:text-[#C9A24B] transition-colors">
+                +234 706 196 4340
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0" aria-hidden="true">
+                <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>20, 3 Joop Berkhout Crescent, Onireke - Ibadan</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      {/* Bottom bar */}
+      <div
+        className="max-w-screen-2xl mx-auto mt-10 sm:mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] sm:text-[12px] text-white/40 text-center"
+        style={{ borderTop: '1px solid rgba(201,162,75,0.2)' }}
+      >
+        <p>&copy; 2026 Willstone Strategic Industries Limited. All rights reserved.</p>
+        <div className="flex gap-4 sm:gap-5">
+          <a href="/privacy-policy" className="hover:text-[#C9A24B] transition-colors">Privacy Policy</a>
+          <a href="/terms-of-use" className="hover:text-[#C9A24B] transition-colors">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </footer>
 
       <BackToTop />
     </>
