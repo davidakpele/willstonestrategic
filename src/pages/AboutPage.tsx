@@ -252,7 +252,7 @@ export default function AboutPage() {
               <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4" style={{ color: 'var(--gold)' }}>
                 <span className="gold-rule" /> OUR DIVERSE SECTORS
               </p>
-              <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
+              <h2 className="display font-bold leading-tight mb-4" style={{ fontSize: '30px', color: 'var(--ink)' }}>
                 Industries We Serve
               </h2>
               <p className="text-slate-500 leading-relaxed mb-6 sm:mb-8" style={{ fontSize: '14.5px' }}>
@@ -386,8 +386,9 @@ export default function AboutPage() {
               <p className="eyebrow text-[11px] font-semibold flex items-center gap-2 mb-4 sm:mb-5" style={{ color: 'var(--gold)' }}>
                 <span className="gold-rule" /> OUR LEADERSHIP
               </p>
-              <h2 className="display font-bold leading-tight mb-4 sm:mb-5" style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}>
-                Meet Our Leadership Team
+              <h2 className="display font-bold leading-tight mb-4 sm:mb-5" 
+              style={{ fontSize: '25px', color: 'var(--ink)' }}>
+                Meet Our <br />Leadership Team
               </h2>
               <p className="leading-relaxed mb-6 sm:mb-8 text-slate-500" style={{ fontSize: '14.5px' }}>
                 Our leadership team brings a wealth of experience, industry knowledge and a shared commitment to our mission. They guide our strategy, drive innovation and ensure we deliver on our promise.

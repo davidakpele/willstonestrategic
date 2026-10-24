@@ -86,7 +86,7 @@ export default function ScrollAccordion() {
             </p>
             <h2
               className="display font-semibold leading-tight mb-5"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--ink)' }}
+              style={{ fontSize: '25px', color: 'var(--ink)' }}
             >
               Integrated solutions,<br />
               <span style={{ color: 'var(--gold)' }}>across every sector.</span>
