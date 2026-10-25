@@ -418,7 +418,7 @@ export default function AboutPage() {
                   img: '/assets/images/Chinwe.jpg',
                 },
                 {
-                  name: 'Precious Freeborn ',
+                  name: 'Freeborn Precious Chiguwma',
                   title: 'Logistics & Supply Chain Officer',
                   bio: 'Responsible for Transportation, delivery schedules, freight and distribution.',
                   img: '/assets/images/Precious-Freeborn.png',
